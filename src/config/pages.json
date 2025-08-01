@@ -65,42 +65,19 @@
             ]
         },
         {
-            "id": "location-selection",
-            "title": "Selezione Località",
+            "id": "checklist-configuratore",
+            "title": "Configurate insieme il climatizzatore!",
             "step": 2,
             "components": [
-                {
-                    "type": "Text",
-                    "props": {
-                        "content": "Seleziona la tua località per continuare"
-                    }
-                }
+               
             ]
         },
         {
-            "id": "climate-preferences",
-            "title": "Preferenze Climatiche",
+            "id": "scelta-climatizzatore",
+            "title": "Scegliete insieme il climatizzatore adatto!",
             "step": 3,
             "components": [
-                {
-                    "type": "Text",
-                    "props": {
-                        "content": "Configura le tue preferenze climatiche"
-                    }
-                }
-            ]
-        },
-        {
-            "id": "summary",
-            "title": "Riepilogo",
-            "step": 4,
-            "components": [
-                {
-                    "type": "Text",
-                    "props": {
-                        "content": "Riepilogo della tua configurazione"
-                    }
-                }
+
             ]
         }
     ]
