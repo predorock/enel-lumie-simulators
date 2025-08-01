@@ -1,23 +1,18 @@
 import { useState } from 'react';
-import PageLayout from './components/layout/PageLayout';
-import SearchInput from './components/ui/SearchInput';
-import ToggleSwitch from './components/ui/ToggleSwitch';
-import useAppStore from './store/useAppStore';
+import PageLayout from '../components/layout/PageLayout';
+import SearchInput from '../components/ui/SearchInput';
+import ToggleSwitch from '../components/ui/ToggleSwitch';
 
-function App() {
+export default function SamplePage() {
   const [searchValue, setSearchValue] = useState("");
   const [isEnelClient, setIsEnelClient] = useState(false);
-  
-  // Get step state from Zustand store
-  const { currentStep } = useAppStore();
 
   return (
     <PageLayout 
-      currentStep={currentStep}
+      currentStep={0}
       title="Chiedi al cliente di raccontarti qualcosa sulla sua casa"
       showStepper={true}
       showItalyImage={true}
-      showNavigation={true}
     >
       <div className="space-y-8">
         <h2 className="text-2xl font-bold mb-8">Cerca punto vendita</h2>
@@ -37,9 +32,15 @@ function App() {
             size="md"
           />
         </div>
+        
+        {/* Additional content can go here */}
+        <div className="mt-16">
+          <p className="text-gray-600">
+            This is a sample page using the reusable PageLayout component.
+            Add your page-specific content here.
+          </p>
+        </div>
       </div>
     </PageLayout>
-  )
+  );
 }
-
-export default App
