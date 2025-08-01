@@ -5,7 +5,7 @@ import DescriptionBox from './ui/DescriptionBox';
 import Divider from './ui/Divider';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
-import StatefulSplitterConfigurator from './StatefulSplitterConfigurator';
+import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 
 // Text component for simple text content
 const TextComponent = ({ content, className = "" }) => (
@@ -40,7 +40,7 @@ const componentRegistry = {
   Title: TitleComponent,
   DescriptionBox: (props) => <DescriptionBox {...props} />,
   Divider: (props) => <Divider {...props} />,
-  SplitterConfigurator: (props) => <StatefulSplitterConfigurator {...props} />,
+  SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
   // Add more components as needed
 };
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import SplitterConfigurator from './ui/SplitterConfigurator';
+import SplitterQtyConfigurator from './ui/SplitterQtyConfigurator';
 import useAppStore from '../store/useAppStore';
 
-// Stateful wrapper for SplitterConfigurator that integrates with the store
-const StatefulSplitterConfigurator = ({ 
+// Stateful wrapper for SplitterQtyConfigurator that integrates with the store
+const StatefulSplitterQtyConfigurator = ({ 
   items = [],
   initialValues = {},
   stateProperty = null,
@@ -38,7 +38,7 @@ const StatefulSplitterConfigurator = ({
     : localValues;
 
   return (
-    <SplitterConfigurator
+    <SplitterQtyConfigurator
       items={items}
       values={currentValues}
       onChange={handleChange}
@@ -50,4 +50,4 @@ const StatefulSplitterConfigurator = ({
   );
 };
 
-export default StatefulSplitterConfigurator;
+export default StatefulSplitterQtyConfigurator;
