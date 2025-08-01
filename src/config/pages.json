@@ -2,9 +2,16 @@
     "pages": [
         {
             "id": "client-selection",
-            "title": "DIO Cliente",
+            "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
             "step": 1,
             "components": [
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Dati punto vendita",
+                        "description": "Inserisci le informazioni sul punto vendita"
+                    }
+                },
                 {
                     "type": "TextInput",
                     "props": {
@@ -30,6 +37,29 @@
                         "initialValue": "",
                         "type": "text",
                         "stateProperty": "storePhone"
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "spacing": "16px"
+                    }
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Dove si trova la casa del cliente?",
+                        "description": "Spiega che con questa informazione possiamo tenere in considerazione fattori climatici, geografici e ambientali, e proporre stime di risparmio più precise."
+                    }
+                },
+                {
+                    "type": "TextInput",
+                    "props": {
+                        "placeholder": "Città",
+                        "initialValue": "",
+                        "type": "text",
+                        "stateProperty": "storeCity"
                     }
                 }
             ]

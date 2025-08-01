@@ -55,13 +55,6 @@ export default function PageRenderer({ pageId, step, className = "" }) {
   
   return (
     <div className={`space-y-6 ${className}`}>
-      {/* Page Title */}
-      <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 font-['Roobert']">
-          {pageConfig.title}
-        </h1>
-      </div>
-      
       {/* Dynamic Components */}
       <div className="space-y-4">
         {pageConfig.components.map((componentConfig, index) => (

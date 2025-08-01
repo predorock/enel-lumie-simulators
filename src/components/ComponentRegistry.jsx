@@ -1,6 +1,8 @@
 import ToggleSwitch from './ui/ToggleSwitch';
 import SearchInput from './ui/SearchInput';
 import TextInput from './ui/TextInput';
+import DescriptionBox from './ui/DescriptionBox';
+import Divider from './ui/Divider';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 
@@ -35,6 +37,8 @@ const componentRegistry = {
   TextInput: (props) => <StatefulInput inputType="TextInput" {...props} />,
   Text: TextComponent,
   Title: TitleComponent,
+  DescriptionBox: (props) => <DescriptionBox {...props} />,
+  Divider: (props) => <Divider {...props} />,
   // Add more components as needed
 };
 
