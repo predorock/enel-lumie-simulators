@@ -77,7 +77,7 @@
                     }
                 },
                 {
-                    "type": "QuantityStepper",
+                    "type": "SplitterConfigurator",
                     "props": {
                         "items": [
                             {

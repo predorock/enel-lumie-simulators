@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import QuantityStepper from './ui/QuantityStepper';
+import SplitterConfigurator from './ui/SplitterConfigurator';
 import useAppStore from '../store/useAppStore';
 
-// Stateful wrapper for QuantityStepper that integrates with the store
-const StatefulQuantityStepper = ({ 
+// Stateful wrapper for SplitterConfigurator that integrates with the store
+const StatefulSplitterConfigurator = ({ 
   items = [],
   initialValues = {},
   stateProperty = null,
@@ -38,7 +38,7 @@ const StatefulQuantityStepper = ({
     : localValues;
 
   return (
-    <QuantityStepper
+    <SplitterConfigurator
       items={items}
       values={currentValues}
       onChange={handleChange}
@@ -50,4 +50,4 @@ const StatefulQuantityStepper = ({
   );
 };
 
-export default StatefulQuantityStepper;
+export default StatefulSplitterConfigurator;

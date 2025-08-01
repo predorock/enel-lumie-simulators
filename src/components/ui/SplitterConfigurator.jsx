@@ -31,7 +31,7 @@ const AirConditioningIcon = ({ type = "mono" }) => {
   );
 };
 
-export default function QuantityStepper({ 
+export default function SplitterConfigurator({ 
   items = [],
   values = {},
   onChange,
