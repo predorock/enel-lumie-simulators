@@ -69,7 +69,36 @@
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
             "components": [
-               
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Quanti impianti vuole acquistare il cliente?",
+                        "description": "Il cliente può indicare un massimo di 3 split totali"
+                    }
+                },
+                {
+                    "type": "QuantityStepper",
+                    "props": {
+                        "items": [
+                            {
+                                "key": "monosplit",
+                                "label": "Monosplit"
+                            },
+                            {
+                                "key": "dualsplit", 
+                                "label": "Dualsplit"
+                            },
+                            {
+                                "key": "trialsplit",
+                                "label": "Trialsplit"
+                            }
+                        ],
+                        "min": 0,
+                        "max": 3,
+                        "totalMax": 3,
+                        "stateProperty": "airconditioningQuantities"
+                    }
+                }
             ]
         },
         {

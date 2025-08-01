@@ -5,6 +5,7 @@ import DescriptionBox from './ui/DescriptionBox';
 import Divider from './ui/Divider';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
+import StatefulQuantityStepper from './StatefulQuantityStepper';
 
 // Text component for simple text content
 const TextComponent = ({ content, className = "" }) => (
@@ -39,6 +40,7 @@ const componentRegistry = {
   Title: TitleComponent,
   DescriptionBox: (props) => <DescriptionBox {...props} />,
   Divider: (props) => <Divider {...props} />,
+  QuantityStepper: (props) => <StatefulQuantityStepper {...props} />,
   // Add more components as needed
 };
 
