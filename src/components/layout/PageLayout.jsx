@@ -53,20 +53,22 @@ export default function PageLayout({
         </div>
         
         {/* RIGHT CONTENT AREA */}
-        <div className="col-span-4 flex flex-col">
-          {/* Main Content */}
+        <div className="col-span-4 flex flex-col h-screen">
+          {/* Main Content - Scrollable */}
           <div className={`flex-1 p-16 overflow-y-auto ${className}`}>
             {children}
           </div>
           
-          {/* Navigation Bar */}
+          {/* Navigation Bar - Fixed at bottom */}
           {showNavigation && (
-            <NavigationBar
-              onBack={onBack}
-              onNext={onNext}
-              backLabel={backLabel}
-              nextLabel={nextLabel}
-            />
+            <div className="flex-shrink-0">
+              <NavigationBar
+                onBack={onBack}
+                onNext={onNext}
+                backLabel={backLabel}
+                nextLabel={nextLabel}
+              />
+            </div>
           )}
         </div>
       </div>
