@@ -1,0 +1,16 @@
+{
+    "steps": [
+        {
+            "copy": "Informazioni"
+        },
+        {
+            "copy": "Scelta del modello"
+        },
+        {
+            "copy": "Informazioni sull'installazione"
+        },
+        {
+            "copy": "Componenti aggiuntivi"
+        }
+    ]
+}

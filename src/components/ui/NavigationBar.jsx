@@ -52,11 +52,11 @@ export default function NavigationBar({
       {...props}
     >
       <div className="flex items-center justify-end gap-4 max-w-[9999px] w-full">
-        {showBack && (
+        {showBack && canGoPrev() && (
           <Button
             variant="secondary"
             size="md"
-            disabled={!canGoPrev}
+            disabled={!canGoPrev()}
             onClick={handleBack}
             icon={<BackIcon />}
             iconPosition="left"
@@ -69,7 +69,7 @@ export default function NavigationBar({
           <Button
             variant="primary"
             size="md"
-            disabled={!canGoNext}
+            disabled={!canGoNext()}
             onClick={handleNext}
             className="px-10"
           >
