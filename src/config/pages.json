@@ -1,0 +1,77 @@
+{
+    "pages": [
+        {
+            "id": "client-selection",
+            "title": "DIO Cliente",
+            "step": 1,
+            "components": [
+                {
+                    "type": "TextInput",
+                    "props": {
+                        "placeholder": "Nome punto vendita",
+                        "initialValue": "",
+                        "type": "text",
+                        "stateProperty": "storeLocation"
+                    }
+                },
+                {
+                    "type": "TextInput",
+                    "props": {
+                        "placeholder": "Nome e cognome del consulente",
+                        "initialValue": "",
+                        "type": "text",
+                        "stateProperty": "consultantName"
+                    }
+                },
+                {
+                    "type": "TextInput",
+                    "props": {
+                        "placeholder": "Telefono punto vendita",
+                        "initialValue": "",
+                        "type": "text",
+                        "stateProperty": "storePhone"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "location-selection",
+            "title": "Selezione Località",
+            "step": 2,
+            "components": [
+                {
+                    "type": "Text",
+                    "props": {
+                        "content": "Seleziona la tua località per continuare"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "climate-preferences",
+            "title": "Preferenze Climatiche",
+            "step": 3,
+            "components": [
+                {
+                    "type": "Text",
+                    "props": {
+                        "content": "Configura le tue preferenze climatiche"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "summary",
+            "title": "Riepilogo",
+            "step": 4,
+            "components": [
+                {
+                    "type": "Text",
+                    "props": {
+                        "content": "Riepilogo della tua configurazione"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,45 +1,23 @@
-import { useState } from 'react';
 import PageLayout from './components/layout/PageLayout';
-import SearchInput from './components/ui/SearchInput';
-import ToggleSwitch from './components/ui/ToggleSwitch';
+import PageRenderer from './components/PageRenderer';
 import useAppStore from './store/useAppStore';
 
 function App() {
-  const [searchValue, setSearchValue] = useState("");
-  const [isEnelClient, setIsEnelClient] = useState(false);
-  
-  // Get step state from Zustand store
-  const { currentStep } = useAppStore();
+  // Get current page data from Zustand store
+  const { currentStep, getCurrentPage } = useAppStore();
+  const currentPage = getCurrentPage();
 
   return (
     <PageLayout 
       currentStep={currentStep}
-      title="Chiedi al cliente di raccontarti qualcosa sulla sua casa"
+      title={currentPage?.title || "Applicazione ENEL"}
       showStepper={true}
       showItalyImage={true}
       showNavigation={true}
     >
-      <div className="space-y-8">
-        <h2 className="text-2xl font-bold mb-8">Cerca punto vendita</h2>
-        
-        <SearchInput 
-          placeholder="Nome punto vendita"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-        
-        {/* Toggle Switch */}
-        <div className="mt-12">
-          <ToggleSwitch
-            label="Si tratta di un cliente Enel?"
-            checked={isEnelClient}
-            onChange={setIsEnelClient}
-            size="md"
-          />
-        </div>
-      </div>
+      <PageRenderer step={currentStep} />
     </PageLayout>
-  )
+  );
 }
 
-export default App
+export default App;
