@@ -2,6 +2,7 @@ import useAppStore from '../../store/useAppStore';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 import InfoIcon from '../icons/InfoIcon';
 import CustomSelect from './CustomSelect';
+import TextInput from './TextInput';
 
 
 
@@ -20,8 +21,7 @@ const ConfigurationRow = ({
   roomSize, 
   onInstallationChange, 
   onRoomSizeChange,
-  installationTypes = [],
-  roomSizes = []
+  installationTypes = []
 }) => {
   const iconType = getIconType(type);
   
@@ -48,23 +48,22 @@ const ConfigurationRow = ({
             options={installationTypes}
             value={installationType || ''}
             onChange={onInstallationChange}
-            placeholder="Tipologia di installazione"
-            maxHeight="240px"
+            label="Tipologia di installazione"
+            maxHeight="140px"
             className='w-full'
           />
         </div>
       </div>
 
-      {/* Room Size Dropdown */}
+      {/* Room Size Input */}
       <div className="bg-transparent box-border content-stretch flex flex-row gap-3 items-start justify-start p-0 relative rounded shrink-0 w-72">
         <div className="basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-center min-h-px min-w-px p-0 relative rounded shrink-0">
-          <CustomSelect
-            options={roomSizes}
+          <TextInput
             value={roomSize || ''}
-            onChange={onRoomSizeChange}
+            onChange={(e) => onRoomSizeChange(e.target.value)}
             placeholder="M² stanza da climatizzare"
-            maxHeight="200px"
-            className='w-full'
+            type="text"
+            className="w-full"
           />
         </div>
       </div>
@@ -75,8 +74,7 @@ const ConfigurationRow = ({
 const AirConditioningConfigurator = ({ 
   stateProperty = 'airConditioningConfigs', 
   showOnlyWhenQuantitiesExist = true,
-  installationTypes = [],
-  roomSizes = []
+  installationTypes = []
 }) => {
   const { formData, setFormValue } = useAppStore();
   
@@ -184,7 +182,6 @@ const AirConditioningConfigurator = ({
             installationType={configurations[entry.key]?.installationType}
             roomSize={configurations[entry.key]?.roomSize}
             installationTypes={installationTypes}
-            roomSizes={roomSizes}
             onInstallationChange={(value) => handleInstallationChange(entry.key, value)}
             onRoomSizeChange={(value) => handleRoomSizeChange(entry.key, value)}
           />

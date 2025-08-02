@@ -30,12 +30,12 @@ export default function SearchInput({
   return (
     <div
       className={cn(
-        "bg-white relative rounded shrink-0 w-full max-w-[693px] min-w-32 h-12",
+        "bg-white relative rounded shrink-0 w-full max-w-[693px] min-w-32 h-10",
         "transition-all duration-200 ease-in-out",
         className
       )}
     >
-      <div className="box-border content-stretch flex flex-row gap-2 h-12 items-center justify-start max-w-inherit min-w-inherit overflow-clip px-2 py-2 relative w-full">
+      <div className="box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start max-w-inherit min-w-inherit overflow-clip px-2 py-2 relative w-full">
         <div className="basis-0 box-border content-stretch flex flex-row gap-2 grow h-full items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
           <div className="basis-0 box-border content-stretch flex flex-row gap-2 grow items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
             {/* Floating Label */}
@@ -43,8 +43,8 @@ export default function SearchInput({
               className={cn(
                 "absolute left-0 font-['Roobert'] pointer-events-none transition-all duration-200 ease-in-out",
                 {
-                  "text-[12px] text-[#667790] top-0.5": shouldFloatLabel,
-                  "text-[16px] text-[#667790] top-1/2 -translate-y-1/2": !shouldFloatLabel
+                  "text-[12px] text-[#667790] top-0": shouldFloatLabel,
+                  "text-[13px] text-[#667790] top-1/2 -translate-y-1/2": !shouldFloatLabel
                 }
               )}
             >
@@ -59,11 +59,11 @@ export default function SearchInput({
               disabled={disabled}
               className={cn(
                 "basis-0 grow min-h-px min-w-px relative shrink-0",
-                "text-[#000000] text-[16px] text-left",
-                "font-['Roobert'] leading-[16px]",
+                "text-[#000000] text-[13px] text-left",
+                "font-['Roobert'] leading-[15px]",
                 "bg-transparent border-none outline-none",
                 {
-                  "pt-5": shouldFloatLabel,
+                  "pt-3": shouldFloatLabel,
                   "pt-0": !shouldFloatLabel,
                   "cursor-not-allowed opacity-50": disabled
                 }
