@@ -1,16 +1,16 @@
 import enelLogo from '../../assets/images/enel-logo-white.svg';
-import italy from '../../assets/images/italy.svg';
 import tondo from '../../assets/images/mezzo-tondo.svg';
 import Stepper from '../ui/stepper/Stepper';
 import NavigationBar from '../ui/NavigationBar';
+import LeftPanelRenderer from '../LeftPanelRenderer';
 
 export default function PageLayout({ 
   children,
   currentStep = 0,
   title = "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
   showStepper = true,
-  showItalyImage = true,
   showNavigation = true,
+  leftPanelComponents = [],
   onBack,
   onNext,
   backLabel,
@@ -41,12 +41,11 @@ export default function PageLayout({
             </div>
           )}
           
-          {/* Italy Image Section */}
-          {showItalyImage && (
-            <div className="flex mt-32 justify-center items-center">
-              <img src={italy} alt="Italy" className="z-10 relative"/>
-            </div>
-          )}
+          {/* Dynamic Content Section */}
+          <div className="mt-16">
+            <LeftPanelRenderer components={leftPanelComponents} />
+          </div>
+          {/* END Dynamic Content Section */}
           
           {/* Background Decoration */}
           <img src={tondo} alt="Tondo" className="absolute bottom-0 right-0 -z-0" />

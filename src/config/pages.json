@@ -4,6 +4,17 @@
             "id": "client-selection",
             "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
             "step": 1,
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "italy",
+                        "alt": "Italy",
+                        "className": "z-10 relative w-auto h-auto",
+                        "containerClassName": "flex justify-center items-center mt-16"
+                    }
+                }
+            ],
             "components": [
                 {
                     "type": "DescriptionBox",
@@ -68,6 +79,7 @@
             "id": "checklist-configuratore",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
+            "leftPanelComponents": [],
             "components": [
                 {
                     "type": "DescriptionBox",
@@ -143,6 +155,7 @@
             "id": "scelta-climatizzatore",
             "title": "Scegliete insieme il climatizzatore adatto!",
             "step": 3,
+            "leftPanelComponents": [],
             "components": [
 
             ]

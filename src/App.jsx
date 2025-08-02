@@ -12,8 +12,8 @@ function App() {
       currentStep={currentStep}
       title={currentPage?.title || "Applicazione ENEL"}
       showStepper={true}
-      showItalyImage={true}
       showNavigation={true}
+      leftPanelComponents={currentPage?.leftPanelComponents || []}
     >
       <PageRenderer step={currentStep} />
     </PageLayout>
