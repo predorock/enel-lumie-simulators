@@ -164,7 +164,7 @@ const AirConditioningConfigurator = ({
             <div className="box-border content-stretch flex flex-row items-center justify-center p-0 relative shrink-0">
               <div className="box-border content-stretch flex flex-row gap-2.5 items-start justify-start p-0 relative shrink-0">
                 <div className="relative shrink-0 w-6 h-6 text-[#D3135A]">
-                  <InfoIcon />
+                  <InfoIcon variant='warning'/>
                 </div>
               </div>
             </div>
