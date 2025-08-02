@@ -3,6 +3,7 @@ import SearchInput from './ui/SearchInput';
 import TextInput from './ui/TextInput';
 import DescriptionBox from './ui/DescriptionBox';
 import Divider from './ui/Divider';
+import InfoBanner from './ui/InfoBanner';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
@@ -41,6 +42,7 @@ const componentRegistry = {
   Title: TitleComponent,
   DescriptionBox: (props) => <DescriptionBox {...props} />,
   Divider: (props) => <Divider {...props} />,
+  InfoBanner: (props) => <InfoBanner {...props} />,
   SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
   AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
   // Add more components as needed
