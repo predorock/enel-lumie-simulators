@@ -1,9 +1,17 @@
 import { useMemo } from 'react';
 import componentRegistry from './ComponentRegistry';
 import pagesConfig from '../config/pages.json';
+import useAppStore from '../store/useAppStore';
 
 // Component that dynamically renders components based on type and props
-const DynamicComponent = ({ type, props = {}, key }) => {
+const DynamicComponent = ({ type, props = {}, renderConditions, key }) => {
+  const { shouldRenderComponent } = useAppStore();
+  
+  // Check if component should be rendered based on conditions
+  if (renderConditions && !shouldRenderComponent(renderConditions)) {
+    return null;
+  }
+  
   const Component = componentRegistry[type];
   
   if (!Component) {
@@ -62,6 +70,7 @@ export default function PageRenderer({ pageId, step, className = "" }) {
             key={`${pageConfig.id}-component-${index}`}
             type={componentConfig.type}
             props={componentConfig.props}
+            renderConditions={componentConfig.renderConditions}
           />
         ))}
       </div>

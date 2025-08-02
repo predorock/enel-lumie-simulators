@@ -6,6 +6,7 @@ import Divider from './ui/Divider';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
+import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
 
 // Text component for simple text content
 const TextComponent = ({ content, className = "" }) => (
@@ -41,6 +42,7 @@ const componentRegistry = {
   DescriptionBox: (props) => <DescriptionBox {...props} />,
   Divider: (props) => <Divider {...props} />,
   SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
+  AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
   // Add more components as needed
 };
 

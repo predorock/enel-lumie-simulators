@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useState } from 'react';
+import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 
 // Simple icons using SVG instead of localhost images
 const MinusIcon = () => (
@@ -13,23 +14,6 @@ const PlusIcon = () => (
     <path d="M8 4V12M4 8H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
 );
-
-// Air conditioning icons (simplified versions)
-const AirConditioningIcon = ({ type = "mono" }) => {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="4" y="8" width="16" height="8" rx="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-      <path d="M6 16V18M10 16V18M14 16V18M18 16V18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-      {type === "dual" && <rect x="2" y="6" width="20" height="2" rx="1" fill="currentColor"/>}
-      {type === "trial" && (
-        <>
-          <rect x="2" y="5" width="20" height="1.5" rx="0.75" fill="currentColor"/>
-          <rect x="2" y="7" width="20" height="1.5" rx="0.75" fill="currentColor"/>
-        </>
-      )}
-    </svg>
-  );
-};
 
 export default function SplitterQtyConfigurator({ 
   items = [],

@@ -98,6 +98,41 @@
                         "totalMax": 3,
                         "stateProperty": "airconditioningQuantities"
                     }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "spacing": "40px"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "airconditioningQuantities"
+                    }
+                },
+                {
+                    "type": "AirConditioningConfigurator",
+                    "props": {
+                        "stateProperty": "airConditioningConfigs",
+                        "showOnlyWhenQuantitiesExist": true,
+                        "installationTypes": [
+                            { "value": "nuova_con_predisposizione", "label": "Nuova installazione con predisposizione" },
+                            { "value": "nuova_senza_predisposizione", "label": "Nuova installazione senza predisposizione" },
+                            { "value": "sostituzione_monosplit", "label": "Sostituzione monosplit" },
+                            { "value": "sostituzione_dualsplit", "label": "Sostituzione dualsplit" },
+                            { "value": "sostituzione_trialsplit", "label": "Sostituzione trialsplit" }
+                        ],
+                        "roomSizes": [
+                            { "value": "10-20", "label": "10-20 m²" },
+                            { "value": "20-30", "label": "20-30 m²" },
+                            { "value": "30-40", "label": "30-40 m²" },
+                            { "value": "40-50", "label": "40-50 m²" },
+                            { "value": "50-60", "label": "50-60 m²" },
+                            { "value": "60+", "label": "60+ m²" }
+                        ]
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "airconditioningQuantities"
+                    }
                 }
             ]
         },
