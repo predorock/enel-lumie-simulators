@@ -55,7 +55,7 @@ export default function ToggleSwitch({
   return (
     <div
       className={cn(
-        "flex flex-row items-center justify-between relative",
+        "flex flex-row items-center justify-between relative form-input",
         currentSize.container,
         className
       )}

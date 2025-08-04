@@ -1,3 +1,5 @@
+import cn from "classnames";
+
 export default function Divider({ 
   className = "",
   color = "#c2cddd",
@@ -9,7 +11,7 @@ export default function Divider({
   
   return (
     <div 
-      className={`shrink-0 ${className}`}
+      className={cn(`shrink-0 ${className}`)}
       style={{
         margin: isHorizontal ? `${spacing} 0` : `0 ${spacing}`,
       }}

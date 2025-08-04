@@ -55,7 +55,7 @@
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",
-                        "spacing": "16px"
+                        "spacing": "32px"
                     }
                 },
                 {
@@ -76,6 +76,21 @@
                         "searchable": true,
                         "searchPlaceholder": "Cerca città...",
                         "maxHeight": "250px"
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                         "spacing": "32px"
+                    }
+                },
+                 {
+                    "type": "Toggle",
+                    "props": {
+                        "label": "Si tratta di un cliente Enel",
+                        "stateProperty": "isEnelCustomer",
+                        "initialValue": false
                     }
                 }
             ]
