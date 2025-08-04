@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import pagesConfig from '../config/pages.json';
 import stepsConfig from '../config/steps.json';
+import { createCitySlice } from './slices/citySlice';
 
 const useAppStore = create(
   devtools(
@@ -88,6 +89,9 @@ const useAppStore = create(
       
       // Form data state
       formData: {},
+      
+      // City slice integration
+      ...createCitySlice(set, get),
       
       // Form data actions
       setFormValue: (property, value) => set((state) => ({

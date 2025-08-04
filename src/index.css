@@ -33,3 +33,7 @@
     font-family: "Roobert";
   }
 }
+
+.text-input {
+  @apply bg-white relative rounded shrink-0 w-full max-w-[383px] min-w-32 h-10;
+}

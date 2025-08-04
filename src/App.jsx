@@ -10,7 +10,7 @@ function App() {
   return (
     <PageLayout 
       currentStep={currentStep}
-      title={currentPage?.title || "Applicazione ENEL"}
+      title={currentPage?.title || "Enel Lumié Verticale Clima"}
       showStepper={true}
       showNavigation={true}
       leftPanelComponents={currentPage?.leftPanelComponents || []}

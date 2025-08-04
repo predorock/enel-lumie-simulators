@@ -31,7 +31,7 @@ export default function TextInput({
   return (
     <div
       className={cn(
-        "bg-white relative rounded shrink-0 w-full max-w-[693px] min-w-32 h-10",
+        "text-input",
         "transition-all duration-200 ease-in-out",
         className
       )}

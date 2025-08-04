@@ -29,7 +29,8 @@
                         "placeholder": "Nome punto vendita",
                         "initialValue": "",
                         "type": "text",
-                        "stateProperty": "storeLocation"
+                        "stateProperty": "storeLocation",
+                        "className": "max-w-[358px]"
                     }
                 },
                 {
@@ -65,12 +66,16 @@
                     }
                 },
                 {
-                    "type": "TextInput",
+                    "type": "AsyncSelect",
                     "props": {
                         "placeholder": "Città",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "storeCity"
+                        "label": "Città",
+                        "stateProperty": "storeCity",
+                        "loadDataAction": "loadCities",
+                        "stateSlice": "cityState",
+                        "searchable": true,
+                        "searchPlaceholder": "Cerca città...",
+                        "maxHeight": "250px"
                     }
                 }
             ]

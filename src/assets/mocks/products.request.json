@@ -1,0 +1,14 @@
+{
+    "Comune":"Roma",
+    "Numero_Macchine":3,
+    "Clima1":"Daikin Clima Siesta Pro Era 12000",
+    "Clima2":"Daikin Clima Siesta Pro Era 12000",
+    "Clima3":"Daikin Clima Siesta Pro Era 12000",
+    "Numero_Predisposizioni_Mono":1,
+    "Numero_Predisposizioni_Dual":0,
+    "Numero_Predisposizioni_Trial":2,
+    "Numero_Predisposizioni_Canalizzazione":0,
+    "Numero_Smontaggi_Mono":0,
+    "Numero_Smontaggi_Dual":1,
+    "Numero_Smontaggi_Trial": 1
+}

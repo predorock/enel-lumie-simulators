@@ -10,6 +10,7 @@ import ServicePriceDisplay from './ui/ServicePriceDisplay';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 import StatefulCustomSelect from './StatefulCustomSelect';
+import StatefulAsyncSelect from './StatefulAsyncSelect';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
@@ -44,6 +45,7 @@ const componentRegistry = {
   SearchInput: (props) => <StatefulInput inputType="SearchInput" {...props} />,
   TextInput: (props) => <StatefulInput inputType="TextInput" {...props} />,
   CustomSelect: (props) => <StatefulCustomSelect {...props} />,
+  AsyncSelect: (props) => <StatefulAsyncSelect {...props} />,
   Text: TextComponent,
   Title: TitleComponent,
   DescriptionBox: (props) => <DescriptionBox {...props} />,
