@@ -85,7 +85,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-w-[250px] mt-8",
+                        "className": "z-10 relative w-auto h-auto max-w-[280px] mt-8",
                         "containerClassName": "flex justify-center items-center flex-1"
                     }
                 },
@@ -93,9 +93,6 @@
                     "type": "CostSummary",
                     "props": {
                         "containerClassName": "mt-auto mb-4 self-end"
-                    },
-                    "renderConditions": {
-                        "hasQuantities": "airconditioningQuantities"
                     }
                 }
             ],
@@ -195,7 +192,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-w-[250px] mt-8",
+                        "className": "z-10 relative w-auto h-auto max-w-[280px] mt-8",
                         "containerClassName": "flex justify-center items-center flex-1"
                     }
                 },
@@ -203,9 +200,6 @@
                     "type": "CostSummary",
                     "props": {
                         "containerClassName": "mt-auto mb-4 self-end"
-                    },
-                    "renderConditions": {
-                        "hasQuantities": "airconditioningQuantities"
                     }
                 }
             ],
@@ -349,7 +343,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-w-[250px] mt-8",
+                        "className": "z-10 relative w-auto h-auto max-w-[280px] mt-8",
                         "containerClassName": "flex justify-center items-center flex-1"
                     }
                 },
@@ -357,9 +351,6 @@
                     "type": "CostSummary",
                     "props": {
                         "containerClassName": "mt-auto mb-4 self-end"
-                    },
-                    "renderConditions": {
-                        "hasQuantities": "airconditioningQuantities"
                     }
                 }
             ],

@@ -74,7 +74,7 @@ const CostSummary = ({ containerClassName = '' }) => {
           {/* Total Cost Section - right aligned */}
           <div className="flex flex-col items-end text-right flex-1 min-w-0">
             <span 
-              className="text-[#ede9f2] text-xs leading-tight font-bold w-full"
+              className="text-[#ede9f2] text-xs leading-tight font-bold w-full text-nowrap"
               style={{ fontFamily: 'Roobert Bold' }}
             >
               Costo totale climatizzatore

@@ -21,7 +21,7 @@ export default function PageLayout({
     <main className="bg-red">
       <div className="grid grid-cols-6 w-full h-screen relative z-10">
         {/* LEFT PANEL - Blue Header */}
-        <div className="col-span-2 bg-primary p-12 relative flex flex-col" role="banner" aria-label="Enel Lumiè Clima Header">
+        <div className="col-span-2 bg-primary p-8 relative flex flex-col" role="banner" aria-label="Enel Lumiè Clima Header">
           {/* Logo Section */}
           <div className="flex items-stretch h-6 z-1">
             <img src={enelLogo} alt="Enel Lumiè Clima Logo" className="w-auto" />
