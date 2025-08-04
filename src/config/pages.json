@@ -79,7 +79,7 @@
             "id": "checklist-configuratore",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
-             "leftPanelComponents": [
+            "leftPanelComponents": [
                 {
                     "type": "Image",
                     "props": {
@@ -116,7 +116,7 @@
                                 "label": "Monosplit"
                             },
                             {
-                                "key": "dualsplit", 
+                                "key": "dualsplit",
                                 "label": "Dualsplit"
                             },
                             {
@@ -146,11 +146,26 @@
                         "stateProperty": "airConditioningConfigs",
                         "showOnlyWhenQuantitiesExist": true,
                         "installationTypes": [
-                            { "value": "nuova_con_predisposizione", "label": "Nuova installazione con predisposizione" },
-                            { "value": "nuova_senza_predisposizione", "label": "Nuova installazione senza predisposizione" },
-                            { "value": "sostituzione_monosplit", "label": "Sostituzione monosplit" },
-                            { "value": "sostituzione_dualsplit", "label": "Sostituzione dualsplit" },
-                            { "value": "sostituzione_trialsplit", "label": "Sostituzione trialsplit" }
+                            {
+                                "value": "nuova_con_predisposizione",
+                                "label": "Nuova installazione con predisposizione"
+                            },
+                            {
+                                "value": "nuova_senza_predisposizione",
+                                "label": "Nuova installazione senza predisposizione"
+                            },
+                            {
+                                "value": "sostituzione_monosplit",
+                                "label": "Sostituzione monosplit"
+                            },
+                            {
+                                "value": "sostituzione_dualsplit",
+                                "label": "Sostituzione dualsplit"
+                            },
+                            {
+                                "value": "sostituzione_trialsplit",
+                                "label": "Sostituzione trialsplit"
+                            }
                         ]
                     },
                     "renderConditions": {
@@ -171,15 +186,75 @@
             ]
         },
         {
+            "id": "servizi-manutenzione",
+            "title": "Configurate insieme il climatizzatore!",
+            "step": 2,
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "condizionatore-big",
+                        "alt": "Condizionatore",
+                        "className": "z-10 relative w-auto h-auto max-w-[250px] mt-8",
+                        "containerClassName": "flex justify-center items-center flex-1"
+                    }
+                },
+                {
+                    "type": "CostSummary",
+                    "props": {
+                        "containerClassName": "mt-auto mb-4 self-end"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "airconditioningQuantities"
+                    }
+                }
+            ],
+            "components": [
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Il cliente ha necessità di smontare dei climatizzatori già installati?",
+                        "description": ""
+                    }
+                },
+                {
+                    "type": "Toggle",
+                    "props": {
+                        "label": "Il cliente deve smontare dei climatizzatori installati in precedenza",
+                        "stateProperty": "needsRemoval",
+                        "initialValue": false
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "spacing": "40px"
+                    }
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Consiglia al cliente di effettuare il lavaggio dell'impianto",
+                        "description": ""
+                    }
+                },
+                {
+                    "type": "Toggle",
+                    "props": {
+                        "label": "Il cliente vuole effettuare il lavaggio degli impianti?",
+                        "stateProperty": "wantsCleaning",
+                        "initialValue": false
+                    }
+                }
+            ]
+        },
+        {
             "id": "scelta-climatizzatore",
             "title": "Scegliete insieme il climatizzatore adatto!",
             "step": 3,
-            "leftPanelComponents": [
-                
-            ],
-            "components": [
-
-            ]
+            "leftPanelComponents": [],
+            "components": []
         }
     ]
 }

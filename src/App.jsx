@@ -4,7 +4,7 @@ import useAppStore from './store/useAppStore';
 
 function App() {
   // Get current page data from Zustand store
-  const { currentStep, getCurrentPage } = useAppStore();
+  const { currentStep, currentPageId, getCurrentPage } = useAppStore();
   const currentPage = getCurrentPage();
 
   return (
@@ -15,7 +15,7 @@ function App() {
       showNavigation={true}
       leftPanelComponents={currentPage?.leftPanelComponents || []}
     >
-      <PageRenderer step={currentStep} />
+      <PageRenderer pageId={currentPageId} />
     </PageLayout>
   );
 }

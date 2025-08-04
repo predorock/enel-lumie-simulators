@@ -8,6 +8,7 @@ const useAppStore = create(
     (set, get) => ({
       // Step counter state - now based on pages config
       currentStep: 1, // Start from step 1 instead of 0
+      currentPageId: pagesConfig.pages[0]?.id || null, // Track current page by ID
       totalSteps: pagesConfig.pages.length,
       
       // Steps configuration
@@ -15,22 +16,68 @@ const useAppStore = create(
       
       // Step counter actions
       setCurrentStep: (step) => set({ currentStep: step }),
-      nextStep: () => set((state) => ({ 
-        currentStep: Math.min(state.currentStep + 1, state.totalSteps) 
-      })),
-      prevStep: () => set((state) => ({ 
-        currentStep: Math.max(1, state.currentStep - 1) 
-      })),
-      resetSteps: () => set({ currentStep: 1 }),
+      setCurrentPageId: (pageId) => {
+        const page = pagesConfig.pages.find(p => p.id === pageId);
+        if (page) {
+          set({ currentPageId: pageId, currentStep: page.step });
+        }
+      },
+      nextStep: () => {
+        const state = get();
+        const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
+        const nextPageIndex = currentPageIndex + 1;
+        if (nextPageIndex < pagesConfig.pages.length) {
+          const nextPage = pagesConfig.pages[nextPageIndex];
+          set({ 
+            currentStep: nextPage.step,
+            currentPageId: nextPage.id
+          });
+        }
+      },
+      prevStep: () => {
+        const state = get();
+        const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
+        const prevPageIndex = currentPageIndex - 1;
+        if (prevPageIndex >= 0) {
+          const prevPage = pagesConfig.pages[prevPageIndex];
+          set({ 
+            currentStep: prevPage.step,
+            currentPageId: prevPage.id
+          });
+        }
+      },
+      resetSteps: () => set({ 
+        currentStep: 1, 
+        currentPageId: pagesConfig.pages[0]?.id || null 
+      }),
       
       // Helper getters
-      isFirstStep: () => get().currentStep === 1,
-      isLastStep: () => get().currentStep === get().totalSteps,
-      canGoNext: () => get().currentStep < get().totalSteps,
-      canGoPrev: () => get().currentStep > 1,
+      isFirstStep: () => {
+        const state = get();
+        const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
+        return currentPageIndex === 0;
+      },
+      isLastStep: () => {
+        const state = get();
+        const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
+        return currentPageIndex === pagesConfig.pages.length - 1;
+      },
+      canGoNext: () => {
+        const state = get();
+        const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
+        return currentPageIndex < pagesConfig.pages.length - 1;
+      },
+      canGoPrev: () => {
+        const state = get();
+        const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
+        return currentPageIndex > 0;
+      },
       
       // Page-related helpers
-      getCurrentPage: () => pagesConfig.pages.find(page => page.step === get().currentStep),
+      getCurrentPage: () => {
+        const state = get();
+        return pagesConfig.pages.find(page => page.id === state.currentPageId);
+      },
       getPageById: (id) => pagesConfig.pages.find(page => page.id === id),
       getAllPages: () => pagesConfig.pages,
       
