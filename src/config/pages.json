@@ -82,10 +82,10 @@
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",
-                         "spacing": "32px"
+                        "spacing": "32px"
                     }
                 },
-                 {
+                {
                     "type": "Toggle",
                     "props": {
                         "label": "Si tratta di un cliente Enel",
@@ -262,7 +262,7 @@
                                 "label": "Monosplit"
                             },
                             {
-                                "key": "dualsplit", 
+                                "key": "dualsplit",
                                 "label": "Dualsplit"
                             },
                             {
@@ -329,7 +329,7 @@
                                 "label": "Monosplit"
                             },
                             {
-                                "key": "dualsplit", 
+                                "key": "dualsplit",
                                 "label": "Dualsplit"
                             },
                             {
@@ -394,7 +394,7 @@
                             },
                             {
                                 "key": "dualsplit",
-                                "label": "Dualsplit", 
+                                "label": "Dualsplit",
                                 "type": "dual"
                             },
                             {
@@ -430,7 +430,23 @@
             "id": "scelta-climatizzatore",
             "title": "Scegliete insieme il climatizzatore adatto!",
             "step": 3,
-            "leftPanelComponents": [],
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "cubo-condizionatore",
+                        "alt": "Condizionatore Cubo",
+                        "className": "z-10 relative w-auto h-auto max-w-[325px] mt-8",
+                        "containerClassName": "flex justify-center items-center flex-1"
+                    }
+                },
+                {
+                    "type": "CostSummary",
+                    "props": {
+                        "containerClassName": "mt-auto mb-4 self-end"
+                    }
+                }
+            ],
             "components": []
         }
     ]

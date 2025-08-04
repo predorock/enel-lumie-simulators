@@ -2,13 +2,11 @@ import React from 'react';
 
 // Asset mapping for imported images
 const assetMap = {
-  '/src/assets/images/italy.svg': () => import('../../assets/images/italy.svg'),
-  '/src/assets/images/enel-logo-white.svg': () => import('../../assets/images/enel-logo-white.svg'),
-  '/src/assets/images/mezzo-tondo.svg': () => import('../../assets/images/mezzo-tondo.svg'),
   'italy': () => import('../../assets/images/italy.svg'),
   'enel-logo-white': () => import('../../assets/images/enel-logo-white.svg'),
   'mezzo-tondo': () => import('../../assets/images/mezzo-tondo.svg'),
   'condizionatore-big': () => import('../../assets/images/condizionatore-big.svg'),
+  'cubo-condizionatore': () => import('../../assets/images/cubo-condizionatore.svg'),
 };
 
 const Image = ({ 
