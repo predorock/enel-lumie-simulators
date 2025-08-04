@@ -21,28 +21,28 @@ export default function PageLayout({
     <main className="bg-red">
       <div className="grid grid-cols-6 w-full h-screen relative z-10">
         {/* LEFT PANEL - Blue Header */}
-        <div className="col-span-2 bg-primary p-16 relative" role="banner" aria-label="Enel Lumiè Clima Header">
+        <div className="col-span-2 bg-primary p-16 relative flex flex-col" role="banner" aria-label="Enel Lumiè Clima Header">
           {/* Logo Section */}
-          <div className="flex items-stretch h-6">
+          <div className="flex items-stretch h-6 z-1">
             <img src={enelLogo} alt="Enel Lumiè Clima Logo" className="w-auto" />
             <div className="text-white ml-4 border-l"></div>
-            <div className="text-white ml-4">Lumiè Clima</div>
+            <div className="text-white ml-4 text-2xl">Lumiè Clima</div>
           </div>
           
           {/* Title Section */}
-          <div className="mt-16 text-white">
+          <div className="mt-8 text-white z-1">
             <h1 className="text-white text-2xl mt-4">{title}</h1>
           </div>
           
           {/* Stepper Section */}
           {showStepper && (
-            <div className="mt-16">
+            <div className="mt-8 z-1">
               <Stepper current={currentStep} />
             </div>
           )}
           
           {/* Dynamic Content Section */}
-          <div className="mt-16">
+          <div className="flex-1 flex flex-col overflow-hidden">
             <LeftPanelRenderer components={leftPanelComponents} />
           </div>
           {/* END Dynamic Content Section */}

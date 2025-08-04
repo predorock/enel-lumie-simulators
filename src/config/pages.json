@@ -79,7 +79,26 @@
             "id": "checklist-configuratore",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
-            "leftPanelComponents": [],
+             "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "condizionatore-big",
+                        "alt": "Condizionatore",
+                        "className": "z-10 relative w-auto h-auto max-w-[200px]",
+                        "containerClassName": "flex justify-center items-center flex-1 min-h-[300px]"
+                    }
+                },
+                {
+                    "type": "CostSummary",
+                    "props": {
+                        "containerClassName": "mt-auto"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "airconditioningQuantities"
+                    }
+                }
+            ],
             "components": [
                 {
                     "type": "DescriptionBox",
@@ -155,7 +174,9 @@
             "id": "scelta-climatizzatore",
             "title": "Scegliete insieme il climatizzatore adatto!",
             "step": 3,
-            "leftPanelComponents": [],
+            "leftPanelComponents": [
+                
+            ],
             "components": [
 
             ]

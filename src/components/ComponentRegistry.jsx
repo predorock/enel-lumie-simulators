@@ -5,6 +5,7 @@ import DescriptionBox from './ui/DescriptionBox';
 import Divider from './ui/Divider';
 import InfoBanner from './ui/InfoBanner';
 import Image from './ui/Image';
+import CostSummary from './ui/CostSummary';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
@@ -45,6 +46,7 @@ const componentRegistry = {
   Divider: (props) => <Divider {...props} />,
   InfoBanner: (props) => <InfoBanner {...props} />,
   Image: (props) => <Image {...props} />,
+  CostSummary: (props) => <CostSummary {...props} />,
   SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
   AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
   // Add more components as needed

@@ -7,7 +7,8 @@ const assetMap = {
   '/src/assets/images/mezzo-tondo.svg': () => import('../../assets/images/mezzo-tondo.svg'),
   'italy': () => import('../../assets/images/italy.svg'),
   'enel-logo-white': () => import('../../assets/images/enel-logo-white.svg'),
-  'mezzo-tondo': () => import('../../assets/images/mezzo-tondo.svg')
+  'mezzo-tondo': () => import('../../assets/images/mezzo-tondo.svg'),
+  'condizionatore-big': () => import('../../assets/images/condizionatore-big.svg'),
 };
 
 const Image = ({ 

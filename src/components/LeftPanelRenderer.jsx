@@ -36,7 +36,7 @@ const LeftPanelRenderer = ({ components = [] }) => {
     }
 
     return (
-      <div key={`left-panel-${index}`} className="mb-4">
+      <div key={`left-panel-${index}`}>
         <Component {...props} />
       </div>
     );
@@ -47,7 +47,7 @@ const LeftPanelRenderer = ({ components = [] }) => {
   }
 
   return (
-    <div className="left-panel-components">
+    <div className="left-panel-components flex flex-col h-full">
       {components.map((component, index) => renderComponent(component, index))}
     </div>
   );
