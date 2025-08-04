@@ -47,7 +47,7 @@ const LeftPanelRenderer = ({ components = [] }) => {
   }
 
   return (
-    <div className="left-panel-components flex flex-col h-full">
+    <div className="left-panel-components flex flex-col h-full justify-between">
       {components.map((component, index) => renderComponent(component, index))}
     </div>
   );

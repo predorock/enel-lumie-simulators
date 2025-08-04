@@ -42,7 +42,7 @@ export default function PageLayout({
           )}
           
           {/* Dynamic Content Section */}
-          <div className="flex-1 flex flex-col justify-between overflow-hidden">
+          <div className="flex flex-col flex-1 overflow-hidden">
             <LeftPanelRenderer components={leftPanelComponents} />
           </div>
           {/* END Dynamic Content Section */}
