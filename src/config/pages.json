@@ -226,6 +226,51 @@
                     }
                 },
                 {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Indica quanti impianti devono essere smontati",
+                        "description": ""
+                    },
+                    "renderConditions": {
+                        "equals": {
+                            "property": "needsRemoval",
+                            "value": true
+                        }
+                    }
+                },
+                {
+                    "type": "SplitterQtyConfigurator",
+                    "props": {
+                        "items": [
+                            {
+                                "key": "monosplit",
+                                "label": "Monosplit"
+                            },
+                            {
+                                "key": "dualsplit", 
+                                "label": "Dualsplit"
+                            },
+                            {
+                                "key": "trialsplit",
+                                "label": "Trialsplit"
+                            }
+                        ],
+                        "min": 0,
+                        "max": 10,
+                        "totalMax": 10,
+                        "stateProperty": "removalQuantities",
+                        "showPriceDisplay": true,
+                        "pricePerUnit": 90,
+                        "priceLabel": "Prezzo finale"
+                    },
+                    "renderConditions": {
+                        "equals": {
+                            "property": "needsRemoval",
+                            "value": true
+                        }
+                    }
+                },
+                {
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",
@@ -245,6 +290,51 @@
                         "label": "Il cliente vuole effettuare il lavaggio degli impianti?",
                         "stateProperty": "wantsCleaning",
                         "initialValue": false
+                    }
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Indica quanti impianti devono essere lavati",
+                        "description": ""
+                    },
+                    "renderConditions": {
+                        "equals": {
+                            "property": "wantsCleaning",
+                            "value": true
+                        }
+                    }
+                },
+                {
+                    "type": "SplitterQtyConfigurator",
+                    "props": {
+                        "items": [
+                            {
+                                "key": "monosplit",
+                                "label": "Monosplit"
+                            },
+                            {
+                                "key": "dualsplit", 
+                                "label": "Dualsplit"
+                            },
+                            {
+                                "key": "trialsplit",
+                                "label": "Trialsplit"
+                            }
+                        ],
+                        "min": 0,
+                        "max": 10,
+                        "totalMax": 10,
+                        "stateProperty": "cleaningQuantities",
+                        "showPriceDisplay": true,
+                        "pricePerUnit": 100,
+                        "priceLabel": "Prezzo finale"
+                    },
+                    "renderConditions": {
+                        "equals": {
+                            "property": "wantsCleaning",
+                            "value": true
+                        }
                     }
                 }
             ]
