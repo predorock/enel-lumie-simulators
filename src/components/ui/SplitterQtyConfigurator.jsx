@@ -172,7 +172,7 @@ export default function SplitterQtyConfigurator({
                 {/* Price Display */}
                 {showPriceDisplay && pricePerUnit && currentValue > 0 && (
                   <div className="bg-gray-100 px-3 py-2 rounded ml-4">
-                    <span className="text-[13px] font-bold text-gray-700" style={{ fontFamily: 'Roobert ENEL, sans-serif' }}>
+                    <span className="text-[13px] font-bold text-gray-700" style={{ fontFamily: 'Roobert Bold' }}>
                       {formatCurrency(getTotalPrice(itemKey))}
                       {priceLabel && (
                         <span className="text-[11px] font-normal ml-1">

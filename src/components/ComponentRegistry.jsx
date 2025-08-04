@@ -9,8 +9,10 @@ import CostSummary from './ui/CostSummary';
 import ServicePriceDisplay from './ui/ServicePriceDisplay';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
+import StatefulCustomSelect from './StatefulCustomSelect';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
+import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 
 // Text component for simple text content
 const TextComponent = ({ content, className = "" }) => (
@@ -41,6 +43,7 @@ const componentRegistry = {
   Toggle: (props) => <StatefulToggle {...props} />,
   SearchInput: (props) => <StatefulInput inputType="SearchInput" {...props} />,
   TextInput: (props) => <StatefulInput inputType="TextInput" {...props} />,
+  CustomSelect: (props) => <StatefulCustomSelect {...props} />,
   Text: TextComponent,
   Title: TitleComponent,
   DescriptionBox: (props) => <DescriptionBox {...props} />,
@@ -51,6 +54,7 @@ const componentRegistry = {
   ServicePriceDisplay: (props) => <ServicePriceDisplay {...props} />,
   SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
   AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
+  DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   // Add more components as needed
 };
 
