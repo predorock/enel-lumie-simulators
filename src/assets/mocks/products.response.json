@@ -1,0 +1,387 @@
+{
+    "success": true,
+    "message": "Completed",
+    "timestamp": "2025-07-31T14:56:50.3436996Z",
+    "products": [
+        {
+            "Name": "Daikin Clima Siesta Super Plus 12000",
+            "Brand": "Daikin",
+            "Price": 1487.761,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": false,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Daikin Clima Siesta Super Plus 9000",
+            "Brand": "Daikin",
+            "Price": 1367.75647,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-9000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": false,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Daikin Clima Siesta Dual Classic - 9000+12000",
+            "Brand": "Daikin",
+            "Price": 2495.75513,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-dual-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": false,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Daikin Clima Siesta Trial Classic - 9000+9000+12000",
+            "Brand": "Daikin",
+            "Price": 3599.76172,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-trial-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": false,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero SMART 12000 btu/h",
+            "Brand": "LG",
+            "Price": 911.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/lg-libero-smart-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": true,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": true,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero SMART 9000 btu/h",
+            "Brand": "LG",
+            "Price": 863.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/lg-libero-smart-9000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": true,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": true,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero SMART  9+12 btu/h",
+            "Brand": "LG",
+            "Price": 1799.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": true,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": true,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero SMART 9+9+12 btu/h",
+            "Brand": "LG",
+            "Price": 2495.68677,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": true,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": true,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero SMART 18000 btu/h",
+            "Brand": "LG",
+            "Price": 1103.7594,
+            "Image": "https://localhost:9529",
+            "Url": "non c'è sul sito!",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": true,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": true,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero S 12000 btu/h",
+            "Brand": "LG",
+            "Price": 887.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/lg-libero-s-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "LG Libero S 9000 btu/h",
+            "Brand": "LG",
+            "Price": 815.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/lg-libero-s-9000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima CFW09A 9000 btu/h by Midea",
+            "Brand": "Comfee",
+            "Price": 815.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-cfw09a-9000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima CFW18B 18000 btu/h by Midea",
+            "Brand": "Comfee",
+            "Price": 1103.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-cfw18a-18000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima CFW12A 12000 btu/h by Midea",
+            "Brand": "Comfee",
+            "Price": 887.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-cfw12a-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima Maestrale ABW09A  9000 btu/h by Midea",
+            "Brand": "Comfee",
+            "Price": 959.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw09a-9000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima Maestrale ABW12A 12000 btu/h by Midea",
+            "Brand": "Comfee",
+            "Price": 1007.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw12a-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima 9+12 btu/h 2FB-18K + CFW09A + 12A by Midea",
+            "Brand": "Comfee",
+            "Price": 1439.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-cfw-dual-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea",
+            "Brand": "Comfee",
+            "Price": 1511.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-dual-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        },
+        {
+            "Name": "Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea",
+            "Brand": "Comfee",
+            "Price": 1823.76,
+            "Image": "https://localhost:9529",
+            "Url": "https://www.enel.it/it-it/condizionatori/comfee-cfw-trial-9000-12000-btu",
+            "Features": {
+                "Led": true,
+                "Wifi": true,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": true,
+                "Ionizzazione": false,
+                "Autodiagnosi": true
+            }
+        }
+    ]
+}
