@@ -3,6 +3,7 @@ import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 import InfoIcon from '../icons/InfoIcon';
 import CustomSelect from './CustomSelect';
 import TextInput from './TextInput';
+import { getInfoIconConfig } from '../../config/infoIconRegistry';
 
 
 
@@ -74,9 +75,13 @@ const ConfigurationRow = ({
 const AirConditioningConfigurator = ({ 
   stateProperty = 'airConditioningConfigs', 
   showOnlyWhenQuantitiesExist = true,
-  installationTypes = []
+  installationTypes = [],
+  infoIconKey = null
 }) => {
   const { formData, setFormValue } = useAppStore();
+  
+  // Get InfoIcon configuration from registry
+  const infoIconConfig = infoIconKey ? getInfoIconConfig(infoIconKey) : null;
   
   // Get quantities from the SplitterQtyConfigurator
   const quantities = formData.airconditioningQuantities || {};
@@ -161,13 +166,22 @@ const AirConditioningConfigurator = ({
               </div>
             </div>
             {/* Info Icon */}
-            <div className="box-border content-stretch flex flex-row items-center justify-center p-0 relative shrink-0">
-              <div className="box-border content-stretch flex flex-row gap-2.5 items-start justify-start p-0 relative shrink-0">
-                <div className="relative shrink-0 w-6 h-6 text-[#D3135A]">
-                  <InfoIcon variant='warning'/>
+            {infoIconConfig && (
+              <div className="box-border content-stretch flex flex-row items-center justify-center p-0 relative shrink-0">
+                <div className="box-border content-stretch flex flex-row gap-2.5 items-start justify-start p-0 relative shrink-0">
+                  <div className="relative shrink-0 w-6 h-6 text-[#D3135A]">
+                    <InfoIcon 
+                      variant={infoIconConfig.variant || 'info'}
+                      popoverContent={infoIconConfig.content}
+                      popoverPosition={infoIconConfig.popoverPosition || 'left'}
+                      popoverClassName={infoIconConfig.popoverClassName || ''}
+                      disabled={infoIconConfig.disabled || false}
+                      onClick={infoIconConfig.onClick || null}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

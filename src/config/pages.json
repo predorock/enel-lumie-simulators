@@ -163,7 +163,8 @@
                                 "value": "sostituzione_trialsplit",
                                 "label": "Sostituzione trialsplit"
                             }
-                        ]
+                        ],
+                        "infoIconKey": "airConditioningInfo"
                     },
                     "renderConditions": {
                         "hasQuantities": "airconditioningQuantities"
