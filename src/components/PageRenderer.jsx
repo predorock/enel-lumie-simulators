@@ -28,20 +28,26 @@ const DynamicComponent = ({ type, props = {}, renderConditions, ...otherProps })
 
 // Hook to get page configuration by step or ID
 export const usePageConfig = (identifier) => {
+  const getAllPages = useAppStore(state => state.getAllPages);
+  
   return useMemo(() => {
+    const allPages = getAllPages();
+    
     if (typeof identifier === 'number') {
       // Find by step number
-      return pagesConfig.pages.find(page => page.step === identifier);
+      return allPages.find(page => page.step === identifier);
     } else {
       // Find by page ID
-      return pagesConfig.pages.find(page => page.id === identifier);
+      return allPages.find(page => page.id === identifier);
     }
-  }, [identifier]);
+  }, [identifier, getAllPages]);
 };
 
 // Hook to get all pages configuration
 export const usePagesConfig = () => {
-  return useMemo(() => pagesConfig.pages, []);
+  const getAllPages = useAppStore(state => state.getAllPages);
+  
+  return useMemo(() => getAllPages(), [getAllPages]);
 };
 
 // Main page renderer component
@@ -55,7 +61,7 @@ export default function PageRenderer({ pageId, step, className = "" }) {
           Pagina non trovata
         </h2>
         <p className="text-gray-600">
-          {pageId ? `Pagina con ID "${pageId}"` : `Pagina step ${step}`} non è stata configurata.
+          {pageId ? `Pagina con id "${pageId}"` : `Pagina step ${step}`} non è stata trovata.
         </p>
       </div>
     );
