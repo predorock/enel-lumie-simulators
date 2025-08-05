@@ -2,7 +2,7 @@
   font-size: 0.75rem;
   font-weight: 400;
   opacity: 0.6;
-  flex: 1 1 0px;
+  flex: 0 0 0px;
   width: 22px;
   
 
@@ -11,6 +11,7 @@
   }
 
   &.last {
+    flex: 1 1 0px;
     .step-box {
       justify-content: flex-end;
       &:after {
@@ -27,6 +28,7 @@
   }
 
   &.first {
+    flex: 1 1 0px;
     .step-box {
       justify-content: flex-end;
       &:before {
