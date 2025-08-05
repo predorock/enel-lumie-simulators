@@ -2,24 +2,26 @@
 
 ## 📋 Overview
 
-**ENEL Lumiè Clima** is a React-based web application designed for ENEL's climate control configurator system. The application provides a step-by-step interface for configuring air conditioning installations with dynamic pricing calculations.
+**ENEL Lumiè Clima** is a sophisticated React-based web application designed for ENEL's climate control configurator system. The application provides a comprehensive, step-by-step interface for configuring air conditioning installations with dynamic pricing calculations, city selection, and advanced state management.
 
 ## 🏗️ Architecture
 
 ### **Technology Stack**
 - **Frontend Framework**: React 19.1.0 with Vite 6.3.5
-- **State Management**: Zustand 5.0.7 (lightweight state management)
+- **State Management**: Zustand 5.0.7 with slice-based architecture
 - **Styling**: Tailwind CSS 4.1.7 with custom ENEL design system
-- **Typography**: Roobert ENEL font family (Regular, Light, Bold variants)
-- **Build Tool**: Vite with ESLint configuration
+- **Typography**: Roobert ENEL font family (Regular, Light, Bold, Black variants)
+- **Build Tool**: Vite with ESLint configuration and HMR
 - **Package Manager**: npm
 
 ### **Core Architecture Patterns**
-- **Component-Driven Design**: Modular, reusable components
+- **Component-Driven Design**: Modular, reusable components with pure UI separation
 - **JSON-Driven Configuration**: Pages and steps configured via JSON files
 - **Dynamic Component Registry**: Runtime component resolution system
-- **Conditional Rendering**: Smart component visibility based on state
+- **Conditional Rendering**: Smart component visibility based on application state
 - **Stateful Wrappers**: Pure UI components wrapped with state logic
+- **Slice-Based State**: Domain-separated state management for scalability
+- **Figma Integration**: Component generation from design files
 
 ## 📁 Project Structure
 
@@ -27,27 +29,63 @@
 src/
 ├── components/           # Reusable UI components
 │   ├── ui/              # Pure UI components
+│   │   ├── AsyncSelect.jsx       # Enhanced async dropdown
+│   │   ├── RoomBanner.jsx        # Room size info banner
+│   │   ├── InfoBanner.jsx        # Information alerts
+│   │   ├── TextInput.jsx         # Form input component
+│   │   ├── CostSummary.jsx       # Price calculation display
+│   │   └── *.jsx                 # Other UI components
 │   ├── layout/          # Layout components
 │   ├── icons/           # SVG icon components
-│   └── Stateful*.jsx   # State-connected wrappers
+│   │   ├── RoomIcon.jsx          # Room visualization icon
+│   │   ├── InfoIcon.jsx          # Information icon
+│   │   └── AirConditioningIcons.jsx # AC unit icons
+│   ├── demo/            # Component demonstrations
+│   │   └── RoomBannerDemo.jsx    # Component showcase
+│   ├── Stateful*.jsx   # State-connected wrappers
+│   ├── ComponentRegistry.jsx     # Component mapping registry
+│   └── PageRenderer.jsx          # Dynamic component renderer
 ├── config/              # JSON configuration files
 │   ├── pages.json       # Page definitions and component configurations
-│   └── steps.json       # Step progression configuration
+│   ├── steps.json       # Step progression configuration
+│   └── infoIconRegistry.jsx      # InfoIcon content management
 ├── store/               # Zustand store configuration
+│   ├── useAppStore.js            # Main store with slice integration
+│   └── slices/
+│       └── citySlice.js          # City-related state management
 ├── assets/              # Static assets (fonts, images, icons)
+│   ├── fonts/                    # Roobert ENEL font files
+│   ├── icons/                    # SVG icon assets
+│   └── images/                   # Application images
 └── utils/               # Utility functions
 ```
 
 ## 🚀 Key Features
 
-### **1. Multi-Step Wizard Interface**
-- **Step 1**: Store and consultant information collection
+### **1. Multi-Step Configuration Wizard**
+- **Step 1**: Store information and city selection (33,850+ Italian cities)
 - **Step 2**: Air conditioning configuration with pricing
-- **Step 3**: Final selection and cost summary
+- **Step 3**: Service configuration (removal, cleaning)
+- **Step 4**: Final selection and cost summary
 
-### **2. Dynamic Component System**
-- Components defined in `pages.json`
-- Runtime resolution via `ComponentRegistry`
+### **2. Advanced Component System**
+- **Dynamic Component Registry** - Runtime component resolution
+- **JSON-Driven Configuration** - Declarative page definitions
+- **Conditional Rendering** - State-based component visibility
+- **Figma Integration** - Generate components from design files
+
+### **3. Enhanced State Management**
+- **Slice-Based Architecture** - Domain-separated state organization
+- **City State Slice** - Dedicated city selection functionality
+- **Async Data Handling** - Efficient loading and caching
+- **Form State Persistence** - Data retained across navigation
+
+### **4. Professional UI Components**
+- **AsyncSelect** - Advanced dropdown with search and loading states
+- **RoomBanner** - Figma-designed room size display
+- **InfoBanner** - Multi-variant information alerts
+- **AirConditioningConfigurator** - Dynamic AC unit configuration
+- **CostSummary** - Real-time price calculation
 - Conditional rendering based on state conditions
 - Left panel and main content areas independently configurable
 

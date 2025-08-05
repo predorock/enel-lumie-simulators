@@ -18,7 +18,7 @@ export default function Step({ number, copy, icon, active, past, last }) {
             <div className="step-box" aria-hidden={true}>
                 <div className={"step-number-box " + (past ? "past" : "")}>
                     <div className="step-number">
-                        {icon ? <img src={icon} alt="" /> :
+                        {icon ? <img src={icon} alt="checkmark" style={{ marginLeft: "1px" }} /> :
                             <span aria-hidden={true} >{number}</span>}
                     </div>
                 </div>

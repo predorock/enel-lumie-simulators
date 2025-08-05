@@ -72,6 +72,79 @@ interface CustomSelectProps {
 />
 ```
 
+### **AsyncSelect**
+```typescript
+interface AsyncSelectProps {
+  placeholder?: string;           // Placeholder text
+  label?: string;                // Field label
+  stateProperty: string;         // Zustand store property name
+  loadDataAction: string;        // Action name to load data
+  stateSlice: string;           // State slice name (e.g., 'cityState')
+  searchable?: boolean;         // Enable search functionality (default: true)
+  searchPlaceholder?: string;   // Search input placeholder
+  maxHeight?: string;           // Maximum dropdown height
+  className?: string;           // Additional CSS classes
+}
+```
+
+**Usage Examples:**
+```jsx
+// City selection with search
+<AsyncSelect
+  placeholder="Città"
+  label="Città"
+  stateProperty="storeCity"
+  loadDataAction="loadCities"
+  stateSlice="cityState"
+  searchable={true}
+  searchPlaceholder="Cerca città..."
+  maxHeight="250px"
+/>
+```
+
+**Features:**
+- **Async Data Loading** - Loads data from state slice actions
+- **Search Functionality** - Real-time filtering of options
+- **Professional Loading States** - Custom spinners and animations
+- **Error Handling** - Displays error messages and retry options
+- **State Integration** - Seamless Zustand store integration
+- **Large Dataset Support** - Efficient handling of 33,850+ cities
+- **Enhanced UX** - Loading indicators and visual feedback
+
+**JSON Configuration:**
+```json
+{
+  "type": "AsyncSelect",
+  "props": {
+    "placeholder": "Città",
+    "label": "Città",
+    "stateProperty": "storeCity",
+    "loadDataAction": "loadCities",
+    "stateSlice": "cityState",
+    "searchable": true,
+    "searchPlaceholder": "Cerca città...",
+    "maxHeight": "250px"
+  }
+}
+```
+
+**State Slice Integration:**
+The AsyncSelect component integrates with dedicated state slices for domain-specific data management:
+
+```javascript
+// citySlice.js
+export const createCitySlice = (set, get) => ({
+  cityState: {
+    cities: [],
+    loading: false,
+    error: null
+  },
+  loadCities: async () => {
+    // Async data loading logic
+  }
+});
+```
+
 ### **ToggleSwitch**
 ```typescript
 interface ToggleSwitchProps {
@@ -84,6 +157,78 @@ interface ToggleSwitchProps {
 ```
 
 ## 🎨 Display Components
+
+### **RoomBanner**
+```typescript
+interface RoomBannerProps {
+  roomSize?: number;              // Room size in square meters (default: 22)
+  unit?: string;                  // Size unit (default: 'm²')
+  variant?: 'info' | 'warning' | 'success' | 'error'; // Visual variant (default: 'info')
+  className?: string;             // Additional CSS classes
+}
+```
+
+**Usage Examples:**
+```jsx
+// Default banner (22 m²)
+<RoomBanner />
+
+// Custom room size
+<RoomBanner roomSize={35} />
+
+// Warning variant with custom size
+<RoomBanner roomSize={40} variant="warning" />
+
+// Success variant with additional styling
+<RoomBanner 
+  roomSize={18} 
+  variant="success" 
+  className="shadow-lg" 
+/>
+```
+
+**Features:**
+- **Figma-Accurate Design** - Matches original design specifications
+- **Custom Room Icon** - SVG icon component for room visualization
+- **Multiple Variants** - Support for different visual states
+- **ENEL Design System** - Uses brand colors and typography
+- **Dynamic Content** - Room size and text updates reactively
+
+**Visual Variants:**
+- `info` - Blue theme (#1f6cf9) for standard information
+- `warning` - Red theme (#D3135A) for warnings
+- `success` - Green theme (#10b981) for confirmations
+- `error` - Red theme (#ef4444) for errors
+
+**JSON Configuration:**
+```json
+{
+  "type": "RoomBanner",
+  "props": {
+    "roomSize": 25,
+    "variant": "info"
+  }
+}
+```
+
+### **InfoBanner**
+```typescript
+interface InfoBannerProps {
+  title?: string;                 // Banner title
+  description?: string;           // Banner description
+  variant?: 'info' | 'warning' | 'success' | 'error'; // Visual variant (default: 'info')
+  className?: string;             // Additional CSS classes
+}
+```
+
+**Usage Examples:**
+```jsx
+<InfoBanner 
+  title="Important Information"
+  description="This is an important message for the user."
+  variant="info"
+/>
+```
 
 ### **CostSummary**
 ```typescript

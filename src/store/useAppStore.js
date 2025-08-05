@@ -90,9 +90,6 @@ const useAppStore = create(
       // Form data state
       formData: {},
       
-      // City slice integration
-      ...createCitySlice(set, get),
-      
       // Form data actions
       setFormValue: (property, value) => set((state) => ({
         formData: {
@@ -145,6 +142,8 @@ const useAppStore = create(
         
         return true;
       },
+      // City slice integration
+      ...createCitySlice(set, get),
     }),
     {
       name: 'enel-clima-store', // for Redux DevTools
