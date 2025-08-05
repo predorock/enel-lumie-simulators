@@ -17,6 +17,7 @@ export default function Stepper({ current }) {
           copy={step.copy}
           icon={currentIndex > index ? checkmark : undefined}
           active={currentIndex === index}
+          first={index === 0}
           past={currentIndex > index}
           last={index === steps.length - 1}
         />
