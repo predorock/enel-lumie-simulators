@@ -4,16 +4,17 @@ const CostSummary = ({ containerClassName = '' }) => {
   const store = useAppStore();
   const airconditioningQuantities = store.formData?.airconditioningQuantities || {};
   
+  // Get pricing calculations from pricing slice
+  const grandTotal = store.getGrandTotal();
+  const costBreakdown = store.getCostBreakdown();
+  
   // Calculate total number of splits from all quantities
   const totalSplits = Object.values(airconditioningQuantities).reduce((sum, qty) => sum + (qty || 0), 0);
   
-  // Pricing calculations - Updated to match Figma example showing 440,00€
-  const installationCostPerSplit = 0; // Updated to match Figma
-  const acUnitCostPerSplit = 0; // Set to 0 for now to match Figma showing only installation cost
-  
-  const totalInstallationCost = totalSplits > 0 ? totalSplits * installationCostPerSplit : 0; // Default to 440 for display
-  const totalAcUnitCost = 0; // Temporarily set to 0 to match the Figma design
-  const totalCost = totalInstallationCost; // Total equals installation cost
+  // Use pricing slice for calculations
+  const totalInstallationCost = grandTotal; // AC unit cost from pricing slice
+  const totalAcUnitCost = 0; // Keep as 0 for now (only showing AC unit costs)
+  const totalCost = totalInstallationCost; // Total equals AC unit cost
 
   // Format currency in Italian style
   const formatCurrency = (amount) => {
@@ -36,7 +37,7 @@ const CostSummary = ({ containerClassName = '' }) => {
 
         {/* Cost breakdown - horizontal layout to match Figma */}
         <div className="flex flex-row gap-4 items-center justify-start">
-          {/* Installation Cost Section */}
+          {/* AC Unit Cost Section */}
           <div className="flex flex-col items-start min-w-0 flex-shrink-0">
             <span 
               className="text-[#ede9f2] text-xs leading-tight font-bold"
@@ -52,7 +53,7 @@ const CostSummary = ({ containerClassName = '' }) => {
             </span>
           </div>
 
-          {/* AC Unit Cost Section */}
+          {/* Installation Cost Section */}
           <div className="flex flex-col items-start min-w-0 flex-shrink-0">
             <span 
               className="text-[#ede9f2] text-xs leading-tight font-bold"

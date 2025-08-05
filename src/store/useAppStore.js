@@ -3,6 +3,7 @@ import { devtools } from 'zustand/middleware';
 import pagesConfig from '../config/pages.json';
 import stepsConfig from '../config/steps.json';
 import { createCitySlice } from './slices/citySlice';
+import { createPricingSlice } from './slices/pricingSlice';
 
 const useAppStore = create(
   devtools(
@@ -91,12 +92,19 @@ const useAppStore = create(
       formData: {},
       
       // Form data actions
-      setFormValue: (property, value) => set((state) => ({
-        formData: {
-          ...state.formData,
-          [property]: value
+      setFormValue: (property, value) => {
+        set((state) => ({
+          formData: {
+            ...state.formData,
+            [property]: value
+          }
+        }));
+        
+        // Trigger pricing calculation when AC quantities change
+        if (property === 'airconditioningQuantities') {
+          setTimeout(() => get().calculatePricing(), 0);
         }
-      })),
+      },
       
       getFormValue: (property) => get().formData[property] || '',
       
@@ -142,8 +150,12 @@ const useAppStore = create(
         
         return true;
       },
+      
       // City slice integration
       ...createCitySlice(set, get),
+      
+      // Pricing slice integration
+      ...createPricingSlice(set, get),
     }),
     {
       name: 'enel-clima-store', // for Redux DevTools
