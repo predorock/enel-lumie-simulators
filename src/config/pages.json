@@ -4,6 +4,9 @@
             "id": "client-selection",
             "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
             "step": 1,
+            "validationRules": {
+                "required": ["storeLocation", "consultantName", "storePhone", "storeCity"]
+            },
             "leftPanelComponents": [
                 {
                     "type": "Image",
@@ -99,6 +102,22 @@
             "id": "checklist-configuratore",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
+            "validationRules": {
+                "custom": [
+                    {
+                        "type": "minQuantity",
+                        "property": "airconditioningQuantities",
+                        "minTotal": 1,
+                        "errorMessage": "Almeno un climatizzatore deve essere selezionato"
+                    },
+                    {
+                        "type": "airConditioningConfig",
+                        "property": "airConditioningConfigs",
+                        "dependsOn": "airconditioningQuantities",
+                        "errorMessage": "Completare la configurazione per tutti i climatizzatori selezionati"
+                    }
+                ]
+            },
             "leftPanelComponents": [
                 {
                     "type": "Image",
@@ -209,6 +228,34 @@
             "id": "servizi-manutenzione",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
+            "validationRules": {
+                "conditional": [
+                    {
+                        "condition": {
+                            "property": "needsRemoval",
+                            "equals": true
+                        },
+                        "then": {
+                            "type": "minQuantity",
+                            "property": "removalQuantities",
+                            "minTotal": 1,
+                            "errorMessage": "Seleziona almeno un impianto da smontare"
+                        }
+                    },
+                    {
+                        "condition": {
+                            "property": "wantsCleaning",
+                            "equals": true
+                        },
+                        "then": {
+                            "type": "minQuantity",
+                            "property": "cleaningQuantities",
+                            "minTotal": 1,
+                            "errorMessage": "Seleziona almeno un impianto da lavare"
+                        }
+                    }
+                ]
+            },
             "leftPanelComponents": [
                 {
                     "type": "Image",

@@ -25,7 +25,11 @@ export default function NavigationBar({
   className = "",
   ...props 
 }) {
-  const { canGoPrev, canGoNext, prevStep, nextStep } = useAppStore();
+  // Use specific selectors to avoid unnecessary re-renders
+  const canGoPrev = useAppStore(state => state.canGoPrev());
+  const canGoNext = useAppStore(state => state.canGoNext());
+  const prevStep = useAppStore(state => state.prevStep);
+  const nextStep = useAppStore(state => state.nextStep);
 
   const handleBack = () => {
     if (onBack) {
@@ -52,11 +56,11 @@ export default function NavigationBar({
       {...props}
     >
       <div className="flex items-center justify-end gap-4 max-w-[9999px] w-full">
-        {showBack && canGoPrev() && (
+        {showBack && canGoPrev && (
           <Button
             variant="secondary"
             size="md"
-            disabled={!canGoPrev()}
+            disabled={!canGoPrev}
             onClick={handleBack}
             icon={<BackIcon />}
             iconPosition="left"
@@ -69,7 +73,7 @@ export default function NavigationBar({
           <Button
             variant="primary"
             size="md"
-            disabled={!canGoNext()}
+            disabled={!canGoNext}
             onClick={handleNext}
             className="px-10"
           >

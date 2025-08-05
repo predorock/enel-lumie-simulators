@@ -4,7 +4,7 @@ import pagesConfig from '../config/pages.json';
 import useAppStore from '../store/useAppStore';
 
 // Component that dynamically renders components based on type and props
-const DynamicComponent = ({ type, props = {}, renderConditions, key }) => {
+const DynamicComponent = ({ type, props = {}, renderConditions, ...otherProps }) => {
   const { shouldRenderComponent } = useAppStore();
   
   // Check if component should be rendered based on conditions
@@ -23,7 +23,7 @@ const DynamicComponent = ({ type, props = {}, renderConditions, key }) => {
     );
   }
   
-  return <Component key={key} {...props} />;
+  return <Component {...props} />;
 };
 
 // Hook to get page configuration by step or ID

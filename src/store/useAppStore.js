@@ -4,6 +4,7 @@ import pagesConfig from '../config/pages.json';
 import stepsConfig from '../config/steps.json';
 import { createCitySlice } from './slices/citySlice';
 import { createPricingSlice } from './slices/pricingSlice';
+import { createValidationSlice } from './slices/validationSlice.simple';
 
 const useAppStore = create(
   devtools(
@@ -12,6 +13,20 @@ const useAppStore = create(
       currentStep: 1, // Start from step 1 instead of 0
       currentPageId: pagesConfig.pages[0]?.id || null, // Track current page by ID
       totalSteps: pagesConfig.pages.length,
+      
+      // Initialize store
+      _initialized: false,
+      initializeStore: () => {
+        const state = get();
+        if (!state._initialized) {
+          // Initialize validation for the first page
+          setTimeout(() => {
+            const currentState = get();
+            currentState.validation.validateCurrentPage();
+          }, 0);
+          set({ _initialized: true });
+        }
+      },
       
       // Steps configuration
       steps: stepsConfig.steps,
@@ -22,10 +37,26 @@ const useAppStore = create(
         const page = pagesConfig.pages.find(p => p.id === pageId);
         if (page) {
           set({ currentPageId: pageId, currentStep: page.step });
+          // Reset and initialize validation for the new page
+          const state = get();
+          state.validation.clearValidationErrors();
+          setTimeout(() => {
+            const newState = get();
+            newState.validation.validateCurrentPage();
+          }, 0);
         }
       },
       nextStep: () => {
         const state = get();
+        
+        // Validate current page before proceeding
+        const validationResult = state.validation.validateCurrentPage();
+        
+        if (!validationResult.isValid) {
+          // Don't proceed if validation fails
+          return false;
+        }
+        
         const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
         const nextPageIndex = currentPageIndex + 1;
         if (nextPageIndex < pagesConfig.pages.length) {
@@ -34,7 +65,16 @@ const useAppStore = create(
             currentStep: nextPage.step,
             currentPageId: nextPage.id
           });
+          // Reset validation state for the new page
+          state.validation.clearValidationErrors();
+          // Validate the new page after a short delay
+          setTimeout(() => {
+            const newState = get();
+            newState.validation.validateCurrentPage();
+          }, 0);
+          return true;
         }
+        return false;
       },
       prevStep: () => {
         const state = get();
@@ -46,6 +86,13 @@ const useAppStore = create(
             currentStep: prevPage.step,
             currentPageId: prevPage.id
           });
+          // Reset validation state for the new page
+          state.validation.clearValidationErrors();
+          // Validate the new page after a short delay
+          setTimeout(() => {
+            const newState = get();
+            newState.validation.validateCurrentPage();
+          }, 0);
         }
       },
       resetSteps: () => set({ 
@@ -67,7 +114,12 @@ const useAppStore = create(
       canGoNext: () => {
         const state = get();
         const currentPageIndex = pagesConfig.pages.findIndex(p => p.id === state.currentPageId);
-        return currentPageIndex < pagesConfig.pages.length - 1;
+        const hasNextPage = currentPageIndex < pagesConfig.pages.length - 1;
+        
+        // Check if current page is valid
+        const canProceed = state.validation.canProceedToNextStep();
+        
+        return hasNextPage && canProceed;
       },
       canGoPrev: () => {
         const state = get();
@@ -99,6 +151,10 @@ const useAppStore = create(
             [property]: value
           }
         }));
+        
+        // Trigger validation after form value change
+        const state = get();
+        state.validation.validateCurrentPage();
         
         // Trigger pricing calculation when quantities change
         if (property === 'airconditioningQuantities' || 
@@ -158,6 +214,9 @@ const useAppStore = create(
       
       // Pricing slice integration
       ...createPricingSlice(set, get),
+      
+      // Validation slice integration
+      ...createValidationSlice(set, get),
     }),
     {
       name: 'enel-clima-store', // for Redux DevTools

@@ -3,6 +3,7 @@ import tondo from '../../assets/images/mezzo-tondo.svg';
 import Stepper from '../ui/stepper/Stepper';
 import NavigationBar from '../ui/NavigationBar';
 import LeftPanelRenderer from '../LeftPanelRenderer';
+import ValidationErrors from '../ui/ValidationErrors';
 
 export default function PageLayout({ 
   children,
@@ -57,6 +58,11 @@ export default function PageLayout({
           <div className={`flex-1 p-16 overflow-y-auto ${className}`}>
             {children}
           </div>
+          
+          {/* Validation Errors - Fixed above navigation */}
+          {/* <div className="flex-shrink-0 px-16">
+            <ValidationErrors />
+          </div> */}
           
           {/* Navigation Bar - Fixed at bottom */}
           {showNavigation && (

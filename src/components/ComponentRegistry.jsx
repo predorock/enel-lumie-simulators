@@ -7,6 +7,7 @@ import InfoBanner from './ui/InfoBanner';
 import Image from './ui/Image';
 import CostSummary from './ui/CostSummary';
 import ServicePriceDisplay from './ui/ServicePriceDisplay';
+import ValidationErrors from './ui/ValidationErrors';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 import StatefulCustomSelect from './StatefulCustomSelect';
@@ -56,6 +57,7 @@ const componentRegistry = {
   Image: (props) => <Image {...props} />,
   CostSummary: (props) => <CostSummary {...props} />,
   ServicePriceDisplay: (props) => <ServicePriceDisplay {...props} />,
+  ValidationErrors: (props) => <ValidationErrors {...props} />,
   SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
   AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
