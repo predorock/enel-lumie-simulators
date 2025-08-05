@@ -144,7 +144,9 @@
                         "min": 0,
                         "max": 3,
                         "totalMax": 3,
-                        "stateProperty": "airconditioningQuantities"
+                        "stateProperty": "airconditioningQuantities",
+                        "calculationType": "purchase",
+                        "showPriceDisplay": false
                     }
                 },
                 {
@@ -237,7 +239,8 @@
                     "props": {
                         "label": "Il cliente deve smontare dei climatizzatori installati in precedenza",
                         "stateProperty": "needsRemoval",
-                        "initialValue": false
+                        "initialValue": false,
+                        "storeAction": "checkRemoval"
                     }
                 },
                 {
@@ -274,9 +277,8 @@
                         "max": 10,
                         "totalMax": 10,
                         "stateProperty": "removalQuantities",
-                        "showPriceDisplay": true,
-                        "pricePerUnit": 90,
-                        "priceLabel": "Prezzo finale"
+                        "calculationType": "removal",
+                        "showPriceDisplay": true
                     },
                     "renderConditions": {
                         "equals": {
@@ -304,7 +306,8 @@
                     "props": {
                         "label": "Il cliente vuole effettuare il lavaggio degli impianti?",
                         "stateProperty": "wantsCleaning",
-                        "initialValue": false
+                        "initialValue": false,
+                        "storeAction": "checkCleaning"
                     }
                 },
                 {
@@ -341,9 +344,8 @@
                         "max": 10,
                         "totalMax": 10,
                         "stateProperty": "cleaningQuantities",
-                        "showPriceDisplay": true,
-                        "pricePerUnit": 100,
-                        "priceLabel": "Prezzo finale"
+                        "calculationType": "cleaning",
+                        "showPriceDisplay": true
                     },
                     "renderConditions": {
                         "equals": {

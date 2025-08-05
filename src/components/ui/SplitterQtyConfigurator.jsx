@@ -1,5 +1,6 @@
-import cn from 'classnames';
 import { useState } from 'react';
+import cn from 'classnames';
+import useAppStore from '../../store/useAppStore';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 
 // Simple icons using SVG instead of localhost images
@@ -15,30 +16,32 @@ const PlusIcon = () => (
   </svg>
 );
 
-export default function SplitterQtyConfigurator({ 
-  items = [],
-  values = {},
-  onChange,
-  min = 0,
-  max = 10,
-  totalMax = null, // New prop for total constraint
-  showPriceDisplay = false, // New prop for showing price
-  pricePerUnit = 0, // Price per unit
-  priceLabel = "Prezzo finale", // Price label
+const SplitterQtyConfigurator = ({ 
+  items = [], 
+  values = {}, 
+  onChange, 
+  min = 0, 
+  max = 10, 
+  totalMax = null,
+  showPriceDisplay = true,
+  title = "Configuratore Climatizzatori",
   className = "",
-  ...props 
-}) {
-  const [quantities, setQuantities] = useState(values || {});
+  stateProperty = null,
+  calculationType = 'purchase',
+  ...props
+}) => {
+  const [quantities, setQuantities] = useState(values);
+  
+  // Getters
+  const { getUnitTotal } = useAppStore();
+
+  const getDisplayPrice = (itemKey) => {
+    return getUnitTotal(calculationType, itemKey);
+  }
 
   // Calculate current total
   const getCurrentTotal = (quantities) => {
     return Object.values(quantities).reduce((sum, value) => sum + (value || 0), 0);
-  };
-
-  // Calculate total price for a specific item
-  const getTotalPrice = (itemKey) => {
-    const quantity = quantities[itemKey] || 0;
-    return quantity * pricePerUnit;
   };
 
   // Format currency in Italian style
@@ -170,15 +173,10 @@ export default function SplitterQtyConfigurator({
                 </button>
 
                 {/* Price Display */}
-                {showPriceDisplay && pricePerUnit && currentValue > 0 && (
+                {showPriceDisplay && getDisplayPrice(itemKey) > 0 && currentValue > 0 && (
                   <div className="bg-gray-100 px-3 py-2 rounded ml-4">
                     <span className="text-[13px] font-bold text-gray-700" style={{ fontFamily: 'Roobert Bold' }}>
-                      {formatCurrency(getTotalPrice(itemKey))}
-                      {priceLabel && (
-                        <span className="text-[11px] font-normal ml-1">
-                          {priceLabel}
-                        </span>
-                      )}
+                      {formatCurrency(getDisplayPrice(itemKey))}
                     </span>
                   </div>
                 )}
@@ -189,4 +187,6 @@ export default function SplitterQtyConfigurator({
       })}
     </div>
   );
-}
+};
+
+export default SplitterQtyConfigurator;

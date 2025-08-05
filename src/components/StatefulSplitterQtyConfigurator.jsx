@@ -36,7 +36,7 @@ const StatefulSplitterQtyConfigurator = ({
   const currentValues = stateProperty && store.formData && store.formData[stateProperty] 
     ? store.formData[stateProperty] 
     : localValues;
-
+  
   return (
     <SplitterQtyConfigurator
       items={items}

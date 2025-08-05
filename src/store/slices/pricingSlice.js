@@ -3,21 +3,57 @@
  * Dedicated slice for managing pricing calculations and unit costs
  */
 
-// Unit prices for different AC types
+// Unit prices for different AC types and services
 export const UNIT_PRICES = {
-  monosplit: 100,
-  dualsplit: 100,
-  trialsplit: 150,
+  // AC Units (purchase)
+  purchase: {
+    monosplit: 100,
+    dualsplit: 100,
+    trialsplit: 150,
+  },
+  // Removal/Dismount Service
+  removal: {
+    monosplit: 60,
+    dualsplit: 90,
+    trialsplit: 120,
+  },
+  // Cleaning Service
+  cleaning: {
+    monosplit: 75,
+    dualsplit: 150,
+    trialsplit: 220,
+  },
 };
+
+export const initialCalculations = {
+    purchase: {
+        monosplit: 0,
+        dualsplit: 0,
+        trialsplit: 0,
+        total: 0,
+    },
+    removal: {
+        monosplit: 0,
+        dualsplit: 0,
+        trialsplit: 0,
+        total: 0,
+    },
+    cleaning: {
+        monosplit: 0,
+        dualsplit: 0,
+        trialsplit: 0,
+        total: 0,
+    },      
+    // Grand total
+    grandTotal: 0,
+}
 
 // Initial state for pricing slice
 export const initialPricingState = {
   unitPrices: UNIT_PRICES,
   calculations: {
-    monosplitTotal: 0,
-    dualsplitTotal: 0,
-    trialsplitTotal: 0,
-    grandTotal: 0,
+    // Purchase calculations
+    ...initialCalculations
   },
 };
 
@@ -38,22 +74,52 @@ export const createPricingSlice = (set, get) => ({
   calculatePricing: () => {
     const state = get();
     const quantities = state.formData.airconditioningQuantities || {};
+    const removalQuantities = state.formData.removalQuantities || {};
+    const cleaningQuantities = state.formData.cleaningQuantities || {};
     const { unitPrices } = state.pricingState;
     
-    // Calculate individual totals
-    const monosplitTotal = (quantities.monosplit || 0) * unitPrices.monosplit;
-    const dualsplitTotal = (quantities.dualsplit || 0) * unitPrices.dualsplit;
-    const trialsplitTotal = (quantities.trialsplit || 0) * unitPrices.trialsplit;
+    // Calculate purchase totals
+    const purchaseMonosplitTotal = (quantities.monosplit || 0) * unitPrices.purchase.monosplit;
+    const purchaseDualsplitTotal = (quantities.dualsplit || 0) * unitPrices.purchase.dualsplit;
+    const purchaseTrialsplitTotal = (quantities.trialsplit || 0) * unitPrices.purchase.trialsplit;
+    const purchaseTotal = purchaseMonosplitTotal + purchaseDualsplitTotal + purchaseTrialsplitTotal;
+    
+    // Calculate removal totals
+    const removalMonosplitTotal = (removalQuantities.monosplit || 0) * unitPrices.removal.monosplit;
+    const removalDualsplitTotal = (removalQuantities.dualsplit || 0) * unitPrices.removal.dualsplit;
+    const removalTrialsplitTotal = (removalQuantities.trialsplit || 0) * unitPrices.removal.trialsplit;
+    const removalTotal = removalMonosplitTotal + removalDualsplitTotal + removalTrialsplitTotal;
+    
+    // Calculate cleaning totals
+    const cleaningMonosplitTotal = (cleaningQuantities.monosplit || 0) * unitPrices.cleaning.monosplit;
+    const cleaningDualsplitTotal = (cleaningQuantities.dualsplit || 0) * unitPrices.cleaning.dualsplit;
+    const cleaningTrialsplitTotal = (cleaningQuantities.trialsplit || 0) * unitPrices.cleaning.trialsplit;
+    const cleaningTotal = cleaningMonosplitTotal + cleaningDualsplitTotal + cleaningTrialsplitTotal;
     
     // Calculate grand total
-    const grandTotal = monosplitTotal + dualsplitTotal + trialsplitTotal;
+    const grandTotal = purchaseTotal + removalTotal + cleaningTotal;
     
     // Update pricing state
     get().setPricingState({
       calculations: {
-        monosplitTotal,
-        dualsplitTotal,
-        trialsplitTotal,
+        purchase: {
+            monosplit: purchaseMonosplitTotal,
+            dualsplit: purchaseDualsplitTotal,
+            trialsplit: purchaseTrialsplitTotal,
+            total: purchaseTotal
+        },
+        removal: {
+            monosplit: removalMonosplitTotal,
+            dualsplit: removalDualsplitTotal,
+            trialsplit: removalTrialsplitTotal,
+            total: removalTotal
+        },
+        cleaning: {
+            monosplit: cleaningMonosplitTotal,
+            dualsplit: cleaningDualsplitTotal,
+            trialsplit: cleaningTrialsplitTotal,
+            total: cleaningTotal
+        },
         grandTotal,
       }
     });
@@ -67,65 +133,76 @@ export const createPricingSlice = (set, get) => ({
     return state.pricingState.calculations.grandTotal;
   },
   
-  // Get breakdown of costs
-  getCostBreakdown: () => {
+  // Get purchase total
+  getPurchaseTotal: () => {
     const state = get();
-    const quantities = state.formData.airconditioningQuantities || {};
-    const { calculations, unitPrices } = state.pricingState;
-    
-    return {
-      items: [
-        {
-          type: 'monosplit',
-          quantity: quantities.monosplit || 0,
-          unitPrice: unitPrices.monosplit,
-          total: calculations.monosplitTotal,
-          label: 'Monosplit'
-        },
-        {
-          type: 'dualsplit',
-          quantity: quantities.dualsplit || 0,
-          unitPrice: unitPrices.dualsplit,
-          total: calculations.dualsplitTotal,
-          label: 'Dualsplit'
-        },
-        {
-          type: 'trialsplit',
-          quantity: quantities.trialsplit || 0,
-          unitPrice: unitPrices.trialsplit,
-          total: calculations.trialsplitTotal,
-          label: 'Trialsplit'
-        }
-      ].filter(item => item.quantity > 0), // Only show items with quantity > 0
-      grandTotal: calculations.grandTotal
-    };
+    return state.pricingState.calculations.purchase.total;
   },
   
-  // Update unit prices (for future use)
-  updateUnitPrice: (type, price) => {
+  // Get removal total
+  getRemovalTotal: () => {
     const state = get();
-    const newUnitPrices = {
-      ...state.pricingState.unitPrices,
-      [type]: price
-    };
-    
-    get().setPricingState({
-      unitPrices: newUnitPrices
-    });
-    
-    // Recalculate after price change
-    get().calculatePricing();
+    return state.pricingState.calculations.removal.total;
+  },
+  
+  // Get cleaning total
+  getCleaningTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.cleaning.total;
+  },
+  
+  // Get unit prices for all services and types
+  getUnitPrices: () => {
+    const state = get();
+    return state.pricingState.unitPrices;
+  },
+
+  getUnitTotal: (type, unit) => {
+    const state = get();
+    if (!type || !unit) return 0;
+    if (type in state.pricingState.calculations) {
+      return state.pricingState.calculations[type][unit] || 0;
+    }
+    console.warn('Unknown type:', type);
+    return 0; // Fallback if type is not recognized
   },
   
   // Reset pricing calculations
   resetPricing: () => {
     get().setPricingState({
-      calculations: {
-        monosplitTotal: 0,
-        dualsplitTotal: 0,
-        trialsplitTotal: 0,
-        grandTotal: 0,
-      }
+        calculations: {
+            ...initialCalculations
+        }
     });
+  },
+
+  resetRemoval: () => {
+    const state = get();
+    state.setFormValue('removalQuantities', {});
+    state.calculatePricing();
+    return state;
+  },
+
+  resetCleaning: () => {
+    const state = get();
+    state.setFormValue('cleaningQuantities', {});
+    state.calculatePricing();
+    return state;
+  },
+
+  checkRemoval: (property, value) => {
+    const state = get();
+    state.setFormValue(property, value);
+    if (!value) {
+        state.resetRemoval();
+    }
+  },
+
+  checkCleaning: (property, value) => {
+    const state = get();
+    state.setFormValue(property, value);
+    if (!value) {
+        state.resetCleaning();
+    }
   },
 });

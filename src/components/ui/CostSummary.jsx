@@ -2,19 +2,15 @@ import useAppStore from '../../store/useAppStore';
 
 const CostSummary = ({ containerClassName = '' }) => {
   const store = useAppStore();
-  const airconditioningQuantities = store.formData?.airconditioningQuantities || {};
   
   // Get pricing calculations from pricing slice
   const grandTotal = store.getGrandTotal();
-  const costBreakdown = store.getCostBreakdown();
+  const purchaseTotal = store.getPurchaseTotal();
+  const removalTotal = store.getRemovalTotal();
+  const cleaningTotal = store.getCleaningTotal();
   
-  // Calculate total number of splits from all quantities
-  const totalSplits = Object.values(airconditioningQuantities).reduce((sum, qty) => sum + (qty || 0), 0);
-  
-  // Use pricing slice for calculations
-  const totalInstallationCost = grandTotal; // AC unit cost from pricing slice
-  const totalAcUnitCost = 0; // Keep as 0 for now (only showing AC unit costs)
-  const totalCost = totalInstallationCost; // Total equals AC unit cost
+  // Calculate services total (removal + cleaning)
+  const servicesTotal = removalTotal + cleaningTotal;
 
   // Format currency in Italian style
   const formatCurrency = (amount) => {
@@ -43,29 +39,29 @@ const CostSummary = ({ containerClassName = '' }) => {
               className="text-[#ede9f2] text-xs leading-tight font-bold"
               style={{ fontFamily: 'Roobert Bold' }}
             >
-              Spese installazione
-            </span>
-            <span 
-              className="text-white text-lg leading-tight tracking-[0.2px] font-bold"
-              style={{ fontFamily: 'Roobert Bold' }}
-            >
-              {formatCurrency(totalInstallationCost)}
-            </span>
-          </div>
-
-          {/* Installation Cost Section */}
-          <div className="flex flex-col items-start min-w-0 flex-shrink-0">
-            <span 
-              className="text-[#ede9f2] text-xs leading-tight font-bold"
-              style={{ fontFamily: 'Roobert Bold' }}
-            >
               Costo climatizzatore
             </span>
             <span 
               className="text-white text-lg leading-tight tracking-[0.2px] font-bold"
               style={{ fontFamily: 'Roobert Bold' }}
             >
-              –
+              {purchaseTotal > 0 ? formatCurrency(purchaseTotal) : '–'}
+            </span>
+          </div>
+
+          {/* Services Cost Section */}
+          <div className="flex flex-col items-start min-w-0 flex-shrink-0">
+            <span 
+              className="text-[#ede9f2] text-xs leading-tight font-bold"
+              style={{ fontFamily: 'Roobert Bold' }}
+            >
+              Servizi aggiuntivi
+            </span>
+            <span 
+              className="text-white text-lg leading-tight tracking-[0.2px] font-bold"
+              style={{ fontFamily: 'Roobert Bold' }}
+            >
+              {servicesTotal > 0 ? formatCurrency(servicesTotal) : '–'}
             </span>
           </div>
 
@@ -78,13 +74,13 @@ const CostSummary = ({ containerClassName = '' }) => {
               className="text-[#ede9f2] text-xs leading-tight font-bold w-full text-nowrap"
               style={{ fontFamily: 'Roobert Bold' }}
             >
-              Costo totale climatizzatore
+              Costo totale
             </span>
             <span 
               className="text-white text-xl leading-tight tracking-[0.2px] font-bold w-full"
               style={{ fontFamily: 'Roobert Bold' }}
             >
-              {formatCurrency(totalCost)}
+              {formatCurrency(grandTotal)}
             </span>
           </div>
         </div>

@@ -100,8 +100,10 @@ const useAppStore = create(
           }
         }));
         
-        // Trigger pricing calculation when AC quantities change
-        if (property === 'airconditioningQuantities') {
+        // Trigger pricing calculation when quantities change
+        if (property === 'airconditioningQuantities' || 
+            property === 'removalQuantities' || 
+            property === 'cleaningQuantities') {
           setTimeout(() => get().calculatePricing(), 0);
         }
       },
