@@ -43,8 +43,12 @@ export const initialCalculations = {
         dualsplit: 0,
         trialsplit: 0,
         total: 0,
-    },      
-    // Grand total
+    },
+    // Total cost of installation
+    installationTotal: 0,
+    // Total cost of chosen products
+    productsTotal: 0,
+    // installationTotal + productsTotal
     grandTotal: 0,
 }
 
@@ -73,10 +77,12 @@ export const createPricingSlice = (set, get) => ({
   // Calculate total cost based on quantities
   calculatePricing: () => {
     const state = get();
+    const { unitPrices } = state.pricingState;
+    
+    // get quantities from form data
     const quantities = state.formData.airconditioningQuantities || {};
     const removalQuantities = state.formData.removalQuantities || {};
     const cleaningQuantities = state.formData.cleaningQuantities || {};
-    const { unitPrices } = state.pricingState;
     
     // Calculate purchase totals
     const purchaseMonosplitTotal = (quantities.monosplit || 0) * unitPrices.purchase.monosplit;
@@ -97,8 +103,12 @@ export const createPricingSlice = (set, get) => ({
     const cleaningTotal = cleaningMonosplitTotal + cleaningDualsplitTotal + cleaningTrialsplitTotal;
     
     // Calculate grand total
-    const grandTotal = purchaseTotal + removalTotal + cleaningTotal;
-    
+    const installationTotal = purchaseTotal + removalTotal + cleaningTotal;
+    //TODO: to be calculated later based on selected products
+    const productsTotal = 0;
+    // Grand total
+    const grandTotal = installationTotal + productsTotal;
+
     // Update pricing state
     get().setPricingState({
       calculations: {
@@ -120,19 +130,29 @@ export const createPricingSlice = (set, get) => ({
             trialsplit: cleaningTrialsplitTotal,
             total: cleaningTotal
         },
-        grandTotal,
+        installationTotal,
+        productsTotal,
+        grandTotal
       }
     });
     
-    return grandTotal;
+    return installationTotal;
   },
-  
-  // Get current grand total
+  // Get current total cost
   getGrandTotal: () => {
     const state = get();
     return state.pricingState.calculations.grandTotal;
   },
-  
+  // Get current products total
+  getProductsTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.productsTotal;
+  },
+  // Get current installation total
+  getInstallationTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.installationTotal;
+  },
   // Get purchase total
   getPurchaseTotal: () => {
     const state = get();
