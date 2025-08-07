@@ -69,9 +69,14 @@ export default {
       ],
       components: [
         {
-          type: "DescriptionBox",
-          props: {
-            description: "Nuova installazione con predisposizione",
+          "type": "DescriptionBox",
+          "props": {
+            "title": "Scelta del clima",
+            "description": "Nuova installazione con predisposizione",
+            "icon": "dual",
+            "step": "1/3",
+            "stepColor": "purple",
+            "layout": "horizontal"
           }
         },
         {
