@@ -4,6 +4,7 @@ import { createCitySlice } from './slices/citySlice';
 import { createPricingSlice } from './slices/pricingSlice';
 import { createValidationSlice } from './slices/validationSlice.simple';
 import { createNavigationSlice } from './slices/navigationSlice';
+import testData from '../assets/mocks/testData.js';
 
 const useAppStore = create(
   devtools(
@@ -13,6 +14,15 @@ const useAppStore = create(
       initializeStore: () => {
         const state = get();
         if (!state._initialized) {
+          // Load test data in development if URL parameter is present
+          if (import.meta.env.DEV && typeof window !== 'undefined' && window.location.search.includes('test=')) {
+            const params = new URLSearchParams(window.location.search);
+            const testScenario = params.get('test');
+            if (testScenario === 'true' || testScenario === 'default') {
+              setTimeout(() => state.loadTestData('default'), 0);
+            }
+          }
+          
           // Initialize validation for the first page
           setTimeout(() => {
             const currentState = get();
@@ -51,6 +61,34 @@ const useAppStore = create(
       clearFormData: () => set({ formData: {} }),
       
       resetFormData: () => set({ formData: {} }),
+      
+      // Test data loading
+      loadTestData: (scenarioName = 'default') => {
+        if (testData && testData.formData) {
+          set({ 
+            formData: testData.formData,
+            currentStep: testData.currentStep || 1,
+            currentPageId: testData.currentPageId || null,
+            dynamicPages: testData.dynamicPages || []
+          });
+          
+          // Trigger all side effects
+          setTimeout(() => {
+            const state = get();
+            state.validation.validateCurrentPage();
+            if (state.calculatePricing) state.calculatePricing();
+            if (state.generateSplitPages && !testData.dynamicPages?.length) {
+              state.generateSplitPages();
+            }
+          }, 0);
+          
+          console.log(`Test data loaded:`, testData.formData);
+        } else {
+          console.warn(`Test data not found or invalid format`);
+        }
+      },
+
+      getAvailableTestScenarios: () => testData ? ['default'] : [],
       
       // Component visibility helpers
       shouldRenderComponent: (conditions) => {
