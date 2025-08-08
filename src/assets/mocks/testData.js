@@ -84,6 +84,13 @@ export default {
           props: {
             roomSize: '34'
           }
+        },
+        {
+          "type": "BrandSelector",
+          "props": {
+            "title": "Quale brand di climatizzatore preferisce?",
+            "stateProperty": "selectedBrand"
+          }
         }
       ]
     },
