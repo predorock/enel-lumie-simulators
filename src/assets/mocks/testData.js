@@ -120,11 +120,12 @@ export default {
           }
         },
         {
-          "type": "ACFeaturesDisplay",
+          "type": "AcProductDisplayContainer",
           "props": {
-            "acType": "dualsplit",
-            "variant": "success",
-            "title": "Caratteristiche Premium"
+            "showLoadingStates": true,
+            "maxProducts": 100,
+            "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
+            "className": "mb-8"
           }
         }
       ]

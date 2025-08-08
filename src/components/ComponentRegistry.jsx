@@ -9,6 +9,7 @@ import CostSummary from './ui/CostSummary';
 import ServicePriceDisplay from './ui/ServicePriceDisplay';
 import ValidationErrors from './ui/ValidationErrors';
 import ACFeaturesDisplay from './ui/ACFeaturesDisplay';
+import AcProductDisplayContainer from './ui/AcProductDisplayContainer';
 import StatefulInput from './StatefulInput';
 import StatefulToggle from './StatefulToggle';
 import StatefulCustomSelect from './StatefulCustomSelect';
@@ -18,6 +19,7 @@ import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfig
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulBrandSelector from './StatefulBrandSelector';
 import StatefulOptionSelector from './StatefulOptionSelector';
+import StatefulAcProductDisplayContainer from './StatefulAcProductDisplayContainer';
 import RoomBanner from './ui/RoomBanner';
 
 // Text component for simple text content
@@ -58,6 +60,7 @@ const componentRegistry = {
   InfoBanner: (props) => <InfoBanner {...props} />,
   RoomBanner: (props) => <RoomBanner {...props} />,
   ACFeaturesDisplay: (props) => <ACFeaturesDisplay {...props} />,
+  AcProductDisplayContainer: (props) => <AcProductDisplayContainer {...props} />,
   Image: (props) => <Image {...props} />,
   CostSummary: (props) => <CostSummary {...props} />,
   ServicePriceDisplay: (props) => <ServicePriceDisplay {...props} />,
@@ -67,6 +70,7 @@ const componentRegistry = {
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
   OptionSelector: (props) => <StatefulOptionSelector {...props} />,
+  AcProductDisplayContainer: (props) => <StatefulAcProductDisplayContainer {...props} />,
   // Add more components as needed
 };
 

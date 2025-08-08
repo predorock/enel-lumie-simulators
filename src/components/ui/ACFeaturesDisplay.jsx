@@ -28,6 +28,9 @@ const ACFeaturesDisplay = ({
   showCheckbox = true,
   checkboxLabel = "Scegli questa soluzione",
   detailsLink = "Visualizza la scheda dettagli del prodotto",
+  onCheckboxChange = null,
+  isSelected = false,
+  onDetailsClick = null,
   className = ""
 }) => {
   return (
@@ -118,7 +121,10 @@ const ACFeaturesDisplay = ({
 
         {/* Details Link */}
         <div className="mb-6">
-          <button className="text-[#D3135A] text-sm font-medium font-roobert hover:underline flex items-center">
+          <button 
+            onClick={onDetailsClick}
+            className="text-[#D3135A] text-sm font-medium font-roobert hover:underline flex items-center"
+          >
             {detailsLink}
             <svg 
               className="w-4 h-4 ml-1" 
@@ -141,11 +147,13 @@ const ACFeaturesDisplay = ({
           <div className="flex items-center">
             <input
               type="checkbox"
-              id="product-selection"
+              id={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
+              checked={isSelected}
+              onChange={(e) => onCheckboxChange && onCheckboxChange(e.target.checked)}
               className="w-4 h-4 text-[#002466] bg-gray-100 border-gray-300 rounded focus:ring-[#002466] focus:ring-2"
             />
             <label 
-              htmlFor="product-selection" 
+              htmlFor={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
               className="ml-3 text-sm font-medium text-gray-900 font-roobert"
             >
               {checkboxLabel}
