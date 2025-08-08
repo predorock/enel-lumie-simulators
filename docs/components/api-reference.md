@@ -243,6 +243,46 @@ interface CostSummaryProps {
 - Displays installation costs, unit costs, and totals
 - Uses Italian currency formatting (100,00€)
 
+### **ACFeaturesDisplay**
+```typescript
+interface ACFeaturesDisplayProps {
+  acType?: 'monosplit' | 'dualsplit' | 'trialsplit'; // AC unit type (default: 'monosplit')
+  features?: Feature[];                               // Custom features array
+  variant?: 'info' | 'success' | 'warning';         // Visual theme (default: 'info')
+  showACIcon?: boolean;                              // Show AC type icon (default: true)
+  title?: string;                                    // Custom title
+  className?: string;                                // Additional CSS classes
+}
+
+interface Feature {
+  iconType: 'energy' | 'temperature' | 'timer' | 'quiet' | 'airflow' | 'smart';
+  title: string;                                     // Feature title
+  description: string;                               // Feature description
+  highlight?: string;                                // Optional highlight badge text
+}
+```
+
+**Usage Examples:**
+```jsx
+<ACFeaturesDisplay 
+  acType="dualsplit"
+  variant="success"
+  features={[
+    {
+      iconType: 'energy',
+      title: 'Alta Efficienza',
+      description: 'Classe energetica A+++',
+      highlight: 'A+++'
+    }
+  ]}
+/>
+```
+
+**Default Features:**
+- Energy efficiency, temperature control, timer, quiet operation
+- Air purification, smart controls with highlight badges
+- Six built-in feature icons with Italian descriptions
+
 ### **Image**
 ```typescript
 interface ImageProps {

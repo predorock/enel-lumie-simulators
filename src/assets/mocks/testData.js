@@ -118,6 +118,14 @@ export default {
             ],
             "stateProperty": "investmentOption"
           }
+        },
+        {
+          "type": "ACFeaturesDisplay",
+          "props": {
+            "acType": "dualsplit",
+            "variant": "success",
+            "title": "Caratteristiche Premium"
+          }
         }
       ]
     },

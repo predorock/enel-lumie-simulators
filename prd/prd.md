@@ -1,2 +1,0 @@
-# Enel Lumiè - Verticale Clima
-
