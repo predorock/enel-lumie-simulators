@@ -12,17 +12,17 @@ const ACFeaturesDisplay = ({
   currency = "€",
   priceNote = "IVA inclusa",
   features = [
-    "Schermo LED",
-    "Connettività Wi-Fi",
-    "Voice control",
-    "Funzione risparmio energetico",
-    "Programmazione timer giornaliera",
-    "Programmazione timer settimanale",
-    "Funzionalità Sleep",
-    "Funzionalità Turbo",
-    "Anti muffa, anti batteri, anti polvere, anti allergeni",
-    "Ionizzatore",
-    "Autodiagnosi (Funzione Smart Diagnosis)"
+    { key: "Led", name: "Schermo LED", enabled: true },
+    { key: "Wifi", name: "Connettività Wi-Fi", enabled: true },
+    { key: "Voice", name: "Voice control", enabled: false },
+    { key: "RispEn", name: "Funzione risparmio energetico", enabled: true },
+    { key: "ProgGiorn", name: "Programmazione timer giornaliera", enabled: true },
+    { key: "ProgSett", name: "Programmazione timer settimanale", enabled: false },
+    { key: "Sleep", name: "Funzionalità Sleep", enabled: true },
+    { key: "Turbo", name: "Funzionalità Turbo", enabled: true },
+    { key: "Muffa", name: "Anti muffa, anti batteri, anti polvere, anti allergeni", enabled: false },
+    { key: "Ionizzazione", name: "Ionizzatore", enabled: false },
+    { key: "Autodiagnosi", name: "Autodiagnosi (Funzione Smart Diagnosis)", enabled: true }
   ],
   showRecommendationBadge = true,
   showCheckbox = true,
@@ -34,7 +34,7 @@ const ACFeaturesDisplay = ({
   className = ""
 }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden ${className}`}>
+    <div className={`bg-white rounded-lg border border-gray-200 shadow-sm ${className}`}>
       {/* Recommendation Badge */}
       {showRecommendationBadge && (
         <div className="bg-[#002466] text-white px-4 py-2 flex items-center">
@@ -75,47 +75,103 @@ const ACFeaturesDisplay = ({
 
         {/* Price */}
         <div className="mb-6">
-          <div className="flex items-baseline">
-            <span className="text-3xl font-bold text-[#002466] font-roobert">
-              {price}
-            </span>
-            <span className="text-lg text-[#002466] font-roobert ml-1">
-              {currency}*
-            </span>
+          <div className="flex items-end">
+            {/* Main price number */}
+            <div 
+              className="bg-clip-text bg-gradient-to-r from-[#0047cc] to-[#3b80ff] font-bold font-roobert text-[48px] leading-[42px] tracking-[-1px]"
+              style={{ WebkitTextFillColor: "transparent" }}
+            >
+              {price.split('.')[0]}
+            </div>
+            
+            {/* Currency and decimal part */}
+            <div className="flex flex-col justify-between h-full ml-1">
+              <div 
+                className="bg-clip-text bg-gradient-to-r from-[#0047cc] to-[#1f6cf9] font-bold font-roobert text-[18px] leading-[14px]"
+                style={{ WebkitTextFillColor: "transparent" }}
+              >
+                ,{price.split('.')[1] || '00'}{currency}*
+              </div>
+              <div className="flex items-center pl-1 mt-2">
+                <div 
+                  className="bg-clip-text bg-gradient-to-r from-[#0047cc] to-[#1f6cf9] font-bold font-roobert text-[14px] leading-[14px]"
+                  style={{ WebkitTextFillColor: "transparent" }}
+                >
+                  {priceNote}
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="text-sm text-[#002466] font-roobert">
-            {priceNote}
-          </p>
         </div>
 
         {/* Features Section */}
         <div className="mb-6">
-          <h3 className="text-base font-bold text-gray-900 font-roobert mb-4">
-            Funzionalità del prodotto
-          </h3>
-          <div className="space-y-3">
-            {features.map((feature, index) => (
-              <div key={index} className="flex items-start">
-                <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#002466] flex items-center justify-center mt-0.5 mr-3">
-                  <svg 
-                    className="w-3 h-3 text-white" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={3} 
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-                <span className="text-sm text-gray-700 font-roobert leading-relaxed">
-                  {feature}
-                </span>
-              </div>
-            ))}
+          <div className="bg-[#f4f8ff] rounded-lg p-3">
+            {/* Title */}
+            <div className="font-bold font-roobert text-[#272c34] text-[12px] leading-[18px] mb-3">
+              Funzionalità del prodotto
+            </div>
+            
+            {/* Divider */}
+            <div className="w-full h-px bg-[#cbdaf6] mb-3"></div>
+            
+            {/* Features List */}
+            <div className="flex flex-col gap-2">
+              {features.map((feature, index) => {
+                const isEnabled = typeof feature === 'object' ? feature.enabled : true;
+                const featureName = typeof feature === 'object' ? feature.name : feature;
+                const featureKey = typeof feature === 'object' ? feature.key : `feature-${index}`;
+                
+                return (
+                  <div key={featureKey} className="flex items-start gap-[5px]">
+                    {/* Feature Icon */}
+                    <div className="flex-shrink-0 w-4 h-4 flex items-center justify-center">
+                      {isEnabled ? (
+                        // Check circle icon
+                        <svg 
+                          className="w-4 h-4" 
+                          viewBox="0 0 16 16" 
+                          fill="none"
+                        >
+                          <circle cx="8" cy="8" r="8" fill="#0047cc"/>
+                          <path 
+                            d="M6.5 8.5L7.5 9.5L10.5 6.5" 
+                            stroke="white" 
+                            strokeWidth="1.5" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        // Cancel/X circle icon
+                        <svg 
+                          className="w-4 h-4" 
+                          viewBox="0 0 16 16" 
+                          fill="none"
+                        >
+                          <circle cx="8" cy="8" r="8" fill="#667790"/>
+                          <path 
+                            d="M6 6L10 10M10 6L6 10" 
+                            stroke="white" 
+                            strokeWidth="1.5" 
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    
+                    {/* Feature Text */}
+                    <div className={`flex-1 text-[#272c34] text-[12px] leading-[18px] ${
+                      isEnabled 
+                        ? 'font-bold font-roobert' 
+                        : 'font-normal font-roobert line-through'
+                    }`}>
+                      {featureName}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -123,7 +179,7 @@ const ACFeaturesDisplay = ({
         <div className="mb-6">
           <button 
             onClick={onDetailsClick}
-            className="text-[#D3135A] text-sm font-medium font-roobert hover:underline flex items-center"
+            className="text-[#5738ff] text-[12px] font-roobert hover:underline flex items-center leading-[12px]"
           >
             {detailsLink}
             <svg 
@@ -144,17 +200,17 @@ const ACFeaturesDisplay = ({
 
         {/* Selection Checkbox */}
         {showCheckbox && (
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
             <input
               type="checkbox"
               id={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
               checked={isSelected}
               onChange={(e) => onCheckboxChange && onCheckboxChange(e.target.checked)}
-              className="w-4 h-4 text-[#002466] bg-gray-100 border-gray-300 rounded focus:ring-[#002466] focus:ring-2"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
             />
             <label 
               htmlFor={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
-              className="ml-3 text-sm font-medium text-gray-900 font-roobert"
+              className="text-sm font-medium text-gray-900 font-roobert"
             >
               {checkboxLabel}
             </label>

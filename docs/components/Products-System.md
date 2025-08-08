@@ -27,7 +27,7 @@ This document describes the implementation of the products system for the ENEL L
 ```
 
 ### Feature Mapping
-API feature keys are mapped to user-friendly display names:
+API feature keys are mapped to user-friendly display names, and ALL features are displayed with their enabled/disabled state:
 ```javascript
 const FEATURE_MAPPING = {
   Led: "Schermo LED",
@@ -41,6 +41,13 @@ const FEATURE_MAPPING = {
   Muffa: "Anti muffa, anti batteri, anti polvere, anti allergeni",
   Ionizzazione: "Ionizzatore",
   Autodiagnosi: "Autodiagnosi (Funzione Smart Diagnosis)"
+};
+
+// Features are transformed to objects with enabled state
+const transformedFeature = {
+  key: "Led",
+  name: "Schermo LED", 
+  enabled: true // or false
 };
 ```
 
@@ -116,6 +123,14 @@ interface ACFeaturesDisplayProps {
 - Loading spinner with skeleton placeholders
 - Error handling with retry functionality
 - Empty state messaging
+
+### Feature Display System
+- **All Features Shown**: Both enabled and disabled features are displayed
+- **Visual Differentiation**: 
+  - Enabled features: Blue checkmark icon, normal text
+  - Disabled features: Gray X icon, grayed text with strikethrough
+- **Fixed Feature List**: Consistent 11 features across all products
+- **Dynamic State**: Feature states loaded from API product data
 
 ### Product Selection
 - Checkbox selection with visual feedback

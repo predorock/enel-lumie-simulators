@@ -15,11 +15,13 @@ const FEATURE_MAPPING = {
   Autodiagnosi: "Autodiagnosi (Funzione Smart Diagnosis)"
 };
 
-// Transform product features from API format to display format
+// Transform product features from API format to display format - showing ALL features
 const transformProductFeatures = (apiFeatures) => {
-  return Object.entries(apiFeatures)
-    .filter(([key, value]) => value === true)
-    .map(([key]) => FEATURE_MAPPING[key] || key);
+  return Object.entries(FEATURE_MAPPING).map(([apiKey, displayName]) => ({
+    key: apiKey,
+    name: displayName,
+    enabled: apiFeatures[apiKey] === true
+  }));
 };
 
 // Transform product from API format to display format

@@ -68,7 +68,6 @@ const AcProductDisplayContainer = ({
     features: product.features,
     showRecommendationBadge: product.brand === 'Daikin', // Show badge for Daikin products
     showCheckbox: true,
-    checkboxLabel: "Scegli questo prodotto",
     detailsLink: "Visualizza scheda prodotto",
     className: "h-full",
     // Add selection handling
