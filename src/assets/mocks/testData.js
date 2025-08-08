@@ -89,7 +89,34 @@ export default {
           "type": "BrandSelector",
           "props": {
             "title": "Quale brand di climatizzatore preferisce?",
-            "stateProperty": "selectedBrand"
+            "stateProperty": "investmentOption"
+          }
+        },
+        {
+          "type": "OptionSelector",
+          "props": {
+            "title": "Qual è l'investimento più adatto al cliente?",
+            "options": [
+              {
+                "id": "conveniente",
+                "name": "Più conveniente",
+                "value": "conveniente",
+                "icon": "empty"
+              },
+              {
+                "id": "qualita_prezzo",
+                "name": "Miglior rapporto qualità/prezzo",
+                "value": "qualita_prezzo",
+                "icon": "half"
+              },
+              {
+                "id": "top_di_gamma",
+                "name": "Top di gamma",
+                "value": "top_di_gamma",
+                "icon": "full"
+              }
+            ],
+            "stateProperty": "investmentOption"
           }
         }
       ]

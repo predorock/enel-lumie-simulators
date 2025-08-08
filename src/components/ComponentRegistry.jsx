@@ -16,6 +16,7 @@ import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulBrandSelector from './StatefulBrandSelector';
+import StatefulOptionSelector from './StatefulOptionSelector';
 import RoomBanner from './ui/RoomBanner';
 
 // Text component for simple text content
@@ -63,6 +64,7 @@ const componentRegistry = {
   AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
+  OptionSelector: (props) => <StatefulOptionSelector {...props} />,
   // Add more components as needed
 };
 
