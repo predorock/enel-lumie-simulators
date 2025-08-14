@@ -67,12 +67,11 @@ const CustomSelect = ({
       {/* Floating Label */}
       {displayLabel && (
         <label 
-          className={`absolute left-2 text-sm transition-all duration-200 pointer-events-none ${
+          className={`absolute left-2 text-sm transition-all duration-200 pointer-events-none font-enel ${
             hasValue || isOpen
               ? 'top-0.5 text-[#667790] text-xs' 
               : 'top-2.5 text-[#667790]'
           }`}
-          style={{ fontFamily: 'Roobert' }}
         >
           {displayLabel}
         </label>
@@ -81,10 +80,9 @@ const CustomSelect = ({
       {/* Select Button */}
       <button
         type="button"
-        className={`box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-full px-2 border border-[#667790] rounded text-sm text-[#131416] bg-white focus:outline-none focus:ring-2 focus:ring-[#002466] focus:border-transparent cursor-pointer ${
+        className={`box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-full px-2 border border-[#667790] rounded text-sm text-[#131416] bg-white focus:outline-none focus:ring-2 focus:ring-[#002466] focus:border-transparent cursor-pointer font-enel ${
           hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
         }`}
-        style={{ fontFamily: 'Roobert' }}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="basis-0 grow leading-[15px] text-left truncate">
@@ -118,8 +116,7 @@ const CustomSelect = ({
                 >
                   <div className="basis-0 grow flex flex-col gap-0.5 items-start justify-center">
                     <div 
-                      className="leading-[15px] text-[13px] text-left truncate w-full"
-                      style={{ fontFamily: 'Roobert' }}
+                      className="leading-[15px] text-[13px] text-left truncate w-full font-enel"
                     >
                       {option.label}
                     </div>

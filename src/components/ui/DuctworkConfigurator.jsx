@@ -52,8 +52,7 @@ const DuctworkConfigurator = ({
                   <AirConditioningIcon type={item.type} className="w-6 h-6" />
                 </div>
                 <div 
-                  className="text-[18px] leading-[27px] text-[#131416] text-nowrap"
-                  style={{ fontFamily: 'Roobert' }}
+                  className="text-[18px] leading-[27px] text-[#131416] text-nowrap font-enel"
                 >
                   {item.label}
                 </div>
@@ -80,14 +79,12 @@ const DuctworkConfigurator = ({
               <div className="bg-[#eff2f7] flex flex-row gap-4 h-full items-center justify-end px-2 rounded-xl">
                 <div className="flex flex-row gap-2 items-center justify-end">
                   <div 
-                    className="text-[14px] leading-[21px] text-[#272c34] text-right"
-                    style={{ fontFamily: 'Roobert Bold' }}
+                    className="text-[14px] leading-[21px] text-[#272c34] text-right font-enel-bold"
                   >
                     Prezzo finale
                   </div>
                   <div 
-                    className="text-[18px] leading-[27px] text-[#272c34] text-right"
-                    style={{ fontFamily: 'Roobert Bold' }}
+                    className="text-[18px] leading-[27px] text-[#272c34] text-right font-enel-bold"
                   >
                     {formatCurrency(pricePerUnit)}
                   </div>

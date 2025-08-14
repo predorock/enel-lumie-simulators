@@ -57,8 +57,8 @@ export const infoIconRegistry = {
         popoverClassName: "max-w-[300px]",
         content: (
             <div>
-                <h4 className="text-[#131416] font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
-                    Canalizzazioni
+                <h4 className="text-[#131416] font-semibold mb-2 font-enel-bold">
+                    Come si sceglie la tipologia di installazione?
                 </h4>
                 <p className="text-[#667790] text-sm">
                     Seleziona la lunghezza delle canalizzazioni necessarie per il collegamento tra le unità.

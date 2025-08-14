@@ -56,10 +56,10 @@ const RoomBanner = ({
             {/* Text Content */}
             <div className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-center min-h-px min-w-px p-0 relative shrink-0">
               <div className="box-border content-stretch flex flex-col gap-0.5 items-start justify-center p-0 relative shrink-0 w-full">
-                <div className="flex flex-col font-['Roobert'] justify-center leading-none not-italic relative shrink-0 text-[#131416] text-sm text-left w-full">
-                  <p className="leading-[21px] font-['Roobert'] font-normal">
+                <div className="flex flex-col font-enel justify-center leading-none not-italic relative shrink-0 text-[#131416] text-sm text-left w-full">
+                  <p className="leading-[21px] font-enel font-normal">
                     Questo Monosplit deve climatizzare una stanza di{' '}
-                    <span className="font-['Roobert_Bold'] font-bold">
+                    <span className="font-enel-bold font-bold">
                       {roomSize} {unit}
                     </span>
                   </p>

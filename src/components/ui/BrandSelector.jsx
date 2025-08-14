@@ -48,7 +48,7 @@ export default function BrandSelector({
     <div className={`flex flex-col gap-4 ${className}`}>
       {/* Title section */}
       {title && (
-        <div className="font-['Roobert'] font-bold text-[#131416] text-[20px] tracking-[0.4px] leading-[30px]">
+        <div className="font-enel-bold font-bold text-[#131416] text-[20px] tracking-[0.4px] leading-[30px]">
           {title}
         </div>
       )}

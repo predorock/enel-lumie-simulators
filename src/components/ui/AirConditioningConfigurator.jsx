@@ -34,7 +34,7 @@ const ConfigurationRow = ({
           <div className="relative shrink-0 w-6 h-6 text-[#667790]">
             <AirConditioningIcon type={iconType} />
           </div>
-          <div className="font-['Roobert'] font-normal leading-none not-italic relative shrink-0 text-[#131416] text-lg text-left text-nowrap">
+          <div className="font-enel font-normal leading-none not-italic relative shrink-0 text-[#131416] text-lg text-left text-nowrap">
             <p className="block leading-[27px] whitespace-pre">
               {type}
             </p>
@@ -146,12 +146,12 @@ const AirConditioningConfigurator = ({
       {/* Title Section */}
       <div className="box-border content-stretch flex flex-row gap-1 items-center justify-start p-0 relative shrink-0 w-full">
         <div className="basis-0 box-border content-stretch flex flex-col gap-1 grow items-start justify-start leading-none not-italic p-0 relative shrink-0 text-left">
-          <div className="flex flex-col font-['Roobert_Bold'] font-bold justify-center relative shrink-0 text-[#131416] text-xl tracking-[0.4px] w-full">
+          <div className="flex flex-col font-enel-bold font-bold justify-center relative shrink-0 text-[#131416] text-xl tracking-[0.4px] w-full">
             <p className="block leading-[30px]">
               Chiedi al cliente quale tipologia di installazione dovrà essere fatta
             </p>
           </div>
-          <div className="flex flex-col font-['Roobert'] font-normal justify-center relative shrink-0 text-[#667790] text-sm w-full">
+          <div className="flex flex-col font-enel font-normal justify-center relative shrink-0 text-[#667790] text-sm w-full">
             <p className="block leading-[21px]">
               Per ogni impianto, indicare la tipologia di installazione associata e la metratura della stanza da climatizzare
             </p>

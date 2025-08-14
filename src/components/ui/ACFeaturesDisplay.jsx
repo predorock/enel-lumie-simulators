@@ -70,13 +70,13 @@ const ACFeaturesDisplay = ({
                       </div>
                     </div>
                   </div>
-                  <div className="font-['Roobert_ENEL:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
+                  <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
                     <p className="block leading-[18px] whitespace-pre">Consigliata</p>
                   </div>
-                  <div className="font-['Roobert_ENEL:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
+                  <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
                     <p className="block leading-[18px] whitespace-pre">-</p>
                   </div>
-                  <div className="font-['Roobert_ENEL:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
+                  <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
                     <p className="block leading-[18px] whitespace-pre">Top di gamma</p>
                   </div>
                 </div>
@@ -92,12 +92,12 @@ const ACFeaturesDisplay = ({
               <div className="flex flex-col items-start justify-start p-0 relative shrink-0 w-full">
                 <div className="flex flex-row h-0.5 items-center justify-center p-0 shrink-0 w-full"></div>
                 <div className="flex flex-row gap-1 items-center justify-start p-0 relative shrink-0 w-full">
-                  <div className="basis-0 font-['Roobert_ENEL:Bold',_sans-serif] grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[18px] text-left">
+                  <div className="basis-0 font-enel-bold grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[18px] text-left">
                     <p className="block leading-[24px]">{productName}</p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col font-['Roobert_ENEL:Regular',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#667790] text-[0px] text-left w-full">
+              <div className="flex flex-col font-enel justify-center leading-[0] not-italic relative shrink-0 text-[#667790] text-[0px] text-left w-full">
                 <p className="leading-[21px]">
                   <span className="text-[14px]">{productDescription}</span>
                 </p>
@@ -107,18 +107,18 @@ const ACFeaturesDisplay = ({
             {/* Price Section */}
             <div className="flex flex-col gap-2 items-end justify-start p-0 relative shrink-0">
               <div className="flex flex-row items-end justify-end p-0 relative shrink-0 w-full">
-                <div className="bg-clip-text bg-gradient-to-r flex flex-col font-['Roobert_ENEL:Bold',_sans-serif] from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[48px] text-left text-nowrap to-[#3b80ff] tracking-[-1px] extra-thick-text"
+                <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[48px] text-left text-nowrap to-[#3b80ff] tracking-[-1px] extra-thick-text"
                      style={{ WebkitTextFillColor: "transparent" }}>
                   <p className="adjustLetterSpacing block leading-[42px] whitespace-pre">{price.split('.')[0]}</p>
                 </div>
                 <div className="flex flex-row items-end self-stretch">
                   <div className="flex flex-col h-full items-start justify-between p-0 relative shrink-0">
-                    <div className="bg-clip-text bg-gradient-to-r flex flex-col font-['Roobert_ENEL:Bold',_sans-serif] from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
+                    <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
                          style={{ WebkitTextFillColor: "transparent" }}>
                       <p className="block leading-[14px] whitespace-pre">,{price.split('.')[1] || '00'}{currency}*</p>
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center pl-1 pr-0 py-0 relative shrink-0">
-                      <div className="bg-clip-text bg-gradient-to-r flex flex-col font-['Roobert_ENEL:Bold',_sans-serif] from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
+                      <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
                            style={{ WebkitTextFillColor: "transparent" }}>
                         <p className="block leading-[14px] whitespace-pre">{priceNote}</p>
                       </div>
@@ -131,7 +131,7 @@ const ACFeaturesDisplay = ({
 
           {/* Features Section */}
           <div className="bg-[#f4f8ff] flex flex-col gap-3 items-start justify-start p-[12px] relative rounded-lg shrink-0 w-full">
-            <div className="font-['Roobert_ENEL:Bold',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#272c34] text-[12px] text-left w-full">
+            <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#272c34] text-[12px] text-left w-full">
               <p className="block leading-[18px]">Funzionalità del prodotto</p>
             </div>
             
@@ -162,8 +162,8 @@ const ACFeaturesDisplay = ({
                     </div>
                     <div className={`basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[12px] text-left ${
                       isEnabled 
-                        ? 'font-["Roobert_ENEL:Bold",_sans-serif]' 
-                        : 'font-["Roobert_ENEL:Regular",_sans-serif] line-through'
+                        ? 'font-enel-bold' 
+                        : 'font-enel line-through'
                     }`}>
                       <p className="block leading-[18px]">{featureName}</p>
                     </div>
@@ -176,7 +176,7 @@ const ACFeaturesDisplay = ({
           {/* Details Link */}
           <div className="flex flex-row gap-1 items-center justify-start overflow-clip px-0 py-0.5 relative rounded-sm shrink-0">
             <div className="flex flex-row items-center justify-start p-0 relative shrink-0">
-              <div className="font-['Roobert_ENEL:Regular',_sans-serif] leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#5738ff] text-[12px] text-left text-nowrap">
+              <div className="font-enel leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#5738ff] text-[12px] text-left text-nowrap">
                 <button 
                   onClick={onDetailsClick}
                   className="block leading-[12px] overflow-inherit whitespace-pre hover:underline"
@@ -213,7 +213,7 @@ const ACFeaturesDisplay = ({
                   )}
                 </div>
               </div>
-              <div className="font-['Roobert_ENEL:Regular',_sans-serif] leading-[0] not-italic relative shrink-0 text-[#000000] text-[16px] text-left text-nowrap">
+              <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#000000] text-[16px] text-left text-nowrap">
                 <p className="block leading-[24px] whitespace-pre">{checkboxLabel}</p>
               </div>
             </div>

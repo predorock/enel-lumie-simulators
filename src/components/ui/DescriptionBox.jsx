@@ -29,14 +29,14 @@ export default function DescriptionBox({
           
           {/* Title */}
           {title && (
-            <div className="font-['Roobert'] font-bold text-[#131416] text-2xl tracking-[0.4px] leading-[30px]">
+            <div className="font-enel-bold font-bold text-[#131416] text-2xl tracking-[0.4px] leading-[30px]">
               {title}
             </div>
           )}
           
           {/* Step indicator - right after title */}
           {step && (
-            <div className="font-['Roobert'] font-bold text-[#b8114f] text-2xl tracking-[0.4px] leading-[30px]">
+            <div className="font-enel-bold font-bold text-[#b8114f] text-2xl tracking-[0.4px] leading-[30px]">
               {step}
             </div>
           )}
@@ -46,7 +46,7 @@ export default function DescriptionBox({
       {/* Description */}
       {description && (
         <div
-          className="flex flex-col font-['Roobert'] font-normal justify-center relative shrink-0 text-[#667790] text-[14px] max-w-[588px]"
+          className="flex flex-col font-enel font-normal justify-center relative shrink-0 text-[#667790] text-[14px] max-w-[588px]"
         >
           <p className="block leading-[21px]">
             {description}

@@ -114,7 +114,7 @@ const SplitterQtyConfigurator = ({
                 <div className="relative shrink-0 size-6 text-[#131416]">
                   <AirConditioningIcon type={getIconType(itemKey)} />
                 </div>
-                <div className="font-['Roobert'] leading-[0] not-italic relative shrink-0 text-[#131416] text-[18px] text-left text-nowrap">
+                <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#131416] text-[18px] text-left text-nowrap">
                   <p className="block leading-[27px] whitespace-pre">{item.label}</p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ const SplitterQtyConfigurator = ({
                   <div className="basis-0 box-border content-stretch flex flex-col gap-0.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
                     <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded shrink-0 w-full border border-[#667790]">
                       <div className="box-border content-stretch flex flex-row gap-1 items-center justify-center overflow-clip p-0 relative size-full">
-                        <div className="basis-0 font-['Roobert'] grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#131416] text-[16px] text-center text-nowrap">
+                        <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#131416] text-[16px] text-center text-nowrap">
                           <p className="block leading-[16px]">
                             {currentValue}
                           </p>
@@ -175,7 +175,7 @@ const SplitterQtyConfigurator = ({
                 {/* Price Display */}
                 {showPriceDisplay && getDisplayPrice(itemKey) > 0 && currentValue > 0 && (
                   <div className="bg-gray-100 px-3 py-2 rounded ml-4">
-                    <span className="text-[13px] font-bold text-gray-700" style={{ fontFamily: 'Roobert Bold' }}>
+                    <span className="text-[13px] font-bold text-gray-700 font-enel-bold">
                       {formatCurrency(getDisplayPrice(itemKey))}
                     </span>
                   </div>

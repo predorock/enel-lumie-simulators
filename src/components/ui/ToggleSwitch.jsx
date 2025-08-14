@@ -66,7 +66,7 @@ export default function ToggleSwitch({
         <div className="flex flex-col gap-1 items-start justify-center flex-grow">
           <label
             className={cn(
-              "font-['Roobert'] font-bold text-[#131416] cursor-pointer select-none leading-6",
+              "font-enel font-bold text-[#131416] cursor-pointer select-none leading-6",
               currentSize.text,
               {
                 "opacity-50 cursor-not-allowed": disabled

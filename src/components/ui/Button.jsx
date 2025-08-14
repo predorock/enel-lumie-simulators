@@ -52,7 +52,7 @@ export default function Button({
       onClick={onClick}
       className={cn(
         // Base styles
-        "relative inline-flex items-center justify-center gap-2 rounded-lg font-['Roobert'] font-regular transition-all duration-200 ease-out",
+        "relative inline-flex items-center justify-center gap-2 rounded-lg font-enel font-regular transition-all duration-200 ease-out",
         "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
         "disabled:cursor-not-allowed hover:cursor-pointer",
         

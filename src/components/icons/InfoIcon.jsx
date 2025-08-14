@@ -110,7 +110,7 @@ export default function InfoIcon({
                     <div className={getArrowClasses()}></div>
                     
                     {/* Content */}
-                    <div className="text-sm" style={{ fontFamily: 'Roobert' }}>
+                    <div className="text-sm font-enel">
                         {typeof popoverContent === 'string' ? (
                             <p className="text-[#131416] leading-relaxed">{popoverContent}</p>
                         ) : (

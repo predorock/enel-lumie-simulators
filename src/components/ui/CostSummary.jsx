@@ -20,8 +20,7 @@ const CostSummary = ({ containerClassName = '' }) => {
         {/* Title section */}
         <div className="mb-3">
           <h3
-            className="text-white text-[20px] font-bold leading-[30px] tracking-[0.4px]"
-            style={{ fontFamily: 'Roobert Bold' }}
+            className="text-white text-[20px] font-bold leading-[30px] tracking-[0.4px] font-enel-bold"
           >
             PREVENTIVO DEL CLIMATIZZATORE
           </h3>
@@ -32,14 +31,12 @@ const CostSummary = ({ containerClassName = '' }) => {
           {/* AC Unit Cost Section */}
           <div className="flex flex-col items-start min-w-0 flex-shrink-0">
             <span
-              className="text-[#ede9f2] text-xs leading-tight font-bold"
-              style={{ fontFamily: 'Roobert Bold' }}
+              className="text-[#ede9f2] text-xs leading-tight font-bold font-enel-bold"
             >
               Spese installazione
             </span>
             <span
-              className="text-white text-lg leading-tight tracking-[0.2px] font-bold"
-              style={{ fontFamily: 'Roobert Bold' }}
+              className="text-white text-lg leading-tight tracking-[0.2px] font-bold font-enel-bold"
             >
               {installPrice > 0 ? formatCurrency(installPrice) : '–'}
             </span>
@@ -48,14 +45,12 @@ const CostSummary = ({ containerClassName = '' }) => {
           {/* Services Cost Section */}
           <div className="flex flex-col items-start min-w-0 flex-shrink-0">
             <span
-              className="text-[#ede9f2] text-xs leading-tight font-bold"
-              style={{ fontFamily: 'Roobert Bold' }}
+              className="text-[#ede9f2] text-xs leading-tight font-bold font-enel-bold"
             >
               Costo climatizzatore
             </span>
             <span
-              className="text-white text-lg leading-tight tracking-[0.2px] font-bold"
-              style={{ fontFamily: 'Roobert Bold' }}
+              className="text-white text-lg leading-tight tracking-[0.2px] font-bold font-enel-bold"
             >
               {productsTotal > 0 ? formatCurrency(productsTotal) : '–'}
             </span>
@@ -67,14 +62,12 @@ const CostSummary = ({ containerClassName = '' }) => {
           {/* Total Cost Section - right aligned */}
           <div className="flex flex-col items-end text-right flex-1 min-w-0">
             <span
-              className="text-[#ede9f2] text-xs leading-tight font-bold w-full text-nowrap"
-              style={{ fontFamily: 'Roobert Bold' }}
+              className="text-[#ede9f2] text-xs leading-tight font-bold w-full text-nowrap font-enel-bold"
             >
               Costo totale climatizzatore
             </span>
             <span
-              className="text-white text-xl leading-tight tracking-[0.2px] font-bold w-full"
-              style={{ fontFamily: 'Roobert Bold' }}
+              className="text-white text-xl leading-tight tracking-[0.2px] font-bold w-full font-enel-bold"
             >
               {grandTotal > 0 ? formatCurrency(grandTotal) : '–'}
             </span>

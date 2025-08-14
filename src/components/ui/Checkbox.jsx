@@ -109,7 +109,7 @@ export default function Checkbox({
       {label && (
         <label
           className={cn(
-            "font-['Roobert'] text-[#131416] cursor-pointer select-none",
+            "font-enel text-[#131416] cursor-pointer select-none",
             currentSize.text,
             {
               "opacity-50 cursor-not-allowed": disabled

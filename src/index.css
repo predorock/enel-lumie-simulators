@@ -1,19 +1,25 @@
 @font-face {
-  font-family: "Roobert";
+  font-family: "Roobert ENEL";
   src: url("./assets/fonts/WEB/RoobertENEL-Regular.woff") format("woff"),
     url("./assets/fonts/WEB/RoobertENEL-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Roobert Light";
+  font-family: "Roobert ENEL Light";
   src: url("./assets/fonts/WEB/RoobertENEL-Light.woff") format("woff"),
     url("./assets/fonts/WEB/RoobertENEL-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Roobert Bold";
+  font-family: "Roobert ENEL Bold";
   src: url("./assets/fonts/WEB/RoobertENEL-Bold.woff") format("woff"),
     url("./assets/fonts/WEB/RoobertENEL-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
 }
 
 @import "tailwindcss";
@@ -26,11 +32,29 @@
 /* Custom base styles */
 @layer base {
   html {
-    font-family: "Roobert";
+    font-family: "Roobert ENEL", sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Roobert";
+    font-family: "Roobert ENEL", sans-serif;
+  }
+}
+
+/* ENEL Font Utilities */
+@layer utilities {
+  .font-enel {
+    font-family: "Roobert ENEL", sans-serif;
+    font-weight: 400;
+  }
+  
+  .font-enel-light {
+    font-family: "Roobert ENEL Light", sans-serif;
+    font-weight: 300;
+  }
+  
+  .font-enel-bold {
+    font-family: "Roobert ENEL Bold", sans-serif;
+    font-weight: 700;
   }
 }
 

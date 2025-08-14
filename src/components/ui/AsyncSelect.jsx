@@ -4,27 +4,27 @@ import useAppStore from '../../store/useAppStore';
 // Checkmark icon for selected items
 const CheckmarkIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 // Expand More Icon for dropdown arrow
 const ExpandMoreIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 6l4 4 4-4" stroke="#667790" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M4 6l4 4 4-4" stroke="#667790" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 // Loading Spinner Icon
 const LoadingIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-spin">
-    <path d="M8 1.5A6.5 6.5 0 108 14.5" stroke="#667790" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M8 1.5A6.5 6.5 0 108 14.5" stroke="#667790" strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
 
-const AsyncSelect = ({ 
-  value = '', 
-  onChange, 
+const AsyncSelect = ({
+  value = '',
+  onChange,
   placeholder = 'Select an option',
   label = '',
   className = '',
@@ -99,11 +99,11 @@ const AsyncSelect = ({
   const displayLabel = label || placeholder;
 
   // Filter options based on search term
-  const filteredOptions = searchable && searchTerm 
-    ? options.filter(option => 
-        option.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        option.value.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+  const filteredOptions = searchable && searchTerm
+    ? options.filter(option =>
+      option.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      option.value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
     : options;
 
   const handleDropdownToggle = () => {
@@ -117,13 +117,12 @@ const AsyncSelect = ({
     <div className={`relative ${className}`} ref={containerRef}>
       {/* Floating Label */}
       {displayLabel && (
-        <label 
-          className={`absolute left-2 text-sm transition-all duration-200 pointer-events-none ${
-            hasValue || isOpen
-              ? 'top-0.5 text-[#667790] text-xs' 
+        <label
+          className={`absolute font-enel left-2 text-sm transition-all duration-200 pointer-events-none ${hasValue || isOpen
+              ? 'top-0.5 text-[#667790] text-xs'
               : 'top-2.5 text-[#667790]'
-          }`}
-          style={{ fontFamily: 'Roobert' }}
+            }`}
+
         >
           {displayLabel}
         </label>
@@ -132,10 +131,9 @@ const AsyncSelect = ({
       {/* Select Button */}
       <button
         type="button"
-        className={`box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-[383px] px-2 border border-[#667790] rounded text-sm text-[#131416] bg-white focus:outline-none focus:ring-2 focus:ring-[#002466] focus:border-transparent cursor-pointer ${
-          hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
-        } ${isLoading ? 'opacity-75' : ''}`}
-        style={{ fontFamily: 'Roobert' }}
+        className={`font-enel box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-[383px] px-2 border border-[#667790] rounded text-sm text-[#131416] bg-white focus:outline-none focus:ring-2 focus:ring-[#002466] focus:border-transparent cursor-pointer ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
+          } ${isLoading ? 'opacity-75' : ''}`}
+
         onClick={handleDropdownToggle}
         disabled={isLoading}
       >
@@ -150,7 +148,7 @@ const AsyncSelect = ({
       {/* Dropdown List */}
       {isOpen && (
         <div className="absolute top-full left-0 right-0 z-10 mt-1 w-[383px]">
-          <div 
+          <div
             ref={dropdownRef}
             className="bg-white box-border border border-[#667790] rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] py-1 w-full transition-all duration-200"
             style={{ maxHeight }}
@@ -165,7 +163,7 @@ const AsyncSelect = ({
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder={searchPlaceholder}
                   className="w-full px-2 py-1 text-sm border border-[#c2cddd] rounded focus:outline-none focus:ring-1 focus:ring-[#002466] focus:border-transparent"
-                  style={{ fontFamily: 'Roobert' }}
+
                   onClick={(e) => e.stopPropagation()}
                 />
               </div>
@@ -173,16 +171,16 @@ const AsyncSelect = ({
 
             <div className="overflow-y-auto" style={{ maxHeight: searchable ? `calc(${maxHeight} - 50px)` : maxHeight }}>
               {error ? (
-                <div className="px-3 py-4 text-sm text-red-600 flex items-center gap-2" style={{ fontFamily: 'Roobert' }}>
+                <div className="px-3 py-4 text-sm text-red-600 flex items-center gap-2">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
-                    <path d="M8 4v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
+                    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="2" fill="none" />
+                    <path d="M8 4v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="8" cy="11" r="0.5" fill="currentColor" />
                   </svg>
                   Errore nel caricamento: {error}
                 </div>
               ) : isLoading ? (
-                <div className="px-3 py-6 flex flex-col items-center justify-center gap-3" style={{ fontFamily: 'Roobert' }}>
+                <div className="px-3 py-6 flex flex-col items-center justify-center gap-3">
                   <div className="relative">
                     <div className="w-8 h-8 border-2 border-[#e0e6ed] rounded-full"></div>
                     <div className="absolute top-0 left-0 w-8 h-8 border-2 border-[#5738ff] border-t-transparent rounded-full animate-spin"></div>
@@ -193,10 +191,10 @@ const AsyncSelect = ({
                   </div>
                 </div>
               ) : filteredOptions.length === 0 ? (
-                <div className="px-3 py-4 flex flex-col items-center justify-center gap-2" style={{ fontFamily: 'Roobert' }}>
+                <div className="px-3 py-4 flex flex-col items-center justify-center gap-2">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#c2cddd]">
-                    <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
+                    <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   <div className="text-sm text-[#667790] text-center">
                     <div className="font-medium">
@@ -216,16 +214,16 @@ const AsyncSelect = ({
                     onClick={() => handleSelect(option.value)}
                     className={`
                       box-border flex flex-row gap-4 h-10 items-center justify-start px-3 py-2 cursor-pointer transition-colors
-                      ${isSelected(option.value) 
-                        ? 'bg-[#f7f8fb] text-[#5738ff]' 
+                      ${isSelected(option.value)
+                        ? 'bg-[#f7f8fb] text-[#5738ff]'
                         : 'bg-white text-[#131416] hover:bg-[#f7f8fb]'
                       }
                     `}
                   >
                     <div className="basis-0 grow flex flex-col gap-0.5 items-start justify-center">
-                      <div 
+                      <div
                         className="leading-[15px] text-[13px] text-left truncate w-full"
-                        style={{ fontFamily: 'Roobert' }}
+
                       >
                         {option.label}
                       </div>
