@@ -70,7 +70,6 @@ const componentRegistry = {
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
   OptionSelector: (props) => <StatefulOptionSelector {...props} />,
-  AcProductDisplayContainer: (props) => <StatefulAcProductDisplayContainer {...props} />,
   // Add more components as needed
 };
 
