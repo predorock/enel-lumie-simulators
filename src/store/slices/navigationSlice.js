@@ -214,6 +214,49 @@ export const createNavigationSlice = (set, get) => ({
                             "props": {
                                 "roomSize": ac_config?.roomSize || "0",
                             }
+                        },
+                        {
+                            "type": "BrandSelector",
+                            "props": {
+                                "title": "Quale brand di climatizzatore preferisce?",
+                                "stateProperty": "investmentOption"
+                            }
+                        },
+                        {
+                            "type": "OptionSelector",
+                            "props": {
+                                "title": "Qual è l'investimento più adatto al cliente?",
+                                "options": [
+                                    {
+                                        "id": "conveniente",
+                                        "name": "Più conveniente",
+                                        "value": "conveniente",
+                                        "icon": "empty"
+                                    },
+                                    {
+                                        "id": "qualita_prezzo",
+                                        "name": "Miglior rapporto qualità/prezzo",
+                                        "value": "qualita_prezzo",
+                                        "icon": "half"
+                                    },
+                                    {
+                                        "id": "top_di_gamma",
+                                        "name": "Top di gamma",
+                                        "value": "top_di_gamma",
+                                        "icon": "full"
+                                    }
+                                ],
+                                "stateProperty": "investmentOption"
+                            }
+                        },
+                        {
+                            "type": "AcProductDisplayContainer",
+                            "props": {
+                                "showLoadingStates": true,
+                                "maxProducts": 100,
+                                "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
+                                "className": "mb-8"
+                            }
                         }
                     ]
                 };

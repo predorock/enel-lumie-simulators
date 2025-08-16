@@ -1,4 +1,3 @@
-import React from 'react';
 
 /**
  * InfoIcon Popover Content Registry
@@ -17,7 +16,7 @@ export const infoIconRegistry = {
                     <div className="box-border content-stretch flex flex-row gap-1 items-center justify-start p-0 relative shrink-0 w-full">
                         <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
                             <div className="basis-0 box-border content-stretch flex flex-row gap-2.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
-                                <div className="basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#131416] text-[14px] text-left font-bold" style={{ fontFamily: 'Roobert Bold' }}>
+                                <div className="basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#131416] text-[14px] text-left font-enel-bold">
                                     <p className="block leading-[21px]">
                                         Come scegliere la potenza del climatizzatore?
                                     </p>
@@ -25,7 +24,7 @@ export const infoIconRegistry = {
                             </div>
                         </div>
                     </div>
-                    <div className="leading-[21px] not-italic relative shrink-0 text-[#272c34] text-[14px] text-left w-full" style={{ fontFamily: 'Roobert' }}>
+                    <div className="leading-[21px] not-italic relative shrink-0 text-[#272c34] text-[14px] text-left w-full font-enel">
                         <p className="block mb-7">
                             Per scegliere correttamente i BTU del climatizzatore basta effettuare un calcolo moltiplicando le dimensioni della stanza da climatizzare con un coefficiente standard (K) di 340.
                         </p>
@@ -33,15 +32,15 @@ export const infoIconRegistry = {
                     </div>
                 </div>
                 <div className="bg-[#eff2f7] box-border content-stretch flex flex-col gap-3 items-center justify-start p-[8px] relative shrink-0 w-full">
-                    <div className="leading-[0] not-italic relative shrink-0 text-[#272c34] text-[0px] text-left w-full font-bold" style={{ fontFamily: 'Roobert Bold' }}>
+                    <div className="leading-[0] not-italic relative shrink-0 text-[#272c34] text-[0px] text-left w-full font-enel-bold">
                         <p>
                             <span className="leading-[21px] text-[14px]">30m</span>
-                            <span className="leading-[21px] not-italic text-[9.03px] align-super font-bold" style={{ fontFamily: 'Roobert Bold' }}>2 </span>
-                            <span className="leading-[18px] not-italic text-[12px]" style={{ fontFamily: 'Roobert' }}>
+                            <span className="leading-[21px] not-italic text-[9.03px] align-super font-enel-bold">2 </span>
+                            <span className="leading-[18px] not-italic text-[12px] font-enel">
                                 (metratura stanza)
                             </span>
                             <span className="leading-[21px] text-[14px]"> x 340 </span>
-                            <span className="leading-[18px] not-italic text-[12px]" style={{ fontFamily: 'Roobert' }}>(K) </span>
+                            <span className="leading-[18px] not-italic text-[12px] font-enel">(K) </span>
                             <span className="leading-[21px] text-[14px]">= 10.200 BTU</span>
                         </p>
                     </div>
