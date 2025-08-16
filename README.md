@@ -6,6 +6,29 @@ A sophisticated, component-driven React application built with Vite, Tailwind CS
 
 ---
 
+## 🚀 **Quick Start**
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## 📚 **Documentation**
+
+All documentation has been unified in the `docs/` folder:
+
+- **[📖 Complete Documentation](./docs/README.md)** - Main documentation hub
+- **[🏗️ Architecture Guide](./docs/architecture/README.md)** - Technical overview  
+- **[🧩 Component Library](./docs/components/README.md)** - UI components
+- **[🔧 Development Utilities](./docs/development-utilities.md)** - Scripts and tools
+- **[🎨 Font System](./docs/font-refactor.md)** - Typography guide
+
 ## 🏗️ **Technology Stack**
 
 ### **Core Framework**

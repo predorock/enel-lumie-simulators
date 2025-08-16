@@ -167,9 +167,11 @@ export const createNavigationSlice = (set, get) => ({
         const quantities = state.formData?.airconditioningQuantities || {};
         const dynamicPages = [];
 
+        const configToDo = Object.entries(quantities);
         // Generate pages for each split selection
-        Object.entries(quantities).forEach(([splitType, quantity]) => {
+        configToDo.forEach(([splitType, quantity], index) => {
             for (let i = 0; i < quantity; i++) {
+                const ac_config = state.formData?.airConditioningConfigs?.[`${splitType}_${i}`] || {};
                 const pageId = `scelta-climatizzatore-${splitType}-${i}`;
                 const page = {
                     id: pageId,
@@ -197,9 +199,20 @@ export const createNavigationSlice = (set, get) => ({
                     ],
                     components: [
                         {
+                            "type": "DescriptionBox",
+                            "props": {
+                                "title": "Scelta del clima",
+                                "description": ac_config?.description || "",
+                                "icon": splitType,
+                                "step": `${index + 1}/${configToDo.length}`,
+                                "stepColor": "purple",
+                                "layout": "horizontal"
+                            }
+                        },
+                        {
                             "type": "RoomBanner",
                             "props": {
-                                "roomSize": state.formData?.airConditioningConfigs[`${splitType}_${i}`].roomSize || "0",
+                                "roomSize": ac_config?.roomSize || "0",
                             }
                         }
                     ]

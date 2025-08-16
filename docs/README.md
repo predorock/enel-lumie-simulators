@@ -4,6 +4,28 @@
 
 **ENEL Lumiè Clima** is a sophisticated React-based web application designed for ENEL's climate control configurator system. The application provides a comprehensive, step-by-step interface for configuring air conditioning installations with dynamic pricing calculations, city selection, and advanced state management.
 
+## 📚 Documentation Index
+
+### **🏗️ Architecture & Setup**
+- [Development Guide](./development-guide.md) - Getting started with development
+- [Architecture Overview](./architecture/README.md) - Technical architecture details
+- [State Management](./architecture/state-management.md) - Zustand store patterns
+
+### **🧩 Components & UI**
+- [Component Library](./components/README.md) - Component documentation hub
+- [Design System](./architecture/design-system.md) - ENEL design patterns
+- [Font System](./font-refactor.md) - Typography and CSS classes
+
+### **🔧 Development Tools**
+- [Development Utilities](./development-utilities.md) - Scripts and automation
+- [Implementation Guides](./implementation/) - Specific feature implementations
+- [AI Guidelines](./ai-guidelines/README.md) - Development standards
+
+### **📋 Status & Instructions**
+- [Application Status](./APPLICATION_STATUS.md) - Current development state
+- [Product Instructions](./instructions/products/PRODUCTS.md) - Product configuration
+- [Price Instructions](./instructions/prices/PRICES.md) - Pricing system
+
 ## 🏗️ Architecture
 
 ### **Technology Stack**

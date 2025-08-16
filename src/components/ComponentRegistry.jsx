@@ -19,7 +19,6 @@ import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfig
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulBrandSelector from './StatefulBrandSelector';
 import StatefulOptionSelector from './StatefulOptionSelector';
-import StatefulAcProductDisplayContainer from './StatefulAcProductDisplayContainer';
 import RoomBanner from './ui/RoomBanner';
 
 // Text component for simple text content
