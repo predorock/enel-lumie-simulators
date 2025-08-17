@@ -164,105 +164,26 @@ export const createNavigationSlice = (set, get) => ({
     // Dynamic page management
     generateSplitPages: () => {
         const state = get();
+        // get configuration and qty from state
         const quantities = state.formData?.airconditioningQuantities || {};
-        const dynamicPages = [];
+        const configs = state.formData?.airConditioningConfigs || {};
+        // build informations to loop
+        const configsLoop = Object.keys(configs).reduce((acc, k) => {
+            const v = configs[k];
+            const [_type, _i] = k.split('_')
+            acc.push({
+                ...v,
+                type: _type
+            })
+            return acc;
+        }, [])
 
-        const configToDo = Object.entries(quantities);
-        // Generate pages for each split selection
-        configToDo.forEach(([splitType, quantity], index) => {
-            for (let i = 0; i < quantity; i++) {
-                const ac_config = state.formData?.airConditioningConfigs?.[`${splitType}_${i}`] || {};
-                const pageId = `scelta-climatizzatore-${splitType}-${i}`;
-                const page = {
-                    id: pageId,
-                    title: "Scegliete insieme il climatizzatore adatto!",
-                    step: 3,
-                    isDynamic: true,
-                    splitType: splitType,
-                    splitIndex: i,
-                    leftPanelComponents: [
-                        {
-                            type: "Image",
-                            props: {
-                                src: "cubo-condizionatore",
-                                alt: "Condizionatore Cubo",
-                                className: "z-10 relative w-auto h-auto max-w-[325px] mt-8",
-                                containerClassName: "flex justify-center items-center flex-1"
-                            }
-                        },
-                        {
-                            type: "CostSummary",
-                            props: {
-                                containerClassName: "mt-auto mb-4 self-end"
-                            }
-                        }
-                    ],
-                    components: [
-                        {
-                            "type": "DescriptionBox",
-                            "props": {
-                                "title": "Scelta del clima",
-                                "description": ac_config?.description || "",
-                                "icon": splitType,
-                                "step": `${index + 1}/${configToDo.length}`,
-                                "stepColor": "purple",
-                                "layout": "horizontal"
-                            }
-                        },
-                        {
-                            "type": "RoomBanner",
-                            "props": {
-                                "roomSize": ac_config?.roomSize || "0",
-                            }
-                        },
-                        {
-                            "type": "BrandSelector",
-                            "props": {
-                                "title": "Quale brand di climatizzatore preferisce?",
-                                "stateProperty": "investmentOption"
-                            }
-                        },
-                        {
-                            "type": "OptionSelector",
-                            "props": {
-                                "title": "Qual è l'investimento più adatto al cliente?",
-                                "options": [
-                                    {
-                                        "id": "conveniente",
-                                        "name": "Più conveniente",
-                                        "value": "conveniente",
-                                        "icon": "empty"
-                                    },
-                                    {
-                                        "id": "qualita_prezzo",
-                                        "name": "Miglior rapporto qualità/prezzo",
-                                        "value": "qualita_prezzo",
-                                        "icon": "half"
-                                    },
-                                    {
-                                        "id": "top_di_gamma",
-                                        "name": "Top di gamma",
-                                        "value": "top_di_gamma",
-                                        "icon": "full"
-                                    }
-                                ],
-                                "stateProperty": "investmentOption"
-                            }
-                        },
-                        {
-                            "type": "AcProductDisplayContainer",
-                            "props": {
-                                "showLoadingStates": true,
-                                "maxProducts": 100,
-                                "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
-                                "className": "mb-8"
-                            }
-                        }
-                    ]
-                };
-                dynamicPages.push(page);
-            }
-        });
+        const dynamicPages = configsLoop.map((config, index) => dynamicPageTemplate(
+            `scelta-climatizzatore-${config.type}-${index}`,
+            index,
+            configsLoop.length,
+            config
+        ))
 
         set({ dynamicPages });
     },
@@ -286,3 +207,116 @@ export const createNavigationSlice = (set, get) => ({
         return pagesConfig.pages.length;
     },
 });
+
+
+function dynamicPageTemplate(
+    pageId,
+    splitIndex,
+    splitTotal,
+    acConfig,
+) {
+    return {
+        id: pageId,
+        title: "Scegliete insieme il climatizzatore adatto!",
+        step: 3,
+        isDynamic: true,
+        splitType: acConfig?.type,
+        splitIndex: splitIndex,
+        leftPanelComponents: [
+            {
+                type: "Image",
+                props: {
+                    src: "cubo-condizionatore",
+                    alt: "Condizionatore Cubo",
+                    className: "z-10 relative w-auto h-auto max-w-[325px] mt-8",
+                    containerClassName: "flex justify-center items-center flex-1"
+                }
+            },
+            {
+                type: "CostSummary",
+                props: {
+                    containerClassName: "mt-auto mb-4 self-end"
+                }
+            }
+        ],
+        components: [
+            {
+                "type": "DescriptionBox",
+                "props": {
+                    "title": "Scelta del clima",
+                    "description": getInstallationTypeDescription(acConfig?.installationType),
+                    "icon": acConfig?.type || "",
+                    "step": `${splitIndex + 1}/${splitTotal}`,
+                    "stepColor": "purple",
+                    "layout": "horizontal"
+                }
+            },
+            {
+                "type": "RoomBanner",
+                "props": {
+                    "roomSize": acConfig?.roomSize || "0",
+                }
+            },
+            {
+                "type": "BrandSelector",
+                "props": {
+                    "title": "Quale brand di climatizzatore preferisce?",
+                    "stateProperty": "investmentOption"
+                }
+            },
+            {
+                "type": "OptionSelector",
+                "props": {
+                    "title": "Qual è l'investimento più adatto al cliente?",
+                    "options": [
+                        {
+                            "id": "conveniente",
+                            "name": "Più conveniente",
+                            "value": "conveniente",
+                            "icon": "empty"
+                        },
+                        {
+                            "id": "qualita_prezzo",
+                            "name": "Miglior rapporto qualità/prezzo",
+                            "value": "qualita_prezzo",
+                            "icon": "half"
+                        },
+                        {
+                            "id": "top_di_gamma",
+                            "name": "Top di gamma",
+                            "value": "top_di_gamma",
+                            "icon": "full"
+                        }
+                    ],
+                    "stateProperty": "investmentOption"
+                }
+            },
+            {
+                "type": "AcProductDisplayContainer",
+                "props": {
+                    "showLoadingStates": true,
+                    "maxProducts": 100,
+                    "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
+                    "className": "mb-8"
+                }
+            }
+        ]
+    };
+}
+
+function getInstallationTypeDescription(installationType) {
+    switch (installationType) {
+        case "nuova_con_predisposizione":
+            return "Nuova installazione con predisposizione";
+        case "nuova_senza_predisposizione":
+            return "Nuova installazione senza predisposizione";
+        case "sostituzione_monosplit":
+            return "Sostituzione monosplit";
+        case "sostituzione_dualsplit":
+            return "Sostituzione dualsplit";
+        case "sostituzione_trialsplit":
+            return "Sostituzione trialsplit";
+        default:
+            return "";
+    }
+}
