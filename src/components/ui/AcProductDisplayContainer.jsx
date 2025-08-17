@@ -1,6 +1,5 @@
 import ACFeaturesDisplay from './ACFeaturesDisplay';
 import InfoBanner from './InfoBanner';
-
 /**
  * AcProductDisplayContainer - Pure UI component that displays AC products
  * with filtering, loading states, and error handling
@@ -34,19 +33,12 @@ const AcProductDisplayContainer = ({
 
   // Convert product data to ACFeaturesDisplay props
   const getProductDisplayProps = (product) => ({
-    productName: product.name,
-    productDescription: `${product.brand} - Climatizzatore professionale`,
-    price: product.price,
-    currency: "€",
-    priceNote: "IVA inclusa",
-    features: product.features,
-    showRecommendationBadge: product.brand === 'Daikin', // Show badge for Daikin products
-    showCheckbox: true,
-    detailsLink: "Visualizza scheda prodotto",
+    ...product,
     className: "h-full",
     // Add selection handling
+    showCheckbox: true,
     onCheckboxChange: (selected) => handleProductSelection(product.id, selected),
-    isSelected: selectedProducts.includes(product.id)
+    isSelected: selectedProducts.includes(product.id),
   });
 
   if (showLoadingStates && loading) {

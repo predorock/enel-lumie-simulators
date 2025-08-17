@@ -25,16 +25,57 @@ const transformProductFeatures = (apiFeatures) => {
   }));
 };
 
+const recommendationProps = (product) => {
+  if (!product || !product.Category) {
+    return {
+      showRecommendationBadge: false
+    }
+  }
+
+  const category = product.Category.toLocaleLowerCase();
+
+  switch (category) {
+    case 'premium':
+      return {
+        recommendationLevel: "full",
+        recommendationText: "Top di gamma",
+        showRecommendationBadge: true
+      }
+    case 'medium':
+      return {
+        recommendationLevel: "half",
+        recommendationText: "Miglio rapporto qualità/prezzo",
+        showRecommendationBadge: true
+      }
+    case 'entry':
+      return {
+        recommendationLevel: "empty",
+        recommendationText: "Più conveniente",
+        showRecommendationBadge: true
+      }
+    default:
+      return {
+        showRecommendationBadge: false
+      }
+  }
+}
+
 // Transform product from API format to display format
 const transformProduct = (apiProduct) => ({
   id: `${apiProduct.Brand}-${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-'),
   name: apiProduct.Name,
+  description: `Per climatizzare stanze fino a ${apiProduct.m2}m²`,
   brand: apiProduct.Brand,
   price: apiProduct.Price.toFixed(2),
-  image: apiProduct.Image,
+  productImage: apiProduct.Image,
+  productimageAlt: apiProduct.Name,
   url: apiProduct.Url,
   features: transformProductFeatures(apiProduct.Features),
-  rawFeatures: apiProduct.Features
+  currency: "€",
+  priceNote: "IVA inclusa",
+  checkboxLabel: "Scegli questa soluzione",
+  detailsLink: "Visualizza la scheda dettagli del prodotto",
+  ...recommendationProps(apiProduct)
 });
 
 export const createProductsSlice = (set, get) => ({

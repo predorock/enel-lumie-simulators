@@ -2,6 +2,7 @@ import StatefulAcProductDisplayContainer from './StatefulAcProductDisplayContain
 import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
 import StatefulAsyncSelect from './StatefulAsyncSelect';
 import StatefulBrandSelector from './StatefulBrandSelector';
+import StatefulCheckbox from './StatefulCheckbox';
 import StatefulCustomSelect from './StatefulCustomSelect';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulInput from './StatefulInput';
@@ -45,6 +46,7 @@ const TitleComponent = ({ content, level = 2, className = "" }) => {
 // Component registry - maps component types to actual components
 const componentRegistry = {
   Toggle: (props) => <StatefulToggle {...props} />,
+  Checkbox: (props) => <StatefulCheckbox {...props} />,
   SearchInput: (props) => <StatefulInput inputType="SearchInput" {...props} />,
   TextInput: (props) => <StatefulInput inputType="TextInput" {...props} />,
   CustomSelect: (props) => <StatefulCustomSelect {...props} />,

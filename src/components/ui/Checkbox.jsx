@@ -1,125 +1,58 @@
-import cn from 'classnames';
-import { useState } from 'react';
-import checkmarkIcon from '../../assets/icons/checkmark.svg';
-
-export default function Checkbox({ 
-  label = "",
+import CheckMarkIcon from "../icons/CheckMarkIcon";
+/**
+ * Checkbox component following ENEL design system specifications
+ */
+const Checkbox = ({
   checked = false,
-  onChange,
-  className = "",
+  onChange = null,
+  label = "",
   disabled = false,
-  size = "md",
-  variant = "primary",
-  ...props 
-}) {
-  const [isChecked, setIsChecked] = useState(checked);
-
-  const handleChange = () => {
+  className = "",
+  id = null,
+  ...props
+}) => {
+  const handleChange = (e) => {
     if (disabled) return;
-    
-    const newValue = !isChecked;
-    setIsChecked(newValue);
-    
     if (onChange) {
-      onChange(newValue);
+      onChange(e.target.checked);
     }
   };
 
-  const sizeClasses = {
-    sm: {
-      box: "w-4 h-4",
-      text: "text-sm",
-      icon: "w-2.5 h-2.5"
-    },
-    md: {
-      box: "w-5 h-5", 
-      text: "text-base",
-      icon: "w-3 h-3"
-    },
-    lg: {
-      box: "w-6 h-6",
-      text: "text-lg", 
-      icon: "w-5 h-5"
-    }
-  };
-
-  const variantClasses = {
-    primary: {
-      checked: "bg-primary border-primary",
-      unchecked: "bg-white border-[#667790]",
-      hover: "hover:border-primary"
-    },
-    secondary: {
-      checked: "bg-secondary border-secondary",
-      unchecked: "bg-white border-[#667790]", 
-      hover: "hover:border-secondary"
-    }
-  };
-
-  const currentSize = sizeClasses[size];
-  const currentVariant = variantClasses[variant];
+  const checkboxId = id || `checkbox-${label.replace(/\s+/g, '-').toLowerCase()}`;
 
   return (
-    <div
-      className={cn(
-        "flex items-center gap-3",
-        className
-      )}
-      {...props}
-    >
-      {/* Checkbox */}
-      <div
-        className={cn(
-          "relative flex items-center justify-center rounded border-2 cursor-pointer transition-all duration-200 ease-in-out",
-          currentSize.box,
-          {
-            [currentVariant.checked]: isChecked,
-            [currentVariant.unchecked]: !isChecked,
-            [currentVariant.hover]: !disabled && !isChecked,
-            "cursor-not-allowed opacity-50": disabled,
-            "hover:shadow-sm": !disabled
-          }
-        )}
-        onClick={handleChange}
-        role="checkbox"
-        aria-checked={isChecked}
-        aria-disabled={disabled}
-        tabIndex={disabled ? -1 : 0}
-        onKeyDown={(e) => {
-          if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            handleChange();
-          }
-        }}
-      >
-        {/* Checkmark */}
-        {isChecked && (
-          <img 
-            src={checkmarkIcon} 
-            alt="Checked" 
-            className={cn(
-              "filter brightness-0 invert transition-opacity duration-150",
-              currentSize.icon
-            )}
-          />
+    <div className={`flex flex-row gap-2 items-center justify-start p-0 relative shrink-0 ${className}`} {...props}>
+      <div className={`relative rounded shrink-0 size-5 border-2 ${checked
+        ? 'bg-secondary border-secondary'
+        : 'bg-[#ffffff] border-[#667790]'
+        } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}>
+        <input
+          type="checkbox"
+          id={checkboxId}
+          checked={checked}
+          onChange={handleChange}
+          disabled={disabled}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
+        />
+        {checked && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <CheckMarkIcon />
+          </div>
         )}
       </div>
-
-      {/* Label */}
-      {label && (
-        <label
-          className={cn(
-            "font-enel text-[#131416] cursor-pointer select-none",
-            currentSize.text,
-            {
-              "opacity-50 cursor-not-allowed": disabled
-            }
-          )}
-          onClick={handleChange}
-        >
-          {label}
-        </label>
-      )}
-    </div>
+      {
+        label && (
+          <label
+            htmlFor={checkboxId}
+            className={`font-enel leading-[0] not-italic relative shrink-0 text-[#131416] text-[16px] text-left ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+              }`}
+          >
+            <p className="block leading-[24px]">{label}</p>
+          </label>
+        )
+      }
+    </div >
   );
-}
+};
+
+export default Checkbox;

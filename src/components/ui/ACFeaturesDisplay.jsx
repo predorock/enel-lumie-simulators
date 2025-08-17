@@ -1,4 +1,6 @@
-import React from 'react';
+
+import StarIcon from '../icons/StarIcon';
+import Checkbox from './Checkbox';
 
 /**
  * ACFeaturesDisplay component displays air conditioning unit product information and features
@@ -11,6 +13,8 @@ const ACFeaturesDisplay = ({
   price = "657.00",
   currency = "€",
   priceNote = "IVA inclusa",
+  productImage = null,
+  productImageAlt = "",
   features = [
     { key: "Led", name: "Schermo LED", enabled: true },
     { key: "Wifi", name: "Connettività Wi-Fi", enabled: true },
@@ -25,6 +29,8 @@ const ACFeaturesDisplay = ({
     { key: "Autodiagnosi", name: "Autodiagnosi (Funzione Smart Diagnosis)", enabled: true }
   ],
   showRecommendationBadge = true,
+  recommendationLevel = "full",
+  recommendationText = "Top di gamma",
   showCheckbox = true,
   checkboxLabel = "Scegli questa soluzione",
   detailsLink = "Visualizza la scheda dettagli del prodotto",
@@ -36,29 +42,36 @@ const ACFeaturesDisplay = ({
   return (
     <div className={`bg-white rounded-xl shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] p-4 ${className}`}>
       <div className="basis-0 flex flex-col gap-2 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
-        
+
         {/* Product Image with Badge */}
         <div className="bg-[#f7f8fb] flex flex-col-reverse h-[230px] items-center justify-center overflow-clip pb-8 pt-0 px-0 relative rounded-lg shrink-0 w-full">
-          <div className="bg-center bg-cover bg-no-repeat h-[147px] mb-[-32px] mix-blend-multiply order-2 shrink-0 w-[306px]">
-            {/* Product image placeholder */}
-            <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
-              <svg 
-                className="w-16 h-16 text-gray-400" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                />
-              </svg>
-            </div>
+          <div className="bg-center bg-fill bg-no-repeat mt-16 mix-blend-multiply order-2 shrink-0">
+            {productImage ? (
+              <img
+                src={productImage}
+                alt={productImageAlt || productName}
+                className="w-full h-full object-fill"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
+                <svg
+                  className="w-16 h-16 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  />
+                </svg>
+              </div>
+            )}
           </div>
-          
-          {/* Sale tag */}
+
+          {/* Recommendation Badge */}
           {showRecommendationBadge && (
             <div className="absolute h-8 left-0 order-1 top-0 w-full">
               <div className="flex flex-row-reverse h-8 items-start justify-end overflow-clip p-0 relative w-full">
@@ -66,7 +79,7 @@ const ACFeaturesDisplay = ({
                   <div className="flex flex-row gap-1 items-start justify-start p-0 relative shrink-0">
                     <div className="flex flex-row gap-2.5 items-start justify-start p-0 relative shrink-0">
                       <div className="relative shrink-0 size-6">
-                        <span className="text-white">⭐</span>
+                        <StarIcon type={recommendationLevel} className="text-white" />
                       </div>
                     </div>
                   </div>
@@ -77,7 +90,7 @@ const ACFeaturesDisplay = ({
                     <p className="block leading-[18px] whitespace-pre">-</p>
                   </div>
                   <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
-                    <p className="block leading-[18px] whitespace-pre">Top di gamma</p>
+                    <p className="block leading-[18px] whitespace-pre">{recommendationText}</p>
                   </div>
                 </div>
               </div>
@@ -108,18 +121,18 @@ const ACFeaturesDisplay = ({
             <div className="flex flex-col gap-2 items-end justify-start p-0 relative shrink-0">
               <div className="flex flex-row items-end justify-end p-0 relative shrink-0 w-full">
                 <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[48px] text-left text-nowrap to-[#3b80ff] tracking-[-1px] extra-thick-text"
-                     style={{ WebkitTextFillColor: "transparent" }}>
+                  style={{ WebkitTextFillColor: "transparent" }}>
                   <p className="adjustLetterSpacing block leading-[42px] whitespace-pre">{price.split('.')[0]}</p>
                 </div>
                 <div className="flex flex-row items-end self-stretch">
                   <div className="flex flex-col h-full items-start justify-between p-0 relative shrink-0">
                     <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
-                         style={{ WebkitTextFillColor: "transparent" }}>
+                      style={{ WebkitTextFillColor: "transparent" }}>
                       <p className="block leading-[14px] whitespace-pre">,{price.split('.')[1] || '00'}{currency}*</p>
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center pl-1 pr-0 py-0 relative shrink-0">
                       <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
-                           style={{ WebkitTextFillColor: "transparent" }}>
+                        style={{ WebkitTextFillColor: "transparent" }}>
                         <p className="block leading-[14px] whitespace-pre">{priceNote}</p>
                       </div>
                     </div>
@@ -134,37 +147,36 @@ const ACFeaturesDisplay = ({
             <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#272c34] text-[12px] text-left w-full">
               <p className="block leading-[18px]">Funzionalità del prodotto</p>
             </div>
-            
+
             {/* Divider */}
             <div className="h-px bg-[#cbdaf6] relative shrink-0 w-full"></div>
-            
+
             {/* Features List */}
             <div className="flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
               {features.map((feature, index) => {
                 const isEnabled = typeof feature === 'object' ? feature.enabled : true;
                 const featureName = typeof feature === 'object' ? feature.name : feature;
                 const featureKey = typeof feature === 'object' ? feature.key : `feature-${index}`;
-                
+
                 return (
                   <div key={featureKey} className="flex flex-row gap-[5px] items-start justify-start p-0 relative shrink-0 w-full">
                     <div className="relative shrink-0 size-4">
                       {isEnabled ? (
                         <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                          <circle cx="8" cy="8" r="8" fill="#0047cc"/>
-                          <path d="M6.5 8.5L7.5 9.5L10.5 6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          <circle cx="8" cy="8" r="8" fill="#0047cc" />
+                          <path d="M6.5 8.5L7.5 9.5L10.5 6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       ) : (
                         <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                          <circle cx="8" cy="8" r="8" fill="#667790"/>
-                          <path d="M6 6L10 10M10 6L6 10" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                          <circle cx="8" cy="8" r="8" fill="#667790" />
+                          <path d="M6 6L10 10M10 6L6 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
                         </svg>
                       )}
                     </div>
-                    <div className={`basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[12px] text-left ${
-                      isEnabled 
-                        ? 'font-enel-bold' 
-                        : 'font-enel line-through'
-                    }`}>
+                    <div className={`basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[12px] text-left ${isEnabled
+                      ? 'font-enel-bold'
+                      : 'font-enel line-through'
+                      }`}>
                       <p className="block leading-[18px]">{featureName}</p>
                     </div>
                   </div>
@@ -177,7 +189,7 @@ const ACFeaturesDisplay = ({
           <div className="flex flex-row gap-1 items-center justify-start overflow-clip px-0 py-0.5 relative rounded-sm shrink-0">
             <div className="flex flex-row items-center justify-start p-0 relative shrink-0">
               <div className="font-enel leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#5738ff] text-[12px] text-left text-nowrap">
-                <button 
+                <button
                   onClick={onDetailsClick}
                   className="block leading-[12px] overflow-inherit whitespace-pre hover:underline"
                 >
@@ -187,36 +199,19 @@ const ACFeaturesDisplay = ({
             </div>
             <div className="relative shrink-0 size-4">
               <svg className="w-4 h-4 text-[#5738ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>
           </div>
 
           {/* Selection Checkbox */}
           {showCheckbox && (
-            <div className="flex flex-row gap-2 items-start justify-start p-0 relative shrink-0">
-              <div className="flex flex-row gap-2 items-center justify-start p-0 relative shrink-0">
-                <div className="bg-[#ffffff] relative rounded shrink-0 size-4 border-2 border-[#667790]">
-                  <input
-                    type="checkbox"
-                    id={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
-                    checked={isSelected}
-                    onChange={(e) => onCheckboxChange && onCheckboxChange(e.target.checked)}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  {isSelected && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg className="w-3 h-3 text-[#0047cc]" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M6.5 8.5L7.5 9.5L10.5 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#000000] text-[16px] text-left text-nowrap">
-                <p className="block leading-[24px] whitespace-pre">{checkboxLabel}</p>
-              </div>
-            </div>
+            <Checkbox
+              checked={isSelected}
+              onChange={onCheckboxChange}
+              label={checkboxLabel}
+              id={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
+            />
           )}
         </div>
       </div>
