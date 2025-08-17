@@ -1,25 +1,22 @@
-import ToggleSwitch from './ui/ToggleSwitch';
-import SearchInput from './ui/SearchInput';
-import TextInput from './ui/TextInput';
+import StatefulAcProductDisplayContainer from './StatefulAcProductDisplayContainer';
+import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
+import StatefulAsyncSelect from './StatefulAsyncSelect';
+import StatefulBrandSelector from './StatefulBrandSelector';
+import StatefulCustomSelect from './StatefulCustomSelect';
+import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
+import StatefulInput from './StatefulInput';
+import StatefulOptionSelector from './StatefulOptionSelector';
+import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
+import StatefulToggle from './StatefulToggle';
+import ACFeaturesDisplay from './ui/ACFeaturesDisplay';
+import CostSummary from './ui/CostSummary';
 import DescriptionBox from './ui/DescriptionBox';
 import Divider from './ui/Divider';
-import InfoBanner from './ui/InfoBanner';
 import Image from './ui/Image';
-import CostSummary from './ui/CostSummary';
+import InfoBanner from './ui/InfoBanner';
+import RoomBanner from './ui/RoomBanner';
 import ServicePriceDisplay from './ui/ServicePriceDisplay';
 import ValidationErrors from './ui/ValidationErrors';
-import ACFeaturesDisplay from './ui/ACFeaturesDisplay';
-import AcProductDisplayContainer from './ui/AcProductDisplayContainer';
-import StatefulInput from './StatefulInput';
-import StatefulToggle from './StatefulToggle';
-import StatefulCustomSelect from './StatefulCustomSelect';
-import StatefulAsyncSelect from './StatefulAsyncSelect';
-import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
-import StatefulAirConditioningConfigurator from './StatefulAirConditioningConfigurator';
-import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
-import StatefulBrandSelector from './StatefulBrandSelector';
-import StatefulOptionSelector from './StatefulOptionSelector';
-import RoomBanner from './ui/RoomBanner';
 
 // Text component for simple text content
 const TextComponent = ({ content, className = "" }) => (
@@ -33,11 +30,11 @@ const TitleComponent = ({ content, level = 2, className = "" }) => {
   const Tag = `h${level}`;
   const baseClasses = {
     1: "text-3xl font-bold",
-    2: "text-2xl font-semibold", 
+    2: "text-2xl font-semibold",
     3: "text-xl font-medium",
     4: "text-lg font-medium"
   };
-  
+
   return (
     <Tag className={`${baseClasses[level]} text-gray-900 ${className}`}>
       {content}
@@ -59,7 +56,7 @@ const componentRegistry = {
   InfoBanner: (props) => <InfoBanner {...props} />,
   RoomBanner: (props) => <RoomBanner {...props} />,
   ACFeaturesDisplay: (props) => <ACFeaturesDisplay {...props} />,
-  AcProductDisplayContainer: (props) => <AcProductDisplayContainer {...props} />,
+  AcProductDisplayContainer: (props) => <StatefulAcProductDisplayContainer {...props} />,
   Image: (props) => <Image {...props} />,
   CostSummary: (props) => <CostSummary {...props} />,
   ServicePriceDisplay: (props) => <ServicePriceDisplay {...props} />,

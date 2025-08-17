@@ -1,57 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import useAppStore from '../../store/useAppStore';
 import ACFeaturesDisplay from './ACFeaturesDisplay';
 import InfoBanner from './InfoBanner';
 
 /**
- * AcProductDisplayContainer - Container component that displays AC products from the store
+ * AcProductDisplayContainer - Pure UI component that displays AC products
  * with filtering, loading states, and error handling
  */
 const AcProductDisplayContainer = ({
+  items = [],
+  loading = false,
+  error = null,
+  onRetry = null,
   showLoadingStates = true,
   maxProducts = null,
   className = "",
   gridClassName = "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6",
   onProductSelectionChange = null,
-  selectedProducts: externalSelectedProducts = [],
+  selectedProducts = [],
   ...props
 }) => {
-  const { 
-    products: { 
-      items, 
-      loading, 
-      error, 
-      fetchProducts
-    } 
-  } = useAppStore();
-  
-  const [selectedProducts, setSelectedProducts] = useState(externalSelectedProducts);
-
-  // Sync with external selected products
-  useEffect(() => {
-    setSelectedProducts(externalSelectedProducts);
-  }, [externalSelectedProducts]);
-
-  // Fetch products on mount
-  useEffect(() => {
-    if (items.length === 0 && !loading && !error) {
-      fetchProducts();
-    }
-  }, [items.length, loading, error, fetchProducts]);
 
   // Get products to display
-  const displayProducts = maxProducts 
+  const displayProducts = maxProducts
     ? items.slice(0, maxProducts)
     : items;
 
   // Handle product selection
   const handleProductSelection = (productId, selected) => {
-    const newSelection = selected 
-      ? [...selectedProducts, productId]
-      : selectedProducts.filter(id => id !== productId);
-    
-    setSelectedProducts(newSelection);
-    
     // Call external handler if provided
     if (onProductSelectionChange) {
       onProductSelectionChange(productId, selected);
@@ -102,8 +76,9 @@ const AcProductDisplayContainer = ({
           variant="error"
         />
         <button
-          onClick={fetchProducts}
-          className="bg-[#002466] text-white px-4 py-2 rounded hover:bg-[#001a4d] transition-colors"
+          onClick={onRetry}
+          className="bg-[#002466] text-white px-4 py-2 rounded hover:bg-[#001a4d] transition-colors font-enel"
+          disabled={!onRetry}
         >
           Riprova
         </button>
@@ -127,13 +102,13 @@ const AcProductDisplayContainer = ({
     <div className={`flex flex-col gap-6 ${className}`} {...props}>
       {/* Products Count */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-bold text-gray-900 font-roobert">
+        <h3 className="text-lg font-enel-bold text-gray-900">
           Prodotti disponibili ({displayProducts.length})
         </h3>
-        
+
         {/* Selected products indicator */}
         {selectedProducts.length > 0 && (
-          <div className="text-sm text-[#002466] font-roobert">
+          <div className="text-sm text-[#002466] font-enel">
             <strong>{selectedProducts.length}</strong> prodotto{selectedProducts.length !== 1 ? 'i' : ''} selezionato{selectedProducts.length !== 1 ? 'i' : ''}
           </div>
         )}

@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { createCitySlice } from './slices/citySlice';
-import { createPricingSlice } from './slices/pricingSlice';
-import { createValidationSlice } from './slices/validationSlice.simple';
-import { createNavigationSlice } from './slices/navigationSlice';
-import { createProductsSlice } from './slices/productsSlice';
 import testData from '../assets/mocks/testData.js';
+import { createCitySlice } from './slices/citySlice';
+import { createNavigationSlice } from './slices/navigationSlice';
+import { createPricingSlice } from './slices/pricingSlice';
+import { createProductsSlice } from './slices/productsSlice';
+import { createValidationSlice } from './slices/validationSlice.simple';
 
 const useAppStore = create(
   devtools(
@@ -23,7 +23,7 @@ const useAppStore = create(
               setTimeout(() => state.loadTestData('default'), 0);
             }
           }
-          
+
           // Initialize validation for the first page
           setTimeout(() => {
             const currentState = get();
@@ -32,47 +32,62 @@ const useAppStore = create(
           set({ _initialized: true });
         }
       },
-      
+
       // Form data state
       formData: {},
-      
+
       // Form data actions
       setFormValue: (property, value) => {
+        const previousValue = get().formData[property];
+
         set((state) => ({
           formData: {
             ...state.formData,
             [property]: value
           }
         }));
-        
+
         // Trigger validation after form value change
         const state = get();
         state.validation.validateCurrentPage();
-        
+
         // Trigger pricing calculation when quantities change
-        if (property === 'airconditioningQuantities' || 
-            property === 'removalQuantities' || 
-            property === 'cleaningQuantities') {
+        if (property === 'airconditioningQuantities' ||
+          property === 'removalQuantities' ||
+          property === 'cleaningQuantities') {
           setTimeout(() => get().calculatePricing(), 0);
         }
+
+        // Load products when city is selected or changed
+        if (property === 'storeCity' && value && value !== previousValue) {
+          console.log(`🏙️ City changed from "${previousValue}" to "${value}", loading products...`);
+          setTimeout(() => {
+            const currentState = get();
+            if (currentState.products && currentState.products.loadProductsByCity) {
+              currentState.products.loadProductsByCity(value);
+            } else {
+              console.warn('Products slice or loadProductsByCity method not available');
+            }
+          }, 0);
+        }
       },
-      
+
       getFormValue: (property) => get().formData[property] || '',
-      
+
       clearFormData: () => set({ formData: {} }),
-      
+
       resetFormData: () => set({ formData: {} }),
-      
+
       // Test data loading
       loadTestData: (scenarioName = 'default') => {
         if (testData && testData.formData) {
-          set({ 
+          set({
             formData: testData.formData,
             currentStep: testData.currentStep || 1,
             currentPageId: testData.currentPageId || null,
             dynamicPages: testData.dynamicPages || []
           });
-          
+
           // Trigger all side effects
           setTimeout(() => {
             const state = get();
@@ -82,7 +97,7 @@ const useAppStore = create(
               state.generateSplitPages();
             }
           }, 0);
-          
+
           console.log(`Test data loaded:`, testData.formData);
         } else {
           console.warn(`Test data not found or invalid format`);
@@ -90,14 +105,14 @@ const useAppStore = create(
       },
 
       getAvailableTestScenarios: () => testData ? ['default'] : [],
-      
+
       // Component visibility helpers
       shouldRenderComponent: (conditions) => {
         if (!conditions) return true;
-        
+
         const state = get();
         const formData = state.formData;
-        
+
         // Handle different condition types
         if (conditions.hasValues) {
           // Check if any of the specified state properties have values
@@ -110,38 +125,38 @@ const useAppStore = create(
             return value !== undefined && value !== null && value !== '' && value !== 0;
           });
         }
-        
+
         if (conditions.hasQuantities) {
           // Check if any quantities are greater than 0
           const quantities = formData[conditions.hasQuantities] || {};
           return Object.values(quantities).some(qty => qty > 0);
         }
-        
+
         if (conditions.equals) {
           // Check if a state property equals a specific value
           return formData[conditions.equals.property] === conditions.equals.value;
         }
-        
+
         if (conditions.custom) {
           // Custom function evaluation
           return conditions.custom(formData, state);
         }
-        
+
         return true;
       },
-      
+
       // Navigation slice integration
       ...createNavigationSlice(set, get),
-      
+
       // City slice integration
       ...createCitySlice(set, get),
-      
+
       // Pricing slice integration
       ...createPricingSlice(set, get),
-      
+
       // Products slice integration
       ...createProductsSlice(set, get),
-      
+
       // Validation slice integration
       ...createValidationSlice(set, get),
     }),
