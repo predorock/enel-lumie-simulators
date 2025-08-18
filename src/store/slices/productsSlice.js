@@ -62,15 +62,15 @@ const recommendationProps = (product) => {
 
 // Transform product from API format to display format
 const transformProduct = (apiProduct) => ({
-  id: `${apiProduct.Brand}-${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-'),
-  name: apiProduct.Name,
-  description: `Per climatizzare stanze fino a ${apiProduct.m2}m²`,
-  brand: apiProduct.Brand,
-  price: apiProduct.Price.toFixed(2),
+  id: `${apiProduct.Brand}-${apiProduct.Name}-${Math.trunc(apiProduct.Price)}`.toLowerCase().replace(/\s+/g, '-'),
+  productName: apiProduct.Name,
+  productBrand: apiProduct.Brand,
   productImage: apiProduct.Image,
-  productimageAlt: apiProduct.Name,
-  url: apiProduct.Url,
+  productImageAlt: apiProduct.Name,
+  productUrl: apiProduct.Url,
+  productDescription: `Per climatizzare stanze fino a ${apiProduct.m2}m²`,
   features: transformProductFeatures(apiProduct.Features),
+  price: apiProduct.Price.toFixed(2),
   currency: "€",
   priceNote: "IVA inclusa",
   checkboxLabel: "Scegli questa soluzione",

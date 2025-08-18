@@ -1,4 +1,5 @@
 
+import GlobeIcon from '../icons/GlobeIcon';
 import StarIcon from '../icons/StarIcon';
 import Checkbox from './Checkbox';
 
@@ -8,13 +9,18 @@ import Checkbox from './Checkbox';
  */
 
 const ACFeaturesDisplay = ({
-  productName = "Daikin Clima Siesta Super Plus 12000",
-  productDescription = "Per climatizzare stanze fino a 38m²",
-  price = "657.00",
-  currency = "€",
-  priceNote = "IVA inclusa",
+  id = null,
+  productName = "Lorem",
+  productDescription = "Ipsum",
   productImage = null,
   productImageAlt = "",
+  productUrl = null,
+  productBrand = "",
+  // price
+  price = "",
+  currency = "€",
+  priceNote = "IVA inclusa",
+  // feature
   features = [
     { key: "Led", name: "Schermo LED", enabled: true },
     { key: "Wifi", name: "Connettività Wi-Fi", enabled: true },
@@ -28,17 +34,26 @@ const ACFeaturesDisplay = ({
     { key: "Ionizzazione", name: "Ionizzatore", enabled: false },
     { key: "Autodiagnosi", name: "Autodiagnosi (Funzione Smart Diagnosis)", enabled: true }
   ],
+  // recommendation
   showRecommendationBadge = true,
   recommendationLevel = "full",
   recommendationText = "Top di gamma",
+  // selection
   showCheckbox = true,
   checkboxLabel = "Scegli questa soluzione",
-  detailsLink = "Visualizza la scheda dettagli del prodotto",
   onCheckboxChange = null,
   isSelected = false,
-  onDetailsClick = null,
+  // details
+  detailsLink = "Visualizza la scheda dettagli del prodotto",
+  // style
   className = ""
 }) => {
+  const handleDetailsClick = () => {
+    if (productUrl) {
+      window.open(productUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div className={`bg-white rounded-xl shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] p-4 ${className}`}>
       <div className="basis-0 flex flex-col gap-2 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
@@ -188,19 +203,22 @@ const ACFeaturesDisplay = ({
           {/* Details Link */}
           <div className="flex flex-row gap-1 items-center justify-start overflow-clip px-0 py-0.5 relative rounded-sm shrink-0">
             <div className="flex flex-row items-center justify-start p-0 relative shrink-0">
-              <div className="font-enel leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#5738ff] text-[12px] text-left text-nowrap">
+              <div className="font-enel leading-[0] not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-secondary text-[12px] text-left text-nowrap cursor-pointer">
                 <button
-                  onClick={onDetailsClick}
-                  className="block leading-[12px] overflow-inherit whitespace-pre hover:underline"
+                  onClick={handleDetailsClick}
+                  disabled={!productUrl}
+                  className={`cursor-pointer block leading-[12px] overflow-inherit whitespace-pre hover:underline ${!productUrl ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
                 >
                   {detailsLink}
                 </button>
               </div>
             </div>
-            <div className="relative shrink-0 size-4">
-              <svg className="w-4 h-4 text-[#5738ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
+            <div
+              className={`relative shrink-0 size-4 ${productUrl ? 'cursor-pointer' : 'opacity-50'}`}
+              onClick={handleDetailsClick}
+            >
+              <GlobeIcon className='size-4' />
             </div>
           </div>
 
@@ -210,7 +228,7 @@ const ACFeaturesDisplay = ({
               checked={isSelected}
               onChange={onCheckboxChange}
               label={checkboxLabel}
-              id={`product-selection-${productName.replace(/\s+/g, '-').toLowerCase()}`}
+              id={id}
             />
           )}
         </div>
