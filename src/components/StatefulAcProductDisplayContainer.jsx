@@ -34,6 +34,7 @@ const StatefulAcProductDisplayContainer = ({
   // Handle product selection changes with limit enforcement
   const handleProductSelectionChange = (productId, selected) => {
     const currentSelected = selectedProducts;
+    let selectionChanged = false;
 
     if (selected) {
       // When selecting a product, check if we've reached the limit
@@ -42,22 +43,30 @@ const StatefulAcProductDisplayContainer = ({
         // If maxSelections > 1, don't allow more selections
         if (maxSelections === 1) {
           setFormValue(stateProperty, [productId]);
+          selectionChanged = true;
         }
         // For maxSelections > 1, do nothing (selection blocked)
-        return;
+      } else {
+        // Add the new selection
+        const newSelected = [...currentSelected, productId];
+        setFormValue(stateProperty, newSelected);
+        selectionChanged = true;
       }
-
-      // Add the new selection
-      const newSelected = [...currentSelected, productId];
-      setFormValue(stateProperty, newSelected);
     } else {
       // When deselecting, simply remove from the array
       const newSelected = currentSelected.filter(id => id !== productId);
       setFormValue(stateProperty, newSelected);
+      selectionChanged = true;
     }
-  };
 
-  // Handle retry functionality
+    // Trigger pricing recalculation after product selection changes
+    if (selectionChanged) {
+      const { calculatePricing } = useAppStore.getState();
+      if (calculatePricing) {
+        calculatePricing();
+      }
+    }
+  };  // Handle retry functionality
   const handleRetry = () => {
     const { products: { fetchProducts } } = useAppStore.getState();
     fetchProducts();
