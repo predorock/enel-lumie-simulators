@@ -1,14 +1,15 @@
 import cn from 'classnames';
 import { useState } from 'react';
 
-export default function TextInput({ 
-  placeholder = "Enter text", 
-  value = "", 
-  onChange, 
+export default function TextInput({
+  placeholder = "Enter text",
+  value = "",
+  onChange,
   className = "",
   disabled = false,
   type = "text",
-  ...props 
+  warning = false,
+  ...props
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const hasValue = value && value.length > 0;
@@ -81,7 +82,8 @@ export default function TextInput({
           "absolute border border-solid inset-0 pointer-events-none rounded transition-all duration-200 ease-in-out",
           {
             "border-[#0047cc] border-2": isFocused,
-            "border-[#667790]": !isFocused
+            "border-[#667790]": !isFocused,
+            "border-warning": warning
           }
         )}
       />

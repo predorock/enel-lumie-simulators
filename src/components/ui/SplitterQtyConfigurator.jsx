@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import cn from 'classnames';
+import { useState } from 'react';
 import useAppStore from '../../store/useAppStore';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 
@@ -16,12 +16,12 @@ const PlusIcon = () => (
   </svg>
 );
 
-const SplitterQtyConfigurator = ({ 
-  items = [], 
-  values = {}, 
-  onChange, 
-  min = 0, 
-  max = 10, 
+const SplitterQtyConfigurator = ({
+  items = [],
+  values = {},
+  onChange,
+  min = 0,
+  max = 10,
   totalMax = null,
   showPriceDisplay = true,
   title = "Configuratore Climatizzatori",
@@ -31,7 +31,7 @@ const SplitterQtyConfigurator = ({
   ...props
 }) => {
   const [quantities, setQuantities] = useState(values);
-  
+
   // Getters
   const { getUnitTotal } = useAppStore();
 
@@ -55,15 +55,15 @@ const SplitterQtyConfigurator = ({
       ...quantities,
       [itemKey]: clampedValue
     };
-    
+
     // If there's a total limit, check if we exceed it
     if (totalMax && getCurrentTotal(updatedQuantities) > totalMax) {
       // Don't allow the change if it would exceed the total limit
       return;
     }
-    
+
     setQuantities(updatedQuantities);
-    
+
     if (onChange) {
       onChange(updatedQuantities);
     }
@@ -97,9 +97,9 @@ const SplitterQtyConfigurator = ({
         const itemKey = item.key || item.label.toLowerCase().replace(/\s+/g, '_');
         const currentValue = quantities[itemKey] || 0;
         const currentTotal = getCurrentTotal(quantities);
-        
+
         const canDecrement = currentValue > min;
-        const canIncrement = totalMax 
+        const canIncrement = totalMax
           ? (currentValue < max && currentTotal < totalMax)
           : currentValue < max;
 
@@ -112,7 +112,7 @@ const SplitterQtyConfigurator = ({
               {/* Icon and Label */}
               <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0 w-[130px]">
                 <div className="relative shrink-0 size-6 text-[#131416]">
-                  <AirConditioningIcon type={getIconType(itemKey)} />
+                  <AirConditioningIcon type={getIconType(itemKey)} fillClass='fill-black' />
                 </div>
                 <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#131416] text-[18px] text-left text-nowrap">
                   <p className="block leading-[27px] whitespace-pre">{item.label}</p>
@@ -132,7 +132,7 @@ const SplitterQtyConfigurator = ({
                     "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
                     {
                       "bg-[#c2cddd] text-white cursor-not-allowed": !canDecrement,
-                      "bg-secondary text-white hover:bg-[#b8114f] focus:ring-secondary": canDecrement
+                      "bg-secondary text-white hover:bg-secondary focus:ring-secondary": canDecrement
                     }
                   )}
                 >

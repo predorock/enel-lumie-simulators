@@ -27,6 +27,11 @@
 @theme {
   --color-primary: #002466;
   --color-secondary: #D3135A;
+  --color-warning: #E67300;
+  --color-warning-light: #FCF1E6;
+
+  --color-black: #131416;
+  --color-white-light: #f7f8fb
 }
 
 /* Custom base styles */
@@ -34,8 +39,13 @@
   html {
     font-family: "Roobert ENEL", sans-serif;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: "Roobert ENEL", sans-serif;
   }
 }
@@ -46,12 +56,12 @@
     font-family: "Roobert ENEL", sans-serif;
     font-weight: 400;
   }
-  
+
   .font-enel-light {
     font-family: "Roobert ENEL Light", sans-serif;
     font-weight: 300;
   }
-  
+
   .font-enel-bold {
     font-family: "Roobert ENEL Bold", sans-serif;
     font-weight: 700;
