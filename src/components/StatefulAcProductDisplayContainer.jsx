@@ -9,6 +9,7 @@ import AcProductDisplayContainer from './ui/AcProductDisplayContainer';
 const StatefulAcProductDisplayContainer = ({
   stateProperty = 'selectedProducts',
   autoFetch = true,
+  maxSelections = 1,
   ...props
 }) => {
   const {
@@ -30,14 +31,30 @@ const StatefulAcProductDisplayContainer = ({
     }
   }, [autoFetch, items.length]);
 
-  // Handle product selection changes
+  // Handle product selection changes with limit enforcement
   const handleProductSelectionChange = (productId, selected) => {
     const currentSelected = selectedProducts;
-    const newSelected = selected
-      ? [...currentSelected, productId]
-      : currentSelected.filter(id => id !== productId);
 
-    setFormValue(stateProperty, newSelected);
+    if (selected) {
+      // When selecting a product, check if we've reached the limit
+      if (currentSelected.length >= maxSelections) {
+        // If maxSelections is 1, replace the current selection
+        // If maxSelections > 1, don't allow more selections
+        if (maxSelections === 1) {
+          setFormValue(stateProperty, [productId]);
+        }
+        // For maxSelections > 1, do nothing (selection blocked)
+        return;
+      }
+
+      // Add the new selection
+      const newSelected = [...currentSelected, productId];
+      setFormValue(stateProperty, newSelected);
+    } else {
+      // When deselecting, simply remove from the array
+      const newSelected = currentSelected.filter(id => id !== productId);
+      setFormValue(stateProperty, newSelected);
+    }
   };
 
   // Handle retry functionality

@@ -2,9 +2,22 @@ import { useEffect } from 'react';
 import useAppStore from '../../store/useAppStore';
 import AcProductDisplayContainer from '../ui/AcProductDisplayContainer';
 
+import { useState } from 'react';
+
 const AcProductDisplayContainerDemo = () => {
   const products = useAppStore((state) => state.products);
   const loadProductsByCity = useAppStore((state) => state.products.loadProductsByCity);
+  const isLoading = useAppStore((state) => state.products.loading);
+
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
+  const onProductSelectionChange = (productId, selected) => {
+    if (selected) {
+      setSelectedProducts((prev) => [...prev, productId]);
+    } else {
+      setSelectedProducts((prev) => prev.filter((id) => id !== productId));
+    }
+  };
 
   useEffect(() => {
     // Load products for Milano on component mount
@@ -42,7 +55,10 @@ const AcProductDisplayContainerDemo = () => {
           </h2>
           <AcProductDisplayContainer
             items={products.items}
+            loading={isLoading}
             showLoadingStates={true}
+            selectedProducts={selectedProducts}
+            onProductSelectionChange={onProductSelectionChange}
           />
         </div>
 
@@ -53,7 +69,8 @@ const AcProductDisplayContainerDemo = () => {
           </h2>
           <AcProductDisplayContainer
             items={products.items}
-            showLoadingStates={false}
+            loading={isLoading}
+            showLoadingStates={true}
             maxProducts={4}
             gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
           />
@@ -66,6 +83,7 @@ const AcProductDisplayContainerDemo = () => {
           </h2>
           <AcProductDisplayContainer
             items={products.items}
+            loading={isLoading}
             showLoadingStates={true}
             maxProducts={6}
             gridClassName="grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -79,6 +97,7 @@ const AcProductDisplayContainerDemo = () => {
           </h2>
           <AcProductDisplayContainer
             items={products.items}
+            loading={isLoading}
             showLoadingStates={true}
             maxProducts={3}
             gridClassName="grid grid-cols-1 gap-8"
