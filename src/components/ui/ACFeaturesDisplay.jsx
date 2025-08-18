@@ -94,7 +94,7 @@ const ACFeaturesDisplay = ({
                   <div className="flex flex-row gap-1 items-start justify-start p-0 relative shrink-0">
                     <div className="flex flex-row gap-2.5 items-start justify-start p-0 relative shrink-0">
                       <div className="relative shrink-0 size-6">
-                        <StarIcon type={recommendationLevel} className="text-white" />
+                        <StarIcon variant='white' type={recommendationLevel} className="text-white" />
                       </div>
                     </div>
                   </div>

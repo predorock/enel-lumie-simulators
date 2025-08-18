@@ -300,6 +300,12 @@ function dynamicPageTemplate(
                     "className": "mb-8",
                     "stateProperty": `selectedProducts_${acConfig?.type}_${splitIndex}`
                 }
+            },
+            {
+                "type": "PricingDisclaimer",
+                "props": {
+                    "className": "mt-6 mb-4"
+                }
             }
         ]
     };

@@ -7,6 +7,7 @@ import StatefulCustomSelect from './StatefulCustomSelect';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulInput from './StatefulInput';
 import StatefulOptionSelector from './StatefulOptionSelector';
+import StatefulPricingDisclaimer from './StatefulPricingDisclaimer';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulToggle from './StatefulToggle';
 import ACFeaturesDisplay from './ui/ACFeaturesDisplay';
@@ -68,6 +69,7 @@ const componentRegistry = {
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
   OptionSelector: (props) => <StatefulOptionSelector {...props} />,
+  PricingDisclaimer: (props) => <StatefulPricingDisclaimer {...props} />,
   // Add more components as needed
 };
 

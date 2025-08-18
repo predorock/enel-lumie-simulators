@@ -1,16 +1,17 @@
+import cn from 'classnames';
 import StarIcon from '../icons/StarIcon';
 
-export default function OptionSelector({ 
+export default function OptionSelector({
   options = [],
   selectedOption = null,
-  onOptionChange = () => {},
+  onOptionChange = () => { },
   title = "",
   className = "",
   disabled = false
 }) {
   const handleOptionSelect = (optionId) => {
     if (disabled) return;
-    
+
     const newSelection = selectedOption === optionId ? null : optionId;
     onOptionChange(newSelection);
   };
@@ -37,8 +38,8 @@ export default function OptionSelector({
               p-2 rounded-3xl border-2 transition-all duration-200
               hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500
               disabled:cursor-not-allowed disabled:opacity-50
-              ${selectedOption === option.id 
-                ? 'border-[#b8114f] bg-[#fdf2f8] shadow-md' 
+              ${selectedOption === option.id
+                ? 'border-[#b8114f] bg-[#fdf2f8] shadow-md'
                 : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
               }
             `}
@@ -46,12 +47,15 @@ export default function OptionSelector({
             {/* Option icon/image */}
             {option.icon && (
               <div className="flex items-center justify-center h-6">
-                <StarIcon type={option.icon} className="object-contain" />
+                <StarIcon variant={selectedOption === option.id ? 'pink' : 'black'} type={option.icon} className="object-contain" />
               </div>
             )}
-            
+
             {/* Option text */}
-            <span className="font-enel font-medium text-sm text-[#131416] text-center">
+            <span className={cn("font-enel font-medium text-sm text-center", {
+              "text-[#131416]": selectedOption !== option.id,
+              "text-secondary": selectedOption === option.id
+            })}>
               {option.name}
             </span>
           </button>

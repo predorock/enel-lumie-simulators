@@ -1,33 +1,29 @@
 export default {
   _initialized: true,
   formData: {
-    storeLocation: 'COso',
-    consultantName: 'Mario rossi',
-    storePhone: '123698267',
+    storeLocation: 'aaaa',
+    consultantName: 'aaa',
+    storePhone: '12345678',
     storeCity: 'Airasca',
     airconditioningQuantities: {
       monosplit: 1,
-      trialsplit: 1,
-      dualsplit: 1
+      dualsplit: 1,
+      trialsplit: 1
     },
     airConditioningConfigs: {
       monosplit_0: {
         installationType: 'nuova_con_predisposizione',
-        roomSize: '34'
-      },
-      trialsplit_0: {
-        installationType: 'nuova_con_predisposizione',
-        roomSize: '56'
+        roomSize: '49'
       },
       dualsplit_0: {
-        installationType: 'sostituzione_monosplit',
-        roomSize: '67'
+        installationType: 'nuova_senza_predisposizione',
+        roomSize: '83'
+      },
+      trialsplit_0: {
+        installationType: 'sostituzione_trialsplit',
+        roomSize: '137'
       }
-    },
-    needsRemoval: false,
-    wantsCleaning: false,
-    removalQuantities: {},
-    cleaningQuantities: {}
+    }
   },
   currentStep: 3,
   currentPageId: 'scelta-climatizzatore-monosplit-0',
@@ -69,107 +65,81 @@ export default {
       ],
       components: [
         {
-          "type": "DescriptionBox",
-          "props": {
-            "title": "Scelta del clima",
-            "description": "Nuova installazione con predisposizione",
-            "icon": "dual",
-            "step": "1/3",
-            "stepColor": "purple",
-            "layout": "horizontal"
+          type: 'DescriptionBox',
+          props: {
+            title: 'Scelta del clima',
+            description: 'Nuova installazione con predisposizione',
+            icon: 'monosplit',
+            step: '1/3',
+            stepColor: 'purple',
+            layout: 'horizontal'
           }
         },
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '34'
+            roomSize: '49'
           }
         },
         {
-          "type": "BrandSelector",
-          "props": {
-            "title": "Quale brand di climatizzatore preferisce?",
-            "stateProperty": "investmentOption"
+          type: 'BrandSelector',
+          props: {
+            title: 'Quale brand di climatizzatore preferisce?',
+            stateProperty: 'investmentOption'
           }
         },
         {
-          "type": "OptionSelector",
-          "props": {
-            "title": "Qual è l'investimento più adatto al cliente?",
-            "options": [
+          type: 'OptionSelector',
+          props: {
+            title: 'Qual è l\'investimento più adatto al cliente?',
+            options: [
               {
-                "id": "conveniente",
-                "name": "Più conveniente",
-                "value": "conveniente",
-                "icon": "empty"
+                id: 'conveniente',
+                name: 'Più conveniente',
+                value: 'conveniente',
+                icon: 'empty'
               },
               {
-                "id": "qualita_prezzo",
-                "name": "Miglior rapporto qualità/prezzo",
-                "value": "qualita_prezzo",
-                "icon": "half"
+                id: 'qualita_prezzo',
+                name: 'Miglior rapporto qualità/prezzo',
+                value: 'qualita_prezzo',
+                icon: 'half'
               },
               {
-                "id": "top_di_gamma",
-                "name": "Top di gamma",
-                "value": "top_di_gamma",
-                "icon": "full"
+                id: 'top_di_gamma',
+                name: 'Top di gamma',
+                value: 'top_di_gamma',
+                icon: 'full'
               }
             ],
-            "stateProperty": "investmentOption"
+            stateProperty: 'investmentOption'
           }
         },
         {
-          "type": "AcProductDisplayContainer",
-          "props": {
-            "showLoadingStates": true,
-            "maxProducts": 100,
-            "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
-            "className": "mb-8"
+          type: 'AcProductDisplayContainer',
+          props: {
+            showLoadingStates: true,
+            maxProducts: 100,
+            gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
+            className: 'mb-8',
+            stateProperty: 'selectedProducts_monosplit_0'
+          }
+        },
+        {
+          type: 'PricingDisclaimer',
+          props: {
+            className: 'mt-6 mb-4'
           }
         }
       ]
     },
     {
-      id: 'scelta-climatizzatore-trialsplit-0',
-      title: 'Scegliete insieme il climatizzatore adatto!',
-      step: 3,
-      isDynamic: true,
-      splitType: 'trialsplit',
-      splitIndex: 0,
-      leftPanelComponents: [
-        {
-          type: 'Image',
-          props: {
-            src: 'cubo-condizionatore',
-            alt: 'Condizionatore Cubo',
-            className: 'z-10 relative w-auto h-auto max-w-[325px] mt-8',
-            containerClassName: 'flex justify-center items-center flex-1'
-          }
-        },
-        {
-          type: 'CostSummary',
-          props: {
-            containerClassName: 'mt-auto mb-4 self-end'
-          }
-        }
-      ],
-      components: [
-        {
-          type: 'RoomBanner',
-          props: {
-            roomSize: '56'
-          }
-        }
-      ]
-    },
-    {
-      id: 'scelta-climatizzatore-dualsplit-0',
+      id: 'scelta-climatizzatore-dualsplit-1',
       title: 'Scegliete insieme il climatizzatore adatto!',
       step: 3,
       isDynamic: true,
       splitType: 'dualsplit',
-      splitIndex: 0,
+      splitIndex: 1,
       leftPanelComponents: [
         {
           type: 'Image',
@@ -189,9 +159,164 @@ export default {
       ],
       components: [
         {
+          type: 'DescriptionBox',
+          props: {
+            title: 'Scelta del clima',
+            description: 'Nuova installazione senza predisposizione',
+            icon: 'dualsplit',
+            step: '2/3',
+            stepColor: 'purple',
+            layout: 'horizontal'
+          }
+        },
+        {
           type: 'RoomBanner',
           props: {
-            roomSize: '67'
+            roomSize: '83'
+          }
+        },
+        {
+          type: 'BrandSelector',
+          props: {
+            title: 'Quale brand di climatizzatore preferisce?',
+            stateProperty: 'investmentOption'
+          }
+        },
+        {
+          type: 'OptionSelector',
+          props: {
+            title: 'Qual è l\'investimento più adatto al cliente?',
+            options: [
+              {
+                id: 'conveniente',
+                name: 'Più conveniente',
+                value: 'conveniente',
+                icon: 'empty'
+              },
+              {
+                id: 'qualita_prezzo',
+                name: 'Miglior rapporto qualità/prezzo',
+                value: 'qualita_prezzo',
+                icon: 'half'
+              },
+              {
+                id: 'top_di_gamma',
+                name: 'Top di gamma',
+                value: 'top_di_gamma',
+                icon: 'full'
+              }
+            ],
+            stateProperty: 'investmentOption'
+          }
+        },
+        {
+          type: 'AcProductDisplayContainer',
+          props: {
+            showLoadingStates: true,
+            maxProducts: 100,
+            gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
+            className: 'mb-8',
+            stateProperty: 'selectedProducts_dualsplit_1'
+          }
+        },
+        {
+          type: 'PricingDisclaimer',
+          props: {
+            className: 'mt-6 mb-4'
+          }
+        }
+      ]
+    },
+    {
+      id: 'scelta-climatizzatore-trialsplit-2',
+      title: 'Scegliete insieme il climatizzatore adatto!',
+      step: 3,
+      isDynamic: true,
+      splitType: 'trialsplit',
+      splitIndex: 2,
+      leftPanelComponents: [
+        {
+          type: 'Image',
+          props: {
+            src: 'cubo-condizionatore',
+            alt: 'Condizionatore Cubo',
+            className: 'z-10 relative w-auto h-auto max-w-[325px] mt-8',
+            containerClassName: 'flex justify-center items-center flex-1'
+          }
+        },
+        {
+          type: 'CostSummary',
+          props: {
+            containerClassName: 'mt-auto mb-4 self-end'
+          }
+        }
+      ],
+      components: [
+        {
+          type: 'DescriptionBox',
+          props: {
+            title: 'Scelta del clima',
+            description: 'Sostituzione trialsplit',
+            icon: 'trialsplit',
+            step: '3/3',
+            stepColor: 'purple',
+            layout: 'horizontal'
+          }
+        },
+        {
+          type: 'RoomBanner',
+          props: {
+            roomSize: '137'
+          }
+        },
+        {
+          type: 'BrandSelector',
+          props: {
+            title: 'Quale brand di climatizzatore preferisce?',
+            stateProperty: 'investmentOption'
+          }
+        },
+        {
+          type: 'OptionSelector',
+          props: {
+            title: 'Qual è l\'investimento più adatto al cliente?',
+            options: [
+              {
+                id: 'conveniente',
+                name: 'Più conveniente',
+                value: 'conveniente',
+                icon: 'empty'
+              },
+              {
+                id: 'qualita_prezzo',
+                name: 'Miglior rapporto qualità/prezzo',
+                value: 'qualita_prezzo',
+                icon: 'half'
+              },
+              {
+                id: 'top_di_gamma',
+                name: 'Top di gamma',
+                value: 'top_di_gamma',
+                icon: 'full'
+              }
+            ],
+            stateProperty: 'investmentOption'
+          }
+        },
+        {
+          type: 'AcProductDisplayContainer',
+          props: {
+            showLoadingStates: true,
+            maxProducts: 100,
+            gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
+            className: 'mb-8',
+            stateProperty: 'selectedProducts_trialsplit_2'
+          }
+        },
+        {
+          type: 'PricingDisclaimer',
+          props: {
+            className: 'mt-6 mb-4'
           }
         }
       ]
@@ -31782,7 +31907,7 @@ export default {
     ],
     loading: false,
     error: null,
-    lastLoadTime: 1754589991299
+    lastLoadTime: 1755522695140
   },
   pricingState: {
     unitPrices: {
@@ -31826,8 +31951,1412 @@ export default {
       grandTotal: 350
     }
   },
+  products: {
+    items: [
+      {
+        id: 'daikin-daikin-clima-siesta-super-plus-12000-1607',
+        productName: 'Daikin Clima Siesta Super Plus 12000',
+        productBrand: 'Daikin',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-12000-btu.webp',
+        productImageAlt: 'Daikin Clima Siesta Super Plus 12000',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 38m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: false
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: false
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1607.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'full',
+        recommendationText: 'Top di gamma',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'daikin-daikin-clima-siesta-super-plus-9000-1511',
+        productName: 'Daikin Clima Siesta Super Plus 9000',
+        productBrand: 'Daikin',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-9000-btu.webp',
+        productImageAlt: 'Daikin Clima Siesta Super Plus 9000',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-9000-btu',
+        productDescription: 'Per climatizzare stanze fino a 32m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: false
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: false
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1511.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'full',
+        recommendationText: 'Top di gamma',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'daikin-daikin-clima-siesta-dual-classic---9000+12000-2519',
+        productName: 'Daikin Clima Siesta Dual Classic - 9000+12000',
+        productBrand: 'Daikin',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-dual-9000-12000-btu.webp',
+        productImageAlt: 'Daikin Clima Siesta Dual Classic - 9000+12000',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-dual-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 45m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: false
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: false
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '2519.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'full',
+        recommendationText: 'Top di gamma',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'daikin-daikin-clima-siesta-trial-classic---9000+9000+12000-3671',
+        productName: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
+        productBrand: 'Daikin',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-trial-9000-12000-btu.webp',
+        productImageAlt: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-trial-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 57m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: false
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: false
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '3671.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'full',
+        recommendationText: 'Top di gamma',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'lg-lg-libero-smart-12000-btu/h-1007',
+        productName: 'LG Libero SMART 12000 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-12000-btu.webp',
+        productImageAlt: 'LG Libero SMART 12000 btu/h',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 38m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: true
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: true
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1007.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'half',
+        recommendationText: 'Miglio rapporto qualità/prezzo',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'lg-lg-libero-smart-9000-btu/h-959',
+        productName: 'LG Libero SMART 9000 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-9000-btu.webp',
+        productImageAlt: 'LG Libero SMART 9000 btu/h',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-9000-btu',
+        productDescription: 'Per climatizzare stanze fino a 32m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: true
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: true
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '959.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'half',
+        recommendationText: 'Miglio rapporto qualità/prezzo',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'lg-lg-libero-smart-9+12-btu/h-1871',
+        productName: 'LG Libero SMART  9+12 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-dual-9000-12000-btu.webp',
+        productImageAlt: 'LG Libero SMART  9+12 btu/h',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 45m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: true
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: true
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1871.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'half',
+        recommendationText: 'Miglio rapporto qualità/prezzo',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'lg-lg-libero-smart-9+9+12-btu/h-2543',
+        productName: 'LG Libero SMART 9+9+12 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-trial-9000-12000-btu.webp',
+        productImageAlt: 'LG Libero SMART 9+9+12 btu/h',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-trial-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 57m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: true
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: true
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '2543.71',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'half',
+        recommendationText: 'Miglio rapporto qualità/prezzo',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'lg-lg-libero-smart-18000-btu/h-1223',
+        productName: 'LG Libero SMART 18000 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net',
+        productImageAlt: 'LG Libero SMART 18000 btu/h',
+        productUrl: 'non c\'è sul sito!',
+        productDescription: 'Per climatizzare stanze fino a 40m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: true
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: true
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1223.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'half',
+        recommendationText: 'Miglio rapporto qualità/prezzo',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'lg-lg-libero-s-12000-btu/h-983',
+        productName: 'LG Libero S 12000 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-12000-btu.webp',
+        productImageAlt: 'LG Libero S 12000 btu/h',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 38m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: false
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '983.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        showRecommendationBadge: false
+      },
+      {
+        id: 'lg-lg-libero-s-9000-btu/h-935',
+        productName: 'LG Libero S 9000 btu/h',
+        productBrand: 'LG',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-9000-btu.webp',
+        productImageAlt: 'LG Libero S 9000 btu/h',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-9000-btu',
+        productDescription: 'Per climatizzare stanze fino a 32m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: false
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '935.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        showRecommendationBadge: false
+      },
+      {
+        id: 'comfee-comfee-clima-cfw09a-9000-btu/h-by-midea-935',
+        productName: 'Comfee Clima CFW09A 9000 btu/h by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw09a-9000-btu.webp',
+        productImageAlt: 'Comfee Clima CFW09A 9000 btu/h by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw09a-9000-btu',
+        productDescription: 'Per climatizzare stanze fino a 32m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '935.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'empty',
+        recommendationText: 'Più conveniente',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'comfee-comfee-clima-cfw18b-18000-btu/h-by-midea-1223',
+        productName: 'Comfee Clima CFW18B 18000 btu/h by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw18a-18000-btu.webp',
+        productImageAlt: 'Comfee Clima CFW18B 18000 btu/h by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw18a-18000-btu',
+        productDescription: 'Per climatizzare stanze fino a 40m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1223.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'empty',
+        recommendationText: 'Più conveniente',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'comfee-comfee-clima-cfw12a-12000-btu/h-by-midea-983',
+        productName: 'Comfee Clima CFW12A 12000 btu/h by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw12a-12000-btu.webp',
+        productImageAlt: 'Comfee Clima CFW12A 12000 btu/h by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw12a-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 38m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '983.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'empty',
+        recommendationText: 'Più conveniente',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'comfee-comfee-clima-maestrale-abw09a-9000-btu/h-by-midea-1079',
+        productName: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw09a-9000-btu.webp',
+        productImageAlt: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw09a-9000-btu',
+        productDescription: 'Per climatizzare stanze fino a 32m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1079.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        showRecommendationBadge: false
+      },
+      {
+        id: 'comfee-comfee-clima-maestrale-abw12a-12000-btu/h-by-midea-1103',
+        productName: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw12a-12000-btu.webp',
+        productImageAlt: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw12a-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 38m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1103.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        showRecommendationBadge: false
+      },
+      {
+        id: 'comfee-comfee-clima-9+12-btu/h-2fb-18k-+-cfw09a-+-12a-by-midea-1511',
+        productName: 'Comfee Clima 9+12 btu/h 2FB-18K + CFW09A + 12A by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-dual-9000-12000-btu.webp',
+        productImageAlt: 'Comfee Clima 9+12 btu/h 2FB-18K + CFW09A + 12A by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw-dual-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 45m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1511.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'empty',
+        recommendationText: 'Più conveniente',
+        showRecommendationBadge: true
+      },
+      {
+        id: 'comfee-comfee-clima-maestrale-9-+-12-btu/h-2fb-18k-+-abw09a-+-12a-by-midea-1559',
+        productName: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw-dual-9000-12000-btu.webp',
+        productImageAlt: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-dual-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 45m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1559.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        showRecommendationBadge: false
+      },
+      {
+        id: 'comfee-comfee-clima-9-+-9-+-12-btu/h-3fb-27k-+-cfw09a-x2-+-12a-by-midea-1919',
+        productName: 'Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea',
+        productBrand: 'Comfee',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-trial-9000-12000-btu.webp',
+        productImageAlt: 'Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea',
+        productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw-trial-9000-12000-btu',
+        productDescription: 'Per climatizzare stanze fino a 57m²',
+        features: [
+          {
+            key: 'Led',
+            name: 'Schermo LED',
+            enabled: true
+          },
+          {
+            key: 'Wifi',
+            name: 'Connettività Wi-Fi',
+            enabled: true
+          },
+          {
+            key: 'Voice',
+            name: 'Voice control',
+            enabled: false
+          },
+          {
+            key: 'RispEn',
+            name: 'Funzione risparmio energetico',
+            enabled: true
+          },
+          {
+            key: 'ProgGiorn',
+            name: 'Programmazione timer giornaliera',
+            enabled: true
+          },
+          {
+            key: 'ProgSett',
+            name: 'Programmazione timer settimanale',
+            enabled: false
+          },
+          {
+            key: 'Sleep',
+            name: 'Funzionalità Sleep',
+            enabled: true
+          },
+          {
+            key: 'Turbo',
+            name: 'Funzionalità Turbo',
+            enabled: true
+          },
+          {
+            key: 'Muffa',
+            name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+            enabled: true
+          },
+          {
+            key: 'Ionizzazione',
+            name: 'Ionizzatore',
+            enabled: false
+          },
+          {
+            key: 'Autodiagnosi',
+            name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+            enabled: true
+          }
+        ],
+        price: '1919.76',
+        currency: '€',
+        priceNote: 'IVA inclusa',
+        checkboxLabel: 'Scegli questa soluzione',
+        detailsLink: 'Visualizza la scheda dettagli del prodotto',
+        recommendationLevel: 'empty',
+        recommendationText: 'Più conveniente',
+        showRecommendationBadge: true
+      }
+    ],
+    loading: false,
+    error: null,
+    selectedBrand: null,
+    selectedCity: 'Airasca'
+  },
   validation: {
     errors: [],
     canProceed: true
   }
-}
+};
