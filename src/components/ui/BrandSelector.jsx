@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 // Import brand images
 import comfeeLogo from '../../assets/images/brands/comfee.svg';
@@ -14,7 +13,7 @@ const BRANDS = {
     alt: 'Comfee Brand'
   },
   daikin: {
-    id: 'daikin', 
+    id: 'daikin',
     name: 'Daikin',
     logo: daikinLogo,
     alt: 'Daikin Brand'
@@ -27,20 +26,17 @@ const BRANDS = {
   }
 };
 
-export default function BrandSelector({ 
+export default function BrandSelector({
   selectedBrand = null,
-  onBrandChange = () => {},
+  onBrandChange = () => { },
   title = "",
   className = "",
   disabled = false
 }) {
-  const [selected, setSelected] = useState(selectedBrand);
-
   const handleBrandSelect = (brandId) => {
     if (disabled) return;
-    
-    const newSelection = selected === brandId ? null : brandId;
-    setSelected(newSelection);
+
+    const newSelection = selectedBrand === brandId ? null : brandId;
     onBrandChange(newSelection);
   };
 
@@ -66,21 +62,21 @@ export default function BrandSelector({
               p-1 rounded-3xl border-2 transition-all duration-200
               hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500
               disabled:cursor-not-allowed disabled:opacity-50
-              ${selected === brand.id 
-                ? 'border-[#b8114f] bg-[#fdf2f8] shadow-md' 
+              ${selectedBrand === brand.id
+                ? 'border-[#b8114f] bg-[#fdf2f8] shadow-md'
                 : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
               }
             `}
           >
             {/* Brand logo */}
             <div className="flex items-center justify-center h-10">
-              <img 
-                src={brand.logo} 
+              <img
+                src={brand.logo}
                 alt={brand.alt}
                 className="max-h-full max-w-full object-contain"
               />
             </div>
-            
+
           </button>
         ))}
       </div>

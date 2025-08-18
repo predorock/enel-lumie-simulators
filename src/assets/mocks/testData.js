@@ -23,7 +23,9 @@ export default {
         installationType: 'sostituzione_trialsplit',
         roomSize: '137'
       }
-    }
+    },
+    selectedBrand: 'daikin',
+    investmentOption: ''
   },
   currentStep: 3,
   currentPageId: 'scelta-climatizzatore-monosplit-0',
@@ -85,7 +87,8 @@ export default {
           type: 'BrandSelector',
           props: {
             title: 'Quale brand di climatizzatore preferisce?',
-            stateProperty: 'investmentOption'
+            stateProperty: 'selectedBrand',
+            investmentOptionProperty: 'investmentOption'
           }
         },
         {
@@ -112,7 +115,8 @@ export default {
                 icon: 'full'
               }
             ],
-            stateProperty: 'investmentOption'
+            stateProperty: 'investmentOption',
+            brandProperty: 'selectedBrand'
           }
         },
         {
@@ -179,7 +183,8 @@ export default {
           type: 'BrandSelector',
           props: {
             title: 'Quale brand di climatizzatore preferisce?',
-            stateProperty: 'investmentOption'
+            stateProperty: 'selectedBrand',
+            investmentOptionProperty: 'investmentOption'
           }
         },
         {
@@ -206,7 +211,8 @@ export default {
                 icon: 'full'
               }
             ],
-            stateProperty: 'investmentOption'
+            stateProperty: 'investmentOption',
+            brandProperty: 'selectedBrand'
           }
         },
         {
@@ -273,7 +279,8 @@ export default {
           type: 'BrandSelector',
           props: {
             title: 'Quale brand di climatizzatore preferisce?',
-            stateProperty: 'investmentOption'
+            stateProperty: 'selectedBrand',
+            investmentOptionProperty: 'investmentOption'
           }
         },
         {
@@ -300,7 +307,8 @@ export default {
                 icon: 'full'
               }
             ],
-            stateProperty: 'investmentOption'
+            stateProperty: 'investmentOption',
+            brandProperty: 'selectedBrand'
           }
         },
         {
@@ -33352,7 +33360,6 @@ export default {
     ],
     loading: false,
     error: null,
-    selectedBrand: null,
     selectedCity: 'Airasca'
   },
   validation: {

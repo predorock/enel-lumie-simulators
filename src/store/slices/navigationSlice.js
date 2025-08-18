@@ -261,7 +261,8 @@ function dynamicPageTemplate(
                 "type": "BrandSelector",
                 "props": {
                     "title": "Quale brand di climatizzatore preferisce?",
-                    "stateProperty": "investmentOption"
+                    "stateProperty": "selectedBrand",
+                    "investmentOptionProperty": "investmentOption"
                 }
             },
             {
@@ -288,7 +289,8 @@ function dynamicPageTemplate(
                             "icon": "full"
                         }
                     ],
-                    "stateProperty": "investmentOption"
+                    "stateProperty": "investmentOption",
+                    "brandProperty": "selectedBrand"
                 }
             },
             {
