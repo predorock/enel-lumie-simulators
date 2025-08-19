@@ -430,7 +430,50 @@
                     "props": {
                         "text": "Attendi ancora qualche secondo",
                         "size": "medium",
-                        "centered": true
+                        "centered": true,
+                        "showWhen": "reportLoading"
+                    }
+                },
+                {
+                    "type": "ErrorMessage",
+                    "props": {
+                        "title": "Errore nella generazione del preventivo",
+                        "stateProperty": "reportError",
+                        "showWhen": "reportHasError",
+                        "actionButtonText": "Riprova",
+                        "actionButtonAction": "retrySimulation"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "preventivo-risultato",
+            "title": "Preventivo generato con successo",
+            "step": 4,
+            "validationRules": {},
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "condizionatore-big",
+                        "alt": "Condizionatore Completato",
+                        "className": "z-10 relative w-auto h-auto mt-16",
+                        "containerClassName": "flex justify-center items-center flex-1"
+                    }
+                }
+            ],
+            "components": [
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Il preventivo è stato generato con successo!",
+                        "description": "I dati della simulazione sono stati elaborati e il report è disponibile."
+                    }
+                },
+                {
+                    "type": "ReportDisplay",
+                    "props": {
+                        "showWhen": "reportHasData"
                     }
                 }
             ]

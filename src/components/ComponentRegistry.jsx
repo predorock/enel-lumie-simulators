@@ -5,10 +5,12 @@ import StatefulBrandSelector from './StatefulBrandSelector';
 import StatefulCheckbox from './StatefulCheckbox';
 import StatefulCustomSelect from './StatefulCustomSelect';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
+import StatefulErrorMessage from './StatefulErrorMessage';
 import StatefulInput from './StatefulInput';
 import StatefulLoadingSpinner from './StatefulLoadingSpinner';
 import StatefulOptionSelector from './StatefulOptionSelector';
 import StatefulPricingDisclaimer from './StatefulPricingDisclaimer';
+import StatefulReportDisplay from './StatefulReportDisplay';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulToggle from './StatefulToggle';
 import ACFeaturesDisplay from './ui/ACFeaturesDisplay';
@@ -59,6 +61,8 @@ const componentRegistry = {
   Divider: (props) => <Divider {...props} />,
   InfoBanner: (props) => <InfoBanner {...props} />,
   LoadingSpinner: (props) => <StatefulLoadingSpinner {...props} />,
+  ErrorMessage: (props) => <StatefulErrorMessage {...props} />,
+  ReportDisplay: (props) => <StatefulReportDisplay {...props} />,
   RoomBanner: (props) => <RoomBanner {...props} />,
   ACFeaturesDisplay: (props) => <ACFeaturesDisplay {...props} />,
   AcProductDisplayContainer: (props) => <StatefulAcProductDisplayContainer {...props} />,

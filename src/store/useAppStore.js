@@ -5,6 +5,7 @@ import { createCitySlice } from './slices/citySlice';
 import { createNavigationSlice } from './slices/navigationSlice';
 import { createPricingSlice } from './slices/pricingSlice';
 import { createProductsSlice } from './slices/productsSlice';
+import { createReportSlice } from './slices/reportSlice';
 import { createValidationSlice } from './slices/validationSlice.js';
 
 const useAppStore = create(
@@ -156,6 +157,9 @@ const useAppStore = create(
 
       // Products slice integration
       ...createProductsSlice(set, get),
+
+      // Report slice integration
+      ...createReportSlice(set, get),
 
       // Validation slice integration
       ...createValidationSlice(set, get),

@@ -62,7 +62,8 @@ const recommendationProps = (product) => {
 
 // Transform product from API format to display format
 const transformProduct = (apiProduct) => ({
-  id: `${apiProduct.Brand}-${apiProduct.Name}-${Math.trunc(apiProduct.Price)}`.toLowerCase().replace(/\s+/g, '-'),
+  id: `${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-'),
+  hash: btoa(`${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-')),
   productName: apiProduct.Name,
   productBrand: apiProduct.Brand,
   productImage: apiProduct.Image,

@@ -47,6 +47,20 @@ export const createNavigationSlice = (set, get) => ({
         const nextPageIndex = currentPageIndex + 1;
         if (nextPageIndex < allPages.length) {
             const nextPage = allPages[nextPageIndex];
+
+            // Check if we're navigating to the simulation page
+            if (nextPage.id === 'lancio-simulazione') {
+                // Trigger the simulation API call
+                setTimeout(() => {
+                    const newState = get();
+                    if (newState.submitSimulation) {
+                        newState.submitSimulation().catch(error => {
+                            console.error('Simulation submission failed:', error);
+                        });
+                    }
+                }, 100); // Small delay to ensure navigation completes first
+            }
+
             set({
                 currentStep: nextPage.step,
                 currentPageId: nextPage.id
@@ -173,6 +187,8 @@ export const createNavigationSlice = (set, get) => ({
             const [_type, _i] = k.split('_')
             acc.push({
                 ...v,
+                // This is the key of the state where to add in the future the product
+                configKey: k,
                 type: _type
             })
             return acc;
@@ -220,11 +236,11 @@ function dynamicPageTemplate(
         title: "Scegliete insieme il climatizzatore adatto!",
         step: 3,
         isDynamic: true,
-        splitType: acConfig?.type,
-        splitIndex: splitIndex,
+        //        splitType: acConfig?.type,
+        //        splitIndex: splitIndex,
         validationRules: {
             required: [
-                `selectedProducts_${acConfig?.type}_${splitIndex}`
+                `airConditioningConfigs.${acConfig?.configKey}.selected` // Use configKey to access the correct configuration
             ]
         },
         leftPanelComponents: [
@@ -305,7 +321,29 @@ function dynamicPageTemplate(
                     "maxProducts": 100,
                     "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
                     "className": "mb-8",
-                    "stateProperty": `selectedProducts_${acConfig?.type}_${splitIndex}`
+                    /**
+                     * This configuration is done to add the selected product inside the config
+                     * ex:
+                     * airConditioningConfigs: {
+                            monosplit_0: {
+                                installationType: 'nuova_con_predisposizione',
+                                roomSize: '35',
+                                selected: 'daikin-clima-siesta-12000'
+                            },
+                            dualsplit_0: {
+                                installationType: 'nuova_senza_predisposizione',
+                                roomSize: '41',
+                                selected: 'daikin-clima-siesta-12000'
+                            },
+                            trialsplit_0: {
+                                installationType: 'sostituzione_trialsplit',
+                                roomSize: '53',
+                                selected: 'daikin-clima-siesta-12000'
+                            }
+                        },
+                     */
+                    "configKey": `${acConfig.configKey}`,
+                    "stateProperty": "airConditioningConfigs"
                 }
             },
             {

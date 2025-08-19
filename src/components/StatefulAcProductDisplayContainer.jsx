@@ -7,20 +7,24 @@ import AcProductDisplayContainer from './ui/AcProductDisplayContainer';
  * Integrates with the global store and handles state management
  */
 const StatefulAcProductDisplayContainer = ({
-  stateProperty = 'selectedProducts',
+  stateProperty = 'airConditioningConfigs',
+  configKey = null,
   autoFetch = true,
   maxSelections = 1,
   ...props
 }) => {
-  const {
-    setFormValue
-  } = useAppStore();
 
-  // Get current selected products and store data using proper Zustand selectors
-  const selectedProducts = useAppStore(state => state.formData[stateProperty]) || [];
+  const { formData, setFormValue, calculatePricing } = useAppStore();
+
   const items = useAppStore(state => state.products.items);
   const loading = useAppStore(state => state.products.loading);
   const error = useAppStore(state => state.products.error);
+
+  // Get current configurations
+  const configurations = formData[stateProperty] || {};
+
+  // Get current selected product and store data using proper Zustand selectors
+  const selectedProduct = configurations[configKey]?.selected || null;
 
   // Auto-fetch products on mount if enabled
   useEffect(() => {
@@ -31,42 +35,24 @@ const StatefulAcProductDisplayContainer = ({
     }
   }, [autoFetch, items.length]);
 
-  // Handle product selection changes with limit enforcement
+  // Handle product selection changes - now works with single product ID
   const handleProductSelectionChange = (productId, selected) => {
-    const currentSelected = selectedProducts;
-    let selectionChanged = false;
 
-    if (selected) {
-      // When selecting a product, check if we've reached the limit
-      if (currentSelected.length >= maxSelections) {
-        // If maxSelections is 1, replace the current selection
-        // If maxSelections > 1, don't allow more selections
-        if (maxSelections === 1) {
-          setFormValue(stateProperty, [productId]);
-          selectionChanged = true;
-        }
-        // For maxSelections > 1, do nothing (selection blocked)
-      } else {
-        // Add the new selection
-        const newSelected = [...currentSelected, productId];
-        setFormValue(stateProperty, newSelected);
-        selectionChanged = true;
+    // Update the form data in the store
+    setFormValue(stateProperty, {
+      ...configurations,
+      [configKey]: {
+        ...configurations[configKey],
+        selected: selected ? productId : null
       }
-    } else {
-      // When deselecting, simply remove from the array
-      const newSelected = currentSelected.filter(id => id !== productId);
-      setFormValue(stateProperty, newSelected);
-      selectionChanged = true;
-    }
+    });
 
-    // Trigger pricing recalculation after product selection changes
-    if (selectionChanged) {
-      const { calculatePricing } = useAppStore.getState();
-      if (calculatePricing) {
-        calculatePricing();
-      }
+    if (calculatePricing) {
+      calculatePricing();
     }
-  };  // Handle retry functionality
+  };
+
+  // Handle retry functionality
   const handleRetry = () => {
     const { products: { fetchProducts } } = useAppStore.getState();
     fetchProducts();
@@ -80,7 +66,7 @@ const StatefulAcProductDisplayContainer = ({
     error,
     onRetry: handleRetry,
     onProductSelectionChange: handleProductSelectionChange,
-    selectedProducts
+    selectedProducts: selectedProduct ? [selectedProduct] : [] // Convert single ID to array for UI
   };
 
   return <AcProductDisplayContainer {...enhancedProps} />;

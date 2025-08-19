@@ -1,10 +1,10 @@
 export default {
   _initialized: true,
   formData: {
-    storeLocation: 'aaaa',
-    consultantName: 'aaa',
-    storePhone: '12345678',
-    storeCity: 'Airasca',
+    storeCity: 'Romans d\'Isonzo',
+    storeLocation: 'Pizzeria Claudio',
+    consultantName: 'Claudio',
+    storePhone: '122345456780',
     airconditioningQuantities: {
       monosplit: 1,
       dualsplit: 1,
@@ -13,22 +13,37 @@ export default {
     airConditioningConfigs: {
       monosplit_0: {
         installationType: 'nuova_con_predisposizione',
-        roomSize: '49'
+        roomSize: '35'
       },
       dualsplit_0: {
         installationType: 'nuova_senza_predisposizione',
-        roomSize: '83'
+        roomSize: '41'
       },
       trialsplit_0: {
         installationType: 'sostituzione_trialsplit',
-        roomSize: '137'
+        roomSize: '53'
       }
     },
-    selectedBrand: 'daikin',
-    investmentOption: ''
+    needsRemoval: true,
+    removalQuantities: {
+      monosplit: 1
+    },
+    wantsCleaning: true,
+    cleaningQuantities: {
+      trialsplit: 1
+    },
+    selectedProducts_monosplit_0: [
+      'daikin-clima-siesta-super-plus-12000'
+    ],
+    selectedProducts_dualsplit_1: [
+      'daikin-clima-siesta-dual-classic---9000+12000'
+    ],
+    selectedProducts_trialsplit_2: [
+      'lg-libero-smart-9000-btu/h'
+    ]
   },
   currentStep: 3,
-  currentPageId: 'scelta-climatizzatore-monosplit-0',
+  currentPageId: 'scelta-climatizzatore-trialsplit-2',
   steps: [
     {
       copy: 'Informazioni'
@@ -50,7 +65,7 @@ export default {
       splitIndex: 0,
       validationRules: {
         required: [
-          "selectedProducts_monosplit_0"
+          'selectedProducts_monosplit_0'
         ]
       },
       leftPanelComponents: [
@@ -85,7 +100,7 @@ export default {
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '49'
+            roomSize: '35'
           }
         },
         {
@@ -151,7 +166,7 @@ export default {
       splitIndex: 1,
       validationRules: {
         required: [
-          "selectedProducts_dualsplit_1"
+          'selectedProducts_dualsplit_1'
         ]
       },
       leftPanelComponents: [
@@ -186,7 +201,7 @@ export default {
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '83'
+            roomSize: '41'
           }
         },
         {
@@ -252,7 +267,7 @@ export default {
       splitIndex: 2,
       validationRules: {
         required: [
-          "selectedProducts_trialsplit_2"
+          'selectedProducts_trialsplit_2'
         ]
       },
       leftPanelComponents: [
@@ -287,7 +302,7 @@ export default {
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '137'
+            roomSize: '53'
           }
         },
         {
@@ -31930,7 +31945,7 @@ export default {
     ],
     loading: false,
     error: null,
-    lastLoadTime: 1755522695140
+    lastLoadTime: 1755613908941
   },
   pricingState: {
     unitPrices: {
@@ -31958,26 +31973,27 @@ export default {
         total: 350
       },
       removal: {
-        monosplit: 0,
+        monosplit: 60,
         dualsplit: 0,
         trialsplit: 0,
-        total: 0
+        total: 60
       },
       cleaning: {
         monosplit: 0,
         dualsplit: 0,
-        trialsplit: 0,
-        total: 0
+        trialsplit: 220,
+        total: 220
       },
-      installationTotal: 350,
-      productsTotal: 0,
-      grandTotal: 350
+      installationTotal: 630,
+      productsTotal: 5087.280000000001,
+      grandTotal: 5717.280000000001
     }
   },
   products: {
     items: [
       {
-        id: 'daikin-daikin-clima-siesta-super-plus-12000-1607',
+        id: 'daikin-clima-siesta-super-plus-12000',
+        hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS1zdXBlci1wbHVzLTEyMDAw',
         productName: 'Daikin Clima Siesta Super Plus 12000',
         productBrand: 'Daikin',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-12000-btu.webp',
@@ -32051,7 +32067,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'daikin-daikin-clima-siesta-super-plus-9000-1511',
+        id: 'daikin-clima-siesta-super-plus-9000',
+        hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS1zdXBlci1wbHVzLTkwMDA=',
         productName: 'Daikin Clima Siesta Super Plus 9000',
         productBrand: 'Daikin',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-9000-btu.webp',
@@ -32125,7 +32142,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'daikin-daikin-clima-siesta-dual-classic---9000+12000-2519',
+        id: 'daikin-clima-siesta-dual-classic---9000+12000',
+        hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS1kdWFsLWNsYXNzaWMtLS05MDAwKzEyMDAw',
         productName: 'Daikin Clima Siesta Dual Classic - 9000+12000',
         productBrand: 'Daikin',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-dual-9000-12000-btu.webp',
@@ -32199,7 +32217,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'daikin-daikin-clima-siesta-trial-classic---9000+9000+12000-3671',
+        id: 'daikin-clima-siesta-trial-classic---9000+9000+12000',
+        hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS10cmlhbC1jbGFzc2ljLS0tOTAwMCs5MDAwKzEyMDAw',
         productName: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
         productBrand: 'Daikin',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-trial-9000-12000-btu.webp',
@@ -32273,7 +32292,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'lg-lg-libero-smart-12000-btu/h-1007',
+        id: 'lg-libero-smart-12000-btu/h',
+        hash: 'bGctbGliZXJvLXNtYXJ0LTEyMDAwLWJ0dS9o',
         productName: 'LG Libero SMART 12000 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-12000-btu.webp',
@@ -32347,7 +32367,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'lg-lg-libero-smart-9000-btu/h-959',
+        id: 'lg-libero-smart-9000-btu/h',
+        hash: 'bGctbGliZXJvLXNtYXJ0LTkwMDAtYnR1L2g=',
         productName: 'LG Libero SMART 9000 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-9000-btu.webp',
@@ -32421,7 +32442,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'lg-lg-libero-smart-9+12-btu/h-1871',
+        id: 'lg-libero-smart-9+12-btu/h',
+        hash: 'bGctbGliZXJvLXNtYXJ0LTkrMTItYnR1L2g=',
         productName: 'LG Libero SMART  9+12 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-dual-9000-12000-btu.webp',
@@ -32495,7 +32517,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'lg-lg-libero-smart-9+9+12-btu/h-2543',
+        id: 'lg-libero-smart-9+9+12-btu/h',
+        hash: 'bGctbGliZXJvLXNtYXJ0LTkrOSsxMi1idHUvaA==',
         productName: 'LG Libero SMART 9+9+12 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-trial-9000-12000-btu.webp',
@@ -32569,7 +32592,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'lg-lg-libero-smart-18000-btu/h-1223',
+        id: 'lg-libero-smart-18000-btu/h',
+        hash: 'bGctbGliZXJvLXNtYXJ0LTE4MDAwLWJ0dS9o',
         productName: 'LG Libero SMART 18000 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net',
@@ -32643,7 +32667,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'lg-lg-libero-s-12000-btu/h-983',
+        id: 'lg-libero-s-12000-btu/h',
+        hash: 'bGctbGliZXJvLXMtMTIwMDAtYnR1L2g=',
         productName: 'LG Libero S 12000 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-12000-btu.webp',
@@ -32715,7 +32740,8 @@ export default {
         showRecommendationBadge: false
       },
       {
-        id: 'lg-lg-libero-s-9000-btu/h-935',
+        id: 'lg-libero-s-9000-btu/h',
+        hash: 'bGctbGliZXJvLXMtOTAwMC1idHUvaA==',
         productName: 'LG Libero S 9000 btu/h',
         productBrand: 'LG',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-9000-btu.webp',
@@ -32787,7 +32813,8 @@ export default {
         showRecommendationBadge: false
       },
       {
-        id: 'comfee-comfee-clima-cfw09a-9000-btu/h-by-midea-935',
+        id: 'comfee-clima-cfw09a-9000-btu/h-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLWNmdzA5YS05MDAwLWJ0dS9oLWJ5LW1pZGVh',
         productName: 'Comfee Clima CFW09A 9000 btu/h by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw09a-9000-btu.webp',
@@ -32861,7 +32888,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'comfee-comfee-clima-cfw18b-18000-btu/h-by-midea-1223',
+        id: 'comfee-clima-cfw18b-18000-btu/h-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLWNmdzE4Yi0xODAwMC1idHUvaC1ieS1taWRlYQ==',
         productName: 'Comfee Clima CFW18B 18000 btu/h by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw18a-18000-btu.webp',
@@ -32935,7 +32963,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'comfee-comfee-clima-cfw12a-12000-btu/h-by-midea-983',
+        id: 'comfee-clima-cfw12a-12000-btu/h-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLWNmdzEyYS0xMjAwMC1idHUvaC1ieS1taWRlYQ==',
         productName: 'Comfee Clima CFW12A 12000 btu/h by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw12a-12000-btu.webp',
@@ -33009,7 +33038,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'comfee-comfee-clima-maestrale-abw09a-9000-btu/h-by-midea-1079',
+        id: 'comfee-clima-maestrale-abw09a-9000-btu/h-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS1hYncwOWEtOTAwMC1idHUvaC1ieS1taWRlYQ==',
         productName: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw09a-9000-btu.webp',
@@ -33081,7 +33111,8 @@ export default {
         showRecommendationBadge: false
       },
       {
-        id: 'comfee-comfee-clima-maestrale-abw12a-12000-btu/h-by-midea-1103',
+        id: 'comfee-clima-maestrale-abw12a-12000-btu/h-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS1hYncxMmEtMTIwMDAtYnR1L2gtYnktbWlkZWE=',
         productName: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw12a-12000-btu.webp',
@@ -33153,7 +33184,8 @@ export default {
         showRecommendationBadge: false
       },
       {
-        id: 'comfee-comfee-clima-9+12-btu/h-2fb-18k-+-cfw09a-+-12a-by-midea-1511',
+        id: 'comfee-clima-9+12-btu/h-2fb-18k-+-cfw09a-+-12a-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLTkrMTItYnR1L2gtMmZiLTE4ay0rLWNmdzA5YS0rLTEyYS1ieS1taWRlYQ==',
         productName: 'Comfee Clima 9+12 btu/h 2FB-18K + CFW09A + 12A by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-dual-9000-12000-btu.webp',
@@ -33227,7 +33259,8 @@ export default {
         showRecommendationBadge: true
       },
       {
-        id: 'comfee-comfee-clima-maestrale-9-+-12-btu/h-2fb-18k-+-abw09a-+-12a-by-midea-1559',
+        id: 'comfee-clima-maestrale-9-+-12-btu/h-2fb-18k-+-abw09a-+-12a-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS05LSstMTItYnR1L2gtMmZiLTE4ay0rLWFidzA5YS0rLTEyYS1ieS1taWRlYQ==',
         productName: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw-dual-9000-12000-btu.webp',
@@ -33299,7 +33332,8 @@ export default {
         showRecommendationBadge: false
       },
       {
-        id: 'comfee-comfee-clima-9-+-9-+-12-btu/h-3fb-27k-+-cfw09a-x2-+-12a-by-midea-1919',
+        id: 'comfee-clima-9-+-9-+-12-btu/h-3fb-27k-+-cfw09a-x2-+-12a-by-midea',
+        hash: 'Y29tZmVlLWNsaW1hLTktKy05LSstMTItYnR1L2gtM2ZiLTI3ay0rLWNmdzA5YS14Mi0rLTEyYS1ieS1taWRlYQ==',
         productName: 'Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea',
         productBrand: 'Comfee',
         productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-trial-9000-12000-btu.webp',
@@ -33375,10 +33409,17 @@ export default {
     ],
     loading: false,
     error: null,
-    selectedCity: 'Airasca'
+    selectedBrand: null,
+    selectedCity: 'Romans d\'Isonzo'
+  },
+  report: {
+    loading: false,
+    error: null,
+    data: null,
+    lastRequestTimestamp: null
   },
   validation: {
     errors: [],
     canProceed: true
   }
-};
+}

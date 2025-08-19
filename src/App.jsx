@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import AcProductDisplayContainerDemo from './components/demo/AcProductDisplayContainerDemo';
 import LoadingSpinnerDemo from './components/demo/LoadingSpinnerDemo';
+import ReportDemo from './components/demo/ReportDemo';
 import PageLayout from './components/layout/PageLayout';
 import PageRenderer from './components/PageRenderer';
 import useAppStore from './store/useAppStore';
@@ -22,6 +23,10 @@ function App() {
 
   if (window.location.search.includes('demo=loading')) {
     return <LoadingSpinnerDemo />;
+  }
+
+  if (window.location.search.includes('demo=report')) {
+    return <ReportDemo />;
   }
 
   return (
