@@ -7,17 +7,18 @@ const assetMap = {
   'mezzo-tondo': () => import('../../assets/images/mezzo-tondo.svg'),
   'condizionatore-big': () => import('../../assets/images/condizionatore-big.svg'),
   'cubo-condizionatore': () => import('../../assets/images/cubo-condizionatore.svg'),
+  'condizionatore-baccheta': () => import('../../assets/images/condizionatore-big-bacchetta.svg')
 };
 
-const Image = ({ 
-  src, 
-  alt = '', 
-  className = '', 
-  width, 
-  height, 
+const Image = ({
+  src,
+  alt = '',
+  className = '',
+  width,
+  height,
   style = {},
   containerClassName = '',
-  ...props 
+  ...props
 }) => {
   const [imageSrc, setImageSrc] = React.useState('');
 

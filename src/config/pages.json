@@ -5,7 +5,12 @@
             "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
             "step": 1,
             "validationRules": {
-                "required": ["storeLocation", "consultantName", "storePhone", "storeCity"]
+                "required": [
+                    "storeLocation",
+                    "consultantName",
+                    "storePhone",
+                    "storeCity"
+                ]
             },
             "leftPanelComponents": [
                 {
@@ -399,6 +404,33 @@
                             "property": "wantsCleaning",
                             "value": true
                         }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "lancio-simulazione",
+            "title": "Stiamo creando il preventivo per il tuo cliente",
+            "step": 3,
+            "validationRules": {},
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "condizionatore-baccheta",
+                        "alt": "Animazione Condizionatore",
+                        "className": "z-10 relative w-auto h-auto mt-16",
+                        "containerClassName": "flex justify-center items-center flex-1"
+                    }
+                }
+            ],
+            "components": [
+                {
+                    "type": "LoadingSpinner",
+                    "props": {
+                        "text": "Attendi ancora qualche secondo",
+                        "size": "medium",
+                        "centered": true
                     }
                 }
             ]

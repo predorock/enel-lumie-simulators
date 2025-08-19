@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import AcProductDisplayContainerDemo from './components/demo/AcProductDisplayContainerDemo';
+import LoadingSpinnerDemo from './components/demo/LoadingSpinnerDemo';
 import PageLayout from './components/layout/PageLayout';
 import PageRenderer from './components/PageRenderer';
 import useAppStore from './store/useAppStore';
@@ -17,6 +18,10 @@ function App() {
   // demo trick
   if (window.location.search.includes('demo=products')) {
     return <AcProductDisplayContainerDemo />;
+  }
+
+  if (window.location.search.includes('demo=loading')) {
+    return <LoadingSpinnerDemo />;
   }
 
   return (
