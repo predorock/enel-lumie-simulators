@@ -48,6 +48,11 @@ export default {
       isDynamic: true,
       splitType: 'monosplit',
       splitIndex: 0,
+      validationRules: {
+        required: [
+          "selectedProducts_monosplit_0"
+        ]
+      },
       leftPanelComponents: [
         {
           type: 'Image',
@@ -144,6 +149,11 @@ export default {
       isDynamic: true,
       splitType: 'dualsplit',
       splitIndex: 1,
+      validationRules: {
+        required: [
+          "selectedProducts_dualsplit_1"
+        ]
+      },
       leftPanelComponents: [
         {
           type: 'Image',
@@ -240,6 +250,11 @@ export default {
       isDynamic: true,
       splitType: 'trialsplit',
       splitIndex: 2,
+      validationRules: {
+        required: [
+          "selectedProducts_trialsplit_2"
+        ]
+      },
       leftPanelComponents: [
         {
           type: 'Image',

@@ -222,6 +222,11 @@ function dynamicPageTemplate(
         isDynamic: true,
         splitType: acConfig?.type,
         splitIndex: splitIndex,
+        validationRules: {
+            required: [
+                `selectedProducts_${acConfig?.type}_${splitIndex}`
+            ]
+        },
         leftPanelComponents: [
             {
                 type: "Image",
