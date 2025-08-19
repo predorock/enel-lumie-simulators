@@ -5,7 +5,7 @@ import { createCitySlice } from './slices/citySlice';
 import { createNavigationSlice } from './slices/navigationSlice';
 import { createPricingSlice } from './slices/pricingSlice';
 import { createProductsSlice } from './slices/productsSlice';
-import { createValidationSlice } from './slices/validationSlice.simple';
+import { createValidationSlice } from './slices/validationSlice.js';
 
 const useAppStore = create(
   devtools(

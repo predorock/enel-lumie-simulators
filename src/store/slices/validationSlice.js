@@ -1,40 +1,43 @@
 import { validatePage } from '../../utils/validation.js';
 
 /**
- * Validation slice for managing form validation state
+ * Lightweight validation slice for better performance
  * @param {Function} set - Zustand set function
  * @param {Function} get - Zustand get function
  * @returns {Object} Validation slice
  */
 export const createValidationSlice = (set, get) => ({
   validation: {
-    // Current validation state for each page
-    pageValidation: {},
-    
     // Current validation errors
     errors: [],
     
     // Whether current page can proceed to next step
-    canProceed: false,
+    canProceed: false, // Start pessimistic - require validation to pass
     
     /**
-     * Validate a specific page
-     * @param {string} pageId - Page ID to validate
-     * @param {Object} pageConfig - Page configuration from pages.json
+     * Validate current page and update state
      */
-    validatePage: (pageId, pageConfig) => {
+    validateCurrentPage: () => {
       const state = get();
-      const formData = state.formData || {};
+      const currentPage = state.getCurrentPage();
       
-      const validationResult = validatePage(pageConfig, formData);
+      if (!currentPage || !currentPage.validationRules) {
+        set((state) => ({
+          validation: {
+            ...state.validation,
+            errors: [],
+            canProceed: true
+          }
+        }));
+        return { isValid: true, errors: [] };
+      }
+      
+      const formData = state.formData || {};
+      const validationResult = validatePage(currentPage, formData);
       
       set((state) => ({
         validation: {
           ...state.validation,
-          pageValidation: {
-            ...state.validation.pageValidation,
-            [pageId]: validationResult
-          },
           errors: validationResult.errors,
           canProceed: validationResult.isValid
         }
@@ -44,38 +47,11 @@ export const createValidationSlice = (set, get) => ({
     },
     
     /**
-     * Validate current page
-     */
-    validateCurrentPage: () => {
-      const state = get();
-      const currentPage = state.getCurrentPage();
-      
-      if (!currentPage) {
-        return { isValid: true, errors: [] };
-      }
-      
-      return state.validation.validatePage(currentPage.id, currentPage);
-    },
-    
-    /**
-     * Check if current page can proceed to next step
+     * Check if current page can proceed to next step (cached)
      */
     canProceedToNextStep: () => {
       const state = get();
-      // Use cached validation result instead of re-validating every time
       return state.validation.canProceed;
-    },
-    
-    /**
-     * Get validation errors for a specific field
-     * @param {string} fieldName - Field name to get errors for
-     * @returns {string[]} Array of error messages for the field
-     */
-    getFieldErrors: (fieldName) => {
-      const state = get();
-      return state.validation.errors
-        .filter(error => error.field === fieldName)
-        .map(error => error.message);
     },
     
     /**
@@ -86,28 +62,9 @@ export const createValidationSlice = (set, get) => ({
         validation: {
           ...state.validation,
           errors: [],
-          canProceed: false
+          canProceed: false // Reset to false when clearing
         }
       }));
-    },
-    
-    /**
-     * Get all validation errors for current page
-     */
-    getCurrentPageErrors: () => {
-      const state = get();
-      return state.validation.errors;
-    },
-    
-    /**
-     * Initialize validation for current page
-     */
-    initializeValidation: () => {
-      const state = get();
-      const currentPage = state.getCurrentPage();
-      if (currentPage) {
-        state.validation.validatePage(currentPage.id, currentPage);
-      }
     }
   }
 });
