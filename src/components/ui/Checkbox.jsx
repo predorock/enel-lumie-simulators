@@ -36,7 +36,7 @@ const Checkbox = ({
         />
         {checked && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <CheckMarkIcon />
+            <CheckMarkIcon fillClass="fill-white" className="size-4" />
           </div>
         )}
       </div>
