@@ -93,3 +93,69 @@ export const isValidProductData = (data) => {
     (product.Brand || product.brand)
   );
 };
+
+/**
+ * Build the simulation API URL
+ * @returns {string} - The complete API URL for simulation
+ */
+export const buildSimulationApiUrl = () => {
+  const baseUrl = import.meta.env.VITE_LUMIE_API_BASE_URL;
+  if (!baseUrl) {
+    throw new Error('VITE_LUMIE_API_BASE_URL environment variable is not configured');
+  }
+  return `${baseUrl}/clima`;
+};
+
+/**
+ * Submit simulation data to the external API
+ * @param {Object} payload - The simulation payload object
+ * @returns {Promise<Object>} - The API response data
+ */
+export const submitSimulationToApi = async (payload) => {
+  if (!payload) {
+    throw new Error('Simulation payload is required');
+  }
+
+  const apiUrl = buildSimulationApiUrl();
+  console.log(`🚀 Submitting simulation to API: ${apiUrl}`, payload);
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(payload),
+      // Add timeout to prevent hanging requests
+      signal: AbortSignal.timeout(30000), // 30 seconds timeout
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log('✅ Simulation API response:', data);
+    return data;
+
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new Error('Request timed out. Please try again.');
+    }
+    throw error;
+  }
+};
+
+/**
+ * Validate if the simulation response contains valid data
+ * @param {any} data - The API response data
+ * @returns {boolean} - True if the data is valid
+ */
+export const isValidSimulationData = (data) => {
+  if (!data || typeof data !== 'object') return false;
+
+  // Basic validation - check if response has expected structure
+  // Adjust validation rules based on actual API response format
+  return true; // For now, accept any object response
+};

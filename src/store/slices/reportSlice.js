@@ -1,6 +1,8 @@
 /**
  * Report slice for handling simulation API requests and responses
  */
+import { isValidSimulationData, submitSimulationToApi } from '../../utils/api';
+
 export const createReportSlice = (set, get) => ({
     // Report state
     report: {
@@ -98,27 +100,13 @@ export const createReportSlice = (set, get) => ({
             // Build the payload
             const payload = state.buildSimulationPayload();
 
-            console.log('🚀 Submitting simulation payload:', payload);
+            // Make the API request using the centralized API utility
+            const data = await submitSimulationToApi(payload);
 
-            // Make the API request
-            const response = await fetch('https://greenovationdashboard.azurewebsites.net/api/lumie/clima', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify(payload),
-                // Add timeout to prevent hanging requests
-                signal: AbortSignal.timeout(30000), // 30 seconds timeout
-            });
-
-            if (!response.ok) {
-                throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+            // Validate the response data
+            if (!isValidSimulationData(data)) {
+                throw new Error('Invalid response data from simulation API');
             }
-
-            const data = await response.json();
-
-            console.log('✅ Simulation API response:', data);
 
             // Store the response data
             state.setReportData(data);
@@ -137,12 +125,14 @@ export const createReportSlice = (set, get) => ({
 
             let errorMessage = 'Errore durante la generazione del preventivo';
 
-            if (error.name === 'AbortError') {
+            if (error.message.includes('timed out') || error.message.includes('timeout')) {
                 errorMessage = 'Richiesta interrotta per timeout. Riprova.';
             } else if (error.message.includes('Failed to fetch')) {
                 errorMessage = 'Errore di connessione. Verifica la tua connessione internet.';
             } else if (error.message.includes('API request failed')) {
                 errorMessage = 'Errore del server. Riprova più tardi.';
+            } else if (error.message.includes('Invalid response data')) {
+                errorMessage = 'Risposta non valida dal server. Riprova.';
             }
 
             state.setReportError(errorMessage);

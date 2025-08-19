@@ -1,49 +1,47 @@
 export default {
   _initialized: true,
   formData: {
-    storeCity: 'Romans d\'Isonzo',
     storeLocation: 'Pizzeria Claudio',
-    consultantName: 'Claudio',
-    storePhone: '122345456780',
+    consultantName: 'Claudione Nazionale',
+    storePhone: '1231513521512',
+    storeCity: 'Cusano Milanino',
     airconditioningQuantities: {
       monosplit: 1,
-      dualsplit: 1,
-      trialsplit: 1
+      trialsplit: 1,
+      dualsplit: 1
     },
     airConditioningConfigs: {
       monosplit_0: {
         installationType: 'nuova_con_predisposizione',
-        roomSize: '35'
-      },
-      dualsplit_0: {
-        installationType: 'nuova_senza_predisposizione',
-        roomSize: '41'
+        roomSize: '14',
+        selected: 'daikin-clima-siesta-dual-classic---9000+12000'
       },
       trialsplit_0: {
+        installationType: 'sostituzione_monosplit',
+        roomSize: '15',
+        selected: 'comfee-clima-maestrale-abw12a-12000-btu/h-by-midea'
+      },
+      dualsplit_0: {
         installationType: 'sostituzione_trialsplit',
-        roomSize: '53'
+        roomSize: '16',
+        selected: 'comfee-clima-maestrale-9-+-12-btu/h-2fb-18k-+-abw09a-+-12a-by-midea'
       }
     },
     needsRemoval: true,
     removalQuantities: {
-      monosplit: 1
+      monosplit: 1,
+      dualsplit: 1,
+      trialsplit: 1
     },
     wantsCleaning: true,
     cleaningQuantities: {
+      monosplit: 1,
+      dualsplit: 1,
       trialsplit: 1
-    },
-    selectedProducts_monosplit_0: [
-      'daikin-clima-siesta-super-plus-12000'
-    ],
-    selectedProducts_dualsplit_1: [
-      'daikin-clima-siesta-dual-classic---9000+12000'
-    ],
-    selectedProducts_trialsplit_2: [
-      'lg-libero-smart-9000-btu/h'
-    ]
+    }
   },
   currentStep: 3,
-  currentPageId: 'scelta-climatizzatore-trialsplit-2',
+  currentPageId: 'scelta-climatizzatore-dualsplit-2',
   steps: [
     {
       copy: 'Informazioni'
@@ -61,11 +59,9 @@ export default {
       title: 'Scegliete insieme il climatizzatore adatto!',
       step: 3,
       isDynamic: true,
-      splitType: 'monosplit',
-      splitIndex: 0,
       validationRules: {
         required: [
-          'selectedProducts_monosplit_0'
+          'airConditioningConfigs.monosplit_0.selected'
         ]
       },
       leftPanelComponents: [
@@ -100,7 +96,7 @@ export default {
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '35'
+            roomSize: '14'
           }
         },
         {
@@ -146,7 +142,8 @@ export default {
             maxProducts: 100,
             gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
             className: 'mb-8',
-            stateProperty: 'selectedProducts_monosplit_0'
+            configKey: 'monosplit_0',
+            stateProperty: 'airConditioningConfigs'
           }
         },
         {
@@ -158,15 +155,13 @@ export default {
       ]
     },
     {
-      id: 'scelta-climatizzatore-dualsplit-1',
+      id: 'scelta-climatizzatore-trialsplit-1',
       title: 'Scegliete insieme il climatizzatore adatto!',
       step: 3,
       isDynamic: true,
-      splitType: 'dualsplit',
-      splitIndex: 1,
       validationRules: {
         required: [
-          'selectedProducts_dualsplit_1'
+          'airConditioningConfigs.trialsplit_0.selected'
         ]
       },
       leftPanelComponents: [
@@ -191,8 +186,8 @@ export default {
           type: 'DescriptionBox',
           props: {
             title: 'Scelta del clima',
-            description: 'Nuova installazione senza predisposizione',
-            icon: 'dualsplit',
+            description: 'Sostituzione monosplit',
+            icon: 'trialsplit',
             step: '2/3',
             stepColor: 'purple',
             layout: 'horizontal'
@@ -201,7 +196,7 @@ export default {
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '41'
+            roomSize: '15'
           }
         },
         {
@@ -247,7 +242,8 @@ export default {
             maxProducts: 100,
             gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
             className: 'mb-8',
-            stateProperty: 'selectedProducts_dualsplit_1'
+            configKey: 'trialsplit_0',
+            stateProperty: 'airConditioningConfigs'
           }
         },
         {
@@ -259,15 +255,13 @@ export default {
       ]
     },
     {
-      id: 'scelta-climatizzatore-trialsplit-2',
+      id: 'scelta-climatizzatore-dualsplit-2',
       title: 'Scegliete insieme il climatizzatore adatto!',
       step: 3,
       isDynamic: true,
-      splitType: 'trialsplit',
-      splitIndex: 2,
       validationRules: {
         required: [
-          'selectedProducts_trialsplit_2'
+          'airConditioningConfigs.dualsplit_0.selected'
         ]
       },
       leftPanelComponents: [
@@ -293,7 +287,7 @@ export default {
           props: {
             title: 'Scelta del clima',
             description: 'Sostituzione trialsplit',
-            icon: 'trialsplit',
+            icon: 'dualsplit',
             step: '3/3',
             stepColor: 'purple',
             layout: 'horizontal'
@@ -302,7 +296,7 @@ export default {
         {
           type: 'RoomBanner',
           props: {
-            roomSize: '53'
+            roomSize: '16'
           }
         },
         {
@@ -348,7 +342,8 @@ export default {
             maxProducts: 100,
             gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
             className: 'mb-8',
-            stateProperty: 'selectedProducts_trialsplit_2'
+            configKey: 'dualsplit_0',
+            stateProperty: 'airConditioningConfigs'
           }
         },
         {
@@ -31945,7 +31940,7 @@ export default {
     ],
     loading: false,
     error: null,
-    lastLoadTime: 1755613908941
+    lastLoadTime: 1755620595203
   },
   pricingState: {
     unitPrices: {
@@ -31974,19 +31969,19 @@ export default {
       },
       removal: {
         monosplit: 60,
-        dualsplit: 0,
-        trialsplit: 0,
-        total: 60
+        dualsplit: 90,
+        trialsplit: 120,
+        total: 270
       },
       cleaning: {
-        monosplit: 0,
-        dualsplit: 0,
+        monosplit: 75,
+        dualsplit: 150,
         trialsplit: 220,
-        total: 220
+        total: 445
       },
-      installationTotal: 630,
-      productsTotal: 5087.280000000001,
-      grandTotal: 5717.280000000001
+      installationTotal: 1065,
+      productsTotal: 0,
+      grandTotal: 1065
     }
   },
   products: {
@@ -33410,7 +33405,7 @@ export default {
     loading: false,
     error: null,
     selectedBrand: null,
-    selectedCity: 'Romans d\'Isonzo'
+    selectedCity: 'Cusano Milanino'
   },
   report: {
     loading: false,
