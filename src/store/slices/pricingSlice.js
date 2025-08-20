@@ -84,6 +84,9 @@ export const createPricingSlice = (set, get) => ({
     const removalQuantities = state.formData.removalQuantities || {};
     const cleaningQuantities = state.formData.cleaningQuantities || {};
 
+    // configs
+    const configs = state.formData.airConditioningConfigs || {};
+
     // Calculate purchase totals
     const purchaseMonosplitTotal = (quantities.monosplit || 0) * unitPrices.purchase.monosplit;
     const purchaseDualsplitTotal = (quantities.dualsplit || 0) * unitPrices.purchase.dualsplit;
@@ -108,16 +111,11 @@ export const createPricingSlice = (set, get) => ({
     // Calculate products total based on all configuration-specific selected products
     const availableProducts = state.products?.items || [];
 
-    // Find all selectedProducts_* properties in formData
-    const allSelectedProducts = Object.keys(state.formData)
-      .filter(key => key.startsWith('selectedProducts_'))
-      .reduce((allProducts, key) => {
-        const products = state.formData[key] || [];
-        return [...allProducts, ...products];
-      }, []);
 
-    const productsTotal = allSelectedProducts.reduce((total, productId) => {
-      const product = availableProducts.find(p => p.id === productId);
+    const productsTotal = Object.values(configs).reduce((total, config) => {
+      if (config?.selected === null) return total; // Skip if no product selected
+
+      const product = availableProducts.find(p => p.id === config.selected);
       if (product && product.price) {
         // Parse price if it's a string, otherwise use as number
         const price = typeof product.price === 'string'
@@ -127,6 +125,7 @@ export const createPricingSlice = (set, get) => ({
       }
       return total;
     }, 0);    // Grand total
+
     const grandTotal = installationTotal + productsTotal;
 
     // Update pricing state
