@@ -1,40 +1,56 @@
-import { useEffect, useRef } from 'react';
 import useAppStore from '../store/useAppStore';
 import BrandSelector from './ui/BrandSelector';
 
-export default function StatefulBrandSelector({
-  stateProperty = 'selectedBrand',
-  investmentOptionProperty = 'investmentOption',
-  className = "",
+// Import brand images
+import comfeeLogo from '../assets/images/brands/comfee.svg';
+import daikinLogo from '../assets/images/brands/daikin.svg';
+import lgLogo from '../assets/images/brands/lg.svg';
+
+// Brand data mapping
+const defaultBrands = [
+  {
+    id: 'comfee',
+    name: 'Comfee',
+    logo: comfeeLogo,
+    alt: 'Comfee Brand'
+  },
+  {
+    id: 'daikin',
+    name: 'Daikin',
+    logo: daikinLogo,
+    alt: 'Daikin Brand'
+  },
+  {
+    id: 'lg',
+    name: 'LG',
+    logo: lgLogo,
+    alt: 'LG Brand'
+  }
+];
+
+const StatefulBrandSelector = ({
+  options = defaultBrands,
   ...props
-}) {
-  const { getFormValue, setFormValue } = useAppStore();
-  const lastBrandChange = useRef(null);
+}) => {
+  const { products } = useAppStore();
+  const { setFilter, resetFilter } = products;
 
-  const selectedBrand = getFormValue(stateProperty);
-  const investmentOption = getFormValue(investmentOptionProperty);
-
-  const handleBrandChange = (brandId) => {
-    lastBrandChange.current = Date.now();
-    setFormValue(stateProperty, brandId);
-  };
-
-  // Handle mutual exclusion: clear investment option when brand is selected
-  useEffect(() => {
-    if (selectedBrand && investmentOption && investmentOptionProperty) {
-      // Only clear if this component made the change recently
-      if (lastBrandChange.current && Date.now() - lastBrandChange.current < 100) {
-        setFormValue(investmentOptionProperty, null);
+  const properties = {
+    ...props,
+    options: options,
+    selectedBrand: products?.filterBy?.value,
+    onBrandChange: (newValue) => {
+      if (newValue) {
+        setFilter('productBrand', newValue);
+      } else {
+        resetFilter();
       }
     }
-  }, [selectedBrand, investmentOption, investmentOptionProperty, setFormValue]);
+  }
 
   return (
-    <BrandSelector
-      selectedBrand={selectedBrand}
-      onBrandChange={handleBrandChange}
-      className={className}
-      {...props}
-    />
+    <BrandSelector {...properties} />
   );
 }
+
+export default StatefulBrandSelector;

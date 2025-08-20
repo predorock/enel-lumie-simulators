@@ -86,7 +86,7 @@ const useAppStore = create(
             formData: testData.formData,
             currentStep: testData.currentStep || 1,
             currentPageId: testData.currentPageId || null,
-            dynamicPages: testData.dynamicPages || []
+            dynamicPages: testData.dynamicPages || [],
           });
 
           // Trigger all side effects
@@ -97,6 +97,8 @@ const useAppStore = create(
             if (state.generateSplitPages && !testData.dynamicPages?.length) {
               state.generateSplitPages();
             }
+            state.products.loadProductsByCity(state.formData.storeCity || state.formData.selectedCity || '');
+
           }, 0);
 
           console.log(`Test data loaded:`, testData.formData);

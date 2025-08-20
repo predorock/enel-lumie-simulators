@@ -8,8 +8,8 @@ import StatefulDisclaimerContainer from './StatefulDisclaimerContainer';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulErrorMessage from './StatefulErrorMessage';
 import StatefulInput from './StatefulInput';
+import StatefulInvestmentSelector from './StatefulInvestmentSelector';
 import StatefulLoadingSpinner from './StatefulLoadingSpinner';
-import StatefulOptionSelector from './StatefulOptionSelector';
 import StatefulReportDisplay from './StatefulReportDisplay';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulToggle from './StatefulToggle';
@@ -74,7 +74,7 @@ const componentRegistry = {
   AirConditioningConfigurator: (props) => <StatefulAirConditioningConfigurator {...props} />,
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
-  OptionSelector: (props) => <StatefulOptionSelector {...props} />,
+  InvestmentSelector: (props) => <StatefulInvestmentSelector {...props} />,
   DisclaimerContainer: (props) => <StatefulDisclaimerContainer {...props} />,
   // Add more components as needed
 };

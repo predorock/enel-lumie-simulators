@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useAppStore from '../store/useAppStore';
 import AcProductDisplayContainer from './ui/AcProductDisplayContainer';
 
@@ -16,7 +15,7 @@ const StatefulAcProductDisplayContainer = ({
 
   const { formData, setFormValue, calculatePricing } = useAppStore();
 
-  const items = useAppStore(state => state.products.items);
+  const products = useAppStore(state => state.products);
   const loading = useAppStore(state => state.products.loading);
   const error = useAppStore(state => state.products.error);
 
@@ -25,15 +24,6 @@ const StatefulAcProductDisplayContainer = ({
 
   // Get current selected product and store data using proper Zustand selectors
   const selectedProduct = configurations[configKey]?.selected || null;
-
-  // Auto-fetch products on mount if enabled
-  useEffect(() => {
-    if (autoFetch && items.length === 0) {
-      // Access fetchProducts directly from store when needed
-      const { products: { fetchProducts } } = useAppStore.getState();
-      fetchProducts();
-    }
-  }, [autoFetch, items.length]);
 
   // Handle product selection changes - now works with single product ID
   const handleProductSelectionChange = (productId, selected) => {
@@ -52,19 +42,12 @@ const StatefulAcProductDisplayContainer = ({
     }
   };
 
-  // Handle retry functionality
-  const handleRetry = () => {
-    const { products: { fetchProducts } } = useAppStore.getState();
-    fetchProducts();
-  };
-
   // Enhanced product display props with state integration
   const enhancedProps = {
     ...props,
-    items,
+    items: products.getFilteredProducts(),
     loading,
     error,
-    onRetry: handleRetry,
     onProductSelectionChange: handleProductSelectionChange,
     selectedProducts: selectedProduct ? [selectedProduct] : [] // Convert single ID to array for UI
   };

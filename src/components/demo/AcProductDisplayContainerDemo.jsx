@@ -3,6 +3,8 @@ import useAppStore from '../../store/useAppStore';
 import AcProductDisplayContainer from '../ui/AcProductDisplayContainer';
 
 import { useState } from 'react';
+import StatefulBrandSelector from '../StatefulBrandSelector';
+import StatefulInvestmentSelection from '../StatefulInvestmentSelector';
 
 const AcProductDisplayContainerDemo = () => {
   const products = useAppStore((state) => state.products);
@@ -34,6 +36,16 @@ const AcProductDisplayContainerDemo = () => {
           Showcase of the AC Product Display Container with products from Milano using loadProductsByCity
         </p>
 
+        {/* Filters */}
+        <div className="mb-12">
+          <h3 className="text-2xl font-semibold mb-6 text-gray-700">
+            Filters
+          </h3>
+          <StatefulBrandSelector />
+          <br />
+          <StatefulInvestmentSelection />
+        </div>
+
         {/* Loading State Display */}
         {products.loading && (
           <div className="mb-8 p-4 bg-blue-100 border border-blue-300 rounded-lg">
@@ -49,7 +61,7 @@ const AcProductDisplayContainerDemo = () => {
         )}
 
         {/* Full Featured Display */}
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-gray-700">
             Full Featured Display - Milano Products
           </h2>
@@ -60,18 +72,18 @@ const AcProductDisplayContainerDemo = () => {
             selectedProducts={selectedProducts}
             onProductSelectionChange={onProductSelectionChange}
           />
-        </div>
+        </div> */}
 
         {/* Compact Display - Max 4 Products */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-gray-700">
-            Compact Display (Max 4 Products) - Milano
+            Compact Display - Milano
           </h2>
           <AcProductDisplayContainer
-            items={products.items}
+            items={products.getFilteredProducts()}
             loading={isLoading}
             showLoadingStates={true}
-            maxProducts={4}
+            selectedProducts={selectedProducts}
             gridClassName="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
           />
         </div>
