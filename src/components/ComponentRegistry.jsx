@@ -4,12 +4,12 @@ import StatefulAsyncSelect from './StatefulAsyncSelect';
 import StatefulBrandSelector from './StatefulBrandSelector';
 import StatefulCheckbox from './StatefulCheckbox';
 import StatefulCustomSelect from './StatefulCustomSelect';
+import StatefulDisclaimerContainer from './StatefulDisclaimerContainer';
 import StatefulDuctworkConfigurator from './StatefulDuctworkConfigurator';
 import StatefulErrorMessage from './StatefulErrorMessage';
 import StatefulInput from './StatefulInput';
 import StatefulLoadingSpinner from './StatefulLoadingSpinner';
 import StatefulOptionSelector from './StatefulOptionSelector';
-import StatefulPricingDisclaimer from './StatefulPricingDisclaimer';
 import StatefulReportDisplay from './StatefulReportDisplay';
 import StatefulSplitterQtyConfigurator from './StatefulSplitterQtyConfigurator';
 import StatefulToggle from './StatefulToggle';
@@ -75,7 +75,7 @@ const componentRegistry = {
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
   OptionSelector: (props) => <StatefulOptionSelector {...props} />,
-  PricingDisclaimer: (props) => <StatefulPricingDisclaimer {...props} />,
+  DisclaimerContainer: (props) => <StatefulDisclaimerContainer {...props} />,
   // Add more components as needed
 };
 

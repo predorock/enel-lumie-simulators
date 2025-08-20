@@ -147,9 +147,13 @@ export default {
           }
         },
         {
-          type: 'PricingDisclaimer',
-          props: {
-            className: 'mt-6 mb-4'
+          "type": "DisclaimerContainer",
+          "props": {
+            "className": "mt-6 mb-4",
+            "sections": [
+              "<b>* Il prezzo visualizzato può variare in base alla regione in cui si trova la tua casa.</b> Non preoccuparti, il sopralluogo tecnico-commerciale (per la verifica di fattibilità dell’installazione) e l'installazione sono inclusi nel prezzo.",
+              "<b>**Sono disponibili diverse modalità di finanziamento.</b> Assicurati di informare il cliente sui requisiti di accesso alle agevolazioni, il periodo di validità e le spese ammissibili. Consulta la normativa di riferimento o offrigli un supporto diretto, fornendogli tutte le informazioni necessarie, INCLUSI EVENTUALI TAN E TAEG APPLICATI AL FINANZIAMENTO. Ricorda di suggerire al cliente di richiedere il documento 'Informazioni europee di base sul credito ai consumatori' (SECCI) e una copia del contratto, così potrà avere tutto il necessario per prendere una decisione informata sui costi e sulle condizioni."
+            ]
           }
         }
       ]
@@ -247,9 +251,13 @@ export default {
           }
         },
         {
-          type: 'PricingDisclaimer',
-          props: {
-            className: 'mt-6 mb-4'
+          "type": "DisclaimerContainer",
+          "props": {
+            "className": "mt-6 mb-4",
+            "sections": [
+              "<b>* Il prezzo visualizzato può variare in base alla regione in cui si trova la tua casa.</b> Non preoccuparti, il sopralluogo tecnico-commerciale (per la verifica di fattibilità dell’installazione) e l'installazione sono inclusi nel prezzo.",
+              "<b>**Sono disponibili diverse modalità di finanziamento.</b> Assicurati di informare il cliente sui requisiti di accesso alle agevolazioni, il periodo di validità e le spese ammissibili. Consulta la normativa di riferimento o offrigli un supporto diretto, fornendogli tutte le informazioni necessarie, INCLUSI EVENTUALI TAN E TAEG APPLICATI AL FINANZIAMENTO. Ricorda di suggerire al cliente di richiedere il documento 'Informazioni europee di base sul credito ai consumatori' (SECCI) e una copia del contratto, così potrà avere tutto il necessario per prendere una decisione informata sui costi e sulle condizioni."
+            ]
           }
         }
       ]
@@ -347,9 +355,13 @@ export default {
           }
         },
         {
-          type: 'PricingDisclaimer',
-          props: {
-            className: 'mt-6 mb-4'
+          "type": "DisclaimerContainer",
+          "props": {
+            "className": "mt-6 mb-4",
+            "sections": [
+              "<b>* Il prezzo visualizzato può variare in base alla regione in cui si trova la tua casa.</b> Non preoccuparti, il sopralluogo tecnico-commerciale (per la verifica di fattibilità dell’installazione) e l'installazione sono inclusi nel prezzo.",
+              "<b>**Sono disponibili diverse modalità di finanziamento.</b> Assicurati di informare il cliente sui requisiti di accesso alle agevolazioni, il periodo di validità e le spese ammissibili. Consulta la normativa di riferimento o offrigli un supporto diretto, fornendogli tutte le informazioni necessarie, INCLUSI EVENTUALI TAN E TAEG APPLICATI AL FINANZIAMENTO. Ricorda di suggerire al cliente di richiedere il documento 'Informazioni europee di base sul credito ai consumatori' (SECCI) e una copia del contratto, così potrà avere tutto il necessario per prendere una decisione informata sui costi e sulle condizioni."
+            ]
           }
         }
       ]
