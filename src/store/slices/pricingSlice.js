@@ -116,14 +116,13 @@ export const createPricingSlice = (set, get) => ({
       if (config?.selected === null) return total; // Skip if no product selected
 
       const product = availableProducts.find(p => p.id === config.selected);
-      if (product && product.price) {
-        // Parse price if it's a string, otherwise use as number
-        const price = typeof product.price === 'string'
-          ? parseFloat(product.price.replace(/[^\d.,]/g, '').replace(',', '.'))
-          : product.price;
-        return total + (isNaN(price) ? 0 : price);
-      }
-      return total;
+      if (!product?.price) return total;
+
+      // Parse price if it's a string, otherwise use as number
+      const price = typeof product.price === 'string'
+        ? parseFloat(product.price.replace(/[^\d.,]/g, '').replace(',', '.'))
+        : product.price;
+      return total + (isNaN(price) ? 0 : price);
     }, 0);    // Grand total
 
     const grandTotal = installationTotal + productsTotal;
