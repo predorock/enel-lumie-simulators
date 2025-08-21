@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useAppStore from "../../store/useAppStore";
 import { ReportSummary } from "../ui/summary";
 
@@ -9,14 +10,15 @@ const StatefulReportSummary = () => {
     const store = useAppStore();
     const configs = store.report.getSummary() || {};
 
-    // Prepare entries for the climatizzatore tab
-    const entries = configs.climatizzatore || [];
+    if (configs?.length < 0) {
+        return null;
+    }
 
     const tabs = [
         {
             id: 'climatizzatore',
             label: 'Climatizzatore',
-            component: <SummaryProductCardContainer entries={entries} />
+            component: <SummaryProductCardContainer entries={configs} />
         },
         {
             id: 'installazione',
@@ -24,7 +26,9 @@ const StatefulReportSummary = () => {
             component: <SummaryPriceDisplay value={configs.installazione?.prezzo || 0} />
         }
     ];
-    return <ReportSummary tabs={tabs} activeTab={tabs[0].id} onTabChange={(ev) => { console.log(ev); }} />;
+    console.log(configs)
+    const [activeTab, setActiveTab] = useState(tabs[0].id);
+    return <ReportSummary tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />;
 };
 
 export default StatefulReportSummary;
