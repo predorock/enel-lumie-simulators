@@ -1,15 +1,14 @@
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
-import checkmarkIcon from '../../assets/icons/checkmark.svg';
 
-export default function ToggleSwitch({ 
+export default function ToggleSwitch({
   label = "",
   checked = false,
   onChange,
   className = "",
   disabled = false,
   size = "md",
-  ...props 
+  ...props
 }) {
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -20,10 +19,10 @@ export default function ToggleSwitch({
 
   const handleToggle = () => {
     if (disabled) return;
-    
+
     const newValue = !isChecked;
     setIsChecked(newValue);
-    
+
     if (onChange) {
       onChange(newValue);
     }
@@ -45,7 +44,7 @@ export default function ToggleSwitch({
     lg: {
       container: "h-10",
       switch: "w-18 h-9 p-1.5",
-      toggle: "w-7 h-7", 
+      toggle: "w-7 h-7",
       text: "text-lg"
     }
   };
@@ -115,14 +114,6 @@ export default function ToggleSwitch({
             }
           )}
         >
-          {/* Checkmark icon when checked */}
-          {isChecked && (
-            <img 
-              src={checkmarkIcon} 
-              alt="Checked" 
-              className="w-3 h-3 filter brightness-0 invert transition-all duration-200 ease-out transform scale-100"
-            />
-          )}
         </div>
       </div>
     </div>
