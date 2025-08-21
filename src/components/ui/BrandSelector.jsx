@@ -1,4 +1,4 @@
-import OptionSelector from './OptionSelector';
+import OptionSelector from './compound/OptionSelector';
 
 export default function BrandSelector({
   options = [],
@@ -40,7 +40,7 @@ export default function BrandSelector({
                   disabled={disabled}
                   className={`
                     relative flex flex-col items-center justify-center 
-                    p-1 rounded-3xl border-2 transition-all duration-200
+                    p-1 rounded-3xl border-2 transition-all duration-100
                     hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500
                     disabled:cursor-not-allowed disabled:opacity-50
                     ${isSelected

@@ -1,7 +1,7 @@
 
 import cn from 'classnames';
 import StarIcon from '../icons/StarIcon';
-import OptionSelector from './OptionSelector';
+import OptionSelector from './compound/OptionSelector';
 
 export default function InvestimentSelector({
     options = [],

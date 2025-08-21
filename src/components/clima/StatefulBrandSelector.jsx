@@ -1,10 +1,10 @@
-import useAppStore from '../store/useAppStore';
-import BrandSelector from './ui/BrandSelector';
+import useAppStore from '../../store/useAppStore';
+import BrandSelector from '../ui/BrandSelector';
 
 // Import brand images
-import comfeeLogo from '../assets/images/brands/comfee.svg';
-import daikinLogo from '../assets/images/brands/daikin.svg';
-import lgLogo from '../assets/images/brands/lg.svg';
+import comfeeLogo from '../../assets/images/brands/comfee.svg';
+import daikinLogo from '../../assets/images/brands/daikin.svg';
+import lgLogo from '../../assets/images/brands/lg.svg';
 
 // Brand data mapping
 const defaultBrands = [

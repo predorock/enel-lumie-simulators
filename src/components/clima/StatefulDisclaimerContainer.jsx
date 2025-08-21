@@ -1,4 +1,4 @@
-import DisclaimerContainer from './ui/DisclaimerContainer';
+import DisclaimerContainer from '../ui/DisclaimerContainer';
 
 const StatefulDisclaimerContainer = ({ ...props }) => {
     return <DisclaimerContainer {...props} />;

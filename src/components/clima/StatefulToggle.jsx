@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import TextInput from './ui/TextInput';
-import SearchInput from './ui/SearchInput';
-import useAppStore from '../store/useAppStore';
+import ToggleSwitch from '../ui/ToggleSwitch';
+import useAppStore from '../../store/useAppStore';
 
-// Wrapper component that adds state management to input components
-const StatefulInput = ({ 
-  type = 'text', 
-  placeholder = '', 
-  initialValue = '',
-  inputType = 'TextInput',
+// Wrapper component that adds state management to toggle components
+const StatefulToggle = ({ 
+  label = '',
+  initialValue = false,
   stateProperty = null, // Property name in the store to update
   storeAction = null,   // Custom store action to call
   ...props 
@@ -19,8 +16,7 @@ const StatefulInput = ({
   const store = useAppStore();
   const setStoreValue = store.setFormValue || (() => {}); // Fallback if method doesn't exist
 
-  const handleChange = (e) => {
-    const newValue = e.target.value;
+  const handleChange = (newValue) => {
     setLocalValue(newValue);
     
     // Update store if stateProperty is specified
@@ -36,27 +32,23 @@ const StatefulInput = ({
     
     // If there's an onChange prop passed from parent, call it too
     if (props.onChange) {
-      props.onChange(e);
+      props.onChange(newValue);
     }
   };
 
   // Get current value from store if stateProperty is specified
-  const currentValue = stateProperty && store.formData && store.formData[stateProperty] 
+  const currentValue = stateProperty && store.formData && typeof store.formData[stateProperty] !== 'undefined'
     ? store.formData[stateProperty] 
     : localValue;
 
-  // Choose the right input component
-  const InputComponent = inputType === 'SearchInput' ? SearchInput : TextInput;
-
   return (
-    <InputComponent
-      type={type}
-      placeholder={placeholder}
-      value={currentValue}
+    <ToggleSwitch
+      label={label}
+      checked={currentValue}
       onChange={handleChange}
       {...props}
     />
   );
 };
 
-export default StatefulInput;
+export default StatefulToggle;

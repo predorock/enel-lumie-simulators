@@ -1,5 +1,5 @@
-import useAppStore from '../store/useAppStore';
-import InvestimentSelector from "./ui/InvestmentSelector";
+import useAppStore from '../../store/useAppStore';
+import InvestimentSelector from '../ui/InvestmentSelector';
 
 const defaultOptions = [
     {

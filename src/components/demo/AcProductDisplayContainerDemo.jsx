@@ -3,8 +3,8 @@ import useAppStore from '../../store/useAppStore';
 import AcProductDisplayContainer from '../ui/AcProductDisplayContainer';
 
 import { useState } from 'react';
-import StatefulBrandSelector from '../StatefulBrandSelector';
-import StatefulInvestmentSelection from '../StatefulInvestmentSelector';
+import StatefulBrandSelector from '../clima/StatefulBrandSelector';
+import StatefulInvestmentSelection from '../clima/StatefulInvestmentSelector';
 
 const AcProductDisplayContainerDemo = () => {
   const products = useAppStore((state) => state.products);

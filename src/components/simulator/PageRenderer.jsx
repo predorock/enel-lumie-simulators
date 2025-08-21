@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import useAppStore from '../store/useAppStore';
+import useAppStore from '../../store/useAppStore';
 import componentRegistry from './ComponentRegistry';
 
 // Component that dynamically renders components based on type and props

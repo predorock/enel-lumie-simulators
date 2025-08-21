@@ -101,6 +101,22 @@ export const createProductsSlice = (set, get) => ({
     selectedCity: null,
     filterBy: null,
 
+    setProducts: (rawProducts) => {
+      // Transform API response to match our product structure
+      const items = rawProducts
+        .map(transformProduct)
+        .sort(sortProductsByCategory);
+
+      set((state) => ({
+        products: {
+          ...state.products,
+          items,
+          loading: false,
+          error: null
+        }
+      }));
+    },
+
     // Load products by city from external API
     loadProductsByCity: async (cityName) => {
       if (!cityName) {
@@ -127,20 +143,9 @@ export const createProductsSlice = (set, get) => ({
         }
 
         // Transform API response to match our product structure
-        const products = apiProducts
-          .map(transformProduct)
-          .sort(sortProductsByCategory);
+        get().products.setProducts(apiProducts);
 
-        set((state) => ({
-          products: {
-            ...state.products,
-            items: products,
-            loading: false,
-            error: null
-          }
-        }));
-
-        console.log(`✅ Successfully loaded ${products.length} products for city: ${cityName}`);
+        console.log(`✅ Successfully loaded ${apiProducts.length} products for city: ${cityName}`);
 
       } catch (error) {
         console.error('❌ Error loading products by city:', error);

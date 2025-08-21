@@ -1,6 +1,5 @@
-import React from 'react';
+import useAppStore from '../../store/useAppStore';
 import componentRegistry from './ComponentRegistry';
-import useAppStore from '../store/useAppStore';
 
 const LeftPanelRenderer = ({ components = [] }) => {
   const { formData } = useAppStore();
@@ -8,7 +7,7 @@ const LeftPanelRenderer = ({ components = [] }) => {
   // Helper function to check render conditions
   const shouldRenderComponent = (renderConditions) => {
     if (!renderConditions) return true;
-    
+
     return Object.entries(renderConditions).every(([conditionType, stateKey]) => {
       switch (conditionType) {
         case 'hasQuantities':
@@ -22,14 +21,14 @@ const LeftPanelRenderer = ({ components = [] }) => {
 
   const renderComponent = (componentConfig, index) => {
     const { type, props = {}, renderConditions } = componentConfig;
-    
+
     // Check if component should be rendered
     if (!shouldRenderComponent(renderConditions)) {
       return null;
     }
-    
+
     const Component = componentRegistry[type];
-    
+
     if (!Component) {
       console.warn(`Component type "${type}" not found in registry`);
       return null;

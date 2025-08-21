@@ -10,17 +10,17 @@ export const createValidationSlice = (set, get) => ({
   validation: {
     // Current validation errors
     errors: [],
-    
+
     // Whether current page can proceed to next step
     canProceed: false, // Start pessimistic - require validation to pass
-    
+
     /**
      * Validate current page and update state
      */
     validateCurrentPage: () => {
       const state = get();
       const currentPage = state.getCurrentPage();
-      
+
       if (!currentPage || !currentPage.validationRules) {
         set((state) => ({
           validation: {
@@ -31,10 +31,9 @@ export const createValidationSlice = (set, get) => ({
         }));
         return { isValid: true, errors: [] };
       }
-      
-      const formData = state.formData || {};
-      const validationResult = validatePage(currentPage, formData);
-      
+
+      const validationResult = validatePage(currentPage, state);
+
       set((state) => ({
         validation: {
           ...state.validation,
@@ -42,10 +41,10 @@ export const createValidationSlice = (set, get) => ({
           canProceed: validationResult.isValid
         }
       }));
-      
+
       return validationResult;
     },
-    
+
     /**
      * Check if current page can proceed to next step (cached)
      */
@@ -53,7 +52,7 @@ export const createValidationSlice = (set, get) => ({
       const state = get();
       return state.validation.canProceed;
     },
-    
+
     /**
      * Clear validation errors
      */

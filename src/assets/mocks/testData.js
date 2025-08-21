@@ -1,22 +1,23 @@
 export default {
-  _initialized: true,
+  _initialized: false,
   formData: {
     storeLocation: 'aaa',
-    consultantName: 'adsd',
-    storePhone: '1231',
-    storeCity: 'Balme',
+    consultantName: 'fff',
+    storePhone: 'asda',
+    storeCity: 'Albiano d\'Ivrea',
     airconditioningQuantities: {
       monosplit: 1
     },
     airConditioningConfigs: {
       monosplit_0: {
         installationType: 'nuova_con_predisposizione',
-        roomSize: '12'
+        roomSize: '12',
+        selected: 'daikin-clima-siesta-super-plus-9000'
       }
     }
   },
-  currentStep: 3,
-  currentPageId: 'scelta-climatizzatore-monosplit-0',
+  currentStep: 4,
+  currentPageId: 'lancio-simulazione',
   steps: [
     {
       copy: 'Informazioni'
@@ -36,7 +37,7 @@ export default {
       isDynamic: true,
       validationRules: {
         required: [
-          'airConditioningConfigs.monosplit_0.selected'
+          'formData.airConditioningConfigs.monosplit_0.selected'
         ]
       },
       leftPanelComponents: [
@@ -31695,14 +31696,14 @@ export default {
     ],
     loading: false,
     error: null,
-    lastLoadTime: 1755726667478
+    lastLoadTime: 1755811363012
   },
   pricingState: {
     unitPrices: {
       purchase: {
-        monosplit: 100,
-        dualsplit: 100,
-        trialsplit: 150
+        monosplit: 120,
+        dualsplit: 190,
+        trialsplit: 290
       },
       removal: {
         monosplit: 60,
@@ -31717,10 +31718,10 @@ export default {
     },
     calculations: {
       purchase: {
-        monosplit: 100,
+        monosplit: 120,
         dualsplit: 0,
         trialsplit: 0,
-        total: 100
+        total: 120
       },
       removal: {
         monosplit: 0,
@@ -31734,9 +31735,9 @@ export default {
         trialsplit: 0,
         total: 0
       },
-      installationTotal: 100,
-      productsTotal: 0,
-      grandTotal: 100
+      installationTotal: 120,
+      productsTotal: 1511.76,
+      grandTotal: 1631.76
     }
   },
   products: {
@@ -33106,7 +33107,7 @@ export default {
         hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS05LSstMTItYnR1L2gtMmZiLTE4ay0rLWFidzA5YS0rLTEyYS1ieS1taWRlYQ==',
         productName: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
         productBrand: 'Comfee',
-        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-abw-dual-9000-12000-btu.webp',
+        productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-dual-9000-12000-btu.webp',
         productImageAlt: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
         productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-dual-9000-12000-btu',
         productDescription: 'Per climatizzare stanze fino a 45m²',
@@ -33178,22 +33179,45 @@ export default {
     ],
     loading: false,
     error: null,
-    selectedCity: 'Balme',
+    selectedCity: 'Albiano d\'Ivrea',
     filterBy: null
   },
   report: {
-    loading: false,
-    error: null,
-    data: null,
-    lastRequestTimestamp: null
+    data: {
+      loading: true,
+      error: null,
+      result: {
+        success: true,
+        message: 'Completed',
+        timestamp: '2025-08-21T21:23:03.6796052Z',
+        body: {
+          Comune: 'Albiano d\'Ivrea',
+          Numero_Macchine: 1,
+          Clima1: '',
+          Clima2: '',
+          Clima3: '',
+          Stanza1_mq: 12,
+          Stanza2_mq: 0,
+          Stanza3_mq: 0,
+          Numero_Predisposizioni_Mono: 1,
+          Numero_Predisposizioni_Dual: 0,
+          Numero_Predisposizioni_Trial: 0,
+          Numero_Predisposizioni_Canalizzazione: 0,
+          Numero_Smontaggi_Mono: 0,
+          Numero_Smontaggi_Dual: 0,
+          Numero_Smontaggi_Trial: 0,
+          Numero_Lavaggi_Mono: 0,
+          Numero_Lavaggi_Dual: 0,
+          Numero_Lavaggi_Trial: 0,
+          ProjectUrl: 'https://greenovation.blob.core.windows.net/enelclima/30966616-21d4-47ed-bfdc-3af31aaee4a5.pdf',
+          Id: '30966616-21d4-47ed-bfdc-3af31aaee4a5'
+        }
+      },
+      lastRequestTimestamp: 1755811383686
+    }
   },
   validation: {
-    errors: [
-      {
-        field: 'airConditioningConfigs.monosplit_0.selected',
-        message: 'airConditioningConfigs.monosplit_0.selected è obbligatorio'
-      }
-    ],
-    canProceed: false
+    errors: [],
+    canProceed: true
   }
 }

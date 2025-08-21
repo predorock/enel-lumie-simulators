@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
-import AcProductDisplayContainerDemo from './components/demo/AcProductDisplayContainerDemo';
-import LoadingSpinnerDemo from './components/demo/LoadingSpinnerDemo';
-import ReportDemo from './components/demo/ReportDemo';
-import PageLayout from './components/layout/PageLayout';
-import PageRenderer from './components/PageRenderer';
+import DemoWrapper from './components/demo/DemoWrapper';
+import PageLayout from './components/simulator/PageLayout';
+import PageRenderer from './components/simulator/PageRenderer';
 import useAppStore from './store/useAppStore';
 
 function App() {
@@ -16,17 +14,9 @@ function App() {
     initializeStore();
   }, []); // Empty dependency array - only run once
 
-  // demo trick
-  if (window.location.search.includes('demo=products')) {
-    return <AcProductDisplayContainerDemo />;
-  }
-
-  if (window.location.search.includes('demo=loading')) {
-    return <LoadingSpinnerDemo />;
-  }
-
-  if (window.location.search.includes('demo=report')) {
-    return <ReportDemo />;
+  // Demo mode - only available in development
+  if (import.meta.env.DEV && window.location.search.includes('demo=')) {
+    return <DemoWrapper />;
   }
 
   return (

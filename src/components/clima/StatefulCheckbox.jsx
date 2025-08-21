@@ -1,5 +1,5 @@
-import useAppStore from '../store/useAppStore';
-import Checkbox from './ui/Checkbox';
+import useAppStore from '../../store/useAppStore';
+import Checkbox from '../ui/Checkbox';
 
 const StatefulCheckbox = ({ stateProperty, ...props }) => {
     const store = useAppStore();

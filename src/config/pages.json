@@ -6,11 +6,17 @@
             "step": 1,
             "validationRules": {
                 "required": [
-                    "storeLocation",
-                    "consultantName",
-                    "storePhone",
-                    "storeCity"
+                    "formData.storeLocation",
+                    "formData.consultantName",
+                    "formData.storePhone",
+                    "formData.storeCity"
                 ]
+            },
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
             },
             "leftPanelComponents": [
                 {
@@ -111,17 +117,23 @@
                 "custom": [
                     {
                         "type": "minQuantity",
-                        "property": "airconditioningQuantities",
+                        "property": "formData.airconditioningQuantities",
                         "minTotal": 1,
                         "errorMessage": "Almeno un climatizzatore deve essere selezionato"
                     },
                     {
                         "type": "airConditioningConfig",
-                        "property": "airConditioningConfigs",
-                        "dependsOn": "airconditioningQuantities",
+                        "property": "formData.airConditioningConfigs",
+                        "dependsOn": "formData.airconditioningQuantities",
                         "errorMessage": "Completare la configurazione per tutti i climatizzatori selezionati"
                     }
                 ]
+            },
+            "navigationHooks": {
+                "beforeNext": "generateSplitPages",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
             },
             "leftPanelComponents": [
                 {
@@ -180,14 +192,13 @@
                         "spacing": "40px"
                     },
                     "renderConditions": {
-                        "hasQuantities": "airconditioningQuantities"
+                        "hasQuantities": "formData.airconditioningQuantities"
                     }
                 },
                 {
                     "type": "AirConditioningConfigurator",
                     "props": {
                         "stateProperty": "airConditioningConfigs",
-                        "showOnlyWhenQuantitiesExist": true,
                         "installationTypes": [
                             {
                                 "value": "nuova_con_predisposizione",
@@ -196,24 +207,12 @@
                             {
                                 "value": "nuova_senza_predisposizione",
                                 "label": "Nuova installazione senza predisposizione"
-                            },
-                            {
-                                "value": "sostituzione_monosplit",
-                                "label": "Sostituzione monosplit"
-                            },
-                            {
-                                "value": "sostituzione_dualsplit",
-                                "label": "Sostituzione dualsplit"
-                            },
-                            {
-                                "value": "sostituzione_trialsplit",
-                                "label": "Sostituzione trialsplit"
                             }
                         ],
                         "infoIconKey": "airConditioningInfo"
                     },
                     "renderConditions": {
-                        "hasQuantities": "airconditioningQuantities"
+                        "hasQuantities": "formData.airconditioningQuantities"
                     }
                 },
                 {
@@ -224,7 +223,7 @@
                         "variant": "info"
                     },
                     "renderConditions": {
-                        "hasQuantities": "airconditioningQuantities"
+                        "hasQuantities": "formData.airconditioningQuantities"
                     }
                 }
             ]
@@ -260,6 +259,12 @@
                         }
                     }
                 ]
+            },
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "report.submitSimulation",
+                "beforePrevious": "",
+                "afterPrevious": ""
             },
             "leftPanelComponents": [
                 {
@@ -413,6 +418,12 @@
             "title": "Stiamo creando il preventivo per il tuo cliente",
             "step": 3,
             "validationRules": {},
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
             "leftPanelComponents": [
                 {
                     "type": "Image",
@@ -429,9 +440,10 @@
                     "type": "LoadingSpinner",
                     "props": {
                         "text": "Attendi ancora qualche secondo",
-                        "size": "medium",
-                        "centered": true,
-                        "showWhen": "reportLoading"
+                        "size": "medium"
+                    },
+                    "renderConditions": {
+                        "isDefined": "report.data.loading"
                     }
                 },
                 {
@@ -451,6 +463,12 @@
             "title": "Preventivo generato con successo",
             "step": 4,
             "validationRules": {},
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
             "leftPanelComponents": [
                 {
                     "type": "Image",
@@ -471,10 +489,8 @@
                     }
                 },
                 {
-                    "type": "ReportDisplay",
-                    "props": {
-                        "showWhen": "reportHasData"
-                    }
+                    "type": "ReportSummary",
+                    "props": {}
                 }
             ]
         }

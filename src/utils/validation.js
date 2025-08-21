@@ -1,26 +1,16 @@
+import getNestedValue from "./getNestedValue";
+
 /**
  * Validation utilities for form and page validation
  */
 
 /**
- * Gets nested property value from object using dot notation
- * @param {Object} obj - Object to traverse
- * @param {string} path - Dot notation path (e.g., 'user.profile.email')
- * @returns {any} Value at the path or undefined if not found
- */
-const getNestedValue = (obj, path) => {
-  return path.split('.').reduce((current, key) => {
-    return current && current[key] !== undefined ? current[key] : undefined;
-  }, obj);
-};
-
-/**
  * Validates required fields (supports nested properties with dot notation)
  * @param {string[]} requiredFields - Array of property names that are required
- * @param {Object} formData - Current form data
+ * @param {Object} state - The entire application state
  * @returns {Object} Validation result with isValid and errors
  */
-export const validateRequiredFields = (requiredFields, formData) => {
+export const validateRequiredFields = (requiredFields, state) => {
   const errors = [];
 
   const fieldLabels = {
@@ -36,7 +26,7 @@ export const validateRequiredFields = (requiredFields, formData) => {
 
   for (const field of requiredFields) {
     // Support both nested (dot notation) and regular field access
-    const value = field.includes('.') ? getNestedValue(formData, field) : formData[field];
+    const value = field.includes('.') ? getNestedValue(state, field) : state[field];
 
     if (!value || (typeof value === 'string' && value.trim() === '')) {
       const label = fieldLabels[field] || field;
@@ -57,12 +47,12 @@ export const validateRequiredFields = (requiredFields, formData) => {
  * Validates minimum quantity for quantity objects
  * @param {string} property - Property name to validate
  * @param {number} minTotal - Minimum total required
- * @param {Object} formData - Current form data
+ * @param {Object} state - The entire application state
  * @param {string} errorMessage - Custom error message
  * @returns {Object} Validation result
  */
-export const validateMinQuantity = (property, minTotal, formData, errorMessage) => {
-  const quantities = formData[property];
+export const validateMinQuantity = (property, minTotal, state, errorMessage) => {
+  const quantities = property.includes('.') ? getNestedValue(state, property) : state[property];
 
   if (!quantities || typeof quantities !== 'object') {
     return {
@@ -94,13 +84,13 @@ export const validateMinQuantity = (property, minTotal, formData, errorMessage) 
  * Validates air conditioning configuration completeness
  * @param {string} property - Property name for air conditioning configs
  * @param {string} dependsOn - Property name for quantities that trigger this validation
- * @param {Object} formData - Current form data
+ * @param {Object} state - The entire application state
  * @param {string} errorMessage - Custom error message
  * @returns {Object} Validation result
  */
-export const validateAirConditioningConfig = (property, dependsOn, formData, errorMessage) => {
-  const quantities = formData[dependsOn] || {};
-  const configs = formData[property] || {};
+export const validateAirConditioningConfig = (property, dependsOn, state, errorMessage) => {
+  const quantities = dependsOn.includes('.') ? getNestedValue(state, dependsOn) : state[dependsOn] || {};
+  const configs = property.includes('.') ? getNestedValue(state, property) : state[property] || {};
 
   const errors = [];
 
@@ -131,17 +121,17 @@ export const validateAirConditioningConfig = (property, dependsOn, formData, err
 /**
  * Validates conditional rules
  * @param {Object[]} conditionalRules - Array of conditional validation rules
- * @param {Object} formData - Current form data
+ * @param {Object} state - The entire application state
  * @returns {Object} Validation result
  */
-export const validateConditionalRules = (conditionalRules, formData) => {
+export const validateConditionalRules = (conditionalRules, state) => {
   const errors = [];
 
   for (const rule of conditionalRules) {
     const { condition, then } = rule;
 
     // Check if condition is met
-    const conditionValue = formData[condition.property];
+    const conditionValue = condition.property.includes('.') ? getNestedValue(state, condition.property) : state[condition.property];
     const conditionMet = conditionValue === condition.equals;
 
     if (conditionMet) {
@@ -150,7 +140,7 @@ export const validateConditionalRules = (conditionalRules, formData) => {
         const result = validateMinQuantity(
           then.property,
           then.minTotal,
-          formData,
+          state,
           then.errorMessage
         );
 
@@ -170,10 +160,10 @@ export const validateConditionalRules = (conditionalRules, formData) => {
 /**
  * Validates custom rules
  * @param {Object[]} customRules - Array of custom validation rules
- * @param {Object} formData - Current form data
+ * @param {Object} state - The entire application state
  * @returns {Object} Validation result
  */
-export const validateCustomRules = (customRules, formData) => {
+export const validateCustomRules = (customRules, state) => {
   const errors = [];
 
   for (const rule of customRules) {
@@ -181,7 +171,7 @@ export const validateCustomRules = (customRules, formData) => {
       const result = validateMinQuantity(
         rule.property,
         rule.minTotal,
-        formData,
+        state,
         rule.errorMessage
       );
 
@@ -192,7 +182,7 @@ export const validateCustomRules = (customRules, formData) => {
       const result = validateAirConditioningConfig(
         rule.property,
         rule.dependsOn,
-        formData,
+        state,
         rule.errorMessage
       );
 
@@ -211,10 +201,10 @@ export const validateCustomRules = (customRules, formData) => {
 /**
  * Validates a page based on its validation rules
  * @param {Object} page - Page configuration from pages.json
- * @param {Object} formData - Current form data
+ * @param {Object} state - The entire application state
  * @returns {Object} Complete validation result
  */
-export const validatePage = (page, formData) => {
+export const validatePage = (page, state) => {
   if (!page.validationRules) {
     return { isValid: true, errors: [] };
   }
@@ -224,7 +214,7 @@ export const validatePage = (page, formData) => {
 
   // Validate required fields
   if (validationRules.required) {
-    const result = validateRequiredFields(validationRules.required, formData);
+    const result = validateRequiredFields(validationRules.required, state);
     if (!result.isValid) {
       allErrors.push(...result.errors);
     }
@@ -232,7 +222,7 @@ export const validatePage = (page, formData) => {
 
   // Validate custom rules
   if (validationRules.custom) {
-    const result = validateCustomRules(validationRules.custom, formData);
+    const result = validateCustomRules(validationRules.custom, state);
     if (!result.isValid) {
       allErrors.push(...result.errors);
     }
@@ -240,7 +230,7 @@ export const validatePage = (page, formData) => {
 
   // Validate conditional rules
   if (validationRules.conditional) {
-    const result = validateConditionalRules(validationRules.conditional, formData);
+    const result = validateConditionalRules(validationRules.conditional, state);
     if (!result.isValid) {
       allErrors.push(...result.errors);
     }

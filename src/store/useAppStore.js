@@ -5,6 +5,7 @@ import { createCitySlice } from './slices/citySlice';
 import { createNavigationSlice } from './slices/navigationSlice';
 import { createPricingSlice } from './slices/pricingSlice';
 import { createProductsSlice } from './slices/productsSlice';
+import createRendererSlice from './slices/rendererSlice.js';
 import { createReportSlice } from './slices/reportSlice';
 import { createValidationSlice } from './slices/validationSlice.js';
 
@@ -82,6 +83,7 @@ const useAppStore = create(
       // Test data loading
       loadTestData: (scenarioName = 'default') => {
         if (testData && testData.formData) {
+          const state = get();
           set({
             formData: testData.formData,
             currentStep: testData.currentStep || 1,
@@ -89,16 +91,22 @@ const useAppStore = create(
             dynamicPages: testData.dynamicPages || [],
           });
 
-          // Trigger all side effects
-          setTimeout(() => {
-            const state = get();
-            state.validation.validateCurrentPage();
-            if (state.calculatePricing) state.calculatePricing();
-            if (state.generateSplitPages && !testData.dynamicPages?.length) {
-              state.generateSplitPages();
-            }
-            state.products.loadProductsByCity(state.formData.storeCity || state.formData.selectedCity || '');
+          state.report.setReportLoading(true);
 
+          // Trigger all side effects
+          setTimeout(async () => {
+            const _state = get();
+            _state.validation.validateCurrentPage();
+
+            if (_state.generateSplitPages && !testData.dynamicPages?.length) {
+              _state.generateSplitPages();
+            }
+
+            await _state.products.loadProductsByCity(_state.formData.storeCity || _state.formData.selectedCity || '');
+
+            if (_state.calculatePricing) _state.calculatePricing();
+
+            _state.report.setReportData(testData.report.data.result || {});
           }, 0);
 
           console.log(`Test data loaded:`, testData.formData);
@@ -109,44 +117,8 @@ const useAppStore = create(
 
       getAvailableTestScenarios: () => testData ? ['default'] : [],
 
-      // Component visibility helpers
-      shouldRenderComponent: (conditions) => {
-        if (!conditions) return true;
-
-        const state = get();
-        const formData = state.formData;
-
-        // Handle different condition types
-        if (conditions.hasValues) {
-          // Check if any of the specified state properties have values
-          return conditions.hasValues.some(property => {
-            const value = formData[property];
-            if (Array.isArray(value)) return value.length > 0;
-            if (typeof value === 'object' && value !== null) {
-              return Object.values(value).some(v => v && v !== 0);
-            }
-            return value !== undefined && value !== null && value !== '' && value !== 0;
-          });
-        }
-
-        if (conditions.hasQuantities) {
-          // Check if any quantities are greater than 0
-          const quantities = formData[conditions.hasQuantities] || {};
-          return Object.values(quantities).some(qty => qty > 0);
-        }
-
-        if (conditions.equals) {
-          // Check if a state property equals a specific value
-          return formData[conditions.equals.property] === conditions.equals.value;
-        }
-
-        if (conditions.custom) {
-          // Custom function evaluation
-          return conditions.custom(formData, state);
-        }
-
-        return true;
-      },
+      // Renderer slice integration
+      ...createRendererSlice(set, get),
 
       // Navigation slice integration
       ...createNavigationSlice(set, get),

@@ -7,9 +7,9 @@
 export const UNIT_PRICES = {
   // AC Units (purchase)
   purchase: {
-    monosplit: 100,
-    dualsplit: 100,
-    trialsplit: 150,
+    monosplit: 120,
+    dualsplit: 190,
+    trialsplit: 290,
   },
   // Removal/Dismount Service
   removal: {

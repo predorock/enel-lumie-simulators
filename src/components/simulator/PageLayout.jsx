@@ -1,11 +1,10 @@
 import enelLogo from '../../assets/images/enel-logo-white.svg';
 import tondo from '../../assets/images/mezzo-tondo.svg';
-import Stepper from '../ui/stepper/Stepper';
 import NavigationBar from '../ui/NavigationBar';
-import LeftPanelRenderer from '../LeftPanelRenderer';
-import ValidationErrors from '../ui/ValidationErrors';
+import Stepper from '../ui/stepper/Stepper';
+import LeftPanelRenderer from './LeftPanelRenderer';
 
-export default function PageLayout({ 
+export default function PageLayout({
   children,
   currentStep = 0,
   title = "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
@@ -29,41 +28,41 @@ export default function PageLayout({
             <div className="text-white ml-4 border-l"></div>
             <div className="text-white ml-4 text-2xl">Lumiè Clima</div>
           </div>
-          
+
           {/* Title Section */}
           <div className="mt-8 text-white z-1">
             <h1 className="text-white text-2xl mt-4">{title}</h1>
           </div>
-          
+
           {/* Stepper Section */}
           {showStepper && (
             <div className="mt-8 z-1">
               <Stepper current={currentStep} />
             </div>
           )}
-          
+
           {/* Dynamic Content Section */}
           <div className="flex flex-col flex-1 overflow-hidden">
             <LeftPanelRenderer components={leftPanelComponents} />
           </div>
           {/* END Dynamic Content Section */}
-          
+
           {/* Background Decoration */}
           <img src={tondo} alt="Tondo" className="absolute bottom-0 right-0 -z-0" />
         </div>
-        
+
         {/* RIGHT CONTENT AREA */}
         <div className="col-span-4 flex flex-col h-screen">
           {/* Main Content - Scrollable */}
           <div className={`flex-1 p-16 overflow-y-auto ${className}`}>
             {children}
           </div>
-          
+
           {/* Validation Errors - Fixed above navigation */}
           {/* <div className="flex-shrink-0 px-16">
             <ValidationErrors />
           </div> */}
-          
+
           {/* Navigation Bar - Fixed at bottom */}
           {showNavigation && (
             <div className="flex-shrink-0">

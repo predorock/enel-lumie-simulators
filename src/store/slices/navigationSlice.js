@@ -25,77 +25,131 @@ export const createNavigationSlice = (set, get) => ({
         }
     },
 
-    nextStep: () => {
+    nextStep: async () => {
         const state = get();
 
-        // Check if we're completing step 2 and need to generate dynamic pages
+        // Get current page for hook execution
         const currentPage = state.getCurrentPage();
-        if (currentPage?.id === 'checklist-configuratore') {
-            state.generateSplitPages();
-        }
 
-        // Validate current page before proceeding
+        // 1. Standard validation before proceeding
         const validationResult = state.validation.validateCurrentPage();
-
         if (!validationResult.isValid) {
-            // Don't proceed if validation fails
+            console.log('❌ Standard validation failed');
             return false;
         }
 
+        // 2. Execute beforeNext hook if configured
+        const beforeNextHook = currentPage?.navigationHooks?.beforeNext;
+        if (beforeNextHook) {
+            try {
+                const hookPassed = await state.executeNavigationHook(beforeNextHook, currentPage);
+                if (!hookPassed) {
+                    console.log(`❌ Navigation hook ${beforeNextHook} failed, blocking next step`);
+                    return false;
+                }
+            } catch (error) {
+                console.error(`❌ Error executing beforeNext hook ${beforeNextHook}:`, error);
+                return false;
+            }
+        }
+
+        // 3. Proceed with navigation logic
         const allPages = state.getAllPages();
         const currentPageIndex = allPages.findIndex(p => p.id === state.currentPageId);
         const nextPageIndex = currentPageIndex + 1;
+
         if (nextPageIndex < allPages.length) {
             const nextPage = allPages[nextPageIndex];
-
-            // Check if we're navigating to the simulation page
-            if (nextPage.id === 'lancio-simulazione') {
-                // Trigger the simulation API call
-                setTimeout(() => {
-                    const newState = get();
-                    if (newState.submitSimulation) {
-                        newState.submitSimulation().catch(error => {
-                            console.error('Simulation submission failed:', error);
-                        });
-                    }
-                }, 100); // Small delay to ensure navigation completes first
-            }
 
             set({
                 currentStep: nextPage.step,
                 currentPageId: nextPage.id
             });
+
             // Reset validation state for the new page
             state.validation.clearValidationErrors();
+
             // Validate the new page after a short delay
             setTimeout(() => {
                 const newState = get();
                 newState.validation.validateCurrentPage();
             }, 0);
+
+            // 4. Execute afterNext hook if configured
+            const afterNextHook = currentPage?.navigationHooks?.afterNext;
+            if (afterNextHook) {
+                try {
+                    await state.executeNavigationHook(afterNextHook, currentPage);
+                } catch (error) {
+                    console.error(`❌ Error executing afterNext hook ${afterNextHook}:`, error);
+                    // Don't block navigation for afterNext hooks, just log the error
+                }
+            }
+
+            console.log(`✅ Navigated to step ${nextPage.step}: ${nextPage.id}`);
             return true;
         }
+
         return false;
     },
 
-    prevStep: () => {
+    prevStep: async () => {
         const state = get();
+        const currentPage = state.getCurrentPage();
+
+        // 1. Execute beforePrevious hook if configured
+        const beforePrevHook = currentPage?.navigationHooks?.beforePrevious;
+        if (beforePrevHook) {
+            try {
+                const hookPassed = await state.executeNavigationHook(beforePrevHook, currentPage);
+                if (!hookPassed) {
+                    console.log(`❌ Navigation hook ${beforePrevHook} failed, blocking previous step`);
+                    return false;
+                }
+            } catch (error) {
+                console.error(`❌ Error executing beforePrevious hook ${beforePrevHook}:`, error);
+                return false;
+            }
+        }
+
+        // 2. Proceed with navigation logic
         const allPages = state.getAllPages();
         const currentPageIndex = allPages.findIndex(p => p.id === state.currentPageId);
         const prevPageIndex = currentPageIndex - 1;
+
         if (prevPageIndex >= 0) {
             const prevPage = allPages[prevPageIndex];
+
             set({
                 currentStep: prevPage.step,
                 currentPageId: prevPage.id
             });
+
             // Reset validation state for the new page
             state.validation.clearValidationErrors();
+
             // Validate the new page after a short delay
             setTimeout(() => {
                 const newState = get();
                 newState.validation.validateCurrentPage();
             }, 0);
+
+            // 3. Execute afterPrevious hook if configured
+            const afterPrevHook = currentPage?.navigationHooks?.afterPrevious;
+            if (afterPrevHook) {
+                try {
+                    await state.executeNavigationHook(afterPrevHook, currentPage);
+                } catch (error) {
+                    console.error(`❌ Error executing afterPrevious hook ${afterPrevHook}:`, error);
+                    // Don't block navigation for afterPrevious hooks, just log the error
+                }
+            }
+
+            console.log(`✅ Navigated back to step ${prevPage.step}: ${prevPage.id}`);
+            return true;
         }
+
+        return false;
     },
 
     resetSteps: () => set({
@@ -222,6 +276,50 @@ export const createNavigationSlice = (set, get) => ({
         // Fallback to static pages if getAllPages is not available yet
         return pagesConfig.pages.length;
     },
+
+    // Navigation Hook Executor
+    executeNavigationHook: async (hookPath, currentPage) => {
+        const state = get();
+
+        if (!hookPath) {
+            return true; // No hook specified, continue normally
+        }
+
+        console.log(`🪝 Executing navigation hook: ${hookPath}`);
+
+        // Parse dot notation path (e.g., "airConditioning.completeSetup")
+        const pathParts = hookPath.split('.');
+        let hookFunction = state;
+
+        // Navigate through the nested object to find the hook function
+        for (const part of pathParts) {
+            if (hookFunction && typeof hookFunction === 'object' && part in hookFunction) {
+                hookFunction = hookFunction[part];
+            } else {
+                console.warn(`Navigation hook "${hookPath}" not found in state`);
+                return true; // Continue if hook doesn't exist
+            }
+        }
+
+        if (typeof hookFunction !== 'function') {
+            console.warn(`Navigation hook "${hookPath}" is not a function`);
+            return true; // Continue if hook is not a function
+        }
+
+        try {
+            const result = await hookFunction(currentPage);
+            return result !== false; // Allow hook to block navigation by returning false
+        } catch (error) {
+            console.error(`❌ Navigation hook ${hookPath} failed:`, error);
+
+            // You can integrate with error handling slice here if available
+            if (state.error?.setError) {
+                state.error.setError(`Navigation Error: ${error.message}`);
+            }
+
+            throw error; // Re-throw to be handled by caller
+        }
+    },
 });
 
 
@@ -240,7 +338,7 @@ function dynamicPageTemplate(
         //        splitIndex: splitIndex,
         validationRules: {
             required: [
-                `airConditioningConfigs.${acConfig?.configKey}.selected` // Use configKey to access the correct configuration
+                `formData.airConditioningConfigs.${acConfig?.configKey}.selected` // Use configKey to access the correct configuration
             ]
         },
         leftPanelComponents: [

@@ -1,5 +1,5 @@
-import useAppStore from '../store/useAppStore';
-import CustomSelect from './ui/CustomSelect';
+import useAppStore from '../../store/useAppStore';
+import CustomSelect from '../ui/CustomSelect';
 
 const StatefulCustomSelect = ({ 
   stateProperty, 

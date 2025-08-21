@@ -1,6 +1,6 @@
 import React from 'react';
-import useAppStore from '../store/useAppStore';
-import AsyncSelect from './ui/AsyncSelect';
+import useAppStore from '../../store/useAppStore';
+import AsyncSelect from '../ui/AsyncSelect';
 
 const StatefulAsyncSelect = ({ 
   stateProperty, 

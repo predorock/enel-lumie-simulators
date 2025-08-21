@@ -1,6 +1,6 @@
 import React from 'react';
-import useAppStore from '../store/useAppStore';
-import DuctworkConfigurator from './ui/DuctworkConfigurator';
+import useAppStore from '../../store/useAppStore';
+import DuctworkConfigurator from '../ui/DuctworkConfigurator';
 
 const StatefulDuctworkConfigurator = ({ 
   stateProperty, 

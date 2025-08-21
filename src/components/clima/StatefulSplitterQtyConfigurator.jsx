@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import SplitterQtyConfigurator from './ui/SplitterQtyConfigurator';
-import useAppStore from '../store/useAppStore';
+import SplitterQtyConfigurator from '../ui/SplitterQtyConfigurator';
+import useAppStore from '../../store/useAppStore';
 
 // Stateful wrapper for SplitterQtyConfigurator that integrates with the store
 const StatefulSplitterQtyConfigurator = ({ 
