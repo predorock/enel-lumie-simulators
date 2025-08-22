@@ -1,6 +1,6 @@
 import getNestedValue from "../../utils/getNestedValue";
 
-const createRendererSlice = (set, get) => ({
+export const createRendererSlice = (set, get) => ({
 
     // Component visibility helpers
     shouldRenderComponent: (conditions) => {
@@ -46,6 +46,3 @@ const createRendererSlice = (set, get) => ({
         return true;
     },
 })
-
-
-export default createRendererSlice;

@@ -67,3 +67,17 @@ export const createValidationSlice = (set, get) => ({
     }
   }
 });
+
+export const createValidationSubscriptions = (store) => {
+
+  store.subscribe(
+    (state) => state._initialized,
+    (val, prev) => {
+      if (val && !prev) {
+        const validation = store.getState().validation;
+        validation.validateCurrentPage();
+        console.log('Initial validation completed');
+      }
+    }
+  );
+};

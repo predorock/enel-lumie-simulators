@@ -1,9 +1,10 @@
 import cn from "classnames";
 import Divider from "../Divider";
+import PriceDisplay from "../Price/PriceDisplay";
 
 const SummaryPriceDisplay = ({
     title = "Riepilogo spesa componenti aggiuntivi",
-    lineItems = [],
+    items = [],
     total = "",
     className = "",
     ...props
@@ -17,41 +18,38 @@ const SummaryPriceDisplay = ({
             {...props}
         >
             {/* Title */}
-            <h3 className="text-lg font-enel-bold text-[#002466] mb-6">
+            <h3 className="text-lg font-enel-bold text-black mb-4">
                 {title}
             </h3>
 
             {/* Line Items */}
             <div className="space-y-4">
-                {lineItems.map((item, index) => (
+                {items.map((item, index) => (
                     <div key={index} className="flex justify-between items-center">
-                        <span className="text-sm font-enel text-[#667790] flex-1">
+                        <span className="text-md font-enel-light flex-1">
                             {item.description}
                         </span>
-                        <span className="text-sm font-enel-bold text-[#002466] ml-4">
-                            {item.price}
-                        </span>
+                        <PriceDisplay value={item.price} />
                     </div>
                 ))}
             </div>
 
             {/* Divider */}
-            {lineItems.length > 0 && total && (
+            {total && (
                 <Divider
-                    className="my-6"
-                    color="#c2cddd"
+                    className="my-4"
                     spacing="0"
                 />
             )}
 
             {/* Total */}
             {total && (
-                <div className="flex justify-between items-center">
-                    <span className="text-lg font-enel-bold text-[#002466]">
+                <div className="flex justify-between items-cente">
+                    <span className="text-lg font-enel-bold tetxt-black">
                         Totale (IVA Inclusa)
                     </span>
-                    <span className="text-xl font-enel-bold text-[#002466]">
-                        {total}
+                    <span className="text-xl font-enel-bold tetxt-black">
+                        <PriceDisplay value={total} />
                     </span>
                 </div>
             )}

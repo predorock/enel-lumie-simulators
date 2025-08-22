@@ -334,12 +334,16 @@ function dynamicPageTemplate(
         title: "Scegliete insieme il climatizzatore adatto!",
         step: 3,
         isDynamic: true,
-        //        splitType: acConfig?.type,
-        //        splitIndex: splitIndex,
         validationRules: {
             required: [
                 `formData.airConditioningConfigs.${acConfig?.configKey}.selected` // Use configKey to access the correct configuration
             ]
+        },
+        navigationHooks: {
+            beforeNext: "",
+            afterNext: splitIndex === splitTotal - 1 ? "report.submitSimulation" : "",
+            beforePrevious: "",
+            afterPrevious: ""
         },
         leftPanelComponents: [
             {

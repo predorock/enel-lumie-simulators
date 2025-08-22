@@ -195,3 +195,17 @@ export const createProductsSlice = (set, get) => ({
 
   }
 });
+
+export const createProductSubscriptions = (store) => {
+
+  store.subscribe(
+    (state) => state.formData.storeCity,
+    (newVal, prev) => {
+      if ((!!newVal && !prev) || newVal.toLocaleLowerCase() !== prev.toLocaleLowerCase()) {
+        // City changed or previous value was undefined, trigger product loading
+        const products = store.getState().products;
+        products.loadProductsByCity(newVal);
+      }
+    }
+  );
+};

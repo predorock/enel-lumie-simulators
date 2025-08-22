@@ -262,7 +262,7 @@
             },
             "navigationHooks": {
                 "beforeNext": "",
-                "afterNext": "report.submitSimulation",
+                "afterNext": "",
                 "beforePrevious": "",
                 "afterPrevious": ""
             },

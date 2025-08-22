@@ -94,6 +94,13 @@ export const validateAirConditioningConfig = (property, dependsOn, state, errorM
 
   const errors = [];
 
+  if (!quantities || !configs) {
+    return {
+      isValid: false,
+      errors
+    }
+  }
+
   // Check each split type that has quantities > 0
   Object.entries(quantities).forEach(([splitType, quantity]) => {
     if (quantity > 0) {

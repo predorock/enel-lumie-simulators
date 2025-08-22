@@ -43,10 +43,10 @@ export default function TextInput({
             {/* Floating Label */}
             <label
               className={cn(
-                "absolute left-0 font-enel pointer-events-none transition-all duration-200 ease-in-out",
+                "absolute left-0 font-enel pointer-events-none transition-all duration-200 ease-in-out text-[#667790]",
                 {
-                  "text-[12px] text-[#667790] top-0": shouldFloatLabel,
-                  "text-[13px] text-[#667790] top-1/2 -translate-y-1/2": !shouldFloatLabel
+                  "text-[12px] top-0": shouldFloatLabel,
+                  "text-[13px]  top-1/2 -translate-y-1/2": !shouldFloatLabel
                 }
               )}
             >

@@ -14,6 +14,25 @@ const StatefulReportSummary = () => {
         return null;
     }
 
+    const prices = [
+        {
+            description: "Installazione",
+            price: 100
+        },
+        {
+            description: "Disoneste",
+            price: 50
+        },
+        {
+            description: "Massaggi",
+            price: 50
+        },
+        {
+            description: "Bomboloni",
+            price: 50
+        }
+    ]
+
     const tabs = [
         {
             id: 'climatizzatore',
@@ -23,10 +42,9 @@ const StatefulReportSummary = () => {
         {
             id: 'installazione',
             label: 'Spese installazione',
-            component: <SummaryPriceDisplay value={configs.installazione?.prezzo || 0} />
+            component: <SummaryPriceDisplay items={prices} total="100" />
         }
     ];
-    console.log(configs)
     const [activeTab, setActiveTab] = useState(tabs[0].id);
     return <ReportSummary tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />;
 };
