@@ -1,53 +1,22 @@
-import useAppStore from '../../store/useAppStore';
-import componentRegistry from './ComponentRegistry';
+import DynamicComponent from './DynamicComponent';
 
 const LeftPanelRenderer = ({ components = [] }) => {
-  const { formData } = useAppStore();
-
-  // Helper function to check render conditions
-  const shouldRenderComponent = (renderConditions) => {
-    if (!renderConditions) return true;
-
-    return Object.entries(renderConditions).every(([conditionType, stateKey]) => {
-      switch (conditionType) {
-        case 'hasQuantities':
-          const quantities = formData[stateKey] || {};
-          return Object.values(quantities).some(qty => qty > 0);
-        default:
-          return true;
-      }
-    });
-  };
-
-  const renderComponent = (componentConfig, index) => {
-    const { type, props = {}, renderConditions } = componentConfig;
-
-    // Check if component should be rendered
-    if (!shouldRenderComponent(renderConditions)) {
-      return null;
-    }
-
-    const Component = componentRegistry[type];
-
-    if (!Component) {
-      console.warn(`Component type "${type}" not found in registry`);
-      return null;
-    }
-
-    return (
-      <div key={`left-panel-${index}`}>
-        <Component {...props} />
-      </div>
-    );
-  };
-
   if (!components || components.length === 0) {
     return null;
   }
 
   return (
     <div className="left-panel-components flex flex-col h-full justify-between">
-      {components.map((component, index) => renderComponent(component, index))}
+      {components.map((componentConfig, index) => (
+        <div key={`left-panel-${index}`}>
+          <DynamicComponent
+            type={componentConfig.type}
+            props={componentConfig.props}
+            renderConditions={componentConfig.renderConditions}
+            showError={true}
+          />
+        </div>
+      ))}
     </div>
   );
 };
