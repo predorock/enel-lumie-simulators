@@ -16,8 +16,8 @@ export default {
       }
     }
   },
-  currentStep: 4,
-  currentPageId: 'lancio-simulazione',
+  currentStep: 2,
+  currentPageId: 'servizi-manutenzione',
   steps: [
     {
       copy: 'Informazioni'
@@ -39,6 +39,12 @@ export default {
         required: [
           'formData.airConditioningConfigs.monosplit_0.selected'
         ]
+      },
+      navigationHooks: {
+        beforeNext: "",
+        afterNext: "report.submitSimulation",
+        beforePrevious: "",
+        afterPrevious: ""
       },
       leftPanelComponents: [
         {

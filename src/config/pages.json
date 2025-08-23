@@ -308,7 +308,7 @@
                     },
                     "renderConditions": {
                         "equals": {
-                            "property": "needsRemoval",
+                            "property": "formData.needsRemoval",
                             "value": true
                         }
                     }
@@ -339,7 +339,7 @@
                     },
                     "renderConditions": {
                         "equals": {
-                            "property": "needsRemoval",
+                            "property": "formData.needsRemoval",
                             "value": true
                         }
                     }
@@ -375,7 +375,7 @@
                     },
                     "renderConditions": {
                         "equals": {
-                            "property": "wantsCleaning",
+                            "property": "formData.wantsCleaning",
                             "value": true
                         }
                     }
@@ -406,7 +406,7 @@
                     },
                     "renderConditions": {
                         "equals": {
-                            "property": "wantsCleaning",
+                            "property": "formData.wantsCleaning",
                             "value": true
                         }
                     }
