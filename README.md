@@ -426,3 +426,6 @@ This is a proprietary ENEL project. Development follows established patterns and
 ---
 
 *Built with ❤️ using React, Vite, and modern web technologies for ENEL Lumiè Verticale Clima*
+
+
+
