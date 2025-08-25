@@ -251,9 +251,11 @@ Before completing, verify:
 
 ## 📚 **Reference Documentation**
 
-- **Design System:** `docs/architecture/design-system.md`
-- **Component Patterns:** `docs/components/README.md`
-- **Architecture Overview:** `.github/copilot-instructions.md`
+- **Architecture & Guidelines:** `.github/copilot-instructions.md`
+- **Project Documentation:** `README.md`
+- **Instructions:** `docs/instructions/` folder
+- **Font Configuration:** `tailwind.config.js` (for design tokens)
+- **Component Examples:** `src/components/ui/` and `src/components/clima/`
 
 ---
 

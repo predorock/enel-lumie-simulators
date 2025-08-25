@@ -135,9 +135,9 @@ className="text-gray-600"               // Gray secondary
 - Configure components through pages.json
 
 ## Documentation
-- Complete docs in `docs/` folder
-- Design system: `docs/architecture/design-system.md`
-- Component patterns: `docs/components/README.md`
+- Project instructions in `docs/instructions/` folder
+- Prompts for AI agents: `docs/prompts/`
+- Complete project info: `README.md`
 
 ---
 
