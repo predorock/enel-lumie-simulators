@@ -1,280 +1,142 @@
 # Figma to Component Creation Prompt
 
-## AI Agent Instructions for Creating Components from Figma MCP
+## 🎯 **AI Agent Instructions**
 
-Use this structured prompt when creating new components from Figma designs using the Model Context Protocol (MCP).
+Create React components from Figma designs for ENEL Lumiè Verticale Clima, prioritizing **component reuse** over new creation.
 
 ---
 
-## 🎯 **Task Overview**
+## 📋 **Step 1: Analyze & Reuse First**
 
-You are creating a new React component for the ENEL Lumiè Verticale Clima application from a Figma design. Follow the project's unique architecture patterns exactly.
-
-## 📋 **Prerequisites**
-
-Before starting, ensure you have:
-- [ ] Figma MCP tools available (`mcp_figma_dev_mod_get_code`, `mcp_figma_dev_mod_get_image`)
-- [ ] Access to the Figma node ID or URL
-- [ ] Understanding of the component's purpose in the application flow
-
-## 🔧 **Step-by-Step Process**
-
-### Step 1: Extract Design Information
 ```prompt
-Using the Figma MCP tools, please:
+Before creating a new component:
 
-1. **Get the component code** from Figma node ID: `[NODE_ID]`
-   - Use `mcp_figma_dev_mod_get_code` with clientFrameworks: "react" and clientLanguages: "javascript"
-   - Extract design tokens (colors, spacing, typography)
-   - Identify interactive elements and states
+1. **Extract Figma design** using MCP tools:
+   - `mcp_figma_dev_mod_get_code` (clientFrameworks: "react", clientLanguages: "javascript") 
+   - `mcp_figma_dev_mod_get_image` for visual reference
 
-2. **Get component image** for visual reference
-   - Use `mcp_figma_dev_mod_get_image` with the same node ID
-   - Use for implementation verification
+2. **Check existing components** in:
+   - `src/components/ui/` - Pure UI components
+   - `src/components/clima/` - Stateful wrappers
+   - `src/components/simulator/ComponentRegistry.jsx` - All registered components
 
-3. **Get variable definitions** if the component uses design tokens
-   - Use `mcp_figma_dev_mod_get_variable_defs` to extract CSS variables
+3. **Determine reuse strategy:**
+   - [ ] **Exact match**: Use existing component as-is
+   - [ ] **Style variant**: Extend existing component with className props
+   - [ ] **Minor modification**: Update existing component to support new props
+   - [ ] **New component needed**: No suitable existing component found
 ```
 
-### Step 2: Analyze Component Requirements
+## 🔄 **Step 2: Implementation Strategy**
+
+### **If Reusing Existing Component:**
 ```prompt
-Based on the Figma design, determine:
-
-**Component Type:**
-- [ ] Pure UI component (display only)
-- [ ] Form component (requires state management)
-- [ ] Interactive component (buttons, toggles)
-- [ ] Layout component (containers, grids)
-
-**Data Requirements:**
-- [ ] Static content only
-- [ ] Form state binding needed (`stateProperty`)
-- [ ] External data integration
-- [ ] Conditional rendering logic
-
-**Design System Compliance:**
-- [ ] Uses ENEL Roobert font family
-- [ ] Uses brand colors (primary: #002466, purple: #5738ff, gray: #667790)
-- [ ] Follows standard sizing (h-10 for inputs, w-6 h-6 for icons)
-- [ ] Responsive design considerations
+1. **Identify base component** that matches functionality
+2. **Extend with props** for visual differences:
+   ```jsx
+   // Use existing component with additional styling
+   <ExistingComponent 
+     className="custom-variant-styles" 
+     variant="newType"
+     {...props} 
+   />
+   ```
+3. **Update ComponentRegistry** if new variant needed:
+   ```javascript
+   NewComponentName: (props) => <ExistingComponent variant="new" {...props} />
+   ```
 ```
 
-### Step 3: Create Pure UI Component
+### **If Creating New Component:**
+
+#### **Pure UI Component** (`src/components/ui/ComponentName.jsx`)
 ```prompt
-Create the pure UI component following ENEL design system:
+Follow ENEL patterns from `.github/copilot-instructions.md`:
 
-**File Location:** `src/components/ui/[ComponentName].jsx`
+- **Typography**: `font-enel`, `font-enel-light`, `font-enel-bold`
+- **Colors**: `bg-primary`, `text-purple-600`, `text-gray-600` (NO arbitrary values)
+- **Sizing**: `h-10` (inputs), `w-6 h-6` (icons)
+- **Keep pure**: No state management, props in/events out
 
-**Requirements:**
-- Export as default
-- Accept props: `{ value, onChange, className, ...props }` (for form components)
-- Use Tailwind classes with ENEL design tokens:
-  - Typography: `font-enel`, `font-enel-light`, `font-enel-bold`
-  - Colors: `bg-primary`, `text-purple-600`, `text-gray-600` (NO arbitrary values)
-  - Sizing: `h-10` for inputs, `w-6 h-6` for icons
-  - Spacing: 4px-based scale (`p-3`, `space-y-4`, etc.)
-- Ensure proper focus states and accessibility
-- Keep component pure (no state management)
-
-**Example Structure:**
 ```javascript
-const ComponentName = ({ 
-  value, 
-  onChange, 
-  placeholder, 
-  className = '',
-  ...props 
-}) => {
-  return (
-    <div className={`[base-classes] ${className}`} {...props}>
-      {/* Component implementation */}
-    </div>
-  );
-};
-
+const ComponentName = ({ value, onChange, className = '', ...props }) => (
+  <div className={`base-styles ${className}`} {...props}>
+    {/* Implementation */}
+  </div>
+);
 export default ComponentName;
 ```
+```
 
-### Step 4: Create Stateful Wrapper (if needed)
+#### **Stateful Wrapper** (if form component) (`src/components/clima/StatefulComponentName.jsx`)
 ```prompt
-If the component handles form data or application state:
-
-**File Location:** `src/components/clima/Stateful[ComponentName].jsx`
-
-**Requirements:**
-- Import useAppStore and the pure UI component
-- Use `stateProperty` prop for state binding
-- Handle state updates via `setFormValue`
-- Pass through all other props to UI component
-
-**Template:**
 ```javascript
 import useAppStore from '../../store/useAppStore';
 import ComponentName from '../ui/ComponentName';
 
 const StatefulComponentName = ({ stateProperty, ...props }) => {
-  const store = useAppStore();
-  const value = store.formData[stateProperty] || '';
-  const setValue = (newValue) => store.setFormValue(stateProperty, newValue);
-  
+  const { formData, setFormValue } = useAppStore();
   return (
     <ComponentName 
-      value={value} 
-      onChange={setValue} 
+      value={formData[stateProperty]} 
+      onChange={(v) => setFormValue(stateProperty, v)} 
       {...props} 
     />
   );
 };
-
 export default StatefulComponentName;
 ```
 ```
 
-### Step 5: Register Component
+#### **Register Component** (`src/components/simulator/ComponentRegistry.jsx`)
 ```prompt
-Register the component in the ComponentRegistry:
-
-**File:** `src/components/simulator/ComponentRegistry.jsx`
-
-**Add import:**
 ```javascript
+// Add import
 import StatefulComponentName from '../clima/StatefulComponentName';
-// OR for pure UI components:
-import ComponentName from '../ui/ComponentName';
-```
 
-**Add to registry:**
-```javascript
+// Add to registry
 const componentRegistry = {
-  // ... existing components
+  // ... existing
   ComponentName: (props) => <StatefulComponentName {...props} />,
-  // OR for pure UI:
-  ComponentName: (props) => <ComponentName {...props} />,
 };
 ```
 ```
 
-### Step 6: Configure Usage (if for pages.json)
+## ✅ **Step 3: Validation**
+
 ```prompt
-If the component will be used in the page configuration:
+Verify:
+- [ ] **Reuse checked**: Existing components analyzed first
+- [ ] **Architecture compliance**: Follows stateful wrapper pattern
+- [ ] **Design system**: Uses theme colors and font classes
+- [ ] **Registration**: Added to ComponentRegistry.jsx
+- [ ] **Testing**: Works in demo mode (`?demo=componentName`)
 
-**File:** `src/config/pages.json`
-
-**Add component configuration:**
-```json
-{
-  "type": "ComponentName",
-  "props": {
-    "placeholder": "Enter value",
-    "stateProperty": "componentValue",
-    "className": "additional-styles"
-  },
-  "renderConditions": {
-    // Optional: conditional rendering logic
-  }
-}
-```
-
-**Add validation rules (if form component):**
-```json
-{
-  "validationRules": {
-    "required": ["componentValue"],
-    "custom": [
-      {
-        "type": "minLength",
-        "property": "componentValue",
-        "value": 3,
-        "errorMessage": "Minimum 3 characters required"
-      }
-    ]
-  }
-}
-```
-```
-
-### Step 7: Test Component
-```prompt
-Test the new component:
-
-1. **Demo Mode Test:**
-   ```bash
-   # Navigate to demo mode
-   http://localhost:5173/?demo=ComponentName
-   ```
-
-2. **Integration Test:**
-   - Add component to a test page in pages.json
-   - Test with form data using `?test=true`
-   - Verify state management works correctly
-
-3. **Design System Compliance:**
-   - Verify font rendering (Roobert family)
-   - Check color accuracy against Figma
-   - Test responsive behavior
-   - Validate accessibility (focus states, keyboard navigation)
-```
-
-## ✅ **Validation Checklist**
-
-Before completing, verify:
-
-### Architecture Compliance
-- [ ] Component follows stateful wrapper pattern (if needed)
-- [ ] Registered in ComponentRegistry.jsx
-- [ ] Uses `stateProperty` for form bindings
-- [ ] No local state for form data
-- [ ] Pure UI component is kept separate from state logic
-
-### Design System Compliance
-- [ ] Uses Tailwind font classes (`font-enel`, `font-enel-light`, `font-enel-bold`)
-- [ ] Uses theme colors, not arbitrary values
-- [ ] Follows standard sizing patterns
-- [ ] Matches Figma design visually
-- [ ] Responsive design implemented
-
-### Code Quality
-- [ ] Component is accessible (proper ARIA attributes, focus management)
-- [ ] Props are properly typed and documented
-- [ ] Error states handled gracefully
-- [ ] Performance optimized (no unnecessary re-renders)
-
-## 🚫 **Critical Anti-Patterns to Avoid**
-
+**Critical Anti-Patterns to Avoid:**
+- ❌ Creating new component when existing one could be extended
+- ❌ Using arbitrary colors `bg-[#002466]` instead of theme colors
 - ❌ Using `useState` for form data
-- ❌ Importing components directly in PageRenderer
-- ❌ Hardcoding component rendering
-- ❌ Using arbitrary color values like `bg-[#002466]`
-- ❌ Using inline styles for fonts
-- ❌ Skipping component registration
-- ❌ Mixing UI logic with state management
-
-## 📚 **Reference Documentation**
-
-- **Architecture & Guidelines:** `.github/copilot-instructions.md`
-- **Project Documentation:** `README.md`
-- **Instructions:** `docs/instructions/` folder
-- **Font Configuration:** `tailwind.config.js` (for design tokens)
-- **Component Examples:** `src/components/ui/` and `src/components/clima/`
+- ❌ Skipping ComponentRegistry registration
+```
 
 ---
 
-## 🎯 **Example Usage Prompt**
+## 🎯 **Usage Template**
 
 ```
-I need to create a new component from this Figma design:
-[Figma URL or Node ID: 123:456]
+I need to implement this Figma design: [URL/Node ID: 123:456]
 
-The component is a [describe component - e.g., "custom dropdown for selecting air conditioning brands"]
+Please follow the ENEL component creation process:
+1. Extract design using Figma MCP tools
+2. **First check for existing components to reuse**
+3. If reuse possible: extend existing component
+4. If new component needed: follow the stateful wrapper pattern
+5. Register in ComponentRegistry.jsx
 
-Please follow the ENEL Lumiè Verticale Clima component creation process:
-1. Extract the design using Figma MCP tools
-2. Create the pure UI component in src/components/ui/
-3. Create the stateful wrapper in src/components/clima/ (if needed)
-4. Register in ComponentRegistry.jsx
-5. Configure for pages.json usage (if applicable)
+**Priority: Reuse existing components whenever possible before creating new ones.**
 
-Ensure full compliance with the project's design system and architecture patterns.
+Component purpose: [describe functionality]
+Form component: [yes/no]
 ```
 
-This prompt ensures AI agents follow the exact architectural patterns and design system requirements of the ENEL Lumiè Verticale Clima project.
+For complete architecture details, see `.github/copilot-instructions.md`
