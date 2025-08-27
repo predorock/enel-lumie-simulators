@@ -49,7 +49,7 @@ const SummaryPriceDisplay = ({
                         Totale (IVA Inclusa)
                     </span>
                     <span className="font-enel-bold tetxt-black">
-                        <PriceDisplay value={total} className={''} />
+                        <PriceDisplay value={total} />
                     </span>
                 </div>
             )}

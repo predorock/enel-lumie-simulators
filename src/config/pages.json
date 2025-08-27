@@ -491,6 +491,33 @@
                 {
                     "type": "ReportSummary",
                     "props": {}
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Il suo investimento il suo futuro",
+                        "description": "Ogni scelta fatta oggi si traduce in un risparmio concreto e in un futuro più sostenibile. Fai scoprire al cliente come i prodotti che ha scelto migliorano la sua vita quotidiana e offrono un ritorno economico che cresce nel tempo."
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "spacing": "32px"
+                    }
+                },
+                {
+                    "type": "DisclaimerContainer",
+                    "props": {
+                        "className": "mt-6 mb-4",
+                        "sections": [
+                            "<b>* Il prezzo visualizzato è calcolato in base alla regione in cui si trova la casa del cliente.</b>",
+                            "<b>**Sono disponibili diverse modalità di finanziamento.</b> Informa il cliente sui requisiti di accesso alle agevolazioni, sul periodo di validità e sulle spese ammissibili, facendo riferimento alla normativa vigente. Spiegagli eventuali TAN e TAEG applicati al finanziamento per aiutarlo a comprendere il costo finale del prodotto che desidera. Ricordagli inoltre di richiedere il documento 'Informazioni europee di base sul credito ai consumatori' (SECCI) e una copia del contratto, così avrà tutto il necessario per prendere una decisione informata sui costi e sulle condizioni.",
+                            "<b>Nota importante sull’installazione del climatizzatore.</b> L’installazione del climatizzatore potrà essere effettuata solo se tutte le seguenti condizioni tecniche sono rispettate:",
+                            "<ol class='list-decimal pl-4'><li>Le pareti da forare per il passaggio delle tubazioni sono in laterizio (mattone vuoto) e consentono fori di dimensioni massime pari a 8 cm di diametro e 40 cm di spessore.</li><li>Il dislivello tra l’unità interna ed esterna non supera i 3,5 metri.</li><li>L’unità esterna è installabile ad una quota inferiore a 3,5 metri da una superficie calpestabile (pian terreno, balcone, terrazzo  esclusi balconi a sbalzo).</li><li>È garantito il rispetto degli spazi minimi di installazione per ogni unità:<ul class='list-disc pl-4'><li>Unità interne: almeno 110 cm di larghezza e 50 cm di altezza.</li><li>Unità esterne mono/dual split: almeno 120 cm di larghezza e 105 cm di profondità.</li><li>Unità esterne trial split: almeno 130 cm di larghezza e 110 cm di profondità.</li></ul></li></ol>",
+                            "<b>In assenza di una o più di queste condizioni, sarà necessario un sopralluogo tecnico aggiuntivo per verificare la fattibilità dell’installazione o proporre eventuali soluzioni alternative.</b>"
+                        ]
+                    }
                 }
             ]
         }
