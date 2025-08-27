@@ -5,6 +5,10 @@ const SummaryProductCard = ({
 
     const { product } = data;
 
+    if (!product) {
+        return null;
+    }
+
     // Format price to ensure it's displayed correctly
     const formattedPrice = typeof data.totalPrice === 'string' ? data.totalPrice : `${parseFloat(data.totalPrice || 0).toFixed(2)}€`;
     const cardDescription = ""
@@ -15,10 +19,10 @@ const SummaryProductCard = ({
 
                     {/* Product Image */}
                     <div className="bg-[#f7f8fb] relative rounded-[5.125px] shrink-0 size-[82px] flex items-center justify-center">
-                        {product.productImage ? (
+                        {product?.productImage ? (
                             <img
-                                src={product.productImage}
-                                alt={product.productImageAlt}
+                                src={product?.productImage}
+                                alt={product?.productImageAlt}
                                 className="h-9 w-auto max-w-[80px] object-contain mix-blend-multiply"
                             />
                         ) : (
@@ -42,7 +46,7 @@ const SummaryProductCard = ({
 
                         {/* Product Name */}
                         <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#131416] text-[16px] w-full">
-                            <p className="leading-[16px]">{product.productName}</p>
+                            <p className="leading-[16px]">{product?.productName}</p>
                         </div>
 
                         {/* Description and Quantity */}

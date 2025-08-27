@@ -8,41 +8,22 @@ import SummaryProductCardContainer from "../ui/summary/SummaryProductCardContain
 const StatefulReportSummary = () => {
 
     const store = useAppStore();
-    const configs = store.report.getSummary() || {};
+    const summary = store.report.getSummary() || {};
 
-    if (configs?.length < 0) {
+    if (summary?.clima?.length < 0 || summary?.expenses?.length < 0) {
         return null;
     }
-
-    const prices = [
-        {
-            description: "Installazione",
-            price: 100
-        },
-        {
-            description: "Disoneste",
-            price: 50
-        },
-        {
-            description: "Massaggi",
-            price: 50
-        },
-        {
-            description: "Bomboloni",
-            price: 50
-        }
-    ]
 
     const tabs = [
         {
             id: 'climatizzatore',
             label: 'Climatizzatore',
-            component: <SummaryProductCardContainer entries={configs} />
+            component: <SummaryProductCardContainer entries={summary?.clima} />
         },
         {
             id: 'installazione',
             label: 'Spese installazione',
-            component: <SummaryPriceDisplay items={prices} total="100" />
+            component: <SummaryPriceDisplay items={summary?.expenses} total="100" />
         }
     ];
     const [activeTab, setActiveTab] = useState(tabs[0].id);

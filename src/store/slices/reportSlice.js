@@ -2,6 +2,32 @@
  * Report slice for handling simulation API requests and responses
  */
 import { isValidSimulationData, submitSimulationToApi } from '../../utils/api';
+import { getInstallationTypeDescription } from './pricingSlice';
+
+export const getOperationDescription = (operationType, splitType, amount) => {
+
+    const splitDesc = (sType) => {
+        switch (sType) {
+            case 'monosplit':
+                return 'mono';
+            case 'dualsplit':
+                return 'dual';
+            case 'trialsplit':
+                return 'trial';
+            default:
+                return '';
+        }
+    }
+
+    switch (operationType) {
+        case 'removal':
+            return `Smontaggio clima ${splitDesc(splitType)} x${amount}`;
+        case 'cleaning':
+            return `Lavaggio impianto clima ${splitDesc(splitType)} x${amount}`;
+        default:
+            return ``;
+    }
+};
 
 export const createReportSlice = (set, get) => ({
     // Report state
@@ -76,6 +102,20 @@ export const createReportSlice = (set, get) => ({
 
         // TRANSFORMERS ---
 
+        getInstallationConfigsByType: () => {
+            const state = get();
+            const qty = state.formData.airConditioningConfigs || {};
+
+            return Object.values(qty).reduce((acc, config) => {
+                if (config && config.installationType) {
+                    const type = config.installationType;
+                    acc[type] = (acc[type] || 0) + 1;
+                }
+                return acc;
+            }, {});
+
+        },
+
         expandedConfigs: () => {
             const state = get();
             const configs = state.formData.airConditioningConfigs || {};
@@ -94,20 +134,24 @@ export const createReportSlice = (set, get) => ({
 
         getSummary: () => {
             const state = get();
+            const summary = {
+                clima: [],
+                expenses: []
+            }
             const configs = state.formData.airConditioningConfigs || {};
 
-            return Object.keys(configs).reduce((acc, key) => {
+            Object.keys(configs).forEach((key) => {
                 const config = configs[key];
                 const product = state.products.items.find(p => p.id === config.selected);
                 const splitType = key.split('_')[0];
 
-                const existing = acc.find(item => item.id === product?.id);
+                const existing = summary.clima.find(item => item.id === product?.id);
                 const price = parseFloat(product?.price || 0);
                 if (existing) {
                     existing.count += 1;
                     existing.totalPrice += price;
                 } else {
-                    acc.push({
+                    summary.clima.push({
                         id: product?.id,
                         product,
                         splitType,
@@ -115,8 +159,34 @@ export const createReportSlice = (set, get) => ({
                         totalPrice: price
                     });
                 }
-                return acc;
-            }, []);
+            });
+
+            const installationTypesAmount = state.report.getInstallationConfigsByType();
+
+            Object.keys(installationTypesAmount).forEach((installationType) => {
+                const amount = installationTypesAmount[installationType];
+                summary.expenses.push({
+                    description: getInstallationTypeDescription(installationType, amount),
+                    price: installationType === 'nuova_senza_predisposizione' ? state.getPurchaseTotal() : 0
+                });
+            });
+
+            [
+                { op: 'removal', data: state.formData.removalQuantities || {} },
+                { op: 'cleaning', data: state.formData.cleaningQuantities || {} }
+            ].forEach(({ op, data }) => {
+                Object.keys(data).forEach((splitType) => {
+                    const amount = data[splitType];
+                    if (amount <= 0) return;
+                    summary.expenses.push({
+                        description: getOperationDescription(op, splitType, amount),
+                        price: state.pricingState.calculations[op][splitType] || 0
+                    });
+                });
+            });
+
+            return summary;
+
         },
 
         // Build the simulation payload from current state

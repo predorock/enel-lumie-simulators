@@ -4,7 +4,6 @@ import AirConditioningConfigurator from '../ui/AirConditioningConfigurator';
 
 const StatefulAirConditioningConfigurator = ({
   stateProperty = 'airConditioningConfigs',
-  //showOnlyWhenQuantitiesExist = true,
   installationTypes = [],
   infoIconKey = null,
   ...props

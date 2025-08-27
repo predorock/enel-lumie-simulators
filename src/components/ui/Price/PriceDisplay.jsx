@@ -1,12 +1,12 @@
 
 import { priceFormatter } from './priceFormatter';
 
-const PriceDisplay = ({ value }) => {
+const PriceDisplay = ({ value, className }) => {
 
     const price = priceFormatter(value);
 
     return (
-        <div className="text-lg font-enel-bold text-black">
+        <div className={`font-enel-bold text-black ${className}`}>
             {price}
         </div>
     );

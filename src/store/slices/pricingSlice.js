@@ -25,6 +25,27 @@ export const UNIT_PRICES = {
   },
 };
 
+export const getInstallationTypeDescription = (installationType, amount = 0) => {
+  const desc = (iType) => {
+    switch (iType) {
+      case "nuova_con_predisposizione":
+        return "Nuova installazione con predisposizione";
+      case "nuova_senza_predisposizione":
+        return "Nuova installazione senza predisposizione";
+      case "sostituzione_monosplit":
+        return "Sostituzione monosplit";
+      case "sostituzione_dualsplit":
+        return "Sostituzione dualsplit";
+      case "sostituzione_trialsplit":
+        return "Sostituzione trialsplit";
+      default:
+        return "";
+    }
+  }
+  const text = desc(installationType);
+  return amount > 0 ? `${text} x${amount}` : text;
+}
+
 export const initialCalculations = {
   purchase: {
     monosplit: 0,
@@ -88,9 +109,25 @@ export const createPricingSlice = (set, get) => ({
     const configs = state.formData.airConditioningConfigs || {};
 
     // Calculate purchase totals
-    const purchaseMonosplitTotal = (quantities.monosplit || 0) * unitPrices.purchase.monosplit;
-    const purchaseDualsplitTotal = (quantities.dualsplit || 0) * unitPrices.purchase.dualsplit;
-    const purchaseTrialsplitTotal = (quantities.trialsplit || 0) * unitPrices.purchase.trialsplit;
+    let purchaseMonosplitTotal = 0;
+    let purchaseDualsplitTotal = 0;
+    let purchaseTrialsplitTotal = 0;
+
+    Object.keys(configs).forEach(config => {
+      const option = configs[config];
+      const type = config.split('_')[0]; // monosplit, dualsplit, trialsplit
+      if (option?.installationType === 'nuova_senza_predisposizione') {
+        if (type === 'monosplit') {
+          purchaseMonosplitTotal += unitPrices.purchase.monosplit;
+        } else if (type === 'dualsplit') {
+          purchaseDualsplitTotal += unitPrices.purchase.dualsplit;
+        } else if (type === 'trialsplit') {
+          purchaseTrialsplitTotal += unitPrices.purchase.trialsplit;
+        }
+      }
+    })
+
+
     const purchaseTotal = purchaseMonosplitTotal + purchaseDualsplitTotal + purchaseTrialsplitTotal;
 
     // Calculate removal totals

@@ -1,6 +1,8 @@
 import pagesConfig from '../../config/pages.json';
 import stepsConfig from '../../config/steps.json';
 
+import { getInstallationTypeDescription } from './pricingSlice';
+
 export const createNavigationSlice = (set, get) => ({
     // Navigation state
     currentStep: 1, // Start from step 1 instead of 0
@@ -436,21 +438,4 @@ function dynamicPageTemplate(
             }
         ]
     };
-}
-
-function getInstallationTypeDescription(installationType) {
-    switch (installationType) {
-        case "nuova_con_predisposizione":
-            return "Nuova installazione con predisposizione";
-        case "nuova_senza_predisposizione":
-            return "Nuova installazione senza predisposizione";
-        case "sostituzione_monosplit":
-            return "Sostituzione monosplit";
-        case "sostituzione_dualsplit":
-            return "Sostituzione dualsplit";
-        case "sostituzione_trialsplit":
-            return "Sostituzione trialsplit";
-        default:
-            return "";
-    }
 }

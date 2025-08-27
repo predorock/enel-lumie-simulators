@@ -2,6 +2,8 @@
  * API utilities for ENEL Lumiè Clima application
  */
 
+const MOCKS_ACTIVE = import.meta.env.VITE_MOCK_API === 'true';
+
 /**
  * Build the products API URL for a specific city
  * @param {string} cityName - The name of the city to get products for
@@ -25,9 +27,7 @@ export const fetchProductsByCity = async (cityName) => {
     throw new Error('City name is required');
   }
 
-  const useMockApi = import.meta.env.VITE_MOCK_API === 'true';
-
-  if (useMockApi) {
+  if (MOCKS_ACTIVE) {
     console.log(`🔧 Using mock data for city: ${cityName}`);
     // Return mock data for development
     const { default: mockData } = await import('../assets/mocks/products.response.json');
@@ -118,6 +118,13 @@ export const submitSimulationToApi = async (payload) => {
 
   const apiUrl = buildSimulationApiUrl();
   console.log(`🚀 Submitting simulation to API: ${apiUrl}`, payload);
+
+  if (MOCKS_ACTIVE) {
+    console.log(`🔧 Using mock data for simulation `);
+    // Return mock data for development
+    await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network delay
+    return payload;
+  }
 
   try {
     const response = await fetch(apiUrl, {

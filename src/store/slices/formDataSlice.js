@@ -19,6 +19,7 @@ export const createFormDataSlice = (set, get) => ({
 
         // Trigger pricing calculation when quantities change
         if (property === 'airconditioningQuantities' ||
+            property === 'airConditioningConfigs' ||
             property === 'removalQuantities' ||
             property === 'cleaningQuantities') {
             setTimeout(() => get().calculatePricing(), 0);
