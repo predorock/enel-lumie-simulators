@@ -8,7 +8,7 @@ Create React components from Figma designs for ENEL Lumiè Verticale Clima, prio
 
 ## 📋 **Step 1: Analyze & Reuse First**
 
-```prompt
+```md
 Before creating a new component:
 
 1. **Extract Figma design** using MCP tools:
@@ -30,7 +30,7 @@ Before creating a new component:
 ## 🔄 **Step 2: Implementation Strategy**
 
 ### **If Reusing Existing Component:**
-```prompt
+```js
 1. **Identify base component** that matches functionality
 2. **Extend with props** for visual differences:
    ```jsx
@@ -40,11 +40,11 @@ Before creating a new component:
      variant="newType"
      {...props} 
    />
-   ```
+```
 3. **Update ComponentRegistry** if new variant needed:
-   ```javascript
+
+```js
    NewComponentName: (props) => <ExistingComponent variant="new" {...props} />
-   ```
 ```
 
 ### **If Creating New Component:**
@@ -57,6 +57,7 @@ Follow ENEL patterns from `.github/copilot-instructions.md`:
 - **Colors**: `bg-primary`, `text-purple-600`, `text-gray-600` (NO arbitrary values)
 - **Sizing**: `h-10` (inputs), `w-6 h-6` (icons)
 - **Keep pure**: No state management, props in/events out
+```
 
 ```javascript
 const ComponentName = ({ value, onChange, className = '', ...props }) => (
@@ -66,10 +67,8 @@ const ComponentName = ({ value, onChange, className = '', ...props }) => (
 );
 export default ComponentName;
 ```
-```
 
 #### **Stateful Wrapper** (if form component) (`src/components/clima/StatefulComponentName.jsx`)
-```prompt
 ```javascript
 import useAppStore from '../../store/useAppStore';
 import ComponentName from '../ui/ComponentName';
@@ -85,7 +84,6 @@ const StatefulComponentName = ({ stateProperty, ...props }) => {
   );
 };
 export default StatefulComponentName;
-```
 ```
 
 #### **Register Component** (`src/components/simulator/ComponentRegistry.jsx`)

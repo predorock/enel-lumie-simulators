@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import AcProductDisplayContainerDemo from './AcProductDisplayContainerDemo';
+import BenefitsCardsDemo from './BenefitsCardsDemo';
 import BrandSelectorDemo from './BrandSelectorDemo';
 import DescriptionBoxDemo from './DescriptionBoxDemo';
 import LoadingSpinnerDemo from './LoadingSpinnerDemo';
@@ -16,6 +17,7 @@ const DemoWrapper = () => {
     // Demo component registry
     const demoComponents = {
         products: AcProductDisplayContainerDemo,
+        benefits: BenefitsCardsDemo,
         brandselector: BrandSelectorDemo,
         description: DescriptionBoxDemo,
         loading: LoadingSpinnerDemo,
@@ -95,6 +97,7 @@ const DemoWrapper = () => {
 const getDemoDescription = (demoKey) => {
     const descriptions = {
         products: 'Air conditioning product display with configurations and pricing',
+        benefits: 'Benefits cards container with economic and environmental advantages',
         brandselector: 'Brand selection interface with filtering capabilities',
         description: 'Description box component with various content types',
         loading: 'Loading spinner animations and states',

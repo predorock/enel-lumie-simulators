@@ -500,6 +500,31 @@
                     }
                 },
                 {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Racconta al cliente quali sono i potenziali benefici",
+                        "titleSize": "base",
+                        "description": "Se il cliente decide di confermare questa soluzione potrebbe ottenere i seguenti benefici:"
+                    }
+                },
+                {
+                    "type": "BenefitsCardsContainer",
+                    "props": {
+                        "benefits": [
+                            {
+                                "title": "Benefici economici",
+                                "icon": "savings",
+                                "content": "Acquistare un climatizzatore di ultima generazione è una scelta economicamente vantaggiosa. Grazie alla tecnologia ad alta efficienza energetica, <b>questi dispositivi consumano fino al 40% in meno</b> rispetto ai modelli tradizionali, <b>con un<b><b class='text-secondary'> risparmio annuo che può superare i 400 euro</b><b> sulla bolletta elettrica.</b>"
+                            },
+                            {
+                                "title": "Benefici ambientali",
+                                "icon": "eco",
+                                "content": "Questi modelli riducono notevolmente i consumi energetici, <b class='text-secondary'>emettendo fino a 400 kg in meno di CO₂ all’anno</b> <b>rispetto</b> ai vecchi impianti. <b>È l’equivalente della quantità di CO₂ assorbita in un anno da circa 25 alberi.</b> Utilizzando meno energia e refrigeranti a basso impatto ambientale, contribuiscono concretamente alla lotta contro il cambiamento climatico, <b>migliorando la qualità dell’aria e proteggendo l’ambiente.</b>"
+                            }
+                        ]
+                    }
+                },
+                {
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",

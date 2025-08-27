@@ -15,6 +15,7 @@ import StatefulReportSummary from '../clima/StatefulReportSummary';
 import StatefulSplitterQtyConfigurator from '../clima/StatefulSplitterQtyConfigurator';
 import StatefulToggle from '../clima/StatefulToggle';
 import ACFeaturesDisplay from '../ui/ACFeaturesDisplay';
+import BenefitsCardsContainer from '../ui/BenefitsCardsContainer';
 import CostSummary from '../ui/CostSummary';
 import DescriptionBox from '../ui/DescriptionBox';
 import Divider from '../ui/Divider';
@@ -66,6 +67,7 @@ const componentRegistry = {
   ReportDisplay: (props) => <StatefulReportDisplay {...props} />,
   RoomBanner: (props) => <RoomBanner {...props} />,
   ACFeaturesDisplay: (props) => <ACFeaturesDisplay {...props} />,
+  BenefitsCardsContainer: (props) => <BenefitsCardsContainer {...props} />,
   AcProductDisplayContainer: (props) => <StatefulAcProductDisplayContainer {...props} />,
   Image: (props) => <Image {...props} />,
   CostSummary: (props) => <CostSummary {...props} />,
