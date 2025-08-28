@@ -21,6 +21,7 @@ import DescriptionBox from '../ui/DescriptionBox';
 import Divider from '../ui/Divider';
 import Image from '../ui/Image';
 import InfoBanner from '../ui/InfoBanner';
+import PromotionalBanner from '../ui/PromotionalBanner';
 import RoomBanner from '../ui/RoomBanner';
 import ServicePriceDisplay from '../ui/ServicePriceDisplay';
 import ValidationErrors from '../ui/ValidationErrors';
@@ -62,6 +63,7 @@ const componentRegistry = {
   DescriptionBox: (props) => <DescriptionBox {...props} />,
   Divider: (props) => <Divider {...props} />,
   InfoBanner: (props) => <InfoBanner {...props} />,
+  PromotionalBanner: (props) => <PromotionalBanner {...props} />,
   LoadingSpinner: (props) => <StatefulLoadingSpinner {...props} />,
   ErrorMessage: (props) => <StatefulErrorMessage {...props} />,
   ReportDisplay: (props) => <StatefulReportDisplay {...props} />,

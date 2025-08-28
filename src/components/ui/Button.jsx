@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-export default function Button({ 
+export default function Button({
   children,
   variant = "primary",
   size = "md",
@@ -11,27 +11,37 @@ export default function Button({
   className = "",
   onClick,
   type = "button",
-  ...props 
+  ...props
 }) {
   const variants = {
     primary: {
       base: "bg-secondary text-white border-2 border-secondary",
-      hover: "hover:bg-[#b8114f] hover:border-[#b8114f]",
+      hover: "hover:bg-secondary hover:border-secondary",
+      focus: "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
+      disabled: "disabled:bg-gray-300 disabled:border-gray-300 disabled:text-gray-500"
+    },
+    "primary-light": {
+      base: "bg-white text-primary-light",
+      hover: "",
+      focus: "",
       disabled: "disabled:bg-gray-300 disabled:border-gray-300 disabled:text-gray-500"
     },
     secondary: {
       base: "bg-white text-secondary border-2 border-secondary",
-      hover: "hover:bg-[#fdf2f8] hover:border-[#b8114f] hover:text-[#b8114f]",
+      hover: "hover:bg-[#fdf2f8] hover:border-secondary hover:text-secondary",
+      focus: "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
       disabled: "disabled:bg-gray-100 disabled:border-gray-300 disabled:text-gray-400"
     },
     outline: {
       base: "bg-transparent text-secondary border-2 border-secondary",
-      hover: "hover:bg-[#fdf2f8] hover:border-[#b8114f] hover:text-[#b8114f]",
+      hover: "hover:bg-[#fdf2f8] hover:border-secondary hover:text-secondary",
+      focus: "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
       disabled: "disabled:border-gray-300 disabled:text-gray-400"
     },
     ghost: {
       base: "bg-transparent text-secondary border-2 border-transparent",
-      hover: "hover:bg-[#fdf2f8] hover:text-[#b8114f]",
+      hover: "hover:bg-[#fdf2f8] hover:text-secondary",
+      focus: "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
       disabled: "disabled:text-gray-400"
     }
   };
@@ -52,18 +62,18 @@ export default function Button({
       onClick={onClick}
       className={cn(
         // Base styles
-        "relative inline-flex items-center justify-center gap-2 rounded-lg font-enel font-regular transition-all duration-200 ease-out",
-        "focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2",
+        "relative inline-flex items-center justify-center gap-2 rounded-sm font-enel font-regular transition-all duration-200 ease-out",
         "disabled:cursor-not-allowed hover:cursor-pointer",
-        
+
         // Size
         currentSize,
-        
+
         // Variant
         currentVariant.base,
         !disabled && !loading && currentVariant.hover,
+        currentVariant.focus,
         currentVariant.disabled,
-        
+
         className
       )}
       {...props}
@@ -74,7 +84,7 @@ export default function Button({
           <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
         </div>
       )}
-      
+
       {/* Content */}
       <div className={cn("flex items-center gap-2", { "opacity-0": loading })}>
         {icon && iconPosition === "left" && (
@@ -82,13 +92,13 @@ export default function Button({
             {icon}
           </span>
         )}
-        
+
         {children && (
           <span className="leading-4 whitespace-nowrap">
             {children}
           </span>
         )}
-        
+
         {icon && iconPosition === "right" && (
           <span className="w-4 h-4 flex items-center justify-center">
             {icon}

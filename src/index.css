@@ -26,6 +26,7 @@
 
 @theme {
   --color-primary: #002466;
+  --color-primary-light: #0047CC;
   --color-secondary: #D3135A;
   --color-warning: #E67300;
   --color-warning-light: #FCF1E6;

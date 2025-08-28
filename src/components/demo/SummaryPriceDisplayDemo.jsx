@@ -1,4 +1,4 @@
-import SummaryPriceDisplay from "../ui/SummaryPriceDisplay";
+import SummaryPriceDisplay from "../ui/summary/SummaryPriceDisplay";
 
 const SummaryPriceDisplayDemo = () => {
     const mockLineItems = [

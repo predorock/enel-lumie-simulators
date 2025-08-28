@@ -4,8 +4,10 @@ import BenefitsCardsDemo from './BenefitsCardsDemo';
 import BrandSelectorDemo from './BrandSelectorDemo';
 import DescriptionBoxDemo from './DescriptionBoxDemo';
 import LoadingSpinnerDemo from './LoadingSpinnerDemo';
+import PromotionalBannerDemo from './PromotionalBannerDemo';
 import ReportDemo from './ReportDemo';
 import ReportSummaryDemo from './ReportSummaryDemo';
+import SummaryPriceDisplayDemo from './SummaryPriceDisplayDemo';
 
 const DemoWrapper = () => {
     // Get demo parameter from URL
@@ -15,18 +17,20 @@ const DemoWrapper = () => {
     }, []);
 
     // Demo component registry
-    const demoComponents = {
-        products: AcProductDisplayContainerDemo,
+    const demos = {
         benefits: BenefitsCardsDemo,
-        brandselector: BrandSelectorDemo,
+        promotional: PromotionalBannerDemo,
+        brand: BrandSelectorDemo,
         description: DescriptionBoxDemo,
         loading: LoadingSpinnerDemo,
+        ac: AcProductDisplayContainerDemo,
         report: ReportDemo,
-        reportsummary: ReportSummaryDemo
+        reportSummary: ReportSummaryDemo,
+        summaryPrice: SummaryPriceDisplayDemo,
     };
 
     // Get the component to render
-    const DemoComponent = demoComponents[demoParam];
+    const DemoComponent = demos[demoParam];
 
     // If no valid demo param, show demo selector
     if (!DemoComponent) {
@@ -41,7 +45,7 @@ const DemoWrapper = () => {
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {Object.keys(demoComponents).map((demoKey) => (
+                        {Object.keys(demos).map((demoKey) => (
                             <a
                                 key={demoKey}
                                 href={`?demo=${demoKey}`}

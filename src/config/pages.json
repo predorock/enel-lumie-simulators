@@ -525,6 +525,15 @@
                     }
                 },
                 {
+                    "type": "PromotionalBanner",
+                    "props": {
+                        "title": "Il cliente vuole ricevere dei dati più precisi sulle performance della sua abitazione?",
+                        "description": "Le proiezioni relative ai benefici economici e ambientali visualizzate rappresentano delle stime indicative. Per un'analisi comparativa più precisa delle performance della sua abitazione consiglia di effettuare una simulazione con Lumiè Discovery..",
+                        "buttonText": "Effettua il check-up energetico con Lumiè",
+                        "buttonUrl": "https://simulatore-risparmio-energia.enel.it"
+                    }
+                },
+                {
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",
