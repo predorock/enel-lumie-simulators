@@ -165,7 +165,7 @@ const SplitterQtyConfigurator = ({
                     "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
                     {
                       "bg-[#c2cddd] text-white cursor-not-allowed": !canIncrement,
-                      "bg-secondary text-white hover:bg-[#b8114f] focus:ring-secondary": canIncrement
+                      "bg-secondary text-white hover:bg-secondary focus:ring-secondary": canIncrement
                     }
                   )}
                 >
