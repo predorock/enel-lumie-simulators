@@ -512,9 +512,9 @@
                     }
                 },
                 {
-                    "type": "BenefitsBannnersContainer",
+                    "type": "HorizontalBannerContainer",
                     "props": {
-                        "benefits": [
+                        "banners": [
                             {
                                 "title": "Benefici economici",
                                 "icon": "savings",

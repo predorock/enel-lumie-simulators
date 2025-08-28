@@ -10,7 +10,6 @@ import StatefulErrorMessage from '../clima/StatefulErrorMessage';
 import StatefulInput from '../clima/StatefulInput';
 import StatefulInvestmentSelector from '../clima/StatefulInvestmentSelector';
 import StatefulLoadingSpinner from '../clima/StatefulLoadingSpinner';
-import StatefulReportDisplay from '../clima/StatefulReportDisplay';
 import StatefulReportSummary from '../clima/StatefulReportSummary';
 import StatefulSplitterQtyConfigurator from '../clima/StatefulSplitterQtyConfigurator';
 import StatefulSummaryResults from '../clima/StatefulSummaryResults';
@@ -20,6 +19,8 @@ import BenefitsCardsContainer from '../ui/BenefitsCardsContainer';
 import CostSummary from '../ui/CostSummary';
 import DescriptionBox from '../ui/DescriptionBox';
 import Divider from '../ui/Divider';
+import HorizontalBanner from '../ui/HorizontalBanner';
+import HorizontalBannerContainer from '../ui/HorizontalBannerContainer';
 import Image from '../ui/Image';
 import InfoBanner from '../ui/InfoBanner';
 import PromotionalBanner from '../ui/PromotionalBanner';
@@ -67,10 +68,11 @@ const componentRegistry = {
   PromotionalBanner: (props) => <PromotionalBanner {...props} />,
   LoadingSpinner: (props) => <StatefulLoadingSpinner {...props} />,
   ErrorMessage: (props) => <StatefulErrorMessage {...props} />,
-  ReportDisplay: (props) => <StatefulReportDisplay {...props} />,
   RoomBanner: (props) => <RoomBanner {...props} />,
   ACFeaturesDisplay: (props) => <ACFeaturesDisplay {...props} />,
   BenefitsCardsContainer: (props) => <BenefitsCardsContainer {...props} />,
+  HorizontalBanner: (props) => <HorizontalBanner {...props} />,
+  HorizontalBannerContainer: (props) => <HorizontalBannerContainer {...props} />,
   AcProductDisplayContainer: (props) => <StatefulAcProductDisplayContainer {...props} />,
   Image: (props) => <Image {...props} />,
   CostSummary: (props) => <CostSummary {...props} />,

@@ -54,7 +54,7 @@ export default function PageLayout({
         {/* RIGHT CONTENT AREA */}
         <div className="col-span-4 flex flex-col h-screen">
           {/* Main Content - Scrollable */}
-          <div className={`flex-1 p-16 overflow-y-auto ${className}`}>
+          <div className={`flex-1 p-48 overflow-y-auto ${className}`}>
             {children}
           </div>
 
