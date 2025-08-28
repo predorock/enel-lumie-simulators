@@ -9,6 +9,7 @@ const StatefulReportSummary = () => {
 
     const store = useAppStore();
     const summary = store.report.getSummary() || {};
+    const installationTotal = store.getInstallationTotal() || 0;
 
     if (summary?.clima?.length < 0 || summary?.expenses?.length < 0) {
         return null;
@@ -23,7 +24,7 @@ const StatefulReportSummary = () => {
         {
             id: 'installazione',
             label: 'Spese installazione',
-            component: <SummaryPriceDisplay items={summary?.expenses} total="100" />
+            component: <SummaryPriceDisplay items={summary?.expenses} total={installationTotal} />
         }
     ];
     const [activeTab, setActiveTab] = useState(tabs[0].id);

@@ -19,7 +19,7 @@ export default function BenefitsCardsContainer({
     }
 
     return (
-        <div className={`bg-gray-100 box-border content-stretch flex flex-col gap-4 items-start justify-start p-4 relative rounded-3xl w-full ${className}`}>
+        <div className={`flex flex-row gap-4`}>
             {benefits.map((benefit, index) => (
                 <BenefitsCard
                     key={benefit.id || index}

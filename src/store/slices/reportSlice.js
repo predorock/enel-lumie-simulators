@@ -29,6 +29,19 @@ export const getOperationDescription = (operationType, splitType, amount) => {
     }
 };
 
+export const getProductShortDescription = (splitType) => {
+    switch (splitType) {
+        case 'monosplit':
+            return '1 unità esterna + 1 unità interna';
+        case 'dualsplit':
+            return '1 unità esterna + 2 unità interne';
+        case 'trialsplit':
+            return '1 unità esterna + 3 unità interne';
+        default:
+            return '';
+    }
+}
+
 export const createReportSlice = (set, get) => ({
     // Report state
     report: {
@@ -122,10 +135,11 @@ export const createReportSlice = (set, get) => ({
             return Object.keys(configs).reduce((acc, key) => {
                 const config = configs[key];
                 if (config && config.roomSize) {
+                    const splitType = key.split('_')[0];
                     acc.push({
                         ...config,
                         productName: state.products.items.find(p => p.id === config.selected)?.productName || '',
-                        splitType: key.split('_')[0], // Use the first part of the key as ID
+                        splitType
                     });
                 }
                 return acc;
@@ -156,7 +170,8 @@ export const createReportSlice = (set, get) => ({
                         product,
                         splitType,
                         count: 1,
-                        totalPrice: price
+                        totalPrice: price,
+                        shortDescription: getProductShortDescription(splitType),
                     });
                 }
             });
@@ -282,6 +297,46 @@ export const createReportSlice = (set, get) => ({
                 state.report.setReportError(errorMessage);
                 throw error;
             }
+        },
+
+        // FINANCING DATA ---
+        financing: {
+            plans: [
+                {
+                    id: '12months',
+                    name: 'Finanziamento a 12 mesi*',
+                    duration: 12,
+                    monthlyRate: 226.25,
+                    currency: '€',
+                    frequency: '/mese',
+                    tan: 0,
+                    taeg: 0,
+                    totalToRepay: 2715.00
+                },
+                {
+                    id: '24months',
+                    name: 'Finanziamento a 24 mesi*',
+                    duration: 24,
+                    monthlyRate: 113.13,
+                    currency: '€',
+                    frequency: '/mese',
+                    tan: 0,
+                    taeg: 0,
+                    totalToRepay: 2715.00
+                }
+            ]
+        },
+
+        // Get financing plans
+        getFinancingPlans: () => {
+            const state = get();
+            return state.report.financing.plans;
+        },
+
+        // Get financing disclaimer
+        getFinancingDisclaimer: () => {
+            const state = get();
+            return state.report.financing.disclaimer;
         }
     }
 });

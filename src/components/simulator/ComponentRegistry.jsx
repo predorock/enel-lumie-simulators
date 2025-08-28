@@ -13,6 +13,7 @@ import StatefulLoadingSpinner from '../clima/StatefulLoadingSpinner';
 import StatefulReportDisplay from '../clima/StatefulReportDisplay';
 import StatefulReportSummary from '../clima/StatefulReportSummary';
 import StatefulSplitterQtyConfigurator from '../clima/StatefulSplitterQtyConfigurator';
+import StatefulSummaryResults from '../clima/StatefulSummaryResults';
 import StatefulToggle from '../clima/StatefulToggle';
 import ACFeaturesDisplay from '../ui/ACFeaturesDisplay';
 import BenefitsCardsContainer from '../ui/BenefitsCardsContainer';
@@ -82,6 +83,7 @@ const componentRegistry = {
   InvestmentSelector: (props) => <StatefulInvestmentSelector {...props} />,
   DisclaimerContainer: (props) => <StatefulDisclaimerContainer {...props} />,
   ReportSummary: (props) => <StatefulReportSummary {...props} />,
+  SummaryResults: (props) => <StatefulSummaryResults {...props} />,
 };
 
 export default componentRegistry;

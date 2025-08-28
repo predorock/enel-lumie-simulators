@@ -1,3 +1,5 @@
+import { PriceDisplay } from '../price';
+
 const SummaryProductCard = ({
     data = {},
     className = ''
@@ -9,9 +11,6 @@ const SummaryProductCard = ({
         return null;
     }
 
-    // Format price to ensure it's displayed correctly
-    const formattedPrice = typeof data.totalPrice === 'string' ? data.totalPrice : `${parseFloat(data.totalPrice || 0).toFixed(2)}€`;
-    const cardDescription = ""
     return (
         <div className={`bg-[#ffffff] relative rounded-2xl shrink-0 w-full shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] ${className}`}>
             <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start overflow-clip px-4 py-0 relative w-full">
@@ -52,7 +51,7 @@ const SummaryProductCard = ({
                         {/* Description and Quantity */}
                         <div className="content-stretch flex gap-2 items-center justify-start relative shrink-0 w-full">
                             <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#667790] text-[12px]">
-                                <p className="leading-[18px]">{cardDescription}</p>
+                                <p className="leading-[18px]">{data?.shortDescription || ""}</p>
                             </div>
                             <div className="content-stretch flex gap-1 items-start justify-start leading-[0] not-italic relative shrink-0 text-[#667790] text-[12px] text-nowrap">
                                 <div className="font-enel-bold relative shrink-0">
@@ -66,7 +65,7 @@ const SummaryProductCard = ({
                     </div>
 
                     {/* Price Section - Right Side */}
-                    <div className="bg-[#eff2f7] box-border content-stretch flex gap-4 items-center justify-start px-4 py-6 relative rounded-xl shrink-0">
+                    <div className="bg-[#eff2f7] box-border content-stretch flex gap-4 items-center justify-between px-4 py-6 relative rounded-xl shrink-0">
                         <div className="content-stretch flex flex-col items-start justify-start leading-[0] not-italic relative shrink-0 text-[14px] text-nowrap w-[121.976px]">
                             <div className="font-enel-bold relative shrink-0 text-[#272c34] tracking-[0.4px]">
                                 <p className="leading-[21px] text-nowrap whitespace-pre">Totale</p>
@@ -75,9 +74,9 @@ const SummaryProductCard = ({
                                 <p className="leading-[21px] text-nowrap whitespace-pre">IVA inclusa</p>
                             </div>
                         </div>
-                        <div className="content-stretch flex flex-col items-start justify-start leading-[0] not-italic relative shrink-0 text-right">
-                            <div className="font-enel-bold relative shrink-0 text-[#272c34] text-[20px] tracking-[0.4px] w-[233px]">
-                                <p className="leading-[30px]">{formattedPrice}*</p>
+                        <div className="content-stretch flex flex-col justify-between text-right">
+                            <div className="flex flex-row justify-end font-enel-bold whitespace-nowrap">
+                                <PriceDisplay value={data.totalPrice} className="text-right" />*
                             </div>
                             <div className="font-enel relative shrink-0 text-[#131416] text-[14px] w-[233px]">
                                 <p className="leading-[21px]">oppure paga a rate**</p>

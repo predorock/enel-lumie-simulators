@@ -1,2 +1,3 @@
-export * from './PriceDisplay'
-export * from './priceFormatter'
+export { PriceDisplay } from './PriceDisplay'
+export { priceFormatter } from './priceFormatter'
+

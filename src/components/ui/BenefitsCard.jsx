@@ -1,83 +1,88 @@
-import EcoIcon from '../icons/EcoIcon';
-import SavingsIcon from '../icons/SavingsIcon';
-
-// Icon registry for benefits
-const BENEFIT_ICONS = {
-    savings: SavingsIcon,
-    eco: EcoIcon,
-};
-
+import cn from 'classnames';
+import IconRenderer from '../icons/IconRenderer';
 /**
  * BenefitsCard Component
  * 
- * Displays a benefit card with icon, title, and rich text content
- * Matches the exact Figma design with proper ENEL styling
+ * Custom implementation with variant support:
+ * - Green and blue header variants
+ * - White body with description text
+ * - Rounded corners and proper spacing
  * 
- * @param {string} title - Card title (e.g., "Benefici economici")
- * @param {string|JSX} content - Rich text content with highlighting support
- * @param {string} icon - Icon type ('savings' or 'eco')
+ * @param {string} title - Card title (e.g., "Migliore comfort abitativo")
+ * @param {string|JSX} content - Description text content (fallback if no children)
+ * @param {React.ReactNode} children - Child components (takes precedence over content)
+ * @param {string} icon - Icon type ('house', 'lightning', or 'euro')
+ * @param {string} variant - Color variant ('green' or 'blue')
  * @param {string} className - Additional CSS classes
  */
 export default function BenefitsCard({
     title = "",
+    subtitle = "",
     content = "",
-    icon = null,
+    children,
+    icon = "",
+    variant = "green",
     className = ""
 }) {
-    // Don't render if no content
-    if (!title && !content) {
+    // Don't render if no content and no children
+    if (!title && !content && !children) {
         return null;
     }
 
-    // Get icon component
-    const IconComponent = icon ? BENEFIT_ICONS[icon] : null;
+    // Define variant styles
+    const variants = {
+        green: {
+            header: "bg-tertiary", // Green background
+            iconBg: "bg-[rgba(255,255,255,0.1)]"
+        },
+        blue: {
+            header: "bg-blue-600", // Blue background
+            iconBg: "bg-[rgba(255,255,255,0.1)]"
+        }
+    };
+
+    const currentVariant = variants[variant] || variants.green;
 
     return (
-        <div className={`bg-white relative rounded-2xl shrink-0 w-full ${className}`}>
-            {/* Card content */}
-            <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start overflow-clip p-4 relative w-full">
-                <div className="bg-white content-stretch flex gap-4 items-center justify-start relative shrink-0 w-full">
-                    <div className="basis-0 content-stretch flex gap-4 grow items-center justify-start min-h-px min-w-px relative shrink-0">
-
-                        {/* Icon container */}
-                        {IconComponent && (
-                            <div className="box-border content-stretch flex gap-2 items-center justify-center p-2 relative rounded-lg shrink-0">
-                                <IconComponent className="size-6" />
-                            </div>
-                        )}
-
-                        {/* Title and content container */}
-                        <div className="basis-0 content-stretch flex flex-col gap-1 grow items-start justify-start leading-[0] min-h-px min-w-px not-italic relative shrink-0">
-
-                            {/* Title */}
-                            {title && (
-                                <div className="font-enel-bold relative shrink-0 text-secondary text-base w-full">
-                                    <p className="leading-4">{title}</p>
-                                </div>
-                            )}
-
-                            {/* Content */}
-                            {content && (
-                                <div className="font-enel relative shrink-0 text-gray-700 text-sm w-full">
-                                    <div className="leading-[21px]">
-                                        {typeof content === 'string' ? (
-                                            <span dangerouslySetInnerHTML={{ __html: content }} />
-                                        ) : (
-                                            content
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+        <div className={cn(
+            "w-full bg-white rounded-2xl shadow-sm overflow-hidden",
+            className
+        )}>
+            {/* Header section with variant color */}
+            <div className={cn("px-4 py-6 flex items-center gap-3", currentVariant.header)}>
+                {/* White icon */}
+                {icon && (
+                    <div className={cn("flex items-center justify-center p-4 rounded-full", currentVariant.iconBg)}>
+                        <IconRenderer icon={icon} className="w-6 h-6 text-white opacity-100" />
                     </div>
+                )}
+
+                {/* White title */}
+                <div className='flex flex-col w-full'>
+                    <h3 className="text-white font-enel-bold text-xl leading-tight">
+                        {title}
+                    </h3>
+                    <p className="text-white font-enel-light text-md leading-relaxed">
+                        {subtitle}
+                    </p>
                 </div>
             </div>
 
-            {/* Card shadow */}
-            <div
-                aria-hidden="true"
-                className="absolute border-0 border-transparent border-solid inset-0 pointer-events-none rounded-2xl shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)]"
-            />
+            {/* White body section */}
+            <div className="px-4 py-3">
+                {/* Children take precedence over content prop */}
+                {children ? (
+                    children
+                ) : (
+                    <p className="text-gray-900 font-enel text-sm leading-relaxed">
+                        {typeof content === 'string' ? (
+                            <span dangerouslySetInnerHTML={{ __html: content }} />
+                        ) : (
+                            content
+                        )}
+                    </p>
+                )}
+            </div>
         </div>
     );
 }

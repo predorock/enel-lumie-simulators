@@ -500,6 +500,10 @@
                     }
                 },
                 {
+                    "type": "SummaryResults",
+                    "props": {}
+                },
+                {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Racconta al cliente quali sono i potenziali benefici",
@@ -508,7 +512,7 @@
                     }
                 },
                 {
-                    "type": "BenefitsCardsContainer",
+                    "type": "BenefitsBannnersContainer",
                     "props": {
                         "benefits": [
                             {
