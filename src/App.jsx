@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import DemoWrapper from './components/demo/DemoWrapper';
 import PageLayout from './components/simulator/PageLayout';
 import PageRenderer from './components/simulator/PageRenderer';
 import useAppStore from './store/useAppStore';
@@ -16,7 +15,7 @@ function App() {
 
   // Demo mode - only available in development
   if (import.meta.env.DEV && window.location.search.includes('demo=')) {
-    return <DemoWrapper />;
+    return import('./components/demo/DemoWrapper');
   }
 
   return (
