@@ -1,6 +1,6 @@
 import cn from "classnames";
 import Divider from "../Divider";
-import { PriceDisplay } from "../price/PriceDisplay";
+import PriceDisplay from "../price/PriceDisplay";
 
 const SummaryPriceDisplay = ({
     title = "Riepilogo spesa componenti aggiuntivi",

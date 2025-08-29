@@ -1,7 +1,7 @@
 
 import { priceFormatter } from './priceFormatter';
 
-export const PriceDisplay = ({ value, currency = 'EUR', locale = 'it-IT', className }) => {
+const PriceDisplay = ({ value, currency = 'EUR', locale = 'it-IT', className }) => {
 
     const price = priceFormatter(value, currency, locale);
 
@@ -11,3 +11,5 @@ export const PriceDisplay = ({ value, currency = 'EUR', locale = 'it-IT', classN
         </div>
     );
 };
+
+export default PriceDisplay;
