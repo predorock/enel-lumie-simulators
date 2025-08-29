@@ -12,9 +12,10 @@ export const createTestingSlice = (set, get) => ({
                     currentStep: testData.currentStep || 1,
                     currentPageId: testData.currentPageId || null,
                     dynamicPages: testData.dynamicPages || [],
+                    sidebar: testData.sidebar || {},
+                    lead: testData.lead || {},
                 });
-
-                state.report.setReportLoading(true);
+                state.report.setReportData(testData.report.data.result || {});
 
                 // Trigger all side effects
                 setTimeout(async () => {
@@ -29,7 +30,7 @@ export const createTestingSlice = (set, get) => ({
 
                     if (_state.calculatePricing) _state.calculatePricing();
 
-                    _state.report.setReportData(testData.report.data.result || {});
+                    //_state.report.setReportData(testData.report.data.result || {});
                 }, 0);
 
                 console.log(`Test data loaded:`, testData.formData);

@@ -84,8 +84,8 @@ export default function SummaryResultsContainer({
                                 <FinancingPlan key={plan.id} plan={plan} />
                             ))} */}
 
-                            {financing?.plans.map((plan) => (
-                                <SkinnyCard title={plan.name}>
+                            {financing?.plans.map((plan, index) => (
+                                <SkinnyCard title={plan.name} key={index}>
                                     <div className='flex flex-row w-full justify-between my-2'>
                                         <p className="font-enel-bold text-sm">Rate Mensili</p>
                                         <PriceDisplay value={plan.monthlyRate} className="text-primary-light font-enel-bold text-md" />

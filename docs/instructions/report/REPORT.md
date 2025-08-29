@@ -62,3 +62,35 @@ Stanza3_mq -> amount of mq of the third room,
 
 - Duckwork amount to keep 0 by the moment
 - The report response is a json but the format is not defined yet.
+
+## Report Response
+
+```json
+{
+    "success": true,
+    "message": "Completed",
+    "timestamp": "2025-08-29T05:47:09.8694852Z",
+    "body": {
+        "Comune": "Airasca",
+        "Numero_Macchine": 1,
+        "Clima1": "Daikin Clima Siesta Super Plus 12000",
+        "Clima2": "",
+        "Clima3": "",
+        "Stanza1_mq": 34,
+        "Stanza2_mq": 0,
+        "Stanza3_mq": 0,
+        "Numero_Predisposizioni_Mono": 1,
+        "Numero_Predisposizioni_Dual": 0,
+        "Numero_Predisposizioni_Trial": 0,
+        "Numero_Predisposizioni_Canalizzazione": 0,
+        "Numero_Smontaggi_Mono": 0,
+        "Numero_Smontaggi_Dual": 0,
+        "Numero_Smontaggi_Trial": 0,
+        "Numero_Lavaggi_Mono": 0,
+        "Numero_Lavaggi_Dual": 0,
+        "Numero_Lavaggi_Trial": 0,
+        "ProjectUrl": "https://greenovation.blob.core.windows.net/enelclima/0020eb98-dcab-49cb-86f6-7eda97b396b7.pdf",
+        "Id": "0020eb98-dcab-49cb-86f6-7eda97b396b7"
+    }
+}p
+```

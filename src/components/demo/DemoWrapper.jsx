@@ -4,9 +4,13 @@ import BenefitsCardsDemo from './BenefitsCardsDemo';
 import BrandSelectorDemo from './BrandSelectorDemo';
 import DescriptionBoxDemo from './DescriptionBoxDemo';
 import LoadingSpinnerDemo from './LoadingSpinnerDemo';
+import NavigationBarDemo from './NavigationBarDemo';
+import NavigationOverrideDemo from './NavigationOverrideDemo';
 import PromotionalBannerDemo from './PromotionalBannerDemo';
 import ReportDemo from './ReportDemo';
 import ReportSummaryDemo from './ReportSummaryDemo';
+import SidebarFormDemo from './SidebarFormDemo';
+import StatefulSidebarFormDemo from './StatefulSidebarFormDemo';
 import SummaryPriceDisplayDemo from './SummaryPriceDisplayDemo';
 
 const DemoWrapper = () => {
@@ -23,6 +27,10 @@ const DemoWrapper = () => {
         brand: BrandSelectorDemo,
         description: DescriptionBoxDemo,
         loading: LoadingSpinnerDemo,
+        navigation: NavigationBarDemo,
+        navoverride: NavigationOverrideDemo,
+        sidebar: SidebarFormDemo,
+        sidebarstore: StatefulSidebarFormDemo,
         ac: AcProductDisplayContainerDemo,
         report: ReportDemo,
         reportSummary: ReportSummaryDemo,

@@ -3,19 +3,21 @@
  */
 
 const MOCKS_ACTIVE = import.meta.env.VITE_MOCK_API === 'true';
+const MOCKS_DELAY = 2000;
 
-/**
- * Build the products API URL for a specific city
- * @param {string} cityName - The name of the city to get products for
- * @returns {string} - The complete API URL
- */
-export const buildProductsApiUrl = (cityName) => {
+const buildApiUrl = (path) => {
   const baseUrl = import.meta.env.VITE_LUMIE_API_BASE_URL;
   if (!baseUrl) {
     throw new Error('VITE_LUMIE_API_BASE_URL environment variable is not configured');
   }
-  return `${baseUrl}/clima?comune=${encodeURIComponent(cityName)}`;
+  return `${baseUrl}/${path}`;
 };
+
+const API_URLS = {
+  products: (cityName) => buildApiUrl(`clima?comune=${encodeURIComponent(cityName)}`),
+  simulation: () => buildApiUrl('clima'),
+  lead: () => buildApiUrl('clima/EnelClimaLead')
+}
 
 /**
  * Fetch products from the external API for a specific city
@@ -35,7 +37,7 @@ export const fetchProductsByCity = async (cityName) => {
     return mockData.products || [];
   }
 
-  const apiUrl = buildProductsApiUrl(cityName);
+  const apiUrl = API_URLS.products(cityName);
   console.log(`🌐 Fetching products from API: ${apiUrl}`);
 
   try {
@@ -95,18 +97,6 @@ export const isValidProductData = (data) => {
 };
 
 /**
- * Build the simulation API URL
- * @returns {string} - The complete API URL for simulation
- */
-export const buildSimulationApiUrl = () => {
-  const baseUrl = import.meta.env.VITE_LUMIE_API_BASE_URL;
-  if (!baseUrl) {
-    throw new Error('VITE_LUMIE_API_BASE_URL environment variable is not configured');
-  }
-  return `${baseUrl}/clima`;
-};
-
-/**
  * Submit simulation data to the external API
  * @param {Object} payload - The simulation payload object
  * @returns {Promise<Object>} - The API response data
@@ -116,7 +106,7 @@ export const submitSimulationToApi = async (payload) => {
     throw new Error('Simulation payload is required');
   }
 
-  const apiUrl = buildSimulationApiUrl();
+  const apiUrl = API_URLS.simulation();
   console.log(`🚀 Submitting simulation to API: ${apiUrl}`, payload);
 
   if (MOCKS_ACTIVE) {
@@ -144,6 +134,55 @@ export const submitSimulationToApi = async (payload) => {
 
     const data = await response.json();
     console.log('✅ Simulation API response:', data);
+    return data;
+
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new Error('Request timed out. Please try again.');
+    }
+    throw error;
+  }
+};
+
+
+/**
+ * Submit simulation data to the external API
+ * @param {Object} payload - The simulation lead payload object
+ * @returns {Promise<Object>} - The API response data
+ */
+export const submitSimulationLeadAPI = async (payload) => {
+  if (!payload) {
+    throw new Error('Simulation lead payload is required');
+  }
+
+  const apiUrl = API_URLS.lead();
+  console.log(`🚀 Submitting simulation lead to API: ${apiUrl}`, payload);
+
+  if (MOCKS_ACTIVE) {
+    console.log(`🔧 Using mock data for simulation lead`);
+    // Return mock data for development
+    await new Promise(resolve => setTimeout(resolve, MOCKS_DELAY)); // Simulate network delay
+    return payload;
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(payload),
+      // Add timeout to prevent hanging requests
+      signal: AbortSignal.timeout(30000), // 30 seconds timeout
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log('✅ Simulation LEAD API response:', data);
     return data;
 
   } catch (error) {

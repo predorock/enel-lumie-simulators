@@ -4,6 +4,10 @@
             "id": "client-selection",
             "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
             "step": 1,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
             "validationRules": {
                 "required": [
                     "formData.storeLocation",
@@ -113,6 +117,10 @@
             "id": "checklist-configuratore",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
             "validationRules": {
                 "custom": [
                     {
@@ -232,6 +240,10 @@
             "id": "servizi-manutenzione",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
             "validationRules": {
                 "conditional": [
                     {
@@ -417,6 +429,10 @@
             "id": "lancio-simulazione",
             "title": "Stiamo creando il preventivo per il tuo cliente",
             "step": 3,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
             "validationRules": {},
             "navigationHooks": {
                 "beforeNext": "",
@@ -461,13 +477,35 @@
         {
             "id": "preventivo-risultato",
             "title": "Preventivo generato con successo",
-            "step": 4,
+            "step": 3,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
             "validationRules": {},
             "navigationHooks": {
                 "beforeNext": "",
                 "afterNext": "",
                 "beforePrevious": "",
                 "afterPrevious": ""
+            },
+            "navigationOverride": {
+                "backButton": {
+                    "label": "Stampa Preventivo",
+                    "icon": "reader",
+                    "iconPosition": "right",
+                    "variant": "secondary",
+                    "disabled": false,
+                    "action": "report.openReport"
+                },
+                "nextButton": {
+                    "label": "Invia report finale al cliente",
+                    "icon": "envelope",
+                    "iconPosition": "right",
+                    "variant": "primary",
+                    "disabled": false,
+                    "action": "openSidebar"
+                }
             },
             "leftPanelComponents": [
                 {
@@ -556,8 +594,82 @@
                             "<b>In assenza di una o più di queste condizioni, sarà necessario un sopralluogo tecnico aggiuntivo per verificare la fattibilità dell’installazione o proporre eventuali soluzioni alternative.</b>"
                         ]
                     }
+                },
+                {
+                    "type": "SidebarForm",
+                    "props": {
+                        "onSubmitAction": "confirmLead"
+                    }
                 }
             ]
+        },
+        {
+            "id": "invio-report",
+            "title": "Creazione del report finale, ci siamo quasi!",
+            "step": 3,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
+            "validationRules": {},
+            "navigationOverride": {},
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "condizionatore-baccheta",
+                        "alt": "Animazione Condizionatore",
+                        "className": "z-10 relative w-auto h-auto mt-16",
+                        "containerClassName": "flex justify-center items-center flex-1"
+                    }
+                }
+            ],
+            "components": [
+                {
+                    "type": "LoadingSpinner",
+                    "props": {
+                        "text": "Attendi ancora qualche secondo",
+                        "size": "medium"
+                    },
+                    "renderConditions": {
+                        "isDefined": "lead.isLoading"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "fine-simulazione",
+            "title": "",
+            "step": 0,
+            "fullPage": true,
+            "showStepper": false,
+            "showNavigation": false,
+            "showBackgroundDecoration": false,
+            "validationRules": {},
+            "navigationOverride": {},
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
+            "leftPanelComponents": [
+                {
+                    "type": "FinalMessage",
+                    "props": {
+                        "title": "Evviva! Il preventivo è stato creato con successo",
+                        "onSendAction": "submitLead",
+                        "onPrintAction": "report.openReport"
+                    }
+                }
+            ],
+            "components": []
         }
     ]
 }

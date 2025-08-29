@@ -4,24 +4,30 @@ import NavigationBar from '../ui/NavigationBar';
 import Stepper from '../ui/stepper/Stepper';
 import LeftPanelRenderer from './LeftPanelRenderer';
 
+import cn from 'classnames';
+
 export default function PageLayout({
   children,
   currentStep = 0,
-  title = "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
+  title = "",
   showStepper = true,
   showNavigation = true,
+  showBackgroundDecoration = true,
   leftPanelComponents = [],
+  navigationOverride,
   onBack,
   onNext,
   backLabel,
   nextLabel,
-  className = ""
+  className = "",
+  fullPage = false
 }) {
+
   return (
     <main className="bg-red">
       <div className="grid grid-cols-6 w-full h-screen relative z-10">
         {/* LEFT PANEL - Blue Header */}
-        <div className="col-span-2 bg-primary p-8 relative flex flex-col" role="banner" aria-label="Enel Lumiè Clima Header">
+        <div className={cn('bg-primary p-8 relative flex flex-col', { 'col-span-2': !fullPage, 'col-span-6': fullPage })} role="banner" aria-label="Enel Lumiè Clima Header">
           {/* Logo Section */}
           <div className="flex items-stretch h-6 z-1">
             <img src={enelLogo} alt="Enel Lumiè Clima Logo" className="w-auto" />
@@ -48,33 +54,38 @@ export default function PageLayout({
           {/* END Dynamic Content Section */}
 
           {/* Background Decoration */}
-          <img src={tondo} alt="Tondo" className="absolute bottom-0 right-0 -z-0" />
+          {showBackgroundDecoration && (
+            <img src={tondo} alt="Tondo" className="absolute bottom-0 right-0 -z-0" />
+          )}
         </div>
 
         {/* RIGHT CONTENT AREA */}
-        <div className="col-span-4 flex flex-col h-screen">
-          {/* Main Content - Scrollable */}
-          <div className={`flex-1 p-48 overflow-y-auto ${className}`}>
-            {children}
-          </div>
+        {!fullPage &&
+          <div className="col-span-4 flex flex-col h-screen">
+            {/* Main Content - Scrollable */}
+            <div className={`flex-1 p-48 overflow-y-auto ${className}`}>
+              {children}
+            </div>
 
-          {/* Validation Errors - Fixed above navigation */}
-          {/* <div className="flex-shrink-0 px-16">
+            {/* Validation Errors - Fixed above navigation */}
+            {/* <div className="flex-shrink-0 px-16">
             <ValidationErrors />
           </div> */}
 
-          {/* Navigation Bar - Fixed at bottom */}
-          {showNavigation && (
-            <div className="flex-shrink-0">
-              <NavigationBar
-                onBack={onBack}
-                onNext={onNext}
-                backLabel={backLabel}
-                nextLabel={nextLabel}
-              />
-            </div>
-          )}
-        </div>
+            {/* Navigation Bar - Fixed at bottom */}
+            {showNavigation && (
+              <div className="flex-shrink-0">
+                <NavigationBar
+                  navigationOverride={navigationOverride}
+                  onBack={onBack}
+                  onNext={onNext}
+                  backLabel={backLabel}
+                  nextLabel={nextLabel}
+                />
+              </div>
+            )}
+          </div>
+        }
       </div>
     </main>
   );

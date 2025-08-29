@@ -22,10 +22,13 @@ function App() {
   return (
     <PageLayout
       currentStep={currentStep}
-      title={currentPage?.title || "Enel Lumié Verticale Clima"}
-      showStepper={true}
-      showNavigation={true}
+      title={currentPage?.title}
+      showStepper={currentPage?.showStepper}
+      showBackgroundDecoration={currentPage?.showBackgroundDecoration}
+      showNavigation={currentPage?.showNavigation}
       leftPanelComponents={currentPage?.leftPanelComponents || []}
+      navigationOverride={currentPage?.navigationOverride}
+      fullPage={currentPage?.fullPage || false}
     >
       <PageRenderer pageId={currentPageId} />
     </PageLayout>

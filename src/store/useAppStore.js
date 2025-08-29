@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { devtools, subscribeWithSelector } from 'zustand/middleware';
 import { createCitySlice } from './slices/citySlice';
 import { createFormDataSlice } from './slices/formDataSlice.js';
+import { createLeadSlice } from './slices/leadSlice.js';
 import { createNavigationSlice } from './slices/navigationSlice';
 import { createPricingSlice } from './slices/pricingSlice';
 import { createProductsSlice, createProductSubscriptions } from './slices/productsSlice';
@@ -25,11 +26,10 @@ const store = (set, get) => ({
         }
       }
 
-      // Initialize validation for the first page
-      // setTimeout(() => {
-      //   const currentState = get();
-      //   currentState.validation.validateCurrentPage();
-      // }, 0);
+
+      // Load allowed URL parameters into formData
+      state.loadUrlParams();
+
       set({ _initialized: true });
     }
   },
@@ -54,6 +54,8 @@ const store = (set, get) => ({
 
   // Report slice integration
   ...createReportSlice(set, get),
+
+  ...createLeadSlice(set, get),
 
   // Validation slice integration
   ...createValidationSlice(set, get),

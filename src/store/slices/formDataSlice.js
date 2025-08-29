@@ -1,6 +1,20 @@
+
+const allowedUrlParams = ['userId']
+
 export const createFormDataSlice = (set, get) => ({
     // Form data state
     formData: {},
+
+    loadUrlParams: () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const formData = {};
+        for (const [key, value] of urlParams.entries()) {
+            if (allowedUrlParams.includes(key)) {
+                formData[key] = value;
+            }
+        }
+        set({ formData });
+    },
 
     // Form data actions
     setFormValue: (property, value) => {

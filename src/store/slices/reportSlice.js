@@ -88,6 +88,19 @@ export const createReportSlice = (set, get) => ({
             }
         })),
 
+        getReportUrl: () => {
+            const state = get();
+            return state.report.data.result.body.ProjectUrl;
+        },
+
+        openReport: () => {
+            const state = get();
+            const reportUrl = state.report.getReportUrl();
+            if (reportUrl) {
+                window.open(reportUrl, '_blank');
+            }
+        },
+
         // GETTERS ---
         getReportStatus: () => {
             const state = get();

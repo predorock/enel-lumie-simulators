@@ -1,3 +1,4 @@
+import { Cross2Icon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import AirConditioningIcons from './AirConditioningIcons';
 import CheckMarkIcon from './CheckMarkIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -9,6 +10,7 @@ import HouseIcon from './HouseIcon';
 import InfoIcon from './InfoIcon';
 import LightningIcon from './LightningIcon';
 import MoneyIcon from './MoneyIcon';
+import ReaderIcon from './ReaderIcon';
 import RoomIcon from './RoomIcon';
 import SavingsIcon from './SavingsIcon';
 import StarIcon from './StarIcon';
@@ -27,7 +29,10 @@ const registry = {
     info: InfoIcon,
     globe: GlobeIcon,
     chevronRight: ChevronRightIcon,
-    fire: FireIcon
+    fire: FireIcon,
+    cross: Cross2Icon,
+    reader: ReaderIcon,
+    envelope: EnvelopeClosedIcon
 }
 
 export default function IconRenderer({ icon, ...props }) {

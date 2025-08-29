@@ -7,10 +7,12 @@ import StatefulCustomSelect from '../clima/StatefulCustomSelect';
 import StatefulDisclaimerContainer from '../clima/StatefulDisclaimerContainer';
 import StatefulDuctworkConfigurator from '../clima/StatefulDuctworkConfigurator';
 import StatefulErrorMessage from '../clima/StatefulErrorMessage';
+import StatefulFinalMessage from '../clima/StatefulFinalMessage';
 import StatefulInput from '../clima/StatefulInput';
 import StatefulInvestmentSelector from '../clima/StatefulInvestmentSelector';
 import StatefulLoadingSpinner from '../clima/StatefulLoadingSpinner';
 import StatefulReportSummary from '../clima/StatefulReportSummary';
+import StatefulSidebarForm from '../clima/StatefulSidebarForm';
 import StatefulSplitterQtyConfigurator from '../clima/StatefulSplitterQtyConfigurator';
 import StatefulSummaryResults from '../clima/StatefulSummaryResults';
 import StatefulToggle from '../clima/StatefulToggle';
@@ -85,7 +87,9 @@ const componentRegistry = {
   InvestmentSelector: (props) => <StatefulInvestmentSelector {...props} />,
   DisclaimerContainer: (props) => <StatefulDisclaimerContainer {...props} />,
   ReportSummary: (props) => <StatefulReportSummary {...props} />,
+  SidebarForm: (props) => <StatefulSidebarForm {...props} />,
   SummaryResults: (props) => <StatefulSummaryResults {...props} />,
+  FinalMessage: (props) => <StatefulFinalMessage {...props} />
 };
 
 export default componentRegistry;
