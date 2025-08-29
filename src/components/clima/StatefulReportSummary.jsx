@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAppStore from "../../store/useAppStore";
-import { ReportSummary } from "../ui/summary";
 
+import SummaryContainer from "../ui/summary/SummaryContainer";
 import SummaryPriceDisplay from "../ui/summary/SummaryPriceDisplay";
 import SummaryProductCardContainer from "../ui/summary/SummaryProductCardContainer";
 
@@ -28,7 +28,7 @@ const StatefulReportSummary = () => {
         }
     ];
     const [activeTab, setActiveTab] = useState(tabs[0].id);
-    return <ReportSummary tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />;
+    return <SummaryContainer tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />;
 };
 
 export default StatefulReportSummary;
