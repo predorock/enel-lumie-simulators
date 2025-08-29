@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 import CustomSelect from './CustomSelect';
 
-const DuctworkConfigurator = ({ 
+const DuctworkConfigurator = ({
   items = [],
   values = {},
   onChange,
   ductworkOptions = [],
-  pricePerUnit = 129,
+  getUnitTotal = () => { },
   className = "",
-  ...props 
+  ...props
 }) => {
   const [selections, setSelections] = useState(values || {});
 
@@ -26,7 +26,7 @@ const DuctworkConfigurator = ({
 
   const getSelectedOption = (itemKey) => {
     const selectedValue = selections[itemKey];
-    return ductworkOptions.find(option => option.value === selectedValue);
+    return ductworkOptions[itemKey].find(option => option.value === selectedValue);
   };
 
   const formatCurrency = (amount) => {
@@ -36,12 +36,14 @@ const DuctworkConfigurator = ({
   return (
     <div className={`flex flex-col gap-6 w-full ${className}`} {...props}>
       {items.map((item) => {
-        const selectedOption = getSelectedOption(item.key);
+        const selectedOption = getSelectedOption(item.key, item.type);
         const hasSelection = !!selectedOption;
 
+        const options = ductworkOptions[item.key] || [];
+
         return (
-          <div 
-            key={item.key} 
+          <div
+            key={item.key}
             className="flex flex-row h-10 items-center justify-between w-full"
           >
             {/* Left side - Type and Dropdown */}
@@ -51,7 +53,7 @@ const DuctworkConfigurator = ({
                 <div className="relative shrink-0 size-6">
                   <AirConditioningIcon type={item.type} className="w-6 h-6" />
                 </div>
-                <div 
+                <div
                   className="text-[18px] leading-[27px] text-[#131416] text-nowrap font-enel"
                 >
                   {item.label}
@@ -63,7 +65,7 @@ const DuctworkConfigurator = ({
                 <CustomSelect
                   value={selections[item.key] || ''}
                   onChange={(value) => handleSelectionChange(item.key, value)}
-                  options={ductworkOptions.map(option => ({
+                  options={options.map(option => ({
                     value: option.value,
                     label: `${option.range} ${option.description}`
                   }))}
@@ -78,15 +80,15 @@ const DuctworkConfigurator = ({
             {hasSelection && (
               <div className="bg-[#eff2f7] flex flex-row gap-4 h-full items-center justify-end px-2 rounded-xl">
                 <div className="flex flex-row gap-2 items-center justify-end">
-                  <div 
+                  <div
                     className="text-[14px] leading-[21px] text-[#272c34] text-right font-enel-bold"
                   >
                     Prezzo finale
                   </div>
-                  <div 
+                  <div
                     className="text-[18px] leading-[27px] text-[#272c34] text-right font-enel-bold"
                   >
-                    {formatCurrency(pricePerUnit)}
+                    {formatCurrency(getUnitTotal(item.key))}
                   </div>
                 </div>
               </div>

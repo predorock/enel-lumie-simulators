@@ -213,8 +213,8 @@ export const createNavigationSlice = (set, get) => ({
             return pagesConfig.pages; // Return original pages if no dynamic pages
         }
 
-        // Insert dynamic pages after 'servizi-manutenzione' (step 2)
-        const insertAfterIndex = pagesConfig.pages.findIndex(page => page.id === 'servizi-manutenzione');
+        // Insert dynamic pages after 'canalizzazioni-configuratore' (step 2)
+        const insertAfterIndex = pagesConfig.pages.findIndex(page => page.id === 'canalizzazioni-configuratore');
 
         if (insertAfterIndex === -1) {
             // Fallback: add at the end

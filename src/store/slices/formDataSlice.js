@@ -1,6 +1,14 @@
 
 const allowedUrlParams = ['userId']
 
+const calculatePricingTriggerProperties = [
+    'airconditioningQuantities',
+    'airConditioningConfigs',
+    'removalQuantities',
+    'cleaningQuantities',
+    'ductworkQuantities'
+];
+
 export const createFormDataSlice = (set, get) => ({
     // Form data state
     formData: {},
@@ -32,10 +40,7 @@ export const createFormDataSlice = (set, get) => ({
         state.validation.validateCurrentPage();
 
         // Trigger pricing calculation when quantities change
-        if (property === 'airconditioningQuantities' ||
-            property === 'airConditioningConfigs' ||
-            property === 'removalQuantities' ||
-            property === 'cleaningQuantities') {
+        if (calculatePricingTriggerProperties.includes(property)) {
             setTimeout(() => get().calculatePricing(), 0);
         }
     },

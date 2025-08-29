@@ -24,6 +24,8 @@ export const getOperationDescription = (operationType, splitType, amount) => {
             return `Smontaggio clima ${splitDesc(splitType)} x${amount}`;
         case 'cleaning':
             return `Lavaggio impianto clima ${splitDesc(splitType)} x${amount}`;
+        case 'ductwork':
+            return `Canalizzazione aggiuntiva 6 metri x${amount}`;
         default:
             return ``;
     }
@@ -41,6 +43,21 @@ export const getProductShortDescription = (splitType) => {
             return '';
     }
 }
+
+// Funzione per calcolare la rata mensile corretta
+const calculateMonthlyRate = (principal, annualTaeg, months) => {
+    if (annualTaeg === 0) {
+        // Se TAEG è 0 (cliente Enel), rata = capitale / mesi
+        return principal / months;
+    }
+
+    const monthlyTaeg = annualTaeg / 100 / 12; // TAEG mensile in decimale
+    const monthlyRate = principal *
+        (monthlyTaeg * Math.pow(1 + monthlyTaeg, months)) /
+        (Math.pow(1 + monthlyTaeg, months) - 1);
+
+    return monthlyRate;
+};
 
 export const createReportSlice = (set, get) => ({
     // Report state
@@ -213,6 +230,15 @@ export const createReportSlice = (set, get) => ({
                 });
             });
 
+
+            const ductworkQtyTotal = Object.values(state.formData.ductworkQuantities || {}).reduce((acc, val) => acc + val, 0)
+            if (ductworkQtyTotal > 0) {
+                summary.expenses.push({
+                    description: getOperationDescription('ductwork', null, ductworkQtyTotal),
+                    price: state.pricingState.calculations.ductwork.total || 0
+                });
+            }
+
             return summary;
 
         },
@@ -237,6 +263,8 @@ export const createReportSlice = (set, get) => ({
             // Get removal quantities (default to 0 if not present)
             const removalQuantities = formData.removalQuantities || {};
 
+            const ductworkQuantities = formData.ductworkQuantities || {};
+
             // Build the payload according to API specification
             const payload = {
                 Comune: comune,
@@ -247,7 +275,7 @@ export const createReportSlice = (set, get) => ({
                 Numero_Predisposizioni_Mono: quantities.monosplit || 0,
                 Numero_Predisposizioni_Dual: quantities.dualsplit || 0,
                 Numero_Predisposizioni_Trial: quantities.trialsplit || 0,
-                Numero_Predisposizioni_Canalizzazione: 0, // TBD - keep 0 for now
+                Numero_Predisposizioni_Canalizzazione: Object.values(ductworkQuantities).reduce((acc, val) => acc + val, 0),
                 Numero_Smontaggi_Mono: removalQuantities.monosplit || 0,
                 Numero_Smontaggi_Dual: removalQuantities.dualsplit || 0,
                 Numero_Smontaggi_Trial: removalQuantities.trialsplit || 0,
@@ -283,6 +311,9 @@ export const createReportSlice = (set, get) => ({
                 // Store the response data
                 state.report.setReportData(data);
 
+                // Generating financing options
+                state.report.generateFinancialPlan();
+
                 // Auto-advance to next step after successful submission
                 const nextStepResult = state.nextStep();
 
@@ -313,31 +344,56 @@ export const createReportSlice = (set, get) => ({
         },
 
         // FINANCING DATA ---
+        /**
+         * 
+         */
         financing: {
-            plans: [
+            plans: []
+        },
+
+        generateFinancialPlan: () => {
+            const state = get();
+            const isEnelCustomer = state.formData.isEnelCustomer || false;
+            const grandTotal = state.getGrandTotal() || 0;
+            const planConfig = [
                 {
-                    id: '12months',
-                    name: 'Finanziamento a 12 mesi*',
-                    duration: 12,
-                    monthlyRate: 226.25,
-                    currency: '€',
-                    frequency: '/mese',
-                    tan: 0,
-                    taeg: 0,
-                    totalToRepay: 2715.00
+                    duration: 6,
+                    tan: isEnelCustomer ? 0 : 6.75,
+                    taeg: isEnelCustomer ? 0 : 6.96,
                 },
                 {
-                    id: '24months',
-                    name: 'Finanziamento a 24 mesi*',
-                    duration: 24,
-                    monthlyRate: 113.13,
-                    currency: '€',
-                    frequency: '/mese',
-                    tan: 0,
-                    taeg: 0,
-                    totalToRepay: 2715.00
+                    duration: isEnelCustomer ? 24 : 120,
+                    tan: isEnelCustomer ? 0 : 6.75,
+                    taeg: isEnelCustomer ? 0 : 6.96,
                 }
             ]
+            const plans = planConfig.map((config) => {
+                const monthlyRate = calculateMonthlyRate(grandTotal, config.taeg, config.duration);
+                const totalToRepay = monthlyRate * config.duration;
+                return {
+                    id: `${config.duration}months`,
+                    name: `Finanziamento a ${config.duration} mesi*`,
+                    duration: config.duration,
+                    monthlyRate: totalToRepay / config.duration,
+                    currency: '€',
+                    frequency: '/mese',
+                    tan: config.tan,
+                    taeg: config.taeg,
+                    totalToRepay: totalToRepay
+                };
+            });
+
+            set((state) => ({
+                ...state,
+                report: {
+                    ...state.report,
+                    financing: {
+                        ...state.report.financing,
+                        plans: plans
+                    }
+                }
+            }));
+
         },
 
         // Get financing plans

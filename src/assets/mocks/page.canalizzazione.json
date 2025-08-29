@@ -2,6 +2,18 @@
     "id": "canalizzazioni-configuratore",
     "title": "Configurate insieme il climatizzatore!",
     "step": 2,
+    "fullPage": false,
+    "showStepper": true,
+    "showNavigation": true,
+    "showBackgroundDecoration": true,
+    "validationRules": {},
+    "navigationOverride": {},
+    "navigationHooks": {
+        "beforeNext": "",
+        "afterNext": "",
+        "beforePrevious": "",
+        "afterPrevious": ""
+    },
     "leftPanelComponents": [
         {
             "type": "Image",
@@ -47,23 +59,89 @@
                         "type": "trial"
                     }
                 ],
-                "ductworkOptions": [
-                    {
-                        "value": "3m-9m",
-                        "range": "3m - 9m",
-                        "description": "(1 modulo canalizzazione)"
-                    },
-                    {
-                        "value": "9m-15m",
-                        "range": "9m - 15m",
-                        "description": "(2 moduli canalizzazione)"
-                    },
-                    {
-                        "value": "15m-25m",
-                        "range": "15m - 25m",
-                        "description": "(3 moduli canalizzazione)"
-                    }
-                ],
+                "ductworkOptions": {
+                    "monosplit": [
+                        {
+                            "value": 1,
+                            "range": "3m - 9m",
+                            "description": "(1 modulo canalizzazione)"
+                        },
+                        {
+                            "value": 2,
+                            "range": "9m - 15m",
+                            "description": "(2 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 3,
+                            "range": "15m - 21m",
+                            "description": "(3 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 4,
+                            "range": "21m - 27m",
+                            "description": "(4 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 5,
+                            "range": "27m - 33m",
+                            "description": "(5 moduli canalizzazione)"
+                        }
+                    ],
+                    "dualsplit": [
+                        {
+                            "value": 1,
+                            "range": "4m - 10m",
+                            "description": "(1 modulo canalizzazione)"
+                        },
+                        {
+                            "value": 2,
+                            "range": "10m - 16m",
+                            "description": "(2 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 3,
+                            "range": "16m - 22m",
+                            "description": "(3 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 4,
+                            "range": "22m - 28m",
+                            "description": "(4 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 5,
+                            "range": "28m - 34m",
+                            "description": "(5 moduli canalizzazione)"
+                        }
+                    ],
+                    "trialsplit": [
+                        {
+                            "value": 1,
+                            "range": "6m - 12m",
+                            "description": "(1 modulo canalizzazione)"
+                        },
+                        {
+                            "value": 2,
+                            "range": "12m - 18m",
+                            "description": "(2 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 3,
+                            "range": "18m - 24m",
+                            "description": "(3 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 4,
+                            "range": "24m - 30m",
+                            "description": "(4 moduli canalizzazione)"
+                        },
+                        {
+                            "value": 5,
+                            "range": "30m - 36m",
+                            "description": "(5 moduli canalizzazione)"
+                        }
+                    ]
+                },
                 "pricePerUnit": 129,
                 "stateProperty": "ductworkSelections"
             }

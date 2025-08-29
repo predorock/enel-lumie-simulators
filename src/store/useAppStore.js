@@ -21,8 +21,8 @@ const store = (set, get) => ({
       if (import.meta.env.DEV && typeof window !== 'undefined' && window.location.search.includes('test=')) {
         const params = new URLSearchParams(window.location.search);
         const testScenario = params.get('test');
-        if (testScenario === 'true' || testScenario === 'default') {
-          setTimeout(() => state.testing.loadTestData('default'), 0);
+        if (!!testScenario) {
+          setTimeout(() => state.testing.loadTestData(testScenario), 0);
         }
       }
 

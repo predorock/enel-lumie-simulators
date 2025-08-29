@@ -1,20 +1,22 @@
-import React from 'react';
 import useAppStore from '../../store/useAppStore';
 import DuctworkConfigurator from '../ui/DuctworkConfigurator';
 
-const StatefulDuctworkConfigurator = ({ 
-  stateProperty, 
+const StatefulDuctworkConfigurator = ({
+  stateProperty,
   initialValue = {},
   items = [],
   ductworkOptions = [],
-  pricePerUnit = 129,
-  ...props 
+  ...props
 }) => {
   const store = useAppStore();
   const value = store.formData[stateProperty] || initialValue;
-  
+
   const handleChange = (newValue) => {
     store.setFormValue(stateProperty, newValue);
+  };
+
+  const getUnitTotal = (splitType) => {
+    return store.getUnitTotal('ductwork', splitType);
   };
 
   return (
@@ -23,7 +25,7 @@ const StatefulDuctworkConfigurator = ({
       onChange={handleChange}
       items={items}
       ductworkOptions={ductworkOptions}
-      pricePerUnit={pricePerUnit}
+      getUnitTotal={getUnitTotal}
       {...props}
     />
   );

@@ -23,6 +23,11 @@ export const UNIT_PRICES = {
     dualsplit: 150,
     trialsplit: 220,
   },
+  ductwork: {
+    monosplit: 129,
+    dualsplit: 129,
+    trialsplit: 129,
+  },
 };
 
 export const getInstallationTypeDescription = (installationType, amount = 0) => {
@@ -65,6 +70,12 @@ export const initialCalculations = {
     trialsplit: 0,
     total: 0,
   },
+  ductwork: {
+    monosplit: 0,
+    dualsplit: 0,
+    trialsplit: 0,
+    total: 0,
+  },
   // Total cost of installation
   installationTotal: 0,
   // Total cost of chosen products
@@ -101,9 +112,9 @@ export const createPricingSlice = (set, get) => ({
     const { unitPrices } = state.pricingState;
 
     // get quantities from form data
-    const quantities = state.formData.airconditioningQuantities || {};
     const removalQuantities = state.formData.removalQuantities || {};
     const cleaningQuantities = state.formData.cleaningQuantities || {};
+    const ductworkQuantities = state.formData.ductworkQuantities || {};
 
     // configs
     const configs = state.formData.airConditioningConfigs || {};
@@ -142,8 +153,14 @@ export const createPricingSlice = (set, get) => ({
     const cleaningTrialsplitTotal = (cleaningQuantities.trialsplit || 0) * unitPrices.cleaning.trialsplit;
     const cleaningTotal = cleaningMonosplitTotal + cleaningDualsplitTotal + cleaningTrialsplitTotal;
 
+
+    const ductworkMonoTotal = (ductworkQuantities.monosplit || 0) * unitPrices.ductwork.monosplit;
+    const ductworkDualTotal = (ductworkQuantities.dualsplit || 0) * unitPrices.ductwork.dualsplit;
+    const ductworkTrialTotal = (ductworkQuantities.trialsplit || 0) * unitPrices.ductwork.trialsplit;
+    const ductworkTotal = ductworkMonoTotal + ductworkDualTotal + ductworkTrialTotal;
+
     // Calculate grand total
-    const installationTotal = purchaseTotal + removalTotal + cleaningTotal;
+    const installationTotal = purchaseTotal + removalTotal + cleaningTotal + ductworkTotal;
 
     // Calculate products total based on all configuration-specific selected products
     const availableProducts = state.products?.items || [];
@@ -184,6 +201,12 @@ export const createPricingSlice = (set, get) => ({
           dualsplit: cleaningDualsplitTotal,
           trialsplit: cleaningTrialsplitTotal,
           total: cleaningTotal
+        },
+        ductwork: {
+          monosplit: ductworkMonoTotal,
+          dualsplit: ductworkDualTotal,
+          trialsplit: ductworkTrialTotal,
+          total: ductworkTotal
         },
         installationTotal,
         productsTotal,

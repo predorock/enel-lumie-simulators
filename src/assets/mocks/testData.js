@@ -1,7 +1,7 @@
 export default {
   _initialized: true,
   currentStep: 0,
-  currentPageId: 'fine-simulazione',
+  currentPageId: 'preventivo-risultato',
   steps: [
     {
       copy: 'Informazioni'
@@ -107,7 +107,7 @@ export default {
     consultantName: '12345',
     storePhone: '12345',
     storeCity: 'Borgofranco d\'Ivrea',
-    isEnelCustomer: true,
+    isEnelCustomer: false,
     airconditioningQuantities: {
       monosplit: 1
     },
@@ -117,6 +117,11 @@ export default {
         roomSize: '45',
         selected: 'daikin-clima-siesta-super-plus-12000'
       }
+    },
+    ductworkQuantities: {
+      monosplit: 1,
+      dualsplit: 4,
+      trialsplit: 2
     },
     needsRemoval: true,
     removalQuantities: {

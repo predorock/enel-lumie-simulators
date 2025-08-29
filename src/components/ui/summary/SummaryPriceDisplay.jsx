@@ -45,10 +45,10 @@ const SummaryPriceDisplay = ({
             {/* Total */}
             {total && (
                 <div className="flex justify-between items-center text-xl">
-                    <span className="font-enel-bold tetxt-black">
-                        Totale (IVA Inclusa)
+                    <span className="font-enel-bold text-black">
+                        Totale Spese (IVA Inclusa)
                     </span>
-                    <span className="font-enel-bold tetxt-black">
+                    <span className="font-enel-bold text-black">
                         <PriceDisplay value={total} />
                     </span>
                 </div>
