@@ -1,6 +1,6 @@
 import * as API from '../../utils/api';
 
-const IS_TEST = import.meta.env.VITE_MOCK_API === 'true';
+const IS_PROD = import.meta.env.VITE_ENVIRONMENT === 'prod';
 
 export const createLeadSlice = (set, get) => ({
     // Sidebar state
@@ -113,7 +113,7 @@ export const createLeadSlice = (set, get) => ({
             "Nome": customerData.nome,
             "Cognome": customerData.cognome,
             "Telefono": customerData.telefono,
-            "prd": IS_TEST,
+            "prd": IS_PROD,
             "isEnelIT": true,
             "Token": customerData.token || ''
         }
