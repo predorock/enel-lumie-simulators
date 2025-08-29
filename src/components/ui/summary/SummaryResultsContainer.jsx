@@ -3,7 +3,7 @@ import BenefitsCard from '../BenefitsCard';
 import BigHeaderCard from '../card/BigHeaderCard';
 import SkinnyCard from '../card/SkinnyCard';
 import Divider from '../Divider';
-import { PriceDisplay } from '../price';
+import { PriceDisplay } from '../price/PriceDisplay';
 import ProductSummary from './ProductSummary';
 
 export default function SummaryResultsContainer({

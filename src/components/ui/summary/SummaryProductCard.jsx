@@ -1,4 +1,4 @@
-import { PriceDisplay } from '../price';
+import { PriceDisplay } from '../price/PriceDisplay';
 
 const SummaryProductCard = ({
     data = {},
