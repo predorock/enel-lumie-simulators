@@ -1,4 +1,4 @@
-import PriceDisplay from '../price/PriceDisplay';
+import PriceDisplay from '../price/PriceDisplay.jsx';
 
 const SummaryProductCard = ({
     data = {},

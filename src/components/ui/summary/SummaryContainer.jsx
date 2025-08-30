@@ -1,6 +1,6 @@
 import * as Tabs from '@radix-ui/react-tabs';
 import React from 'react';
-import Divider from '../Divider';
+import Divider from '../Divider.jsx';
 
 const SummaryContainer = ({
     tabs = [],
