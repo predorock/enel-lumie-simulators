@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import BenefitsCard from '../BenefitsCard.jsx';
-import BigHeaderCard from '../card/BigHeaderCard.jsx';
-import SkinnyCard from '../card/SkinnyCard.jsx';
-import Divider from '../Divider.jsx';
-import PriceDisplay from '../price/PriceDisplay.jsx';
+import BenefitsCard from '../BenefitsCard';
+import BigHeaderCard from '../card/BigHeaderCard';
+import SkinnyCard from '../card/SkinnyCard';
+import Divider from '../Divider';
+import PriceDisplay from '../price/PriceDisplay';
 import ProductSummary from './ProductSummary';
 
 export default function SummaryResultsContainer({
