@@ -1,6 +1,6 @@
 import cn from "classnames";
 import Divider from "../Divider";
-import EnelPrice from "../price/EnelPrice";
+import PriceDisplay from "../PriceDisplay";
 
 const SummaryPriceDisplay = ({
     title = "Riepilogo spesa componenti aggiuntivi",
@@ -29,7 +29,7 @@ const SummaryPriceDisplay = ({
                         <span className="text-md font-enel-light flex-1">
                             {item.description}
                         </span>
-                        <EnelPrice value={item.price} />
+                        <PriceDisplay value={item.price} />
                     </div>
                 ))}
             </div>
@@ -49,7 +49,7 @@ const SummaryPriceDisplay = ({
                         Totale Spese (IVA Inclusa)
                     </span>
                     <span className="font-enel-bold text-black">
-                        <EnelPrice value={total} />
+                        <PriceDisplay value={total} />
                     </span>
                 </div>
             )}

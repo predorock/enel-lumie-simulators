@@ -1,8 +1,7 @@
-import { priceFormatter } from './priceFormatter';
+import { priceFormatter } from '../../utils/priceFormatter';
 
-function EnelPrice({ value, currency = 'EUR', locale = 'it-IT', className }) {
+function PriceDisplay({ value, currency = 'EUR', locale = 'it-IT', className }) {
     const price = priceFormatter(value, currency, locale);
-
     return (
         <div className={`font-enel-bold ${className}`}>
             {price}
@@ -10,4 +9,4 @@ function EnelPrice({ value, currency = 'EUR', locale = 'it-IT', className }) {
     );
 }
 
-export default EnelPrice;
+export default PriceDisplay;
