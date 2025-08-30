@@ -3,7 +3,7 @@ import BenefitsCard from '../BenefitsCard';
 import BigHeaderCard from '../card/BigHeaderCard';
 import SkinnyCard from '../card/SkinnyCard';
 import Divider from '../Divider';
-import PriceDisplay from '../price/PriceDisplay';
+import EnelPrice from '../price/EnelPrice';
 import ProductSummary from './ProductSummary';
 
 export default function SummaryResultsContainer({
@@ -53,7 +53,7 @@ export default function SummaryResultsContainer({
                             {pricing?.investmentLabel}
                         </p>
                         <div className='text-right'>
-                            <PriceDisplay
+                            <EnelPrice
                                 value={pricing?.investmentAmount}
                             />
                         </div>
@@ -88,7 +88,7 @@ export default function SummaryResultsContainer({
                                 <SkinnyCard title={plan.name} key={index}>
                                     <div className='flex flex-row w-full justify-between my-2'>
                                         <p className="font-enel-bold text-sm">Rate Mensili</p>
-                                        <PriceDisplay value={plan.monthlyRate} className="text-primary-light font-enel-bold text-md" />
+                                        <EnelPrice value={plan.monthlyRate} className="text-primary-light font-enel-bold text-md" />
 
                                     </div>
                                     <div className='flex flex-row w-full justify-between my-2'>
@@ -105,7 +105,7 @@ export default function SummaryResultsContainer({
                                     </div>
                                     <div className='flex flex-row w-full justify-between my-2'>
                                         <p className="font-enel-bold text-sm">Totale da rimborsare</p>
-                                        <PriceDisplay value={plan.totalToRepay} className="text-primary-light font-enel-bold text-md" />
+                                        <EnelPrice value={plan.totalToRepay} className="text-primary-light font-enel-bold text-md" />
                                     </div>
                                 </SkinnyCard>
                             ))}
