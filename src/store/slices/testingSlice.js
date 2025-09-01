@@ -1,12 +1,10 @@
-import deafultTestData from '../../assets/mocks/testData.js';
-import testDataCanalizzazioni from '../../assets/mocks/testDataCanalizzazioni.js';
 
-function getTestData(scenarioName) {
+async function getTestData(scenarioName) {
     switch (scenarioName) {
         case 'canalizzazioni':
-            return testDataCanalizzazioni;
+            return await import('../../assets/mocks/testDataCanalizzazioni.js');
         default:
-            return deafultTestData;
+            return await import('../../assets/mocks/testData.js');
     }
 }
 
@@ -14,10 +12,10 @@ export const createTestingSlice = (set, get) => ({
 
     testing: {
         // Test data loading
-        loadTestData: (scenarioName = 'default') => {
+        loadTestData: async (scenarioName = 'default') => {
             const state = get();
 
-            const testData = getTestData(scenarioName);
+            const testData = await getTestData(scenarioName);
 
             set({
                 formData: testData.formData || {},
