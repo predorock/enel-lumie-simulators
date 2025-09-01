@@ -16,7 +16,7 @@ const buildApiUrl = (path) => {
 const API_URLS = {
   products: (cityName) => buildApiUrl(`clima?comune=${encodeURIComponent(cityName)}`),
   simulation: () => buildApiUrl('clima'),
-  lead: () => buildApiUrl('clima/EnelClimaLead')
+  lead: () => buildApiUrl('EnelClimaLead')
 }
 
 /**
