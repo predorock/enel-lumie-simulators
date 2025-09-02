@@ -1,5 +1,5 @@
-import { getInfoIconConfig } from '../../config/infoIconRegistry';
 import useAppStore from '../../store/useAppStore';
+import { getInfoIconConfig } from '../icons/infoIconRegistry';
 import AirConditioningConfigurator from '../ui/AirConditioningConfigurator';
 
 const StatefulAirConditioningConfigurator = ({

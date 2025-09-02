@@ -53,7 +53,7 @@ const ReportSummaryDemo = () => {
                     {/* Stats */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                         <div className="bg-white p-4 rounded-lg border border-[#c2cddd]">
-                            <div className="text-2xl font-enel-bold text-[#5738ff]">
+                            <div className="text-2xl font-enel-bold text-secondary">
                                 {items.length}
                             </div>
                             <div className="text-sm font-enel text-[#667790]">
@@ -61,7 +61,7 @@ const ReportSummaryDemo = () => {
                             </div>
                         </div>
                         <div className="bg-white p-4 rounded-lg border border-[#c2cddd]">
-                            <div className="text-2xl font-enel-bold text-[#5738ff]">
+                            <div className="text-2xl font-enel-bold text-secondary">
                                 {items.length}
                             </div>
                             <div className="text-sm font-enel text-[#667790]">
@@ -69,7 +69,7 @@ const ReportSummaryDemo = () => {
                             </div>
                         </div>
                         <div className="bg-white p-4 rounded-lg border border-[#c2cddd]">
-                            <div className="text-2xl font-enel-bold text-[#5738ff]">
+                            <div className="text-2xl font-enel-bold text-secondary">
                                 {items.length}
                             </div>
                             <div className="text-sm font-enel text-[#667790]">
@@ -150,7 +150,7 @@ const ReportSummaryDemo = () => {
                             <div className="space-y-3">
                                 <button
                                     onClick={() => handleTabChange('climatizzatore')}
-                                    className="w-full px-4 py-2 bg-[#5738ff] text-white rounded font-enel text-sm hover:bg-[#4527cc]"
+                                    className="w-full px-4 py-2 bg-secondary text-white rounded font-enel text-sm hover:bg-[#4527cc]"
                                 >
                                     Switch to Climatizzatori
                                 </button>

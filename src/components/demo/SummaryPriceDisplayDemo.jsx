@@ -100,7 +100,7 @@ const SummaryPriceDisplayDemo = () => {
                                     { description: "Sconto fedeltà", price: "-100,00€" }
                                 ]}
                                 total="899,00 €"
-                                className="border-2 border-[#5738ff] shadow-lg"
+                                className="border-2 border-secondary shadow-lg"
                             />
                         </div>
                     </div>

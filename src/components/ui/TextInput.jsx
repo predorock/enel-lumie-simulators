@@ -61,7 +61,7 @@ export default function TextInput({
               disabled={disabled}
               className={cn(
                 "basis-0 grow min-h-px min-w-px relative shrink-0",
-                "text-[#000000] text-[13px] text-left",
+                "text-black text-[13px] text-left",
                 "font-enel leading-[15px]",
                 "bg-transparent border-none outline-none",
                 "placeholder:text-transparent",
