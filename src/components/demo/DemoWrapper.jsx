@@ -65,7 +65,7 @@ const DemoWrapper = () => {
                                 <p className="text-sm font-enel text-[#667790] mb-4">
                                     {getDemoDescription(demoKey)}
                                 </p>
-                                <div className="text-[#5738ff] font-enel text-sm">
+                                <div className="text-secondary font-enel text-sm">
                                     View Demo →
                                 </div>
                             </a>

@@ -1,4 +1,3 @@
-import React from 'react';
 
 /**
  * SelectionCheckbox component that matches the ENEL design system
@@ -21,35 +20,34 @@ const SelectionCheckbox = ({
           onChange={(e) => onChange && onChange(e.target.checked)}
           className="sr-only"
         />
-        <label 
+        <label
           htmlFor={id}
           className="cursor-pointer flex items-center gap-2"
         >
           {/* Custom checkbox */}
-          <div className={`w-4 h-4 rounded flex items-center justify-center border-2 transition-colors ${
-            checked 
-              ? 'bg-[#5738ff] border-[#5738ff]' 
-              : 'bg-white border-gray-300 hover:border-gray-400'
-          }`}>
+          <div className={`w-4 h-4 rounded flex items-center justify-center border-2 transition-colors ${checked
+            ? 'bg-secondary border-secondary'
+            : 'bg-white border-gray-300 hover:border-gray-400'
+            }`}>
             {checked && (
-              <svg 
-                className="w-3 h-3 text-white" 
-                viewBox="0 0 12 12" 
+              <svg
+                className="w-3 h-3 text-white"
+                viewBox="0 0 12 12"
                 fill="none"
               >
-                <path 
-                  d="M2.5 6.5L4.5 8.5L9.5 3.5" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
+                <path
+                  d="M2.5 6.5L4.5 8.5L9.5 3.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
             )}
           </div>
-          
+
           {/* Label */}
-          <span className="font-roobert text-[#000000] text-[16px] leading-[24px]">
+          <span className="font-roobert text-black text-[16px] leading-[24px]">
             {label}
           </span>
         </label>

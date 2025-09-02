@@ -45,7 +45,7 @@ export default function TextInput({
               className={cn(
                 "absolute left-0 font-enel pointer-events-none transition-all duration-200 ease-in-out text-[#667790]",
                 {
-                  "text-[12px] top-0": shouldFloatLabel,
+                  "text-[12px] top-1": shouldFloatLabel,
                   "text-[13px]  top-1/2 -translate-y-1/2": !shouldFloatLabel
                 }
               )}
@@ -61,12 +61,12 @@ export default function TextInput({
               disabled={disabled}
               className={cn(
                 "basis-0 grow min-h-px min-w-px relative shrink-0",
-                "text-[#000000] text-[13px] text-left",
+                "text-black text-[13px] text-left",
                 "font-enel leading-[15px]",
                 "bg-transparent border-none outline-none",
                 "placeholder:text-transparent",
                 {
-                  "pt-3 pb-1": shouldFloatLabel,
+                  "pt-5 pb-1": shouldFloatLabel,
                   "pt-0": !shouldFloatLabel,
                   "cursor-not-allowed opacity-50": disabled
                 }

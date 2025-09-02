@@ -73,7 +73,7 @@
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",
-                        "spacing": "32px"
+                        "className": "py-4"
                     }
                 },
                 {
@@ -100,7 +100,7 @@
                     "type": "Divider",
                     "props": {
                         "color": "#c2cddd",
-                        "spacing": "32px"
+                        "className": "py-4"
                     }
                 },
                 {

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useAppStore from '../../store/useAppStore';
 
 // Checkmark icon for selected items
@@ -119,8 +119,8 @@ const AsyncSelect = ({
       {displayLabel && (
         <label
           className={`absolute font-enel left-2 text-sm transition-all duration-200 pointer-events-none ${hasValue || isOpen
-              ? 'top-0.5 text-[#667790] text-xs'
-              : 'top-2.5 text-[#667790]'
+            ? 'top-0.5 text-[#667790] text-xs'
+            : 'top-2.5 text-[#667790]'
             }`}
 
         >
@@ -183,7 +183,7 @@ const AsyncSelect = ({
                 <div className="px-3 py-6 flex flex-col items-center justify-center gap-3">
                   <div className="relative">
                     <div className="w-8 h-8 border-2 border-[#e0e6ed] rounded-full"></div>
-                    <div className="absolute top-0 left-0 w-8 h-8 border-2 border-[#5738ff] border-t-transparent rounded-full animate-spin"></div>
+                    <div className="absolute top-0 left-0 w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin"></div>
                   </div>
                   <div className="text-sm text-[#667790] text-center">
                     <div className="font-medium">Caricamento città...</div>
@@ -215,7 +215,7 @@ const AsyncSelect = ({
                     className={`
                       box-border flex flex-row gap-4 h-10 items-center justify-start px-3 py-2 cursor-pointer transition-colors
                       ${isSelected(option.value)
-                        ? 'bg-[#f7f8fb] text-[#5738ff]'
+                        ? 'bg-[#f7f8fb] text-secondary'
                         : 'bg-white text-[#131416] hover:bg-[#f7f8fb]'
                       }
                     `}
@@ -229,7 +229,7 @@ const AsyncSelect = ({
                       </div>
                     </div>
                     {isSelected(option.value) && (
-                      <div className="relative rounded-[3px] shrink-0 w-4 h-4 flex items-center justify-center text-[#5738ff]">
+                      <div className="relative rounded-[3px] shrink-0 w-4 h-4 flex items-center justify-center text-secondary">
                         <CheckmarkIcon />
                       </div>
                     )}

@@ -1,13 +1,13 @@
 import cn from 'classnames';
 import { useState } from 'react';
 
-export default function SearchInput({ 
-  placeholder = "Nome punto vendita", 
-  value = "", 
-  onChange, 
+export default function SearchInput({
+  placeholder = "Nome punto vendita",
+  value = "",
+  onChange,
   className = "",
   disabled = false,
-  ...props 
+  ...props
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const hasValue = value && value.length > 0;
@@ -59,7 +59,7 @@ export default function SearchInput({
               disabled={disabled}
               className={cn(
                 "basis-0 grow min-h-px min-w-px relative shrink-0",
-                "text-[#000000] text-[13px] text-left",
+                "text-black text-[13px] text-left",
                 "font-enel leading-[15px]",
                 "bg-transparent border-none outline-none",
                 {
