@@ -45,7 +45,7 @@ export default function TextInput({
               className={cn(
                 "absolute left-0 font-enel pointer-events-none transition-all duration-200 ease-in-out text-[#667790]",
                 {
-                  "text-[12px] top-0": shouldFloatLabel,
+                  "text-[12px] top-1": shouldFloatLabel,
                   "text-[13px]  top-1/2 -translate-y-1/2": !shouldFloatLabel
                 }
               )}
@@ -66,7 +66,7 @@ export default function TextInput({
                 "bg-transparent border-none outline-none",
                 "placeholder:text-transparent",
                 {
-                  "pt-3 pb-1": shouldFloatLabel,
+                  "pt-5 pb-1": shouldFloatLabel,
                   "pt-0": !shouldFloatLabel,
                   "cursor-not-allowed opacity-50": disabled
                 }
