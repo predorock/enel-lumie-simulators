@@ -210,10 +210,12 @@ export const createReportSlice = (set, get) => ({
 
             Object.keys(installationTypesAmount).forEach((installationType) => {
                 const amount = installationTypesAmount[installationType];
-                summary.expenses.push({
-                    description: getInstallationTypeDescription(installationType, amount),
-                    price: installationType === 'nuova_senza_predisposizione' ? state.getPurchaseTotal() : 0
-                });
+                if (installationType === 'nuova_senza_predisposizione') {
+                    summary.expenses.push({
+                        description: getInstallationTypeDescription(installationType, amount),
+                        price: state.getPurchaseTotal()
+                    });
+                }
             });
 
             [
@@ -281,7 +283,7 @@ export const createReportSlice = (set, get) => ({
                 Numero_Smontaggi_Trial: removalQuantities.trialsplit || 0,
                 Stanza1_mq: expandedConfigs[0]?.roomSize || 0,
                 Stanza2_mq: expandedConfigs[1]?.roomSize || 0,
-                Stanza3_mq: expandedConfigs[2]?.roomSize || 0
+                Stanza3_mq: expandedConfigs[2]?.roomSize || 0,
             };
 
             return payload;

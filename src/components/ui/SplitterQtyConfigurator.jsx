@@ -127,12 +127,12 @@ const SplitterQtyConfigurator = ({
                   disabled={!canDecrement}
                   onClick={() => decrement(itemKey)}
                   className={cn(
-                    "box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
+                    "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
                     "rounded transition-all duration-200 ease-in-out",
                     "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
                     {
-                      "bg-[#c2cddd] text-white cursor-not-allowed": !canDecrement,
-                      "bg-secondary text-white hover:bg-secondary focus:ring-secondary": canDecrement
+                      "bg-[#c2cddd] cursor-not-allowed": !canDecrement,
+                      "bg-secondary hover:bg-secondary focus:ring-secondary": canDecrement
                     }
                   )}
                 >
@@ -160,12 +160,12 @@ const SplitterQtyConfigurator = ({
                   disabled={!canIncrement}
                   onClick={() => increment(itemKey)}
                   className={cn(
-                    "box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
+                    "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
                     "rounded transition-all duration-200 ease-in-out",
                     "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
                     {
-                      "bg-[#c2cddd] text-white cursor-not-allowed": !canIncrement,
-                      "bg-secondary text-white hover:bg-secondary focus:ring-secondary": canIncrement
+                      "bg-[#c2cddd] cursor-not-allowed": !canIncrement,
+                      "bg-secondary hover:bg-secondary focus:ring-secondary": canIncrement
                     }
                   )}
                 >

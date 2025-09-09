@@ -48,7 +48,7 @@
                         "initialValue": "",
                         "type": "text",
                         "stateProperty": "storeLocation",
-                        "className": "max-w-[358px]"
+                        "className": ""
                     }
                 },
                 {
@@ -84,7 +84,7 @@
                     }
                 },
                 {
-                    "type": "AsyncSelect",
+                    "type": "AutocompleteInput",
                     "props": {
                         "placeholder": "Città",
                         "label": "Città",
