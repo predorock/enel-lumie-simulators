@@ -11,12 +11,12 @@ export const infoIconRegistry = {
         popoverPosition: "left",
         popoverClassName: "w-[550px]",
         content: (
-            <div className="bg-[#ffffff] box-border content-stretch flex flex-col gap-4 items-center justify-center p-[16px] relative rounded-2xl">
+            <div className="bg-white box-border content-stretch flex flex-col gap-4 items-center justify-center p-[16px] relative rounded-2xl">
                 <div className="box-border content-stretch flex flex-col gap-3 items-center justify-start p-0 relative shrink-0 w-full">
                     <div className="box-border content-stretch flex flex-row gap-1 items-center justify-start p-0 relative shrink-0 w-full">
                         <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
                             <div className="basis-0 box-border content-stretch flex flex-row gap-2.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
-                                <div className="basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#131416] text-[14px] text-left font-enel-bold">
+                                <div className="basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-black text-[14px] text-left font-enel-bold">
                                     <p className="block leading-[21px]">
                                         Come scegliere la potenza del climatizzatore?
                                     </p>
@@ -56,10 +56,10 @@ export const infoIconRegistry = {
         popoverClassName: "max-w-[300px]",
         content: (
             <div>
-                <h4 className="text-[#131416] font-semibold mb-2 font-enel-bold">
+                <h4 className="text-black font-semibold mb-2 font-enel-bold">
                     Come si sceglie la tipologia di installazione?
                 </h4>
-                <p className="text-[#667790] text-sm">
+                <p className="text-grey-light text-sm">
                     Seleziona la lunghezza delle canalizzazioni necessarie per il collegamento tra le unità.
                 </p>
             </div>
@@ -73,13 +73,13 @@ export const infoIconRegistry = {
         popoverClassName: "max-w-[320px]",
         content: (
             <div>
-                <h4 className="text-[#131416] font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
+                <h4 className="text-black font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
                     Numero di Split
                 </h4>
-                <p className="text-[#667790] text-sm mb-2">
+                <p className="text-grey-light text-sm mb-2">
                     Indica il numero di split interni necessari per la tua installazione.
                 </p>
-                <p className="text-[#667790] text-xs">
+                <p className="text-grey-light text-xs">
                     Ogni split può climatizzare un ambiente di circa 20-30 mq.
                 </p>
             </div>
@@ -93,13 +93,13 @@ export const infoIconRegistry = {
         popoverClassName: "max-w-[400px]",
         content: (
             <div>
-                <h4 className="text-[#131416] font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
+                <h4 className="text-black font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
                     Efficienza Energetica
                 </h4>
-                <p className="text-[#667790] text-sm mb-2">
+                <p className="text-grey-light text-sm mb-2">
                     I nostri climatizzatori rispettano le più alte classi energetiche per garantire risparmio e sostenibilità.
                 </p>
-                <ul className="text-[#667790] text-xs space-y-1">
+                <ul className="text-grey-light text-xs space-y-1">
                     <li>• Classe A+++: Massima efficienza</li>
                     <li>• Inverter Technology: Risparmio fino al 30%</li>
                     <li>• Controllo intelligente della temperatura</li>
@@ -115,13 +115,13 @@ export const infoIconRegistry = {
         popoverClassName: "max-w-[350px]",
         content: (
             <div>
-                <h4 className="text-[#131416] font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
+                <h4 className="text-black font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
                     Attenzione Installazione
                 </h4>
-                <p className="text-[#667790] text-sm mb-2">
+                <p className="text-grey-light text-sm mb-2">
                     L'installazione deve essere eseguita da personale qualificato.
                 </p>
-                <ul className="text-[#667790] text-xs space-y-1">
+                <ul className="text-grey-light text-xs space-y-1">
                     <li>• Verifica delle normative locali</li>
                     <li>• Controllo della struttura portante</li>
                     <li>• Rispetto delle distanze di sicurezza</li>

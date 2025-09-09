@@ -111,10 +111,10 @@ const SplitterQtyConfigurator = ({
             <div className="box-border content-stretch flex flex-row gap-4 items-center justify-start p-0 relative shrink-0 w-[354px]">
               {/* Icon and Label */}
               <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0 w-[130px]">
-                <div className="relative shrink-0 size-6 text-[#131416]">
+                <div className="relative shrink-0 size-6 text-black">
                   <AirConditioningIcon type={getIconType(itemKey)} fillClass='fill-black' />
                 </div>
-                <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#131416] text-[18px] text-left text-nowrap">
+                <div className="font-enel leading-[0] not-italic relative shrink-0 text-black text-[18px] text-left text-nowrap">
                   <p className="block leading-[27px] whitespace-pre">{item.label}</p>
                 </div>
               </div>
@@ -142,9 +142,9 @@ const SplitterQtyConfigurator = ({
                 {/* Quantity Display */}
                 <div className="box-border content-stretch flex flex-row gap-3 h-10 items-center justify-center min-w-10 p-0 relative rounded shrink-0 w-32">
                   <div className="basis-0 box-border content-stretch flex flex-col gap-0.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
-                    <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded shrink-0 w-full border border-[#667790]">
+                    <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded shrink-0 w-full border border-grey-light">
                       <div className="box-border content-stretch flex flex-row gap-1 items-center justify-center overflow-clip p-0 relative size-full">
-                        <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-[#131416] text-[16px] text-center text-nowrap">
+                        <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-black text-[16px] text-center text-nowrap">
                           <p className="block leading-[16px]">
                             {currentValue}
                           </p>

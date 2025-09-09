@@ -1,17 +1,17 @@
 import cn from 'classnames';
 
-export default function SelectionIndicator({ 
+export default function SelectionIndicator({
   selected = false,
   size = "sm",
   variant = "primary",
   className = "",
   onClick,
   disabled = false,
-  ...props 
+  ...props
 }) {
   const sizeClasses = {
     xs: "w-2 h-2",
-    sm: "w-3 h-3", 
+    sm: "w-3 h-3",
     md: "w-4 h-4",
     lg: "w-5 h-5"
   };
@@ -19,11 +19,11 @@ export default function SelectionIndicator({
   const variantClasses = {
     primary: {
       selected: "bg-primary border-primary",
-      unselected: "bg-white border-[#667790]"
+      unselected: "bg-white border-grey-light"
     },
     secondary: {
-      selected: "bg-secondary border-secondary", 
-      unselected: "bg-white border-[#667790]"
+      selected: "bg-secondary border-secondary",
+      unselected: "bg-white border-grey-light"
     },
     white: {
       selected: "bg-white border-white",

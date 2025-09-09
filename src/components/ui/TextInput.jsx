@@ -81,8 +81,8 @@ export default function TextInput({
         className={cn(
           "absolute border border-solid inset-0 pointer-events-none rounded transition-all duration-200 ease-in-out",
           {
-            "border-[#0047cc] border-2": isFocused,
-            "border-[#667790]": !isFocused,
+            "border-primary-light border-2": isFocused,
+            "border-grey-light": !isFocused,
             "border-warning": warning
           }
         )}

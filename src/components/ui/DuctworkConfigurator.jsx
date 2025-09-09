@@ -54,7 +54,7 @@ const DuctworkConfigurator = ({
                   <AirConditioningIcon type={item.type} className="w-6 h-6" />
                 </div>
                 <div
-                  className="text-[18px] leading-[27px] text-[#131416] text-nowrap font-enel"
+                  className="text-[18px] leading-[27px] text-black text-nowrap font-enel"
                 >
                   {item.label}
                 </div>

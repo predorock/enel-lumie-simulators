@@ -43,12 +43,12 @@ const DemoWrapper = () => {
     // If no valid demo param, show demo selector
     if (!DemoComponent) {
         return (
-            <div className="min-h-screen bg-[#f7f8fb] p-8">
+            <div className="min-h-screen bg-white-light p-8">
                 <div className="max-w-4xl mx-auto">
-                    <h1 className="text-3xl font-enel-bold text-[#002466] mb-8">
+                    <h1 className="text-3xl font-enel-bold text-primary mb-8">
                         🛠️ Demo Components
                     </h1>
-                    <p className="text-lg font-enel text-[#667790] mb-8">
+                    <p className="text-lg font-enel text-grey-light mb-8">
                         Available demo components for development and testing
                     </p>
 
@@ -59,10 +59,10 @@ const DemoWrapper = () => {
                                 href={`?demo=${demoKey}`}
                                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-[#c2cddd]"
                             >
-                                <h3 className="text-xl font-enel-bold text-[#002466] mb-2 capitalize">
+                                <h3 className="text-xl font-enel-bold text-primary mb-2 capitalize">
                                     {demoKey.replace(/([A-Z])/g, ' $1').trim()}
                                 </h3>
-                                <p className="text-sm font-enel text-[#667790] mb-4">
+                                <p className="text-sm font-enel text-grey-light mb-4">
                                     {getDemoDescription(demoKey)}
                                 </p>
                                 <div className="text-secondary font-enel text-sm">
@@ -73,13 +73,13 @@ const DemoWrapper = () => {
                     </div>
 
                     <div className="mt-12 p-6 bg-white rounded-lg border border-[#c2cddd]">
-                        <h3 className="text-lg font-enel-bold text-[#002466] mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary mb-4">
                             🚀 Quick Access
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <h4 className="font-enel-bold text-[#002466] mb-2">URL Parameters:</h4>
-                                <ul className="text-sm font-enel text-[#667790] space-y-1">
+                                <h4 className="font-enel-bold text-primary mb-2">URL Parameters:</h4>
+                                <ul className="text-sm font-enel text-grey-light space-y-1">
                                     {Object.keys(demoComponents).map((key) => (
                                         <li key={key} className="font-mono">
                                             ?demo={key}
@@ -88,8 +88,8 @@ const DemoWrapper = () => {
                                 </ul>
                             </div>
                             <div>
-                                <h4 className="font-enel-bold text-[#002466] mb-2">Development Mode:</h4>
-                                <p className="text-sm font-enel text-[#667790]">
+                                <h4 className="font-enel-bold text-primary mb-2">Development Mode:</h4>
+                                <p className="text-sm font-enel text-grey-light">
                                     Demo components are only available in development mode.
                                     In production, these will not be accessible.
                                 </p>

@@ -109,7 +109,7 @@ export const validateAirConditioningConfig = (property, dependsOn, state, errorM
         const configKey = `${splitType}_${i}`;
         const config = configs[configKey];
 
-        if (!config || !config.installationType || !config.roomSize) {
+        if (!config || !config.installationType) {
           errors.push({
             field: property,
             message: errorMessage || `Configurazione mancante per ${splitType} #${i + 1}`

@@ -108,12 +108,12 @@ export default function SidebarForm({
                     <div className={`fixed top-0 right-0 h-full w-[520px] bg-white flex flex-col shadow-2xl z-50 ${className}`}>
                         {/* Header */}
                         <div className="bg-white flex items-center justify-between px-4 py-4 shadow-[0px_0px_16px_0px_rgba(102,119,144,0.4)] shrink-0">
-                            <h1 className="font-enel-bold text-[#131416] text-2xl leading-[34px] tracking-[0.4px] flex-1">
+                            <h1 className="font-enel-bold text-black text-2xl leading-[34px] tracking-[0.4px] flex-1">
                                 Concludi e invia il preventivo al cliente
                             </h1>
                             <button
                                 onClick={handleClose}
-                                className="bg-[#f7f8fb] flex items-center justify-center p-4 rounded-sm shrink-0 size-12 hover:bg-gray-200 transition-colors"
+                                className="bg-white-light flex items-center justify-center p-4 rounded-sm shrink-0 size-12 hover:bg-gray-200 transition-colors"
                                 aria-label="Chiudi"
                             >
                                 <IconRenderer icon="cross" className="text-secondary stroke-4 [&>path]:stroke-inherit" />
@@ -124,7 +124,7 @@ export default function SidebarForm({
                         <div className="flex-1 flex flex-col gap-8 overflow-y-auto px-4 py-6">
                             {/* Introduction */}
                             <div className="flex flex-col gap-4">
-                                <p className="font-enel text-[#131416] text-sm leading-[21px]">
+                                <p className="font-enel text-black text-sm leading-[21px]">
                                     Compila il form con i dati del nostro cliente per ottenere il preventivo. Potrai inviarlo via email oppure stamparlo.
                                 </p>
                                 <div className="flex flex-col gap-2">
@@ -138,23 +138,23 @@ export default function SidebarForm({
                             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                                 {/* CAP Section */}
                                 <div className="flex flex-col gap-4">
-                                    <h2 className="font-enel-bold text-[#131416] text-base leading-6 tracking-[0.12px]">
+                                    <h2 className="font-enel-bold text-black text-base leading-6 tracking-[0.12px]">
                                         Inserisci il suo CAP
                                     </h2>
                                     <div className="flex gap-4 items-center">
                                         <div className="w-[312px]">
-                                            <div className="bg-white h-10 border border-[#667790] rounded flex items-center px-2 py-2">
+                                            <div className="bg-white h-10 border border-grey-light rounded flex items-center px-2 py-2">
                                                 <div className="flex flex-col gap-0.5 flex-1">
-                                                    <label className="font-enel text-[#667790] text-xs leading-3">
+                                                    <label className="font-enel text-grey-light text-xs leading-3">
                                                         CAP*
                                                     </label>
                                                     <div className="flex items-center gap-1">
                                                         <input
                                                             value={formData.cap}
                                                             onChange={handleInputChange('cap')}
-                                                            className="font-enel text-[#131416] text-sm leading-[14px] bg-transparent border-none outline-none flex-1"
+                                                            className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none flex-1"
                                                         />
-                                                        <span className="font-enel-bold text-[#131416] text-sm leading-[14px]">
+                                                        <span className="font-enel-bold text-black text-sm leading-[14px]">
                                                             {formData.city}
                                                         </span>
                                                     </div>
@@ -166,22 +166,22 @@ export default function SidebarForm({
 
                                 {/* Contact Information */}
                                 <div className="flex flex-col gap-4">
-                                    <h2 className="font-enel-bold text-[#131416] text-base leading-6 tracking-[0.12px]">
+                                    <h2 className="font-enel-bold text-black text-base leading-6 tracking-[0.12px]">
                                         Indica i suoi dati di contatto
                                     </h2>
 
                                     {/* Nome */}
                                     <div className="flex flex-col gap-1">
-                                        <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.nome ? 'border-red-500' : 'border-[#667790]'
+                                        <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.nome ? 'border-red-500' : 'border-grey-light'
                                             }`}>
                                             <div className="flex flex-col gap-0.5 flex-1">
-                                                <label className="font-enel text-[#667790] text-xs leading-3">
+                                                <label className="font-enel text-grey-light text-xs leading-3">
                                                     Nome*
                                                 </label>
                                                 <input
                                                     value={formData.nome}
                                                     onChange={handleInputChange('nome')}
-                                                    className="font-enel text-[#131416] text-sm leading-[14px] bg-transparent border-none outline-none"
+                                                    className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                 />
                                             </div>
                                         </div>
@@ -192,16 +192,16 @@ export default function SidebarForm({
 
                                     {/* Cognome */}
                                     <div className="flex flex-col gap-1">
-                                        <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.cognome ? 'border-red-500' : 'border-[#667790]'
+                                        <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.cognome ? 'border-red-500' : 'border-grey-light'
                                             }`}>
                                             <div className="flex flex-col gap-0.5 flex-1">
-                                                <label className="font-enel text-[#667790] text-xs leading-3">
+                                                <label className="font-enel text-grey-light text-xs leading-3">
                                                     Cognome*
                                                 </label>
                                                 <input
                                                     value={formData.cognome}
                                                     onChange={handleInputChange('cognome')}
-                                                    className="font-enel text-[#131416] text-sm leading-[14px] bg-transparent border-none outline-none"
+                                                    className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                 />
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@ export default function SidebarForm({
 
                                     {/* Phone */}
                                     <div className="flex flex-col gap-1">
-                                        <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.telefono ? 'border-red-500' : 'border-[#667790]'
+                                        <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.telefono ? 'border-red-500' : 'border-grey-light'
                                             }`}>
                                             <div className="flex items-center gap-2 mr-2">
                                                 {/* Italian Flag */}
@@ -223,17 +223,17 @@ export default function SidebarForm({
                                                         <div className="flex-1 bg-red-600"></div>
                                                     </div>
                                                 </div>
-                                                <span className="font-enel-bold text-[#667790] text-sm">+39</span>
+                                                <span className="font-enel-bold text-grey-light text-sm">+39</span>
                                                 <div className="h-8 w-px bg-[#c2cddd]" />
                                             </div>
                                             <div className="flex flex-col gap-0.5 flex-1">
-                                                <label className="font-enel text-[#667790] text-xs leading-3">
+                                                <label className="font-enel text-grey-light text-xs leading-3">
                                                     Numero di telefono*
                                                 </label>
                                                 <input
                                                     value={formData.telefono}
                                                     onChange={handleInputChange('telefono')}
-                                                    className="font-enel text-[#131416] text-sm leading-[14px] bg-transparent border-none outline-none"
+                                                    className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                 />
                                             </div>
                                         </div>
@@ -246,23 +246,23 @@ export default function SidebarForm({
                                 {/* Email Section */}
                                 <div className="relative">
                                     <div className="flex flex-col gap-4">
-                                        <p className="font-enel text-[#131416] text-sm leading-[21px]">
+                                        <p className="font-enel text-black text-sm leading-[21px]">
                                             Se il cliente desidera ricevere il report, inserisci la sua email.
                                         </p>
                                     </div>
                                     <div className="mt-[21px]">
                                         <div className="flex flex-col gap-1">
-                                            <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.email ? 'border-red-500' : 'border-[#667790]'
+                                            <div className={`bg-white h-10 border rounded flex items-center px-2 py-2 ${errors.email ? 'border-red-500' : 'border-grey-light'
                                                 }`}>
                                                 <div className="flex flex-col gap-0.5 flex-1">
-                                                    <label className="font-enel text-[#667790] text-xs leading-3">
+                                                    <label className="font-enel text-grey-light text-xs leading-3">
                                                         Email*
                                                     </label>
                                                     <input
                                                         type="email"
                                                         value={formData.email}
                                                         onChange={handleInputChange('email')}
-                                                        className="font-enel text-[#131416] text-sm leading-[14px] bg-transparent border-none outline-none"
+                                                        className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                     />
                                                 </div>
                                             </div>

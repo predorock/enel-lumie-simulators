@@ -27,14 +27,14 @@ const SummaryPriceDisplayDemo = () => {
     return (
         <div className="space-y-8 p-6">
             <div>
-                <h2 className="text-2xl font-enel-bold text-[#002466] mb-6">
+                <h2 className="text-2xl font-enel-bold text-primary mb-6">
                     SummaryPriceDisplay Demo
                 </h2>
 
                 <div className="space-y-6">
                     {/* Complete Example */}
                     <div>
-                        <h3 className="text-lg font-enel-bold text-[#002466] mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary mb-4">
                             Complete Price Summary
                         </h3>
                         <div className="max-w-lg">
@@ -48,7 +48,7 @@ const SummaryPriceDisplayDemo = () => {
 
                     {/* Few Items Example */}
                     <div>
-                        <h3 className="text-lg font-enel-bold text-[#002466] mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary mb-4">
                             With Few Items
                         </h3>
                         <div className="max-w-lg">
@@ -62,7 +62,7 @@ const SummaryPriceDisplayDemo = () => {
 
                     {/* Without Total Example */}
                     <div>
-                        <h3 className="text-lg font-enel-bold text-[#002466] mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary mb-4">
                             Items Only (No Total)
                         </h3>
                         <div className="max-w-lg">
@@ -75,7 +75,7 @@ const SummaryPriceDisplayDemo = () => {
 
                     {/* Empty State */}
                     <div>
-                        <h3 className="text-lg font-enel-bold text-[#002466] mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary mb-4">
                             Empty State
                         </h3>
                         <div className="max-w-lg">
@@ -89,7 +89,7 @@ const SummaryPriceDisplayDemo = () => {
 
                     {/* Custom Styling */}
                     <div>
-                        <h3 className="text-lg font-enel-bold text-[#002466] mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary mb-4">
                             Custom Styling
                         </h3>
                         <div className="max-w-md">

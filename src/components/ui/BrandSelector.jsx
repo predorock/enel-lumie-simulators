@@ -20,7 +20,7 @@ export default function BrandSelector({
     >
       {/* Title section */}
       {title && (
-        <div className="font-enel-bold font-bold text-[#131416] text-[20px] tracking-[0.4px] leading-[30px]">
+        <div className="font-enel-bold font-bold text-black text-[20px] tracking-[0.4px] leading-[30px]">
           {title}
         </div>
       )}

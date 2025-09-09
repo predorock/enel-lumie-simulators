@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import infoWarnIcon from '../../assets/icons/info-icon.svg';
+import { useEffect, useRef, useState } from 'react';
 import infoIcon from '../../assets/icons/info-icon-blue.svg';
+import infoWarnIcon from '../../assets/icons/info-icon.svg';
 
 const ICONS = {
     info: infoIcon,
@@ -26,9 +26,9 @@ export default function InfoIcon({
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
-                iconRef.current && 
+                iconRef.current &&
                 !iconRef.current.contains(event.target) &&
-                popoverRef.current && 
+                popoverRef.current &&
                 !popoverRef.current.contains(event.target)
             ) {
                 setIsPopoverOpen(false);
@@ -46,11 +46,11 @@ export default function InfoIcon({
 
     const handleIconClick = (e) => {
         e.stopPropagation();
-        
+
         if (onClick) {
             onClick(e);
         }
-        
+
         if (popoverContent && !disabled) {
             setIsPopoverOpen(!isPopoverOpen);
         }
@@ -58,7 +58,7 @@ export default function InfoIcon({
 
     const getPopoverPositionClasses = () => {
         const baseClasses = "absolute z-50 bg-white border border-[#c2cddd] rounded-lg shadow-lg p-3 min-w-[200px] max-w-[300px]";
-        
+
         switch (popoverPosition) {
             case "top":
                 return `${baseClasses} bottom-full left-1/2 transform -translate-x-1/2 mb-2`;
@@ -75,7 +75,7 @@ export default function InfoIcon({
 
     const getArrowClasses = () => {
         const arrowBase = "absolute w-3 h-3 bg-white border-[#c2cddd] transform rotate-45";
-        
+
         switch (popoverPosition) {
             case "top":
                 return `${arrowBase} top-full left-1/2 -translate-x-1/2 -mt-1.5 border-b border-r`;
@@ -99,7 +99,7 @@ export default function InfoIcon({
                 alt={`${variant.charAt(0).toUpperCase() + variant.slice(1)} Icon`}
                 onClick={handleIconClick}
             />
-            
+
             {/* Popover */}
             {popoverContent && isPopoverOpen && (
                 <div
@@ -108,11 +108,11 @@ export default function InfoIcon({
                 >
                     {/* Arrow */}
                     <div className={getArrowClasses()}></div>
-                    
+
                     {/* Content */}
                     <div className="text-sm font-enel">
                         {typeof popoverContent === 'string' ? (
-                            <p className="text-[#131416] leading-relaxed">{popoverContent}</p>
+                            <p className="text-black leading-relaxed">{popoverContent}</p>
                         ) : (
                             popoverContent
                         )}

@@ -21,7 +21,7 @@ export default function InvestimentSelector({
             className={`flex flex-col gap-4 ${className}`}>
             {/* Title section */}
             {title && (
-                <div className="font-enel-bold font-bold text-[#131416] text-[20px] tracking-[0.4px] leading-[30px]">
+                <div className="font-enel-bold font-bold text-black text-[20px] tracking-[0.4px] leading-[30px]">
                     {title}
                 </div>
             )}
@@ -56,7 +56,7 @@ export default function InvestimentSelector({
                                     )}
                                     {/* Option text */}
                                     <span className={cn("font-enel font-medium text-sm text-center", {
-                                        "text-[#131416]": !isSelected,
+                                        "text-black": !isSelected,
                                         "text-secondary": isSelected
                                     })}>
                                         {option.name}

@@ -12,12 +12,12 @@ const SummaryProductCard = ({
     }
 
     return (
-        <div className={`bg-[#ffffff] relative rounded-2xl shrink-0 w-full shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] ${className}`}>
+        <div className={`bg-white relative rounded-2xl shrink-0 w-full shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] ${className}`}>
             <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start overflow-clip px-4 py-0 relative w-full">
-                <div className="bg-[#ffffff] box-border content-stretch flex gap-4 items-center justify-start px-0 py-4 relative shrink-0 w-full">
+                <div className="bg-white box-border content-stretch flex gap-4 items-center justify-start px-0 py-4 relative shrink-0 w-full">
 
                     {/* Product Image */}
-                    <div className="bg-[#f7f8fb] relative rounded-[5.125px] shrink-0 size-[82px] flex items-center justify-center">
+                    <div className="bg-white-light relative rounded-[5.125px] shrink-0 size-[82px] flex items-center justify-center">
                         {product?.productImage ? (
                             <img
                                 src={product?.productImage}
@@ -37,23 +37,23 @@ const SummaryProductCard = ({
                         {/* Category Tag Row */}
                         <div className="content-stretch flex h-[22px] items-start justify-between relative shrink-0 w-full">
                             <div className="bg-[#f4f8ff] box-border content-stretch flex gap-2 items-center justify-start px-2 py-1 relative rounded-xl shrink-0 border border-[#1f6cf9]">
-                                <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#131416] text-[14px] text-center text-nowrap">
+                                <div className="font-enel leading-[0] not-italic relative shrink-0 text-black text-[14px] text-center text-nowrap">
                                     <p className="leading-[14px] whitespace-pre">Climatizzatore a pompa di calore</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Product Name */}
-                        <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#131416] text-[16px] w-full">
+                        <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-black text-[16px] w-full">
                             <p className="leading-[16px]">{product?.productName}</p>
                         </div>
 
                         {/* Description and Quantity */}
                         <div className="content-stretch flex gap-2 items-center justify-start relative shrink-0 w-full">
-                            <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#667790] text-[12px]">
+                            <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-grey-light text-[12px]">
                                 <p className="leading-[18px]">{data?.shortDescription || ""}</p>
                             </div>
-                            <div className="content-stretch flex gap-1 items-start justify-start leading-[0] not-italic relative shrink-0 text-[#667790] text-[12px] text-nowrap">
+                            <div className="content-stretch flex gap-1 items-start justify-start leading-[0] not-italic relative shrink-0 text-grey-light text-[12px] text-nowrap">
                                 <div className="font-enel-bold relative shrink-0">
                                     <p className="leading-[18px] text-nowrap whitespace-pre">Quantità:</p>
                                 </div>
@@ -70,7 +70,7 @@ const SummaryProductCard = ({
                             <div className="font-enel-bold relative shrink-0 text-[#272c34] tracking-[0.4px]">
                                 <p className="leading-[21px] text-nowrap whitespace-pre">Totale</p>
                             </div>
-                            <div className="font-enel relative shrink-0 text-[#667790]">
+                            <div className="font-enel relative shrink-0 text-grey-light">
                                 <p className="leading-[21px] text-nowrap whitespace-pre">IVA inclusa</p>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ const SummaryProductCard = ({
                             <div className="flex flex-row justify-end font-enel-bold whitespace-nowrap">
                                 <PriceDisplay value={data.totalPrice} className="text-right" />*
                             </div>
-                            <div className="font-enel relative shrink-0 text-[#131416] text-[14px] w-[233px]">
+                            <div className="font-enel relative shrink-0 text-black text-[14px] w-[233px]">
                                 <p className="leading-[21px]">oppure paga a rate**</p>
                             </div>
                         </div>
