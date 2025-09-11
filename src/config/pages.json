@@ -260,7 +260,8 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Il cliente ha necessità di smontare dei climatizzatori già installati?",
-                        "description": ""
+                        "description": "",
+                        "className": "mb-6"
                     }
                 },
                 {
@@ -269,14 +270,16 @@
                         "label": "Il cliente deve smontare dei climatizzatori installati in precedenza",
                         "stateProperty": "needsRemoval",
                         "initialValue": false,
-                        "storeAction": "checkRemoval"
+                        "storeAction": "checkRemoval",
+                        "className": "mb-6"
                     }
                 },
                 {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Indica quanti impianti devono essere smontati",
-                        "description": ""
+                        "description": "",
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -307,7 +310,8 @@
                         "totalMax": 10,
                         "stateProperty": "removalQuantities",
                         "calculationType": "removal",
-                        "showPriceDisplay": true
+                        "showPriceDisplay": true,
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -319,15 +323,14 @@
                 {
                     "type": "Divider",
                     "props": {
-                        "color": "#c2cddd",
-                        "spacing": "40px"
+                        "className": "py-6"
                     }
                 },
                 {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Consiglia al cliente di effettuare il lavaggio dell'impianto",
-                        "description": ""
+                        "className": "mb-6"
                     }
                 },
                 {
@@ -336,14 +339,15 @@
                         "label": "Il cliente vuole effettuare il lavaggio degli impianti?",
                         "stateProperty": "wantsCleaning",
                         "initialValue": false,
-                        "storeAction": "checkCleaning"
+                        "storeAction": "checkCleaning",
+                        "className": "mb-6"
                     }
                 },
                 {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Indica quanti impianti devono essere lavati",
-                        "description": ""
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -374,7 +378,8 @@
                         "totalMax": 10,
                         "stateProperty": "cleaningQuantities",
                         "calculationType": "cleaning",
-                        "showPriceDisplay": true
+                        "showPriceDisplay": true,
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
