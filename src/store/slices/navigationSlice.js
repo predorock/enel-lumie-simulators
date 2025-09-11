@@ -360,7 +360,7 @@ function dynamicPageTemplate(
             {
                 type: "CostSummary",
                 props: {
-                    containerClassName: "mt-auto mb-4 self-end"
+                    containerClassName: "mt-auto mb-4 self-end w-full"
                 }
             }
         ],

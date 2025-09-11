@@ -26,7 +26,7 @@
                         "src": "italy",
                         "alt": "Italy",
                         "className": "z-10 relative w-auto h-auto",
-                        "containerClassName": "flex justify-center items-center mt-16"
+                        "containerClassName": "flex justify-center items-center mt-16 h-full"
                     }
                 }
             ],
@@ -112,7 +112,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end"
+                        "containerClassName": "mt-auto mb-4 self-end w-full"
                     }
                 }
             ],
@@ -248,7 +248,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end"
+                        "containerClassName": "mt-auto mb-4 self-end w-full"
                     }
                 }
             ],
@@ -411,7 +411,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end"
+                        "containerClassName": "mt-auto mb-4 self-end w-full"
                     }
                 }
             ],

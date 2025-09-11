@@ -8,14 +8,13 @@ const LeftPanelRenderer = ({ components = [] }) => {
   return (
     <div className="left-panel-components flex flex-col h-full justify-between">
       {components.map((componentConfig, index) => (
-        <div key={`left-panel-${index}`}>
-          <DynamicComponent
-            type={componentConfig.type}
-            props={componentConfig.props}
-            renderConditions={componentConfig.renderConditions}
-            showError={true}
-          />
-        </div>
+        <DynamicComponent
+          type={componentConfig.type}
+          props={componentConfig.props}
+          renderConditions={componentConfig.renderConditions}
+          showError={true}
+          key={`left-panel-${index}`}
+        />
       ))}
     </div>
   );
