@@ -152,8 +152,7 @@
                 {
                     "type": "Divider",
                     "props": {
-                        "color": "#c2cddd",
-                        "spacing": "40px"
+                        "className": "py-6"
                     },
                     "renderConditions": {
                         "hasQuantities": "formData.airconditioningQuantities"
