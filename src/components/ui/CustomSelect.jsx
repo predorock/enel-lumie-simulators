@@ -1,18 +1,6 @@
+import { CaretDownIcon } from '@radix-ui/react-icons';
 import { useEffect, useRef, useState } from 'react';
-
-// Checkmark icon for selected items
-const CheckmarkIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-// Expand More Icon for dropdown arrow with updated color
-const ExpandMoreIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 6l4 4 4-4" stroke="#667790" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+import IconRenderer from '../icons/IconRenderer';
 
 const CustomSelect = ({
   options = [],
@@ -21,7 +9,7 @@ const CustomSelect = ({
   placeholder = 'Select an option',
   label = '',
   className = '',
-  maxHeight = '160px' // Made shorter by default
+  maxHeight = '250px' // Made shorter by default
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
@@ -87,7 +75,7 @@ const CustomSelect = ({
           {getSelectedLabel()}
         </span>
         <div className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
-          <ExpandMoreIcon />
+          <CaretDownIcon className='w-6 h-6 fill-secondary text-secondary' />
         </div>
       </button>
 
@@ -121,7 +109,7 @@ const CustomSelect = ({
                   </div>
                   {isSelected(option.value) && (
                     <div className="relative rounded-[3px] shrink-0 w-4 h-4 flex items-center justify-center text-secondary">
-                      <CheckmarkIcon />
+                      <IconRenderer icon="checkMark" fillClass="fill-secondary" />
                     </div>
                   )}
                 </div>

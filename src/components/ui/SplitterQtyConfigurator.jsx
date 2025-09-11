@@ -79,7 +79,7 @@ const SplitterQtyConfigurator = ({
         const currentTotal = getCurrentTotal(quantities);
 
         return (
-          <div key={itemKey} className="box-border content-stretch flex flex-row items-start justify-between p-0 relative shrink-0 w-full">
+          <div key={itemKey} className="box-border content-stretch flex flex-row items-start justify-between p-0 relative shrink-0 w-[80%]">
             <div className="box-border content-stretch flex flex-row gap-4 items-center justify-start p-0 relative shrink-0">
 
               {/* Icon and Label */}
