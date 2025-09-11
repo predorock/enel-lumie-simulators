@@ -360,7 +360,7 @@ function dynamicPageTemplate(
             {
                 type: "CostSummary",
                 props: {
-                    containerClassName: "mt-auto mb-4 self-end"
+                    containerClassName: "mt-auto mb-4 self-end w-full"
                 }
             }
         ],
@@ -368,7 +368,7 @@ function dynamicPageTemplate(
             {
                 "type": "DescriptionBox",
                 "props": {
-                    "title": "Scelta del clima",
+                    "title": `Scelta del ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)}`,
                     "description": getInstallationTypeDescription(acConfig?.installationType),
                     "icon": acConfig?.type || "",
                     "step": `${splitIndex + 1}/${splitTotal}`,
@@ -377,9 +377,11 @@ function dynamicPageTemplate(
                 }
             },
             {
-                "type": "RoomBanner",
+                "type": "InfoBanner",
                 "props": {
-                    "roomSize": acConfig?.roomSize || "0",
+                    "title": `Questo ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)} deve climatizzare una stanza di ${acConfig?.roomSize} m²`,
+                    "icon": "room",
+                    "variant": "info"
                 }
             },
             {
@@ -394,6 +396,19 @@ function dynamicPageTemplate(
                     title: 'Qual è l\'investimento più adatto al cliente?',
                 }
             },
+            {
+                "type": "Divider",
+                "props": {
+                    "className": "py-6"
+                }
+            },
+            // {
+            //     "type": "DescriptionBox",
+            //     "props": {
+            //         "title": `Per climatizzare la sua casa, proponiamo al cliente:`,
+            //         titleSize: "lg",
+            //     }
+            // },
             {
                 "type": "AcProductDisplayContainer",
                 "props": {

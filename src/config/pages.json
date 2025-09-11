@@ -10,9 +10,6 @@
             "showBackgroundDecoration": true,
             "validationRules": {
                 "required": [
-                    "formData.storeLocation",
-                    "formData.consultantName",
-                    "formData.storePhone",
                     "formData.storeCity"
                 ]
             },
@@ -29,53 +26,11 @@
                         "src": "italy",
                         "alt": "Italy",
                         "className": "z-10 relative w-auto h-auto",
-                        "containerClassName": "flex justify-center items-center mt-16"
+                        "containerClassName": "flex justify-center items-center mt-16 h-full"
                     }
                 }
             ],
             "components": [
-                {
-                    "type": "DescriptionBox",
-                    "props": {
-                        "title": "Dati punto vendita",
-                        "description": "Inserisci le informazioni sul punto vendita"
-                    }
-                },
-                {
-                    "type": "TextInput",
-                    "props": {
-                        "placeholder": "Nome punto vendita",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "storeLocation",
-                        "className": "max-w-[358px]"
-                    }
-                },
-                {
-                    "type": "TextInput",
-                    "props": {
-                        "placeholder": "Nome e cognome del consulente",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "consultantName"
-                    }
-                },
-                {
-                    "type": "TextInput",
-                    "props": {
-                        "placeholder": "Telefono punto vendita",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "storePhone"
-                    }
-                },
-                {
-                    "type": "Divider",
-                    "props": {
-                        "color": "#c2cddd",
-                        "className": "py-4"
-                    }
-                },
                 {
                     "type": "DescriptionBox",
                     "props": {
@@ -84,7 +39,7 @@
                     }
                 },
                 {
-                    "type": "AsyncSelect",
+                    "type": "AutocompleteInput",
                     "props": {
                         "placeholder": "Città",
                         "label": "Città",
@@ -106,7 +61,8 @@
                 {
                     "type": "Toggle",
                     "props": {
-                        "label": "Si tratta di un cliente Enel",
+                        "label": "Si tratta di un cliente Enel Luce e Gas?",
+                        "className": "font-enel-bold",
                         "stateProperty": "isEnelCustomer",
                         "initialValue": false
                     }
@@ -156,7 +112,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end"
+                        "containerClassName": "mt-auto mb-4 self-end w-full"
                     }
                 }
             ],
@@ -165,7 +121,7 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Quanti impianti vuole acquistare il cliente?",
-                        "description": "Il cliente può indicare un massimo di 3 split totali"
+                        "description": "Il cliente può indicare un massimo di 5 split totali"
                     }
                 },
                 {
@@ -186,8 +142,8 @@
                             }
                         ],
                         "min": 0,
-                        "max": 3,
-                        "totalMax": 3,
+                        "max": 5,
+                        "totalMax": 5,
                         "stateProperty": "airconditioningQuantities",
                         "calculationType": "purchase",
                         "showPriceDisplay": false
@@ -196,8 +152,7 @@
                 {
                     "type": "Divider",
                     "props": {
-                        "color": "#c2cddd",
-                        "spacing": "40px"
+                        "className": "py-6"
                     },
                     "renderConditions": {
                         "hasQuantities": "formData.airconditioningQuantities"
@@ -210,11 +165,11 @@
                         "installationTypes": [
                             {
                                 "value": "nuova_con_predisposizione",
-                                "label": "Nuova installazione con predisposizione"
+                                "label": "Con Predisposizione"
                             },
                             {
                                 "value": "nuova_senza_predisposizione",
-                                "label": "Nuova installazione senza predisposizione"
+                                "label": "Senza Predisposizione"
                             }
                         ],
                         "infoIconKey": "airConditioningInfo"
@@ -228,10 +183,15 @@
                     "props": {
                         "title": "Il cliente non ha predisposizioni riutilizzabili o installazioni con unità interna in adiacenza a quella esterna?",
                         "description": "Spiegagli che le connessioni tra unità esterna ed interna sono realizzate in canaline a vista",
+                        "icon": "info",
                         "variant": "info"
                     },
                     "renderConditions": {
-                        "hasQuantities": "formData.airconditioningQuantities"
+                        "atLeastOneOf": {
+                            "items": "formData.airConditioningConfigs",
+                            "property": "installationType",
+                            "value": "nuova_senza_predisposizione"
+                        }
                     }
                 }
             ]
@@ -291,7 +251,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end"
+                        "containerClassName": "mt-auto mb-4 self-end w-full"
                     }
                 }
             ],
@@ -300,7 +260,8 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Il cliente ha necessità di smontare dei climatizzatori già installati?",
-                        "description": ""
+                        "description": "",
+                        "className": "mb-6"
                     }
                 },
                 {
@@ -309,14 +270,16 @@
                         "label": "Il cliente deve smontare dei climatizzatori installati in precedenza",
                         "stateProperty": "needsRemoval",
                         "initialValue": false,
-                        "storeAction": "checkRemoval"
+                        "storeAction": "checkRemoval",
+                        "className": "mb-6"
                     }
                 },
                 {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Indica quanti impianti devono essere smontati",
-                        "description": ""
+                        "description": "",
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -347,7 +310,8 @@
                         "totalMax": 10,
                         "stateProperty": "removalQuantities",
                         "calculationType": "removal",
-                        "showPriceDisplay": true
+                        "showPriceDisplay": true,
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -359,15 +323,14 @@
                 {
                     "type": "Divider",
                     "props": {
-                        "color": "#c2cddd",
-                        "spacing": "40px"
+                        "className": "py-6"
                     }
                 },
                 {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Consiglia al cliente di effettuare il lavaggio dell'impianto",
-                        "description": ""
+                        "className": "mb-6"
                     }
                 },
                 {
@@ -376,14 +339,15 @@
                         "label": "Il cliente vuole effettuare il lavaggio degli impianti?",
                         "stateProperty": "wantsCleaning",
                         "initialValue": false,
-                        "storeAction": "checkCleaning"
+                        "storeAction": "checkCleaning",
+                        "className": "mb-6"
                     }
                 },
                 {
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Indica quanti impianti devono essere lavati",
-                        "description": ""
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -414,7 +378,8 @@
                         "totalMax": 10,
                         "stateProperty": "cleaningQuantities",
                         "calculationType": "cleaning",
-                        "showPriceDisplay": true
+                        "showPriceDisplay": true,
+                        "className": "mb-6"
                     },
                     "renderConditions": {
                         "equals": {
@@ -454,16 +419,18 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end"
+                        "containerClassName": "mt-auto mb-4 self-end w-full"
                     }
                 }
             ],
             "components": [
                 {
-                    "type": "DescriptionBox",
+                    "type": "DescriptionBoxTooltip",
                     "props": {
                         "title": "Il cliente ha bisogno di acquistare canalizzazioni tra unità interne e quelle esterne?",
-                        "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti."
+                        "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti.",
+                        "popoverIcon": "info",
+                        "popoverConfig": "ductworkInfo"
                     }
                 },
                 {
@@ -683,7 +650,8 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Il suo investimento il suo futuro",
-                        "description": "Ogni scelta fatta oggi si traduce in un risparmio concreto e in un futuro più sostenibile. Fai scoprire al cliente come i prodotti che ha scelto migliorano la sua vita quotidiana e offrono un ritorno economico che cresce nel tempo."
+                        "description": "Ogni scelta fatta oggi si traduce in un risparmio concreto e in un futuro più sostenibile. Fai scoprire al cliente come i prodotti che ha scelto migliorano la sua vita quotidiana e offrono un ritorno economico che cresce nel tempo.",
+                        "className": "mb-6 mt-12"
                     }
                 },
                 {

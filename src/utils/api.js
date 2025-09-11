@@ -5,6 +5,8 @@
 const MOCKS_ACTIVE = import.meta.env.VITE_MOCK_API === 'true';
 const MOCKS_DELAY = 2000;
 
+const API_TIMEOUT = import.meta.env.VITE_API_TIMEOUT ? parseInt(import.meta.env.VITE_API_TIMEOUT) : 30000; // Default to 30 seconds
+
 const buildApiUrl = (path) => {
   const baseUrl = import.meta.env.VITE_LUMIE_API_BASE_URL;
   if (!baseUrl) {
@@ -48,7 +50,7 @@ export const fetchProductsByCity = async (cityName) => {
         'Accept': 'application/json',
       },
       // Add timeout to prevent hanging requests
-      signal: AbortSignal.timeout(30000), // 30 seconds timeout
+      signal: AbortSignal.timeout(API_TIMEOUT),
     });
 
     if (!response.ok) {
@@ -125,7 +127,7 @@ export const submitSimulationToApi = async (payload) => {
       },
       body: JSON.stringify(payload),
       // Add timeout to prevent hanging requests
-      signal: AbortSignal.timeout(30000), // 30 seconds timeout
+      signal: AbortSignal.timeout(API_TIMEOUT), // 30 seconds timeout
     });
 
     if (!response.ok) {
@@ -174,7 +176,7 @@ export const submitSimulationLeadAPI = async (payload) => {
       },
       body: JSON.stringify(payload),
       // Add timeout to prevent hanging requests
-      signal: AbortSignal.timeout(30000), // 30 seconds timeout
+      signal: AbortSignal.timeout(API_TIMEOUT),
     });
 
     if (!response.ok) {

@@ -69,7 +69,7 @@ const AcProductDisplayContainer = ({
         />
         <button
           onClick={onRetry}
-          className="bg-[#002466] text-white px-4 py-2 rounded hover:bg-[#001a4d] transition-colors font-enel"
+          className="bg-primary text-white px-4 py-2 rounded hover:bg-[#001a4d] transition-colors font-enel"
           disabled={!onRetry}
         >
           Riprova
@@ -100,7 +100,7 @@ const AcProductDisplayContainer = ({
 
         {/* Selected products indicator */}
         {selectedProducts.length > 0 && (
-          <div className="text-sm text-[#002466] font-enel">
+          <div className="text-sm text-primary font-enel">
             <strong>{selectedProducts.length}</strong> prodotto{selectedProducts.length !== 1 ? 'i' : ''} selezionato{selectedProducts.length !== 1 ? 'i' : ''}
           </div>
         )}

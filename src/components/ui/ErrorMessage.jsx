@@ -34,13 +34,13 @@ const ErrorMessage = ({
             </div>
 
             {/* Error Title */}
-            <h2 className="text-xl font-enel-bold text-[#131416] text-center mb-3">
+            <h2 className="text-xl font-enel-bold text-black text-center mb-3">
                 {title}
             </h2>
 
             {/* Error Message */}
             {message && (
-                <p className="text-sm font-enel text-[#667790] text-center mb-8 max-w-md">
+                <p className="text-sm font-enel text-grey-light text-center mb-8 max-w-md">
                     {message}
                 </p>
             )}
@@ -49,7 +49,7 @@ const ErrorMessage = ({
             {onActionClick && (
                 <button
                     onClick={onActionClick}
-                    className="bg-[#002466] text-white font-enel-bold px-6 py-3 rounded-lg hover:bg-[#001a4d] transition-colors"
+                    className="bg-primary text-white font-enel-bold px-6 py-3 rounded-lg hover:bg-[#001a4d] transition-colors"
                 >
                     {actionButtonText}
                 </button>

@@ -43,8 +43,8 @@ export default function SearchInput({
               className={cn(
                 "absolute left-0 font-enel pointer-events-none transition-all duration-200 ease-in-out",
                 {
-                  "text-[12px] text-[#667790] top-0": shouldFloatLabel,
-                  "text-[13px] text-[#667790] top-1/2 -translate-y-1/2": !shouldFloatLabel
+                  "text-[12px] text-grey-light top-0": shouldFloatLabel,
+                  "text-[13px] text-grey-light top-1/2 -translate-y-1/2": !shouldFloatLabel
                 }
               )}
             >
@@ -78,8 +78,8 @@ export default function SearchInput({
         className={cn(
           "absolute border border-solid inset-0 pointer-events-none rounded transition-all duration-200 ease-in-out",
           {
-            "border-[#0047cc] border-2": isFocused,
-            "border-[#667790]": !isFocused
+            "border-primary-light border-2": isFocused,
+            "border-grey-light": !isFocused
           }
         )}
       />

@@ -24,7 +24,7 @@ const Checkbox = ({
     <div className={`flex flex-row gap-2 items-center justify-start p-0 relative shrink-0 ${className}`} {...props}>
       <div className={`relative rounded shrink-0 size-5 border-2 ${checked
         ? 'bg-secondary border-secondary'
-        : 'bg-[#ffffff] border-[#667790]'
+        : 'bg-white border-grey-light'
         } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}>
         <input
           type="checkbox"
@@ -44,7 +44,7 @@ const Checkbox = ({
         label && (
           <label
             htmlFor={checkboxId}
-            className={`font-enel leading-[0] not-italic relative shrink-0 text-[#131416] text-[16px] text-left ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+            className={`font-enel leading-[0] not-italic relative shrink-0 text-black text-[16px] text-left ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
               }`}
           >
             <p className="block leading-[24px]">{label}</p>

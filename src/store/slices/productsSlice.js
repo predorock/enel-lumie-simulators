@@ -24,6 +24,21 @@ const transformProductFeatures = (apiFeatures) => {
   }));
 };
 
+const getSplitType = (product) => {
+  if (!product || typeof product.NumSplit !== 'number') return null;
+
+  switch (product.NumSplit) {
+    case 1:
+      return 'monosplit';
+    case 2:
+      return 'dualsplit';
+    case 3:
+      return 'trialsplit';
+    default:
+      return null;
+  }
+}
+
 const recommendationProps = (product) => {
   if (!product || !product.Category) {
     return {
@@ -63,6 +78,8 @@ const recommendationProps = (product) => {
 const transformProduct = (apiProduct) => ({
   id: `${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-'),
   hash: btoa(`${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-')),
+  numSplit: apiProduct.NumSplit,
+  type: getSplitType(apiProduct),
   productName: apiProduct.Name,
   productBrand: apiProduct.Brand,
   productImage: apiProduct.Image,
@@ -201,10 +218,12 @@ export const createProductSubscriptions = (store) => {
   store.subscribe(
     (state) => state.formData.storeCity,
     (newVal, prev) => {
-      if ((!!newVal && !prev) || newVal.toLocaleLowerCase() !== prev.toLocaleLowerCase()) {
-        // City changed or previous value was undefined, trigger product loading
-        const products = store.getState().products;
-        products.loadProductsByCity(newVal);
+      if (typeof newVal === 'string' && typeof prev === 'string') {
+        if (newVal.toLocaleLowerCase() !== prev.toLocaleLowerCase()) {
+          // City changed, trigger product loading
+          const products = store.getState().products;
+          products.loadProductsByCity(newVal);
+        }
       }
     }
   );

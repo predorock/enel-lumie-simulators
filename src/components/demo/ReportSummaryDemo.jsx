@@ -39,14 +39,14 @@ const ReportSummaryDemo = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#f7f8fb] p-8">
+        <div className="min-h-screen bg-white-light p-8">
             <div className="max-w-6xl mx-auto">
                 {/* Demo Header */}
                 <div className="mb-8">
-                    <h1 className="text-3xl font-enel-bold text-[#002466] mb-4">
+                    <h1 className="text-3xl font-enel-bold text-primary mb-4">
                         📋 ReportSummary Demo
                     </h1>
-                    <p className="text-lg font-enel text-[#667790] mb-6">
+                    <p className="text-lg font-enel text-grey-light mb-6">
                         Interactive demo showing the ReportSummary component with ContentSwitcher and ReportCards
                     </p>
 
@@ -56,7 +56,7 @@ const ReportSummaryDemo = () => {
                             <div className="text-2xl font-enel-bold text-secondary">
                                 {items.length}
                             </div>
-                            <div className="text-sm font-enel text-[#667790]">
+                            <div className="text-sm font-enel text-grey-light">
                                 Climatizzatori
                             </div>
                         </div>
@@ -64,7 +64,7 @@ const ReportSummaryDemo = () => {
                             <div className="text-2xl font-enel-bold text-secondary">
                                 {items.length}
                             </div>
-                            <div className="text-sm font-enel text-[#667790]">
+                            <div className="text-sm font-enel text-grey-light">
                                 Servizi installazione
                             </div>
                         </div>
@@ -72,7 +72,7 @@ const ReportSummaryDemo = () => {
                             <div className="text-2xl font-enel-bold text-secondary">
                                 {items.length}
                             </div>
-                            <div className="text-sm font-enel text-[#667790]">
+                            <div className="text-sm font-enel text-grey-light">
                                 Quantità totale
                             </div>
                         </div>
@@ -97,8 +97,8 @@ const ReportSummaryDemo = () => {
                     <div className="space-y-6">
                         {/* Component Info */}
                         <div className="bg-white p-6 rounded-lg border border-[#c2cddd]">
-                            <h3 className="font-enel-bold text-[#002466] mb-4">ℹ️ Component Info</h3>
-                            <div className="space-y-3 text-sm font-enel text-[#667790]">
+                            <h3 className="font-enel-bold text-primary mb-4">ℹ️ Component Info</h3>
+                            <div className="space-y-3 text-sm font-enel text-grey-light">
                                 <div>
                                     <strong>Active Tab:</strong> {activeTab}
                                 </div>
@@ -115,8 +115,8 @@ const ReportSummaryDemo = () => {
 
                         {/* Features */}
                         <div className="bg-white p-6 rounded-lg border border-[#c2cddd]">
-                            <h3 className="font-enel-bold text-[#002466] mb-4">✨ Features</h3>
-                            <ul className="space-y-2 text-sm font-enel text-[#667790]">
+                            <h3 className="font-enel-bold text-primary mb-4">✨ Features</h3>
+                            <ul className="space-y-2 text-sm font-enel text-grey-light">
                                 <li>• Tab-based content switching</li>
                                 <li>• Product filtering by type</li>
                                 <li>• Product cards with images</li>
@@ -129,8 +129,8 @@ const ReportSummaryDemo = () => {
 
                         {/* Data Structure */}
                         <div className="bg-white p-6 rounded-lg border border-[#c2cddd]">
-                            <h3 className="font-enel-bold text-[#002466] mb-4">🗂️ Data Structure</h3>
-                            <pre className="text-xs font-mono bg-[#f7f8fb] p-3 rounded overflow-x-auto">
+                            <h3 className="font-enel-bold text-primary mb-4">🗂️ Data Structure</h3>
+                            <pre className="text-xs font-mono bg-white-light p-3 rounded overflow-x-auto">
                                 {`{
   id: 'clima-1',
   type: 'climatizzatore',
@@ -146,7 +146,7 @@ const ReportSummaryDemo = () => {
 
                         {/* Actions */}
                         <div className="bg-white p-6 rounded-lg border border-[#c2cddd]">
-                            <h3 className="font-enel-bold text-[#002466] mb-4">🎯 Test Actions</h3>
+                            <h3 className="font-enel-bold text-primary mb-4">🎯 Test Actions</h3>
                             <div className="space-y-3">
                                 <button
                                     onClick={() => handleTabChange('climatizzatore')}
@@ -156,13 +156,13 @@ const ReportSummaryDemo = () => {
                                 </button>
                                 <button
                                     onClick={() => handleTabChange('installazione')}
-                                    className="w-full px-4 py-2 bg-[#002466] text-white rounded font-enel text-sm hover:bg-[#001a4d]"
+                                    className="w-full px-4 py-2 bg-primary text-white rounded font-enel text-sm hover:bg-[#001a4d]"
                                 >
                                     Switch to Installazione
                                 </button>
                                 <button
                                     onClick={() => handleDownloadPdf(climatizzatoreProducts[0])}
-                                    className="w-full px-4 py-2 border border-[#c2cddd] text-[#667790] rounded font-enel text-sm hover:bg-[#f7f8fb]"
+                                    className="w-full px-4 py-2 border border-[#c2cddd] text-grey-light rounded font-enel text-sm hover:bg-white-light"
                                 >
                                     Test PDF Download
                                 </button>

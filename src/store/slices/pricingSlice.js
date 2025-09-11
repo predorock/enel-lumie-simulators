@@ -37,12 +37,6 @@ export const getInstallationTypeDescription = (installationType, amount = 0) => 
         return "Nuova installazione con predisposizione";
       case "nuova_senza_predisposizione":
         return "Nuova installazione senza predisposizione";
-      case "sostituzione_monosplit":
-        return "Sostituzione monosplit";
-      case "sostituzione_dualsplit":
-        return "Sostituzione dualsplit";
-      case "sostituzione_trialsplit":
-        return "Sostituzione trialsplit";
       default:
         return "";
     }

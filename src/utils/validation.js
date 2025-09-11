@@ -95,6 +95,12 @@ export const validateAirConditioningConfig = (property, dependsOn, state, errorM
   const errors = [];
 
   if (!quantities || !configs) {
+
+    errors.push({
+      field: property,
+      message: 'Configurazioni aria condizionata mancanti'
+    });
+
     return {
       isValid: false,
       errors

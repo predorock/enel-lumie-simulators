@@ -1,18 +1,6 @@
+import { CaretDownIcon } from '@radix-ui/react-icons';
 import { useEffect, useRef, useState } from 'react';
-
-// Checkmark icon for selected items
-const CheckmarkIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-// Expand More Icon for dropdown arrow with updated color
-const ExpandMoreIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 6l4 4 4-4" stroke="#667790" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+import IconRenderer from '../icons/IconRenderer';
 
 const CustomSelect = ({
   options = [],
@@ -21,7 +9,7 @@ const CustomSelect = ({
   placeholder = 'Select an option',
   label = '',
   className = '',
-  maxHeight = '160px' // Made shorter by default
+  maxHeight = '250px' // Made shorter by default
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
@@ -68,8 +56,8 @@ const CustomSelect = ({
       {displayLabel && (
         <label
           className={`absolute left-2 text-sm transition-all duration-200 pointer-events-none font-enel ${hasValue || isOpen
-              ? 'top-0.5 text-[#667790] text-xs'
-              : 'top-2.5 text-[#667790]'
+            ? 'top-0.5 text-grey-light text-xs'
+            : 'top-2.5 text-grey-light'
             }`}
         >
           {displayLabel}
@@ -79,7 +67,7 @@ const CustomSelect = ({
       {/* Select Button */}
       <button
         type="button"
-        className={`box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-full px-2 border border-[#667790] rounded text-sm text-[#131416] bg-white focus:outline-none focus:ring-2 focus:ring-[#002466] focus:border-transparent cursor-pointer font-enel ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
+        className={`box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-full px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer font-enel ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
           }`}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -87,7 +75,7 @@ const CustomSelect = ({
           {getSelectedLabel()}
         </span>
         <div className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
-          <ExpandMoreIcon />
+          <CaretDownIcon className='w-6 h-6 fill-secondary text-secondary' />
         </div>
       </button>
 
@@ -96,7 +84,7 @@ const CustomSelect = ({
         <div className="absolute top-full left-0 right-0 z-10 mt-1">
           <div
             ref={dropdownRef}
-            className="bg-white box-border border border-[#667790] rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] py-1 w-full"
+            className="bg-white box-border border border-grey-light rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] py-1 w-full"
             style={{ maxHeight }}
           >
             <div className="overflow-y-auto" style={{ maxHeight }}>
@@ -107,8 +95,8 @@ const CustomSelect = ({
                   className={`
                     box-border flex flex-row gap-4 h-10 items-center justify-start px-3 py-2 cursor-pointer transition-colors
                     ${isSelected(option.value)
-                      ? 'bg-[#f7f8fb] text-secondary'
-                      : 'bg-white text-[#131416] hover:bg-[#f7f8fb]'
+                      ? 'bg-white-light text-secondary'
+                      : 'bg-white text-black hover:bg-white-light'
                     }
                   `}
                 >
@@ -121,7 +109,7 @@ const CustomSelect = ({
                   </div>
                   {isSelected(option.value) && (
                     <div className="relative rounded-[3px] shrink-0 w-4 h-4 flex items-center justify-center text-secondary">
-                      <CheckmarkIcon />
+                      <IconRenderer icon="checkMark" fillClass="fill-secondary" />
                     </div>
                   )}
                 </div>

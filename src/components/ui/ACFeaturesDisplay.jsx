@@ -59,7 +59,7 @@ const ACFeaturesDisplay = ({
       <div className="basis-0 flex flex-col gap-2 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
 
         {/* Product Image with Badge */}
-        <div className="bg-[#f7f8fb] flex flex-col-reverse h-[230px] items-center justify-center overflow-clip pb-8 pt-0 px-0 relative rounded-lg shrink-0 w-full">
+        <div className="bg-white-light flex flex-col-reverse h-[230px] items-center justify-center overflow-clip pb-8 pt-0 px-0 relative rounded-lg shrink-0 w-full">
           <div className="bg-center bg-fill bg-no-repeat mt-16 mix-blend-multiply order-2 shrink-0">
             {productImage ? (
               <img
@@ -98,13 +98,13 @@ const ACFeaturesDisplay = ({
                       </div>
                     </div>
                   </div>
-                  <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
+                  <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-white text-[12px] text-nowrap text-right">
                     <p className="block leading-[18px] whitespace-pre">Consigliata</p>
                   </div>
-                  <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
+                  <div className="font-enel leading-[0] not-italic relative shrink-0 text-white text-[12px] text-nowrap text-right">
                     <p className="block leading-[18px] whitespace-pre">-</p>
                   </div>
-                  <div className="font-enel leading-[0] not-italic relative shrink-0 text-[#ffffff] text-[12px] text-nowrap text-right">
+                  <div className="font-enel leading-[0] not-italic relative shrink-0 text-white text-[12px] text-nowrap text-right">
                     <p className="block leading-[18px] whitespace-pre">{recommendationText}</p>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const ACFeaturesDisplay = ({
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col font-enel justify-center leading-[0] not-italic relative shrink-0 text-[#667790] text-[0px] text-left w-full">
+              <div className="flex flex-col font-enel justify-center leading-[0] not-italic relative shrink-0 text-grey-light text-[0px] text-left w-full">
                 <p className="leading-[21px]">
                   <span className="text-[14px]">{productDescription}</span>
                 </p>
@@ -135,18 +135,18 @@ const ACFeaturesDisplay = ({
             {/* Price Section */}
             <div className="flex flex-col gap-2 items-end justify-start p-0 relative shrink-0">
               <div className="flex flex-row items-end justify-end p-0 relative shrink-0 w-full">
-                <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[48px] text-left text-nowrap to-[#3b80ff] tracking-[-1px] extra-thick-text"
+                <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-primary-light justify-center leading-[0] not-italic relative shrink-0 text-[48px] text-left text-nowrap to-[#3b80ff] tracking-[-1px] extra-thick-text"
                   style={{ WebkitTextFillColor: "transparent" }}>
                   <p className="adjustLetterSpacing block leading-[42px] whitespace-pre">{price.split('.')[0]}</p>
                 </div>
                 <div className="flex flex-row items-end self-stretch">
                   <div className="flex flex-col h-full items-start justify-between p-0 relative shrink-0">
-                    <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
+                    <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-primary-light justify-center leading-[0] not-italic relative shrink-0 text-[18px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
                       style={{ WebkitTextFillColor: "transparent" }}>
                       <p className="block leading-[14px] whitespace-pre">,{price.split('.')[1] || '00'}{currency}*</p>
                     </div>
                     <div className="flex flex-row gap-2 items-center justify-center pl-1 pr-0 py-0 relative shrink-0">
-                      <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-[#0047cc] justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
+                      <div className="bg-clip-text bg-gradient-to-r flex flex-col font-enel-bold from-primary-light justify-center leading-[0] not-italic relative shrink-0 text-[14px] text-left text-nowrap to-[#1f6cf9] extra-thick-text"
                         style={{ WebkitTextFillColor: "transparent" }}>
                         <p className="block leading-[14px] whitespace-pre">{priceNote}</p>
                       </div>

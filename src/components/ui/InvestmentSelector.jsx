@@ -21,11 +21,11 @@ export default function InvestimentSelector({
             className={`flex flex-col gap-4 ${className}`}>
             {/* Title section */}
             {title && (
-                <div className="font-enel-bold font-bold text-[#131416] text-[20px] tracking-[0.4px] leading-[30px]">
+                <div className="font-enel-bold font-bold text-black text-lg tracking-[0.4px] leading-[30px]">
                     {title}
                 </div>
             )}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="flex flex-row justify-start">
                 <OptionSelector.Options>
                     <OptionSelector.Option>
                         {({ option, isSelected, optionProps }) => {
@@ -38,8 +38,9 @@ export default function InvestimentSelector({
                                     type="button"
                                     disabled={disabled}
                                     className={`
+                                        mr-4
                                         relative flex flex-row items-center justify-center 
-                                        p-2 rounded-3xl border-2 transition-all duration-200
+                                        rounded-3xl border-1 transition-all duration-200
                                         hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500
                                         disabled:cursor-not-allowed disabled:opacity-50
                                         ${isSelected
@@ -48,19 +49,19 @@ export default function InvestimentSelector({
                                         }
                                     `}
                                 >
-                                    {/* Option icon/image */}
-                                    {option.icon && (
-                                        <div className="flex items-center justify-center h-6">
+                                    <div className='flex items-center justify-center h-10 p-2 px-6'>
+                                        {/* Option icon/image */}
+                                        {option.icon && (
                                             <StarIcon variant={isSelected ? 'pink' : 'black'} type={option.icon} className="object-contain" />
-                                        </div>
-                                    )}
-                                    {/* Option text */}
-                                    <span className={cn("font-enel font-medium text-sm text-center", {
-                                        "text-[#131416]": !isSelected,
-                                        "text-secondary": isSelected
-                                    })}>
-                                        {option.name}
-                                    </span>
+                                        )}
+                                        {/* Option text */}
+                                        <span className={cn("font-enel font-medium text-sm text-center", {
+                                            "text-black": !isSelected,
+                                            "text-secondary": isSelected
+                                        })}>
+                                            {option.name}
+                                        </span>
+                                    </div>
                                 </div>
                             );
                         }}

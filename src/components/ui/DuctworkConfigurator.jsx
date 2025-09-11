@@ -44,7 +44,7 @@ const DuctworkConfigurator = ({
         return (
           <div
             key={item.key}
-            className="flex flex-row h-10 items-center justify-between w-full"
+            className="flex flex-row h-10 items-center justify-between w-[80%]"
           >
             {/* Left side - Type and Dropdown */}
             <div className="flex flex-row gap-6 h-full items-center">
@@ -54,7 +54,7 @@ const DuctworkConfigurator = ({
                   <AirConditioningIcon type={item.type} className="w-6 h-6" />
                 </div>
                 <div
-                  className="text-[18px] leading-[27px] text-[#131416] text-nowrap font-enel"
+                  className="text-[18px] leading-[27px] text-black text-nowrap font-enel"
                 >
                   {item.label}
                 </div>
@@ -76,21 +76,13 @@ const DuctworkConfigurator = ({
               </div>
             </div>
 
-            {/* Right side - Price display */}
+            {/* Price Display */}
             {hasSelection && (
-              <div className="bg-[#eff2f7] flex flex-row gap-4 h-full items-center justify-end px-2 rounded-xl">
-                <div className="flex flex-row gap-2 items-center justify-end">
-                  <div
-                    className="text-[14px] leading-[21px] text-[#272c34] text-right font-enel-bold"
-                  >
-                    Prezzo finale
-                  </div>
-                  <div
-                    className="text-[18px] leading-[27px] text-[#272c34] text-right font-enel-bold"
-                  >
-                    {formatCurrency(getUnitTotal(item.key))}
-                  </div>
-                </div>
+              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4 w-[200px]">
+                <span className="font-enel-bold">Prezzo finale {" "}</span>
+                <span className="font-enel-bold">
+                  {formatCurrency(getUnitTotal(item.key))}
+                </span>
               </div>
             )}
           </div>

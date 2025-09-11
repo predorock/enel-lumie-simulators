@@ -19,6 +19,8 @@ const StatefulAcProductDisplayContainer = ({
   const loading = useAppStore(state => state.products.loading);
   const error = useAppStore(state => state.products.error);
 
+  const splitType = configKey ? configKey.split('_')[0] : null;
+
   // Get current configurations
   const configurations = formData[stateProperty] || {};
 
@@ -45,7 +47,7 @@ const StatefulAcProductDisplayContainer = ({
   // Enhanced product display props with state integration
   const enhancedProps = {
     ...props,
-    items: products.getFilteredProducts(),
+    items: products.getFilteredProducts().filter(p => p.type.toLowerCase() === splitType?.toLowerCase()),
     loading,
     error,
     onProductSelectionChange: handleProductSelectionChange,

@@ -15,7 +15,7 @@ export const initialCityState = {
 export const createCitySlice = (set, get) => ({
   // City state
   cityState: initialCityState,
-  
+
   // City actions
   setCityState: (updates) => set((state) => ({
     cityState: {
@@ -23,22 +23,22 @@ export const createCitySlice = (set, get) => ({
       ...updates
     }
   })),
-  
+
   loadCities: async () => {
     const state = get();
     if (state.cityState.cities.length > 0 || state.cityState.loading) {
       return; // Cities already loaded or loading
     }
-    
+
     get().setCityState({ loading: true, error: null });
-    
+
     try {
       const response = await fetch('/comuni.json');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const cittaData = await response.json();
-      
+
       const keys = new Set();
       // Transform data to select options format
       const cityOptions = cittaData
@@ -46,9 +46,10 @@ export const createCitySlice = (set, get) => ({
         .map(city => ({
           value: city.comune,
           label: `${city.comune}`,
-        }));
-      
-      get().setCityState({ 
+        }))
+        .sort((a, b) => a.value.localeCompare(b.value));
+
+      get().setCityState({
         cities: cityOptions,
         loading: false,
         error: null,
@@ -56,14 +57,14 @@ export const createCitySlice = (set, get) => ({
       });
     } catch (error) {
       console.error('Error loading cities:', error);
-      get().setCityState({ 
+      get().setCityState({
         cities: [],
         loading: false,
         error: error.message
       });
     }
   },
-  
+
   // Helper to get cities (triggers load if needed)
   getCities: async () => {
     const state = get();
@@ -72,7 +73,7 @@ export const createCitySlice = (set, get) => ({
     }
     return get().cityState.cities;
   },
-  
+
   // Helper to clear cities cache (useful for refreshing data)
   clearCitiesCache: () => set((state) => ({
     cityState: {
@@ -82,35 +83,35 @@ export const createCitySlice = (set, get) => ({
       lastLoadTime: null
     }
   })),
-  
+
   // Helper to get city by value
   getCityByValue: (value) => {
     const state = get();
     return state.cityState.cities.find(city => city.value === value) || null;
   },
-  
+
   // Helper to search cities
   searchCities: (searchTerm) => {
     const state = get();
     if (!searchTerm) return state.cityState.cities;
-    
+
     const term = searchTerm.toLowerCase();
-    return state.cityState.cities.filter(city => 
+    return state.cityState.cities.filter(city =>
       city.label.toLowerCase().includes(term) ||
       city.value.toLowerCase().includes(term) ||
       city.cap.includes(term)
     );
   },
-  
+
   // Helper to get city state selectors
   getCityState: () => get().cityState,
-  
+
   // Helper to check if cities are loaded
   areCitiesLoaded: () => {
     const state = get();
     return state.cityState.cities.length > 0;
   },
-  
+
   // Helper to refresh cities (force reload)
   refreshCities: async () => {
     get().clearCitiesCache();

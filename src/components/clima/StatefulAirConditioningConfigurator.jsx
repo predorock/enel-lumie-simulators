@@ -1,11 +1,9 @@
 import useAppStore from '../../store/useAppStore';
-import { getInfoIconConfig } from '../icons/infoIconRegistry';
 import AirConditioningConfigurator from '../ui/AirConditioningConfigurator';
 
 const StatefulAirConditioningConfigurator = ({
   stateProperty = 'airConditioningConfigs',
   installationTypes = [],
-  infoIconKey = null,
   ...props
 }) => {
   const { formData, setFormValue } = useAppStore();
@@ -16,9 +14,6 @@ const StatefulAirConditioningConfigurator = ({
     dualsplit: 45,
     trialsplit: 57
   };
-
-  // Get InfoIcon configuration from registry
-  const infoIconConfig = infoIconKey ? getInfoIconConfig(infoIconKey) : null;
 
   // Get quantities from the SplitterQtyConfigurator
   const quantities = formData.airconditioningQuantities || {};
@@ -94,7 +89,6 @@ const StatefulAirConditioningConfigurator = ({
       configurationEntries={configurationEntries}
       configurations={configurations}
       installationTypes={installationTypes}
-      infoIconConfig={infoIconConfig}
       onInstallationChange={handleInstallationChange}
       onRoomSizeChange={handleRoomSizeChange}
       hasWarning={hasWarning}
