@@ -20,6 +20,22 @@ export const createRendererSlice = (set, get) => ({
                 return value !== undefined && value !== null && value !== '' && value !== 0;
             });
         }
+        // Assuming that the atLeastOneOf.items is an array or an object
+        // atLeastOneOf.value is the value to check against
+        // If items in array check if any item equals value
+        // If atLeastOneOf.prop is defined check if the item's property equals value
+        // If items is an object loop through its values and check if any value equals atLeastOneOf.value
+        // IfatLeastOneOf.prop is defined and item is object check if the item's property equals value
+        if (conditions.atLeastOneOf) {
+            const { items, property, value } = conditions.atLeastOneOf;
+            const stateItems = getNestedValue(state, items);
+            if (!stateItems) return false;
+            if (Array.isArray(stateItems)) {
+                return stateItems.some(item => item === value || (property && item[property] === value));
+            } else if (typeof stateItems === 'object' && stateItems !== null) {
+                return Object.values(stateItems).some(itemValue => itemValue === value || (property && itemValue[property] === value));
+            }
+        }
 
         if (conditions.isDefined) {
             // Check if all specified state properties are defined

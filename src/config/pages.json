@@ -187,7 +187,11 @@
                         "variant": "info"
                     },
                     "renderConditions": {
-                        "hasQuantities": "formData.airconditioningQuantities"
+                        "atLeastOneOf": {
+                            "items": "formData.airConditioningConfigs",
+                            "property": "installationType",
+                            "value": "nuova_senza_predisposizione"
+                        }
                     }
                 }
             ]
