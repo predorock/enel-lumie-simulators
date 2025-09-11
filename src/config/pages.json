@@ -184,6 +184,7 @@
                     "props": {
                         "title": "Il cliente non ha predisposizioni riutilizzabili o installazioni con unità interna in adiacenza a quella esterna?",
                         "description": "Spiegagli che le connessioni tra unità esterna ed interna sono realizzate in canaline a vista",
+                        "icon": "info",
                         "variant": "info"
                     },
                     "renderConditions": {

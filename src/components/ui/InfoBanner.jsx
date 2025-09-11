@@ -1,36 +1,42 @@
 import IconPopover from '../icons/IconPopover';
+import IconRenderer from '../icons/IconRenderer';
+import { getPopoverConfig } from '../icons/PopoverContentRegistry';
 
 const InfoBanner = ({
   title,
   description,
+  icon = 'info',
   variant = 'info', // 'info', 'warning', 'success', 'error'
+  popoverConfigKey = null,
   className = ''
 }) => {
   // Define variant styles based on your project's color palette
   const variantStyles = {
     info: {
-      bg: 'bg-[#f4f8ff]',
-      border: 'border-[#1f6cf9]',
-      iconColor: 'text-[#1f6cf9]'
+      bg: 'bg-blue-50',
+      border: 'border-primary-lighter',
+      iconColor: 'fill-primary-lighter'
     },
     warning: {
-      bg: 'bg-[#fff8f0]',
-      border: 'border-secondary',
-      iconColor: 'text-secondary'
+      bg: 'bg-warning-light',
+      border: 'border-warning',
+      iconColor: 'fill-warning'
     },
     success: {
-      bg: 'bg-[#f0f9f4]',
-      border: 'border-[#10b981]',
-      iconColor: 'text-[#10b981]'
+      bg: 'bg-tertiary-light',
+      border: 'border-tertiary',
+      iconColor: 'fill-tertiary'
     },
     error: {
-      bg: 'bg-[#fef2f2]',
-      border: 'border-[#ef4444]',
-      iconColor: 'text-[#ef4444]'
+      bg: 'bg-error-light',
+      border: 'border-error',
+      iconColor: 'fill-error'
     }
   };
 
   const currentVariant = variantStyles[variant] || variantStyles.info;
+
+  const popoverConfig = getPopoverConfig(popoverConfigKey);
 
   return (
     <div
@@ -49,7 +55,13 @@ const InfoBanner = ({
             {/* Icon */}
             <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
               <div className={`relative shrink-0 w-6 h-6 ${currentVariant.iconColor}`}>
-                <IconPopover />
+                {
+                  popoverConfig ? (
+                    <IconPopover icon={icon} {...popoverConfig} />
+                  ) : (
+                    <IconRenderer icon={icon} fillClass={currentVariant.iconColor} />
+                  )
+                }
               </div>
             </div>
 

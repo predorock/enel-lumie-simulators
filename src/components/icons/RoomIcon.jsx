@@ -1,7 +1,13 @@
-import MultiRoomIcon from "../../assets/icons/multi-room.svg";
 
-const RoomIcon = ({ className = "w-6 h-6" }) => {
-  return <img src={MultiRoomIcon} className={className} alt="Multi Room Air Conditioning Icon" />;
+const RoomIcon = ({ className = "w-6 h-6", fillClass }) => {
+  return <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none">
+    <mask id="mask0_14324_16587" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" className={className}>
+      <rect className={className} fill="#D9D9D9" />
+    </mask>
+    <g mask="url(#mask0_14324_16587)">
+      <path d="M6.60078 18.6008H13.2008V15.6008H6.60078V18.6008ZM15.0008 18.6008H17.4008V15.6008H15.0008V18.6008ZM6.60078 13.8008H9.60078V10.8008H6.60078V13.8008ZM11.4008 13.8008H17.4008V10.8008H11.4008V13.8008ZM7.82578 9.00078H16.1758L12.0008 5.85078L7.82578 9.00078ZM6.59378 20.4008C6.09845 20.4008 5.67578 20.2245 5.32578 19.872C4.97578 19.5195 4.80078 19.0958 4.80078 18.6008V9.90078C4.80078 9.61995 4.86328 9.35395 4.98828 9.10278C5.11328 8.85145 5.29245 8.63411 5.52578 8.45078L10.9258 4.40078C11.0924 4.26745 11.2674 4.17578 11.4508 4.12578C11.6341 4.07578 11.8174 4.05078 12.0008 4.05078C12.1841 4.05078 12.3674 4.07578 12.5508 4.12578C12.7341 4.17578 12.9091 4.26745 13.0758 4.40078L18.4758 8.45078C18.7091 8.63411 18.8883 8.85145 19.0133 9.10278C19.1383 9.35395 19.2008 9.61995 19.2008 9.90078V18.6008C19.2008 19.0958 19.0245 19.5195 18.6718 19.872C18.3191 20.2245 17.8951 20.4008 17.3998 20.4008H6.59378Z" className={fillClass} />
+    </g>
+  </svg>
 };
 
 export default RoomIcon;

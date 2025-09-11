@@ -368,7 +368,7 @@ function dynamicPageTemplate(
             {
                 "type": "DescriptionBox",
                 "props": {
-                    "title": "Scelta del clima",
+                    "title": `Scelta del ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)}`,
                     "description": getInstallationTypeDescription(acConfig?.installationType),
                     "icon": acConfig?.type || "",
                     "step": `${splitIndex + 1}/${splitTotal}`,
@@ -377,9 +377,11 @@ function dynamicPageTemplate(
                 }
             },
             {
-                "type": "RoomBanner",
+                "type": "InfoBanner",
                 "props": {
-                    "roomSize": acConfig?.roomSize || "0",
+                    "title": `Questo ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)} deve climatizzare una stanza di ${acConfig?.roomSize} m²`,
+                    "icon": "room",
+                    "variant": "info"
                 }
             },
             {

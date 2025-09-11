@@ -27,7 +27,6 @@ import HorizontalBannerContainer from '../ui/HorizontalBannerContainer';
 import Image from '../ui/Image';
 import InfoBanner from '../ui/InfoBanner';
 import PromotionalBanner from '../ui/PromotionalBanner';
-import RoomBanner from '../ui/RoomBanner';
 import ServicePriceDisplay from '../ui/ServicePriceDisplay';
 import ValidationErrors from '../ui/ValidationErrors';
 
@@ -72,7 +71,6 @@ const componentRegistry = {
   PromotionalBanner: (props) => <PromotionalBanner {...props} />,
   LoadingSpinner: (props) => <StatefulLoadingSpinner {...props} />,
   ErrorMessage: (props) => <StatefulErrorMessage {...props} />,
-  RoomBanner: (props) => <RoomBanner {...props} />,
   ACFeaturesDisplay: (props) => <ACFeaturesDisplay {...props} />,
   BenefitsCardsContainer: (props) => <BenefitsCardsContainer {...props} />,
   HorizontalBanner: (props) => <HorizontalBanner {...props} />,
