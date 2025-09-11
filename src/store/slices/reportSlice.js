@@ -280,6 +280,9 @@ export const createReportSlice = (set, get) => ({
             const ductworkQuantities = formData.ductworkQuantities || {};
 
             // Build the payload according to API specification
+
+            const summary = state.report.getSummary();
+
             const payload = {
                 Comune: comune,
                 Numero_Macchine: numeroMacchine,
@@ -298,8 +301,12 @@ export const createReportSlice = (set, get) => ({
                 Stanza3_mq: expandedConfigs[2]?.roomSize || 0,
                 // Nuove API
                 Warning: getWarningMessage(expandedConfigs),
-                Products: state.products.getRawProducts(expandedConfigs.map((config) => config.productName)),
-                Configurations: state.report.getSummary().expenses.map((item) => ({
+                Products: summary.clima.map((item) => ({
+                    ...state.products.getRawProducts(item.product.productName)[0],
+                    Name: item.count > 1 ? `${item.count} x ${item.product.productName}` : item.product.productName,
+                    Price: item.totalPrice,
+                })),
+                Configurations: summary.expenses.map((item) => ({
                     Name: item.description,
                     Price: item.price
                 }))
