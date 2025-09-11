@@ -2,19 +2,9 @@ import cn from 'classnames';
 import { useState } from 'react';
 import useAppStore from '../../store/useAppStore';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
+import QtyStepControl from './QtyStepControl';
 
-// Simple icons using SVG instead of localhost images
-const MinusIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 8H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-);
 
-const PlusIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 4V12M4 8H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-);
 
 const SplitterQtyConfigurator = ({
   items = [],
@@ -69,16 +59,6 @@ const SplitterQtyConfigurator = ({
     }
   };
 
-  const increment = (itemKey) => {
-    const currentValue = quantities[itemKey] || 0;
-    handleQuantityChange(itemKey, currentValue + 1);
-  };
-
-  const decrement = (itemKey) => {
-    const currentValue = quantities[itemKey] || 0;
-    handleQuantityChange(itemKey, currentValue - 1);
-  };
-
   const getIconType = (itemKey) => {
     if (itemKey.toLowerCase().includes('dual')) return 'dual';
     if (itemKey.toLowerCase().includes('trial')) return 'trial';
@@ -98,17 +78,10 @@ const SplitterQtyConfigurator = ({
         const currentValue = quantities[itemKey] || 0;
         const currentTotal = getCurrentTotal(quantities);
 
-        const canDecrement = currentValue > min;
-        const canIncrement = totalMax
-          ? (currentValue < max && currentTotal < totalMax)
-          : currentValue < max;
-
         return (
-          <div
-            key={itemKey}
-            className="box-border content-stretch flex flex-row gap-6 h-10 items-start justify-start p-0 relative shrink-0 w-full"
-          >
-            <div className="box-border content-stretch flex flex-row gap-4 items-center justify-start p-0 relative shrink-0 w-[354px]">
+          <div key={itemKey} className="box-border content-stretch flex flex-row items-start justify-between p-0 relative shrink-0 w-full">
+            <div className="box-border content-stretch flex flex-row gap-4 items-center justify-start p-0 relative shrink-0">
+
               {/* Icon and Label */}
               <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0 w-[130px]">
                 <div className="relative shrink-0 size-6 text-black">
@@ -120,68 +93,25 @@ const SplitterQtyConfigurator = ({
               </div>
 
               {/* Stepper Controls */}
-              <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0">
-                {/* Decrement Button */}
-                <button
-                  type="button"
-                  disabled={!canDecrement}
-                  onClick={() => decrement(itemKey)}
-                  className={cn(
-                    "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
-                    "rounded transition-all duration-200 ease-in-out",
-                    "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
-                    {
-                      "bg-[#c2cddd] cursor-not-allowed": !canDecrement,
-                      "bg-secondary hover:bg-secondary focus:ring-secondary": canDecrement
-                    }
-                  )}
-                >
-                  <MinusIcon />
-                </button>
-
-                {/* Quantity Display */}
-                <div className="box-border content-stretch flex flex-row gap-3 h-10 items-center justify-center min-w-10 p-0 relative rounded shrink-0 w-32">
-                  <div className="basis-0 box-border content-stretch flex flex-col gap-0.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
-                    <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded shrink-0 w-full border border-grey-light">
-                      <div className="box-border content-stretch flex flex-row gap-1 items-center justify-center overflow-clip p-0 relative size-full">
-                        <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-black text-[16px] text-center text-nowrap">
-                          <p className="block leading-[16px]">
-                            {currentValue}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Increment Button */}
-                <button
-                  type="button"
-                  disabled={!canIncrement}
-                  onClick={() => increment(itemKey)}
-                  className={cn(
-                    "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
-                    "rounded transition-all duration-200 ease-in-out",
-                    "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
-                    {
-                      "bg-[#c2cddd] cursor-not-allowed": !canIncrement,
-                      "bg-secondary hover:bg-secondary focus:ring-secondary": canIncrement
-                    }
-                  )}
-                >
-                  <PlusIcon />
-                </button>
-
-                {/* Price Display */}
-                {showPriceDisplay && getDisplayPrice(itemKey) > 0 && currentValue > 0 && (
-                  <div className="bg-gray-100 px-3 py-2 rounded ml-4">
-                    <span className="text-[13px] font-bold text-gray-700 font-enel-bold">
-                      {formatCurrency(getDisplayPrice(itemKey))}
-                    </span>
-                  </div>
-                )}
-              </div>
+              <QtyStepControl
+                value={currentValue}
+                min={min}
+                max={max}
+                onIncrement={(newValue) => handleQuantityChange(itemKey, newValue)}
+                onDecrement={(newValue) => handleQuantityChange(itemKey, newValue)}
+                disabled={totalMax ? currentTotal >= totalMax && currentValue === 0 : false}
+              />
             </div>
+
+            {/* Price Display */}
+            {showPriceDisplay && getDisplayPrice(itemKey) > 0 && currentValue > 0 && (
+              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4 w-[200px]">
+                <span className="font-enel-bold">Prezzo finale {" "}</span>
+                <span className="font-enel-bold">
+                  {formatCurrency(getDisplayPrice(itemKey))}
+                </span>
+              </div>
+            )}
           </div>
         );
       })}
