@@ -59,6 +59,16 @@ const calculateMonthlyRate = (principal, annualTaeg, months) => {
     return monthlyRate;
 };
 
+const getWarningMessage = (configurations) => {
+    const warnings = [];
+    configurations.forEach((config, index) => {
+        if (config.hasWarning) {
+            warnings.push(`Una delle tue stanze misura ${config.roomSize}mq e la taglia ${config.splitType} selezionata non riuscirà a climatizzarla interamente.`);
+        }
+    });
+    return warnings.join("\n");
+}
+
 export const createReportSlice = (set, get) => ({
     // Report state
     report: {
@@ -166,9 +176,11 @@ export const createReportSlice = (set, get) => ({
                 const config = configs[key];
                 if (config && config.roomSize) {
                     const splitType = key.split('_')[0];
+                    const product = state.products.items.find(p => p.id === config.selected);
                     acc.push({
                         ...config,
-                        productName: state.products.items.find(p => p.id === config.selected)?.productName || '',
+                        product,
+                        productName: product?.productName || '',
                         splitType
                     });
                 }
@@ -284,6 +296,13 @@ export const createReportSlice = (set, get) => ({
                 Stanza1_mq: expandedConfigs[0]?.roomSize || 0,
                 Stanza2_mq: expandedConfigs[1]?.roomSize || 0,
                 Stanza3_mq: expandedConfigs[2]?.roomSize || 0,
+                // Nuove API
+                Warning: getWarningMessage(expandedConfigs),
+                Products: state.products.getRawProducts(expandedConfigs.map((config) => config.productName)),
+                Configurations: state.report.getSummary().expenses.map((item) => ({
+                    Name: item.description,
+                    Price: item.price
+                }))
             };
 
             return payload;

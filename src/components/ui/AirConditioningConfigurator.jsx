@@ -111,7 +111,7 @@ const ConfigurationRow = ({
             <TextInput
               numericOnly={true}
               value={roomSize || ''}
-              onChange={(e) => onRoomSizeChange(e.target.value)}
+              onChange={(e) => onRoomSizeChange({ value: e.target.value, warning })}
               placeholder="M² stanza da climatizzare"
               className={cn('w-full', {
                 'border-warning': warning
@@ -131,7 +131,6 @@ const AirConditioningConfigurator = ({
   configurationEntries = [],
   configurations = {},
   installationTypes = [],
-  infoIconConfig = null,
   onInstallationChange,
   onRoomSizeChange,
   hasWarning
