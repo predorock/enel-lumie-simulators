@@ -1,4 +1,4 @@
-import InfoIcon from '../icons/InfoIcon';
+import IconPopover from '../icons/IconPopover';
 
 const InfoBanner = ({
   title,
@@ -49,7 +49,7 @@ const InfoBanner = ({
             {/* Icon */}
             <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
               <div className={`relative shrink-0 w-6 h-6 ${currentVariant.iconColor}`}>
-                <InfoIcon />
+                <IconPopover />
               </div>
             </div>
 

@@ -9,11 +9,16 @@ export default function TextInput({
   disabled = false,
   type = "text",
   warning = false,
+  numericOnly = false,
+  digitsOnly = false,
   ...props
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const hasValue = value && value.length > 0;
   const shouldFloatLabel = isFocused || hasValue;
+
+  // Determine input type - use 'tel' for numeric inputs to show numeric keypad on mobile
+  const inputType = (numericOnly || digitsOnly) ? 'tel' : type;
 
   const handleFocus = (e) => {
     setIsFocused(true);
@@ -26,6 +31,50 @@ export default function TextInput({
     setIsFocused(false);
     if (props.onBlur) {
       props.onBlur(e);
+    }
+  };
+
+  const handleChange = (e) => {
+    let newValue = e.target.value;
+
+    // Apply numeric filtering if enabled
+    if (digitsOnly) {
+      // Only allow digits 0-9
+      newValue = newValue.replace(/[^0-9]/g, '');
+    } else if (numericOnly) {
+      // Allow digits, decimal point, and negative sign with proper formatting
+      // Remove any characters that aren't digits, decimal, or minus
+      newValue = newValue.replace(/[^0-9.-]/g, '');
+
+      // Ensure only one decimal point
+      const decimalCount = (newValue.match(/\./g) || []).length;
+      if (decimalCount > 1) {
+        const firstDecimalIndex = newValue.indexOf('.');
+        newValue = newValue.substring(0, firstDecimalIndex + 1) +
+          newValue.substring(firstDecimalIndex + 1).replace(/\./g, '');
+      }
+
+      // Ensure minus sign only at the beginning
+      if (newValue.includes('-')) {
+        const minusCount = (newValue.match(/-/g) || []).length;
+        if (minusCount > 1 || newValue.indexOf('-') !== 0) {
+          newValue = (newValue.charAt(0) === '-' ? '-' : '') +
+            newValue.replace(/-/g, '');
+        }
+      }
+    }
+
+    // Create synthetic event with filtered value
+    const syntheticEvent = {
+      ...e,
+      target: {
+        ...e.target,
+        value: newValue
+      }
+    };
+
+    if (onChange) {
+      onChange(syntheticEvent);
     }
   };
 
@@ -53,12 +102,13 @@ export default function TextInput({
               {placeholder}
             </label>
             <input
-              type={type}
+              type={inputType}
               value={value}
-              onChange={onChange}
+              onChange={handleChange}
               onFocus={handleFocus}
               onBlur={handleBlur}
               disabled={disabled}
+              inputMode={(numericOnly || digitsOnly) ? "numeric" : undefined}
               className={cn(
                 "basis-0 grow min-h-px min-w-px relative shrink-0",
                 "text-black text-[13px] text-left",

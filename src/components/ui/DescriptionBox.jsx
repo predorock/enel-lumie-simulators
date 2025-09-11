@@ -61,7 +61,7 @@ export default function DescriptionBox({
       {/* Description */}
       {description && (
         <div
-          className="flex flex-col font-enel font-normal justify-center relative shrink-0 text-[14px] max-w-[588px]"
+          className="flex flex-col font-enel font-normal justify-center relative shrink-0 text-[14px]"
         >
           <p className="block leading-[21px] text-grey-light">
             {description}

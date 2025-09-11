@@ -1,124 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import infoIcon from '../../assets/icons/info-icon-blue.svg';
-import infoWarnIcon from '../../assets/icons/info-icon.svg';
-
-const ICONS = {
-    info: infoIcon,
-    warning: infoWarnIcon,
+const InfoIcon = ({ className = "w-6 h-6", fillClass }) => {
+    return (
+        <svg className={className} viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_14148_25079" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" className={className}>
+                <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_14148_25079)">
+                <path d="M12 17.5C12.2833 17.5 12.5292 17.3958 12.7375 17.1875C12.9458 16.9792 13.05 16.7362 13.05 16.4587V12.5163C13.05 12.2388 12.9458 12 12.7375 11.8C12.5292 11.6 12.2833 11.5 12 11.5C11.7167 11.5 11.4708 11.6042 11.2625 11.8125C11.0542 12.0208 10.95 12.2638 10.95 12.5413V16.4837C10.95 16.7612 11.0542 17 11.2625 17.2C11.4708 17.4 11.7167 17.5 12 17.5ZM12 9.475C12.2833 9.475 12.5292 9.37083 12.7375 9.1625C12.9458 8.95417 13.05 8.70833 13.05 8.425C13.05 8.14167 12.9458 7.89583 12.7375 7.6875C12.5292 7.47917 12.2833 7.375 12 7.375C11.7167 7.375 11.4708 7.47917 11.2625 7.6875C11.0542 7.89583 10.95 8.14167 10.95 8.425C10.95 8.70833 11.0542 8.95417 11.2625 9.1625C11.4708 9.37083 11.7167 9.475 12 9.475ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5ZM11.9941 20.4C14.1814 20.4 16.0458 19.6312 17.5875 18.0935C19.1292 16.5558 19.9 14.6933 19.9 12.5059C19.9 10.3186 19.1312 8.45417 17.5935 6.9125C16.0558 5.37083 14.1933 4.6 12.006 4.6C9.81865 4.6 7.95417 5.36885 6.4125 6.90655C4.87083 8.44423 4.1 10.3067 4.1 12.4941C4.1 14.6814 4.86885 16.5458 6.40655 18.0875C7.94423 19.6292 9.80673 20.4 11.9941 20.4Z" className={fillClass} />
+            </g>
+        </svg>
+    );
 };
 
-export default function InfoIcon({
-    variant = "info",
-    className = "w-6 h-6",
-    popoverContent = null,
-    popoverPosition = "top",
-    popoverClassName = "",
-    disabled = false,
-    onClick = null
-}) {
-    const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-    const iconRef = useRef(null);
-    const popoverRef = useRef(null);
-
-    const icon = ICONS[variant] || infoIcon;
-
-    // Close popover when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                iconRef.current &&
-                !iconRef.current.contains(event.target) &&
-                popoverRef.current &&
-                !popoverRef.current.contains(event.target)
-            ) {
-                setIsPopoverOpen(false);
-            }
-        };
-
-        if (isPopoverOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [isPopoverOpen]);
-
-    const handleIconClick = (e) => {
-        e.stopPropagation();
-
-        if (onClick) {
-            onClick(e);
-        }
-
-        if (popoverContent && !disabled) {
-            setIsPopoverOpen(!isPopoverOpen);
-        }
-    };
-
-    const getPopoverPositionClasses = () => {
-        const baseClasses = "absolute z-50 bg-white border border-[#c2cddd] rounded-lg shadow-lg p-3 min-w-[200px] max-w-[300px]";
-
-        switch (popoverPosition) {
-            case "top":
-                return `${baseClasses} bottom-full left-1/2 transform -translate-x-1/2 mb-2`;
-            case "bottom":
-                return `${baseClasses} top-full left-1/2 transform -translate-x-1/2 mt-2`;
-            case "left":
-                return `${baseClasses} right-full top-1/2 transform -translate-y-1/2 mr-2`;
-            case "right":
-                return `${baseClasses} left-full top-1/2 transform -translate-y-1/2 ml-2`;
-            default:
-                return `${baseClasses} bottom-full left-1/2 transform -translate-x-1/2 mb-2`;
-        }
-    };
-
-    const getArrowClasses = () => {
-        const arrowBase = "absolute w-3 h-3 bg-white border-[#c2cddd] transform rotate-45";
-
-        switch (popoverPosition) {
-            case "top":
-                return `${arrowBase} top-full left-1/2 -translate-x-1/2 -mt-1.5 border-b border-r`;
-            case "bottom":
-                return `${arrowBase} bottom-full left-1/2 -translate-x-1/2 -mb-1.5 border-t border-l`;
-            case "left":
-                return `${arrowBase} left-full top-1/2 -translate-y-1/2 -ml-1.5 border-t border-r`;
-            case "right":
-                return `${arrowBase} right-full top-1/2 -translate-y-1/2 -mr-1.5 border-b border-l`;
-            default:
-                return `${arrowBase} top-full left-1/2 -translate-x-1/2 -mt-1.5 border-b border-r`;
-        }
-    };
-
-    return (
-        <div className="relative inline-block">
-            <img
-                ref={iconRef}
-                src={icon}
-                className={`${className} ${popoverContent && !disabled ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
-                alt={`${variant.charAt(0).toUpperCase() + variant.slice(1)} Icon`}
-                onClick={handleIconClick}
-            />
-
-            {/* Popover */}
-            {popoverContent && isPopoverOpen && (
-                <div
-                    ref={popoverRef}
-                    className={`${getPopoverPositionClasses()} ${popoverClassName}`}
-                >
-                    {/* Arrow */}
-                    <div className={getArrowClasses()}></div>
-
-                    {/* Content */}
-                    <div className="text-sm font-enel">
-                        {typeof popoverContent === 'string' ? (
-                            <p className="text-black leading-relaxed">{popoverContent}</p>
-                        ) : (
-                            popoverContent
-                        )}
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-}
+export default InfoIcon;

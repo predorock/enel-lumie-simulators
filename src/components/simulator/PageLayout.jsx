@@ -24,7 +24,7 @@ export default function PageLayout({
 }) {
 
   return (
-    <main className="bg-red">
+    <main>
       <div className="grid grid-cols-6 w-full h-screen relative z-10">
         {/* LEFT PANEL - Blue Header */}
         <div className={cn('bg-primary p-8 relative flex flex-col', { 'col-span-2': !fullPage, 'col-span-6': fullPage })} role="banner" aria-label="Enel Lumiè Clima Header">
@@ -63,7 +63,7 @@ export default function PageLayout({
         {!fullPage &&
           <div className="col-span-4 flex flex-col h-screen">
             {/* Main Content - Scrollable */}
-            <div className={`flex-1 px-8 py-12 overflow-y-auto ${className}`}>
+            <div className={`flex-1 p-12 overflow-y-auto ${className}`}>
               {children}
             </div>
 

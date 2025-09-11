@@ -10,9 +10,6 @@
             "showBackgroundDecoration": true,
             "validationRules": {
                 "required": [
-                    "formData.storeLocation",
-                    "formData.consultantName",
-                    "formData.storePhone",
                     "formData.storeCity"
                 ]
             },
@@ -34,48 +31,6 @@
                 }
             ],
             "components": [
-                {
-                    "type": "DescriptionBox",
-                    "props": {
-                        "title": "Dati punto vendita",
-                        "description": "Inserisci le informazioni sul punto vendita"
-                    }
-                },
-                {
-                    "type": "TextInput",
-                    "props": {
-                        "placeholder": "Nome punto vendita",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "storeLocation",
-                        "className": ""
-                    }
-                },
-                {
-                    "type": "TextInput",
-                    "props": {
-                        "placeholder": "Nome e cognome del consulente",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "consultantName"
-                    }
-                },
-                {
-                    "type": "TextInput",
-                    "props": {
-                        "placeholder": "Telefono punto vendita",
-                        "initialValue": "",
-                        "type": "text",
-                        "stateProperty": "storePhone"
-                    }
-                },
-                {
-                    "type": "Divider",
-                    "props": {
-                        "color": "#c2cddd",
-                        "className": "py-4"
-                    }
-                },
                 {
                     "type": "DescriptionBox",
                     "props": {
@@ -106,7 +61,8 @@
                 {
                     "type": "Toggle",
                     "props": {
-                        "label": "Si tratta di un cliente Enel",
+                        "label": "Si tratta di un cliente Enel Luce e Gas?",
+                        "className": "font-enel-bold",
                         "stateProperty": "isEnelCustomer",
                         "initialValue": false
                     }
@@ -165,7 +121,7 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Quanti impianti vuole acquistare il cliente?",
-                        "description": "Il cliente può indicare un massimo di 3 split totali"
+                        "description": "Il cliente può indicare un massimo di 5 split totali"
                     }
                 },
                 {
@@ -186,8 +142,8 @@
                             }
                         ],
                         "min": 0,
-                        "max": 3,
-                        "totalMax": 3,
+                        "max": 5,
+                        "totalMax": 5,
                         "stateProperty": "airconditioningQuantities",
                         "calculationType": "purchase",
                         "showPriceDisplay": false
@@ -210,11 +166,11 @@
                         "installationTypes": [
                             {
                                 "value": "nuova_con_predisposizione",
-                                "label": "Nuova installazione con predisposizione"
+                                "label": "Con Predisposizione"
                             },
                             {
                                 "value": "nuova_senza_predisposizione",
-                                "label": "Nuova installazione senza predisposizione"
+                                "label": "Senza Predisposizione"
                             }
                         ],
                         "infoIconKey": "airConditioningInfo"

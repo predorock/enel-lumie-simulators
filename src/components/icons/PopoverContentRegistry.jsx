@@ -4,14 +4,15 @@
  * Centralized registry for all InfoIcon popover contents across the application
  */
 
-export const infoIconRegistry = {
+export const popoverContentRegistry = {
     // Air Conditioning Configurator
     airConditioningInfo: {
-        variant: "warning",
-        popoverPosition: "left",
-        popoverClassName: "w-[550px]",
-        content: (
-            <div className="bg-white box-border content-stretch flex flex-col gap-4 items-center justify-center p-[16px] relative rounded-2xl">
+        icon: "info",
+        iconClassName: 'fill-secondary',
+        popoverPosition: "bottom",
+        popoverClassName: "max-w-[386px]",
+        popoverContent: (
+            <div className="bg-white box-border content-stretch flex flex-col gap-4 p-2 items-center justify-center relative rounded-2xl">
                 <div className="box-border content-stretch flex flex-col gap-3 items-center justify-start p-0 relative shrink-0 w-full">
                     <div className="box-border content-stretch flex flex-row gap-1 items-center justify-start p-0 relative shrink-0 w-full">
                         <div className="basis-0 flex flex-row grow items-center self-stretch shrink-0">
@@ -51,10 +52,10 @@ export const infoIconRegistry = {
 
     // Ductwork Configurator
     ductworkInfo: {
-        variant: "info",
+        icon: "info",
         popoverPosition: "top",
         popoverClassName: "max-w-[300px]",
-        content: (
+        popoverContent: (
             <div>
                 <h4 className="text-black font-semibold mb-2 font-enel-bold">
                     Come si sceglie la tipologia di installazione?
@@ -68,10 +69,10 @@ export const infoIconRegistry = {
 
     // Splitter Quantity Configurator
     splitterQuantityInfo: {
-        variant: "info",
+        icon: "info",
         popoverPosition: "top",
         popoverClassName: "max-w-[320px]",
-        content: (
+        popoverContent: (
             <div>
                 <h4 className="text-black font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
                     Numero di Split
@@ -88,10 +89,10 @@ export const infoIconRegistry = {
 
     // Energy Efficiency Info
     energyEfficiencyInfo: {
-        variant: "info",
+        icon: "info",
         popoverPosition: "top",
         popoverClassName: "max-w-[400px]",
-        content: (
+        popoverContent: (
             <div>
                 <h4 className="text-black font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
                     Efficienza Energetica
@@ -110,10 +111,10 @@ export const infoIconRegistry = {
 
     // Installation Warning
     installationWarning: {
-        variant: "warning",
+        icon: "warning",
         popoverPosition: "top",
         popoverClassName: "max-w-[350px]",
-        content: (
+        popoverContent: (
             <div>
                 <h4 className="text-black font-semibold mb-2" style={{ fontFamily: 'Roobert Bold' }}>
                     Attenzione Installazione
@@ -136,14 +137,6 @@ export const infoIconRegistry = {
  * @param {string} key - The registry key
  * @returns {object|null} InfoIcon configuration or null if not found
  */
-export const getInfoIconConfig = (key) => {
-    return infoIconRegistry[key] || null;
-};
-
-/**
- * Get all available InfoIcon keys
- * @returns {string[]} Array of available keys
- */
-export const getAvailableInfoIconKeys = () => {
-    return Object.keys(infoIconRegistry);
+export const getPopoverConfig = (key) => {
+    return popoverContentRegistry[key] || null;
 };
