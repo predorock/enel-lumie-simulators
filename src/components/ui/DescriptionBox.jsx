@@ -29,7 +29,7 @@ export default function DescriptionBox({
 
   return (
     <div
-      className={`box-border content-stretch flex flex-col gap-1 items-start justify-start leading-[0] not-italic p-0 relative shrink-0 text-left w-full ${className}`}
+      className={`box-border content-stretch flex flex-col gap-1 items-start justify-start leading-[0] not-italic p-0 relative text-left w-full ${className}`}
     >
       {/* Icon, Title and Step on same line */}
       {(icon || title) && (

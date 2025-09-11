@@ -425,10 +425,12 @@
             ],
             "components": [
                 {
-                    "type": "DescriptionBox",
+                    "type": "DescriptionBoxTooltip",
                     "props": {
                         "title": "Il cliente ha bisogno di acquistare canalizzazioni tra unità interne e quelle esterne?",
-                        "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti."
+                        "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti.",
+                        "popoverIcon": "info",
+                        "popoverConfig": "ductworkInfo"
                     }
                 },
                 {
@@ -648,7 +650,8 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Il suo investimento il suo futuro",
-                        "description": "Ogni scelta fatta oggi si traduce in un risparmio concreto e in un futuro più sostenibile. Fai scoprire al cliente come i prodotti che ha scelto migliorano la sua vita quotidiana e offrono un ritorno economico che cresce nel tempo."
+                        "description": "Ogni scelta fatta oggi si traduce in un risparmio concreto e in un futuro più sostenibile. Fai scoprire al cliente come i prodotti che ha scelto migliorano la sua vita quotidiana e offrono un ritorno economico che cresce nel tempo.",
+                        "className": "mb-6 mt-12"
                     }
                 },
                 {

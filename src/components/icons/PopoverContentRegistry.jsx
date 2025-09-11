@@ -54,14 +54,17 @@ export const popoverContentRegistry = {
     ductworkInfo: {
         icon: "info",
         popoverPosition: "top",
-        popoverClassName: "max-w-[300px]",
+        popoverClassName: "max-w-[350px]",
         popoverContent: (
             <div>
                 <h4 className="text-black font-semibold mb-2 font-enel-bold">
-                    Come si sceglie la tipologia di installazione?
+                    Informazioni sulle distanze dell’impianto
                 </h4>
-                <p className="text-grey-light text-sm">
-                    Seleziona la lunghezza delle canalizzazioni necessarie per il collegamento tra le unità.
+                <p className="text-sm mb-6">
+                    Dualpslit: ogni unità interna (split) deve essere installata a una distanza massima di 17 metri dall’unità esterna (motore)
+                </p>
+                <p className="text-sm mb-2">
+                    Trialsplit: ogni unità interna (split) deve essere installata a una distanza massima di 22 metri dall’unità esterna (motore)
                 </p>
             </div>
         )

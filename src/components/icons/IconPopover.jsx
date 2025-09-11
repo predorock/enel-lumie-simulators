@@ -133,6 +133,9 @@ export default function IconPopover({
 
                     {/* Content */}
                     <div className="text-sm font-enel">
+                        <div className='absolute top-4 right-4 cursor-pointer' onClick={() => setIsPopoverOpen(false)}>
+                            <IconRenderer icon="cross" />
+                        </div>
                         {typeof popoverContent === 'string' ? (
                             <p className="text-black leading-relaxed">{popoverContent}</p>
                         ) : (

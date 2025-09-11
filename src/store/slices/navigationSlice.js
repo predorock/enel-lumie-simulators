@@ -397,6 +397,19 @@ function dynamicPageTemplate(
                 }
             },
             {
+                "type": "Divider",
+                "props": {
+                    "className": "py-6"
+                }
+            },
+            // {
+            //     "type": "DescriptionBox",
+            //     "props": {
+            //         "title": `Per climatizzare la sua casa, proponiamo al cliente:`,
+            //         titleSize: "lg",
+            //     }
+            // },
+            {
                 "type": "AcProductDisplayContainer",
                 "props": {
                     "showLoadingStates": true,

@@ -15,17 +15,17 @@ const defaultBrands = [
     alt: 'Comfee Brand'
   },
   {
+    id: 'lg',
+    name: 'LG',
+    logo: lgLogo,
+    alt: 'LG Brand'
+  },
+  {
     id: 'daikin',
     name: 'Daikin',
     logo: daikinLogo,
     alt: 'Daikin Brand'
   },
-  {
-    id: 'lg',
-    name: 'LG',
-    logo: lgLogo,
-    alt: 'LG Brand'
-  }
 ];
 
 const StatefulBrandSelector = ({
