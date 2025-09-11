@@ -93,6 +93,7 @@ const transformProduct = (apiProduct) => ({
   checkboxLabel: "Scegli questa soluzione",
   detailsLink: "Visualizza la scheda dettagli del prodotto",
   category: apiProduct.Category,
+  alwaysOn: apiProduct.Features['AlwaysOn'] === true,
   ...recommendationProps(apiProduct)
 });
 
@@ -127,6 +128,7 @@ export const createProductsSlice = (set, get) => ({
       set((state) => ({
         products: {
           ...state.products,
+          rawProducts,
           items,
           loading: false,
           error: null
@@ -208,6 +210,13 @@ export const createProductsSlice = (set, get) => ({
     getFilter: () => {
       const { filterBy } = get().products;
       return filterBy;
+    },
+
+    getRawProducts: (names) => {
+      const { rawProducts } = get().products;
+      const nameFilter = [].concat(names || []);
+      if (!Array.isArray(rawProducts)) return [];
+      return rawProducts.filter(product => nameFilter.includes(product.Name));
     }
 
   }
