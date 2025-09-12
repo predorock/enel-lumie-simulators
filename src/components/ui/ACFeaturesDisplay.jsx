@@ -1,4 +1,5 @@
 
+import cn from 'classnames';
 import { useState } from 'react';
 import GlobeIcon from '../icons/GlobeIcon';
 import IconRenderer from '../icons/IconRenderer';
@@ -58,7 +59,7 @@ const ACFeaturesDisplay = ({
   const [displayFeatures, setDisplayFeatures] = useState(showFeatures);
 
   return (
-    <div className={`bg-white rounded-xl shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] p-4 ${className}`}>
+    <div className={cn(`bg-white rounded-xl p-4 ${className}`, { 'blue-shadow': isSelected, 'shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)]': !isSelected })}>
       <div className="basis-0 flex flex-col gap-2 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
 
         {/* Product Image with Badge */}

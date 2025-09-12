@@ -97,3 +97,7 @@
 .grey-box {
   @apply bg-white-light box-border rounded-3xl size-full
 }
+
+.blue-shadow {
+  box-shadow: 0 0 16px 4px rgba(0, 71, 204, 0.48);
+}
