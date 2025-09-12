@@ -573,7 +573,8 @@
                     "type": "LoadingSpinner",
                     "props": {
                         "text": "Attendi ancora qualche secondo",
-                        "size": "medium"
+                        "size": "medium",
+                        "centered": true
                     },
                     "renderConditions": {
                         "isDefined": "report.data.loading"
@@ -753,7 +754,8 @@
                     "type": "LoadingSpinner",
                     "props": {
                         "text": "Attendi ancora qualche secondo",
-                        "size": "medium"
+                        "size": "medium",
+                        "centered": true
                     },
                     "renderConditions": {
                         "isDefined": "lead.isLoading"
