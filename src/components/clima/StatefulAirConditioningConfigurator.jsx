@@ -74,7 +74,7 @@ const StatefulAirConditioningConfigurator = ({
       ...configurations,
       [entryKey]: {
         ...configurations[entryKey],
-        roomSize,
+        roomSize: value,
         hasWarning: hasWarning // Update warning status
       }
     };

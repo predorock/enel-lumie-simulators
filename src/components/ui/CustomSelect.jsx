@@ -34,10 +34,12 @@ const CustomSelect = ({
   }, [value]);
 
   const handleSelect = (optionValue) => {
-    setSelectedValue(optionValue);
+    // If the same value is selected again, deselect it
+    const newValue = selectedValue === optionValue ? '' : optionValue;
+    setSelectedValue(newValue);
     setIsOpen(false);
     if (onChange) {
-      onChange(optionValue);
+      onChange(newValue);
     }
   };
 

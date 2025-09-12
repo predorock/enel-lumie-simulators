@@ -131,7 +131,7 @@ const AsyncSelect = ({
       {/* Select Button */}
       <button
         type="button"
-        className={`font-enel box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-[383px] px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
+        className={`font-enel box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-[383px] px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary-light focus:border-transparent cursor-pointer ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
           } ${isLoading ? 'opacity-75' : ''}`}
 
         onClick={handleDropdownToggle}
@@ -162,7 +162,7 @@ const AsyncSelect = ({
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder={searchPlaceholder}
-                  className="w-full px-2 py-1 text-sm border border-[#c2cddd] rounded focus:outline-none focus:ring-1 focus:ring-primary focus:border-transparent"
+                  className="w-full px-2 py-1 text-sm border border-[#c2cddd] rounded focus:outline-none focus:ring-1 focus:ring-primary-light focus:border-transparent"
 
                   onClick={(e) => e.stopPropagation()}
                 />
