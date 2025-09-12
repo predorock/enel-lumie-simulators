@@ -80,6 +80,7 @@ const transformProduct = (apiProduct) => ({
   hash: btoa(`${apiProduct.Name}`.toLowerCase().replace(/\s+/g, '-')),
   numSplit: apiProduct.NumSplit,
   type: getSplitType(apiProduct),
+  capacity: apiProduct.m2 || 0,
   productName: apiProduct.Name,
   productBrand: apiProduct.Brand,
   productImage: apiProduct.Image,

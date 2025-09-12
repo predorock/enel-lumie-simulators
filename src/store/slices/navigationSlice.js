@@ -415,7 +415,7 @@ function dynamicPageTemplate(
                     "showLoadingStates": true,
                     "maxProducts": 100,
                     "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
-                    "className": "mb-8",
+                    "className": "",
                     /**
                      * This configuration is done to add the selected product inside the config
                      * ex:
@@ -438,7 +438,35 @@ function dynamicPageTemplate(
                         },
                      */
                     "configKey": `${acConfig.configKey}`,
-                    "stateProperty": "airConditioningConfigs"
+                    "stateProperty": "airConditioningConfigs",
+                    "alwaysOn": true,
+                }
+            },
+            {
+                "type": "Divider",
+                "props": {
+                    "className": "my-12"
+                }
+            },
+            {
+                "type": "DescriptionBox",
+                "props": {
+                    "title": "Il prodotto consigliato non soddisfa il cliente?",
+                    "titleSize": "lg",
+                    "description": "Proponi queste soluzioni alternative del prodotto",
+                }
+            },
+            {
+                "type": "AcProductDisplayContainer",
+                "props": {
+                    "showLoadingStates": true,
+                    "maxProducts": 100,
+                    "gridClassName": "grid grid-cols-1 md:grid-cols-2 gap-6",
+                    "className": "mb-8",
+                    "showFeatures": false,
+                    "configKey": `${acConfig.configKey}`,
+                    "stateProperty": "airConditioningConfigs",
+                    "alwaysOn": false,
                 }
             },
             {

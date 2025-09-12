@@ -1,8 +1,9 @@
 
+import { useState } from 'react';
 import GlobeIcon from '../icons/GlobeIcon';
+import IconRenderer from '../icons/IconRenderer';
 import StarIcon from '../icons/StarIcon';
 import Checkbox from './Checkbox';
-
 /**
  * ACFeaturesDisplay component displays air conditioning unit product information and features
  * following the ENEL design system specifications from Figma.
@@ -15,7 +16,6 @@ const ACFeaturesDisplay = ({
   productImage = null,
   productImageAlt = "",
   productUrl = null,
-  productBrand = "",
   // price
   price = "",
   currency = "€",
@@ -34,6 +34,7 @@ const ACFeaturesDisplay = ({
     { key: "Ionizzazione", name: "Ionizzatore", enabled: false },
     { key: "Autodiagnosi", name: "Autodiagnosi (Funzione Smart Diagnosis)", enabled: true }
   ],
+  showFeatures = true,
   // recommendation
   showRecommendationBadge = true,
   recommendationLevel = "full",
@@ -53,6 +54,8 @@ const ACFeaturesDisplay = ({
       window.open(productUrl, '_blank', 'noopener,noreferrer');
     }
   };
+
+  const [displayFeatures, setDisplayFeatures] = useState(showFeatures);
 
   return (
     <div className={`bg-white rounded-xl shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] p-4 ${className}`}>
@@ -90,7 +93,7 @@ const ACFeaturesDisplay = ({
           {showRecommendationBadge && (
             <div className="absolute h-8 left-0 order-1 top-0 w-full">
               <div className="flex flex-row-reverse h-8 items-start justify-end overflow-clip p-0 relative w-full">
-                <div className="basis-0 bg-[#043b9f] flex flex-row gap-2 grow h-full items-center justify-start min-h-px min-w-px order-1 overflow-clip px-2 py-1 relative shadow-[0px_2px_1px_0px_rgba(77,71,0,0.6)] shrink-0">
+                <div className="basis-0 bg-primary flex flex-row gap-2 grow h-full items-center justify-start min-h-px min-w-px order-1 overflow-clip px-2 py-1 relative shadow-[0px_2px_1px_0px_rgba(77,71,0,0.6)] shrink-0">
                   <div className="flex flex-row gap-1 items-start justify-start p-0 relative shrink-0">
                     <div className="flex flex-row gap-2.5 items-start justify-start p-0 relative shrink-0">
                       <div className="relative shrink-0 size-6">
@@ -160,44 +163,49 @@ const ACFeaturesDisplay = ({
           {/* Features Section */}
           <div className="bg-[#f4f8ff] flex flex-col gap-3 items-start justify-start p-[12px] relative rounded-lg shrink-0 w-full">
             <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#272c34] text-[12px] text-left w-full">
-              <p className="block leading-[18px]">Funzionalità del prodotto</p>
+              {displayFeatures && <p className="block leading-[18px]">Funzionalità del prodotto</p>}
+              {!displayFeatures && <div className="flex flex-row justify-between items-center cursor-pointer" onClick={() => setDisplayFeatures(!displayFeatures)}>
+                <p className="font-enel-bold text-md block leading-[18px]">Scopri le informazioni del prodotto</p>
+                <IconRenderer icon="plus" fillClass="slate-300" className="w-6 h-6" />
+              </div>}
+
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-[#cbdaf6] relative shrink-0 w-full"></div>
+            {displayFeatures && <div className="h-px bg-[#cbdaf6] relative shrink-0 w-full"></div>}
 
             {/* Features List */}
-            <div className="flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
-              {features.map((feature, index) => {
-                const isEnabled = typeof feature === 'object' ? feature.enabled : true;
-                const featureName = typeof feature === 'object' ? feature.name : feature;
-                const featureKey = typeof feature === 'object' ? feature.key : `feature-${index}`;
+            {
+              displayFeatures && <div className="flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
+                {features.map((feature, index) => {
+                  const isEnabled = typeof feature === 'object' ? feature.enabled : true;
+                  const featureName = typeof feature === 'object' ? feature.name : feature;
+                  const featureKey = typeof feature === 'object' ? feature.key : `feature-${index}`;
 
-                return (
-                  <div key={featureKey} className="flex flex-row gap-[5px] items-start justify-start p-0 relative shrink-0 w-full">
-                    <div className="relative shrink-0 size-4">
-                      {isEnabled ? (
-                        <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                          <circle cx="8" cy="8" r="8" fill="#0047cc" />
-                          <path d="M6.5 8.5L7.5 9.5L10.5 6.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      ) : (
-                        <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                          <circle cx="8" cy="8" r="8" fill="#667790" />
-                          <path d="M6 6L10 10M10 6L6 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                        </svg>
-                      )}
+                  return (
+                    <div key={featureKey} className="flex flex-row gap-[5px] items-start justify-start p-0 relative shrink-0 w-full">
+                      <div className="relative shrink-0 size-4">
+                        {isEnabled ? (
+                          <div className='size-4 rounded-full bg-primary-light flex items-center justify-center'>
+                            <IconRenderer icon="checkMark" className="w-3 h-3" fillClass="fill-white" />
+                          </div>
+                        ) : (
+                          <div className='size-4 rounded-full bg-slate-300 flex items-center justify-center'>
+                            <IconRenderer icon="cross" className="w-3 h-3" fillClass="fill-white" />
+                          </div>
+                        )}
+                      </div>
+                      <div className={`basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[12px] text-left ${isEnabled
+                        ? 'font-enel-bold'
+                        : 'font-enel line-through'
+                        }`}>
+                        <p className="block leading-[18px]">{featureName}</p>
+                      </div>
                     </div>
-                    <div className={`basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[12px] text-left ${isEnabled
-                      ? 'font-enel-bold'
-                      : 'font-enel line-through'
-                      }`}>
-                      <p className="block leading-[18px]">{featureName}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            }
           </div>
 
           {/* Details Link */}

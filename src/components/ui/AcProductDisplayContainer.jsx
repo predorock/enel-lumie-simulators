@@ -15,6 +15,7 @@ const AcProductDisplayContainer = ({
   gridClassName = "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6",
   onProductSelectionChange = null,
   selectedProducts = [],
+  showFeatures = true,
   ...props
 }) => {
 
@@ -39,6 +40,7 @@ const AcProductDisplayContainer = ({
     showCheckbox: true,
     onCheckboxChange: (selected) => handleProductSelection(product.id, selected),
     isSelected: selectedProducts.includes(product.id),
+    showFeatures
   });
 
   if (showLoadingStates && loading) {

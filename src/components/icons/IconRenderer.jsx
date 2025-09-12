@@ -1,4 +1,4 @@
-import { Cross2Icon, EnvelopeClosedIcon } from '@radix-ui/react-icons';
+import { Cross2Icon, EnvelopeClosedIcon, PlusIcon } from '@radix-ui/react-icons';
 import AirConditioningIcons from './AirConditioningIcons';
 import CheckMarkIcon from './CheckMarkIcon';
 import ChevronRightIcon from './ChevronRightIcon';
@@ -32,7 +32,8 @@ const registry = {
     fire: FireIcon,
     cross: Cross2Icon,
     reader: ReaderIcon,
-    envelope: EnvelopeClosedIcon
+    envelope: EnvelopeClosedIcon,
+    plus: PlusIcon
 }
 
 export default function IconRenderer({ icon, ...props }) {

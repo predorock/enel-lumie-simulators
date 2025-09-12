@@ -10,6 +10,7 @@ const StatefulAcProductDisplayContainer = ({
   configKey = null,
   autoFetch = true,
   maxSelections = 1,
+  alwaysOn = null,
   ...props
 }) => {
 
@@ -21,11 +22,14 @@ const StatefulAcProductDisplayContainer = ({
 
   const splitType = configKey ? configKey.split('_')[0] : null;
 
-  // Get current configurations
+  // Get all ac configurations
   const configurations = formData[stateProperty] || {};
 
+  // Get current configuration
+  const currentConfig = configurations[configKey] || {};
+
   // Get current selected product and store data using proper Zustand selectors
-  const selectedProduct = configurations[configKey]?.selected || null;
+  const selectedProduct = currentConfig?.selected || null;
 
   // Handle product selection changes - now works with single product ID
   const handleProductSelectionChange = (productId, selected) => {
@@ -44,10 +48,49 @@ const StatefulAcProductDisplayContainer = ({
     }
   };
 
+  const monoSplitFilter = (p) => {
+    if (splitType?.toLowerCase() === 'monosplit') {
+      const roomSize = parseInt(currentConfig.roomSize) || 0;
+      if (roomSize <= 0) {
+        return true; // No filtering if room size is not set
+      }
+
+      const limit = (capacity) => {
+        if (roomSize <= 32) {
+          console.log('low');
+          return capacity <= 32;
+        } else if (roomSize >= 33 && roomSize <= 38) {
+          console.log('med');
+          return capacity >= 33 && capacity <= 38;
+        } else {
+          console.log('high');
+          return capacity > 38;
+        }
+      };
+      return limit(p.capacity);
+    }
+    return true;
+  }
+
+  let items = products.getFilteredProducts()
+    // filtro per la tipologia di split
+    .filter(p => p.type.toLowerCase() === splitType?.toLowerCase())
+    // filtro se monosplit per la capacità in base alla metratura
+    .filter(monoSplitFilter);
+
+  if (alwaysOn !== null) {
+    // Filter only alwaysOn products if specified
+    if (alwaysOn) {
+      items = items.filter(p => !!p.alwaysOn);
+    } else {
+      items = items.filter(p => !p.alwaysOn);
+    }
+  }
+
   // Enhanced product display props with state integration
   const enhancedProps = {
     ...props,
-    items: products.getFilteredProducts().filter(p => p.type.toLowerCase() === splitType?.toLowerCase()),
+    items,
     loading,
     error,
     onProductSelectionChange: handleProductSelectionChange,
