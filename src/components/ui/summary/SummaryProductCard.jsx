@@ -22,7 +22,7 @@ const SummaryProductCard = ({
                             <img
                                 src={product?.productImage}
                                 alt={product?.productImageAlt}
-                                className="h-9 w-auto max-w-[80px] object-contain mix-blend-multiply"
+                                className="h-auto w-auto object-contain mix-blend-multiply"
                             />
                         ) : (
                             <div className="h-9 w-[80px] bg-gray-300 rounded flex items-center justify-center">

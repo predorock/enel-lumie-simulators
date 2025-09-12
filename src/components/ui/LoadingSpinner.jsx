@@ -67,7 +67,7 @@ const LoadingSpinner = ({
 
     // Conditional centering classes
     const containerClasses = centered
-        ? `${baseClasses} justify-center min-h-screen w-full fixed inset-0 bg-white z-50`
+        ? `${baseClasses} justify-center min-h-150 w-full fixed inset-0 bg-white z-50`
         : `${baseClasses} justify-start w-full`;
 
     return (

@@ -1,3 +1,4 @@
+
 import cn from 'classnames';
 import useAppStore from '../../store/useAppStore';
 import IconRenderer from '../icons/IconRenderer';
@@ -177,7 +178,7 @@ export default function NavigationBar({
       action: onNext || nextStep,
       show: showNext,
       disabled: !canGoNext,
-      className: 'px-10'
+      className: 'px-24'
     }
   );
 

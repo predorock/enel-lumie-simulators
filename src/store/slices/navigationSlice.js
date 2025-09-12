@@ -336,6 +336,7 @@ function dynamicPageTemplate(
         title: "Scegliete insieme il climatizzatore adatto!",
         step: 3,
         isDynamic: true,
+        autoScrollToTop: true,
         validationRules: {
             required: [
                 `formData.airConditioningConfigs.${acConfig?.configKey}.selected` // Use configKey to access the correct configuration

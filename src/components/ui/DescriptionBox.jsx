@@ -18,11 +18,11 @@ export default function DescriptionBox({
     xs: "text-xs leading-4",      // 12px
     sm: "text-sm leading-5",      // 14px
     base: "text-base leading-6",  // 16px
-    lg: "text-lg leading-7",      // 18px
-    xl: "text-xl leading-7",      // 20px
-    "2xl": "text-2xl tracking-[0.4px] leading-[30px]", // 24px (default)
-    "3xl": "text-3xl leading-9",  // 30px
-    "4xl": "text-4xl leading-10"  // 36px
+    lg: "text-lg leading-7 tracking-[0.5px]",      // 18px
+    xl: "text-xl leading-7 tracking-[0.5px]",      // 20px
+    "2xl": "text-2xl tracking-[0.5px] leading-[30px]", // 24px (default)
+    "3xl": "text-3xl leading-9 tracking-[0.5px]",  // 30px
+    "4xl": "text-4xl leading-10 tracking-[0.5px]"  // 36px
   };
 
   const selectedTitleClass = titleSizeClasses[titleSize] || titleSizeClasses["2xl"];
@@ -44,7 +44,7 @@ export default function DescriptionBox({
 
           {/* Title */}
           {title && (
-            <div className={`font-enel-bold font-bold text-black ${selectedTitleClass}`}>
+            <div className={`font-enel-bold text-black ${selectedTitleClass}`}>
               {title}
             </div>
           )}
