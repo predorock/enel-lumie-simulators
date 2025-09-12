@@ -62,16 +62,22 @@ const StatefulAirConditioningConfigurator = ({
     setFormValue(stateProperty, newConfigurations);
   };
 
-  const handleRoomSizeChange = (entryKey, data) => {
+  const handleRoomSizeChange = (entryKey, value) => {
+
+    const unitType = entryKey.split('_')[0];
+    const roomSize = parseInt(value);
+    const limit = ROOM_SIZE_LIMITS[unitType];
+
+    const hasWarning = limit && roomSize > limit;
+
     const newConfigurations = {
       ...configurations,
       [entryKey]: {
         ...configurations[entryKey],
-        roomSize: data.value,
-        hasWarning: data.warning // Update warning status
+        roomSize,
+        hasWarning: hasWarning // Update warning status
       }
     };
-    console.log('warning', data.warning)
     setFormValue(stateProperty, newConfigurations);
   };
 
