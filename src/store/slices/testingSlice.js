@@ -22,7 +22,7 @@ export const createTestingSlice = (set, get) => ({
             const testData = await getTestData(scenarioName);
 
             set({
-                formData: testData.formData || {},
+                formData: { ...state.formData, ...testData.formData },
                 currentStep: testData.currentStep || 1,
                 currentPageId: testData.currentPageId || null,
                 dynamicPages: testData.dynamicPages || [],
