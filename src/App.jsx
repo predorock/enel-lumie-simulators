@@ -7,7 +7,7 @@ function App() {
   // Get current page data from Zustand store
   const { currentStep, currentPageId, getCurrentPage, initializeStore } = useAppStore();
   const currentPage = getCurrentPage();
-
+  //drd
   // Initialize store and validation on app start
   useEffect(() => {
     initializeStore();
