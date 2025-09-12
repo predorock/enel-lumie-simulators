@@ -29,6 +29,7 @@ function App() {
       leftPanelComponents={currentPage?.leftPanelComponents || []}
       navigationOverride={currentPage?.navigationOverride}
       fullPage={currentPage?.fullPage || false}
+      autoScrollToTop={currentPage?.autoScrollToTop || false}
     >
       <PageRenderer pageId={currentPageId} />
     </PageLayout>

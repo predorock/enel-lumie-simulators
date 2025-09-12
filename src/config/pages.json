@@ -609,7 +609,7 @@
             },
             "navigationOverride": {
                 "backButton": {
-                    "label": "Stampa Preventivo",
+                    "label": "Stampa report finale",
                     "icon": "reader",
                     "iconPosition": "right",
                     "variant": "secondary",
@@ -664,7 +664,7 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Racconta al cliente quali sono i potenziali benefici",
-                        "titleSize": "base",
+                        "titleSize": "xl",
                         "description": "Se il cliente decide di confermare questa soluzione potrebbe ottenere i seguenti benefici:"
                     }
                 },

@@ -5,6 +5,8 @@ async function getTestData(scenarioName) {
             return (await import('../../assets/mocks/testDataCanalizzazioni.js')).default;
         case 'loader':
             return (await import('../../assets/mocks/testDataLoader.js')).default;
+        case 'report':
+            return (await import('../../assets/mocks/testDataReport.js')).default;
         default:
             return (await import('../../assets/mocks/testData.js')).default
     }

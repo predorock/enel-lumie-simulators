@@ -4,6 +4,8 @@ import NavigationBar from '../ui/NavigationBar';
 import Stepper from '../ui/stepper/Stepper';
 import LeftPanelRenderer from './LeftPanelRenderer';
 
+import { useEffect, useRef } from 'react';
+
 import cn from 'classnames';
 
 export default function PageLayout({
@@ -20,8 +22,21 @@ export default function PageLayout({
   backLabel,
   nextLabel,
   className = "",
-  fullPage = false
+  fullPage = false,
+  autoScrollToTop = false,
 }) {
+
+  const containerRef = useRef(null);
+
+  // Scroll to top when autoScrollToTop is enabled and content changes
+  useEffect(() => {
+    if (autoScrollToTop && containerRef.current) {
+      containerRef.current.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      });
+    }
+  }, [autoScrollToTop, children, currentStep]); // Watch for content and step changes
 
   return (
     <main>
@@ -63,7 +78,7 @@ export default function PageLayout({
         {!fullPage &&
           <div className="col-span-4 flex flex-col h-screen">
             {/* Main Content - Scrollable */}
-            <div className={`flex-1 p-12 overflow-y-auto ${className}`}>
+            <div className={`flex-1 p-12 overflow-y-auto ${className}`} ref={containerRef}>
               {children}
             </div>
 

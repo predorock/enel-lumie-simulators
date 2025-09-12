@@ -57,13 +57,10 @@ const StatefulAcProductDisplayContainer = ({
 
       const limit = (capacity) => {
         if (roomSize <= 32) {
-          console.log('low');
           return capacity <= 32;
         } else if (roomSize >= 33 && roomSize <= 38) {
-          console.log('med');
           return capacity >= 33 && capacity <= 38;
         } else {
-          console.log('high');
           return capacity > 38;
         }
       };

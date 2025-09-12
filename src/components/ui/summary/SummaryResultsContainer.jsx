@@ -54,6 +54,7 @@ export default function SummaryResultsContainer({
                         </p>
                         <div className='text-right'>
                             <PriceDisplay
+                                className={"text-2xl font-enel-bold text-primary-lighter"}
                                 value={pricing?.investmentAmount}
                             />
                         </div>
@@ -63,7 +64,7 @@ export default function SummaryResultsContainer({
                         <p className="text-md font-enel-bold">
                             {pricing?.recoveryLabel}
                         </p>
-                        <div className="text-2xl font-enel-bold text-primary-light text-right">
+                        <div className="text-2xl font-enel-bold text-primary-lighter text-right">
                             {pricing?.recoveryTime} <span className="text-lg font-enel">anni</span>
                         </div>
                     </div>
