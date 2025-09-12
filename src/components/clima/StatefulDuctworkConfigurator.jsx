@@ -19,11 +19,15 @@ const StatefulDuctworkConfigurator = ({
     return store.getUnitTotal('ductwork', splitType);
   };
 
+  const configTypes = [...new Set(Object.keys(store.formData.airConditioningConfigs || {}).map(k => k.split('_')[0]))];
+
+  const filteredItems = items.filter(item => configTypes.includes(item.key));
+
   return (
     <DuctworkConfigurator
       values={value}
       onChange={handleChange}
-      items={items}
+      items={filteredItems}
       ductworkOptions={ductworkOptions}
       getUnitTotal={getUnitTotal}
       {...props}

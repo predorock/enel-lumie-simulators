@@ -65,7 +65,7 @@ export default function SidebarForm({
 
         if (!formData.nome.trim()) newErrors.nome = 'Nome richiesto';
         if (!formData.cognome.trim()) newErrors.cognome = 'Cognome richiesto';
-        if (!formData.telefono.trim()) newErrors.telefono = 'Telefono richiesto';
+        // if (!formData.telefono.trim()) newErrors.telefono = 'Telefono richiesto';
         if (!formData.email.trim()) newErrors.email = 'Email richiesta';
         if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Email non valida';
