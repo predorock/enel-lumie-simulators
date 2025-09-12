@@ -430,7 +430,8 @@
                         "title": "Il cliente ha bisogno di acquistare canalizzazioni tra unità interne e quelle esterne?",
                         "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti.",
                         "popoverIcon": "info",
-                        "popoverConfig": "ductworkInfo"
+                        "popoverConfig": "ductworkInfo",
+                        "className": "w-[80%] mr-12"
                     }
                 },
                 {

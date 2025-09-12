@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import IconPopover from '../icons/IconPopover';
 import DescriptionBox from './DescriptionBox';
 import Divider from './Divider';
@@ -10,10 +11,10 @@ export default function DescriptionBoxTooltip({
   ...props
 }) {
 
-  const { popoverIcon: pIcon, popoverConfig: pConfig, ...boxProps } = props;
+  const { className, popoverIcon: pIcon, popoverConfig: pConfig, ...boxProps } = props;
 
   return (
-    <div className="flex flex-row">
+    <div className={cn("flex flex-row", className)}>
       <DescriptionBox {...boxProps} />
       <Divider orientation="vertical" className='px-4' />
       <div className='flex flex-row justify-center'>

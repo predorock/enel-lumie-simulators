@@ -14,7 +14,7 @@ function App() {
   }, []); // Empty dependency array - only run once
 
   // Demo mode - only available in development
-  //drd
+
   if (import.meta.env.DEV && window.location.search.includes('demo=')) {
     return import('./components/demo/DemoWrapper');
   }

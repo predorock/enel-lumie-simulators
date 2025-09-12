@@ -178,7 +178,7 @@ const AutocompleteInput = ({
                 value={searchTerm}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                className={`font-enel box-border w-full h-10 px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${hasValue || inputRef.current === document.activeElement ? 'pt-4 pb-1' : 'py-2'
+                className={`font-enel box-border w-full h-10 px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary-light focus:border-transparent ${hasValue || inputRef.current === document.activeElement ? 'pt-4 pb-1' : 'py-2'
                     }`}
                 placeholder=""
             />
@@ -186,7 +186,7 @@ const AutocompleteInput = ({
             {/* Minimum characters hint */}
             {showMinCharsHint && (
                 <div className="absolute top-full left-0 right-0 z-10 mt-1">
-                    <div className="bg-white border border-grey-light rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] p-3">
+                    <div className="bg-white rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] p-3">
                         <div className="text-xs text-grey-light text-center">
                             Digita almeno {minSearchChars} caratteri
                         </div>
@@ -199,7 +199,7 @@ const AutocompleteInput = ({
                 <div className="absolute top-full left-0 right-0 z-10 mt-1">
                     <div
                         ref={dropdownRef}
-                        className="bg-white box-border border border-grey-light rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] py-1 w-full transition-all duration-200"
+                        className="bg-white box-border rounded shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] py-1 w-full transition-all duration-200"
                         style={{ maxHeight }}
                     >
                         <div className="overflow-y-auto" style={{ maxHeight }}>
