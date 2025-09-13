@@ -1,19 +1,12 @@
 import cn from 'classnames';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 import IconPopover from '../icons/IconPopover';
+import IconRenderer from '../icons/IconRenderer';
 import { getPopoverConfig } from '../icons/PopoverContentRegistry';
 import CustomSelect from './CustomSelect';
 import DescriptionBox from './DescriptionBox';
 import Divider from './Divider';
 import TextInput from './TextInput';
-
-// Warning icon for room size alerts
-const WarningIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="9" fill="#e67300" />
-    <path d="M12 8v4m0 4h.01" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 // Warning message component based on Figma design
 const RoomSizeWarning = () => (
@@ -22,7 +15,7 @@ const RoomSizeWarning = () => (
       <div className="basis-0 box-border content-stretch flex flex-row gap-4 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
         <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
           <div className="relative shrink-0 size-6">
-            <WarningIcon />
+            <IconRenderer icon="warning" className="w-6 h-6" fillClass="fill-warning" />
           </div>
         </div>
         <div className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-center min-h-px min-w-px p-0 relative shrink-0">
