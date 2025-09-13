@@ -14,6 +14,9 @@ import ReaderIcon from './ReaderIcon';
 import RoomIcon from './RoomIcon';
 import SavingsIcon from './SavingsIcon';
 import StarIcon from './StarIcon';
+import WarningIcon from './WarningIcon';
+
+// Registry mapping icon names to components
 
 const registry = {
     star: StarIcon,
@@ -33,7 +36,8 @@ const registry = {
     cross: Cross2Icon,
     reader: ReaderIcon,
     envelope: EnvelopeClosedIcon,
-    plus: PlusIcon
+    plus: PlusIcon,
+    warning: WarningIcon
 }
 
 export default function IconRenderer({ icon, ...props }) {
