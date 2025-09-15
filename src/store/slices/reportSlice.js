@@ -309,7 +309,8 @@ export const createReportSlice = (set, get) => ({
                 Configurations: summary.expenses.map((item) => ({
                     Name: item.description,
                     Price: item.price
-                }))
+                })),
+                Financing: state.report.getFinancingPlans()
             };
 
             return payload;
@@ -338,9 +339,6 @@ export const createReportSlice = (set, get) => ({
 
                 // Store the response data
                 state.report.setReportData(data);
-
-                // Generating financing options
-                state.report.generateFinancialPlan();
 
                 // Auto-advance to next step after successful submission
                 const nextStepResult = state.nextStep();
@@ -371,15 +369,7 @@ export const createReportSlice = (set, get) => ({
             }
         },
 
-        // FINANCING DATA ---
-        /**
-         * 
-         */
-        financing: {
-            plans: []
-        },
-
-        generateFinancialPlan: () => {
+        getFinancingPlans: () => {
             const state = get();
             const isEnelCustomer = state.formData.isEnelCustomer || false;
             const grandTotal = state.getGrandTotal() || 0;
@@ -411,29 +401,8 @@ export const createReportSlice = (set, get) => ({
                 };
             });
 
-            set((state) => ({
-                ...state,
-                report: {
-                    ...state.report,
-                    financing: {
-                        ...state.report.financing,
-                        plans: plans
-                    }
-                }
-            }));
+            return plans;
 
-        },
-
-        // Get financing plans
-        getFinancingPlans: () => {
-            const state = get();
-            return state.report.financing.plans;
-        },
-
-        // Get financing disclaimer
-        getFinancingDisclaimer: () => {
-            const state = get();
-            return state.report.financing.disclaimer;
         }
     }
 });
