@@ -28,7 +28,7 @@ const StatefulAcProductDisplayContainer = ({
   // Get current configuration
   const currentConfig = configurations[configKey] || {};
 
-  // Get current selected product and store data using proper Zustand selectors
+  // Get current selected product and store data using proper selectors
   const selectedProduct = currentConfig?.selected || null;
 
   // Handle product selection changes - now works with single product ID

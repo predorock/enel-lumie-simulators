@@ -44,7 +44,6 @@ export const createTestingSlice = (set, get) => ({
                 await _state.products.loadProductsByCity(_state.formData.storeCity || _state.formData.selectedCity || '');
 
                 if (_state.calculatePricing) _state.calculatePricing();
-                state.report.generateFinancialPlan();
 
                 //_state.report.setReportData(testData.report.data.result || {});
             }, 0);

@@ -1,0 +1,100 @@
+{
+    "Comune": "Milano",
+    "Numero_Macchine": 2,
+    "Clima1": "Daikin Clima Siesta Super Plus 9000",
+    "Clima2": "Daikin Clima Siesta Trial Classic - 9000+9000+12000",
+    "Clima3": "",
+    "Numero_Predisposizioni_Mono": 1,
+    "Numero_Predisposizioni_Dual": 0,
+    "Numero_Predisposizioni_Trial": 1,
+    "Numero_Predisposizioni_Canalizzazione": 0,
+    "Numero_Smontaggi_Mono": 0,
+    "Numero_Smontaggi_Dual": 0,
+    "Numero_Smontaggi_Trial": 0,
+    "Stanza1_mq": "12",
+    "Stanza2_mq": "100",
+    "Stanza3_mq": 0,
+    "Warning": "Una delle tue stanze misura 100mq e la taglia trialsplit selezionata non riuscirà a climatizzarla interamente.",
+    "Products": [
+        {
+            "Name": "Daikin Clima Siesta Super Plus 9000",
+            "Brand": "Daikin",
+            "Price": 1511.76,
+            "Image": "https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-9000-btu.webp",
+            "Url": "https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-9000-btu",
+            "NumSplit": 1,
+            "Category": "Premium",
+            "Qty": 0,
+            "m2": 32,
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": false,
+                "Ionizzazione": false,
+                "Autodiagnosi": true,
+                "AlwaysOn": true
+            }
+        },
+        {
+            "Name": "Daikin Clima Siesta Trial Classic - 9000+9000+12000",
+            "Brand": "Daikin",
+            "Price": 3671.76,
+            "Image": "https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-trial-9000-9000-12000-btu.webp",
+            "Url": "https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-trial-9000-12000-btu",
+            "NumSplit": 3,
+            "Category": "Premium",
+            "Qty": 0,
+            "m2": 57,
+            "Features": {
+                "Led": true,
+                "Wifi": false,
+                "Voice": false,
+                "RispEn": true,
+                "ProgGiorn": true,
+                "ProgSett": false,
+                "Sleep": true,
+                "Turbo": true,
+                "Muffa": false,
+                "Ionizzazione": false,
+                "Autodiagnosi": true,
+                "AlwaysOn": true
+            }
+        }
+    ],
+    "Configurations": [
+        {
+            "Name": "Nuova installazione senza predisposizione x1",
+            "Price": 290
+        }
+    ],
+    "Financing": [
+        {
+            "id": "6months",
+            "name": "Finanziamento a 6 mesi*",
+            "duration": 6,
+            "monthlyRate": 930.8613228438059,
+            "currency": "€",
+            "frequency": "/mese",
+            "tan": 6.75,
+            "taeg": 6.96,
+            "totalToRepay": 5585.167937062835
+        },
+        {
+            "id": "120months",
+            "name": "Finanziamento a 120 mesi*",
+            "duration": 120,
+            "monthlyRate": 63.43942643335097,
+            "currency": "€",
+            "frequency": "/mese",
+            "tan": 6.75,
+            "taeg": 6.96,
+            "totalToRepay": 7612.731172002116
+        }
+    ]
+}

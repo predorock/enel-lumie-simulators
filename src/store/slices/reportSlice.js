@@ -59,14 +59,17 @@ const calculateMonthlyRate = (principal, annualTaeg, months) => {
     return monthlyRate;
 };
 
-const getWarningMessage = (configurations) => {
+const getWarningMessages = (configurations) => {
     const warnings = [];
     configurations.forEach((config, index) => {
         if (config.hasWarning) {
-            warnings.push(`Una delle tue stanze misura ${config.roomSize}mq e la taglia ${config.splitType} selezionata non riuscirà a climatizzarla interamente.`);
+            warnings.push({
+                Title: "Hai scelto una taglia di climatizzatore troppo piccolo per una stanza da climatizzare!",
+                Message: `Una delle tue stanze misura ${config.roomSize}mq e la taglia ${config.splitType} selezionata non riuscirà a climatizzarla interamente.`
+            });
         }
     });
-    return warnings.join("\n");
+    return warnings
 }
 
 export const createReportSlice = (set, get) => ({
@@ -273,12 +276,6 @@ export const createReportSlice = (set, get) => ({
                 (quantities.dualsplit || 0) +
                 (quantities.trialsplit || 0);
 
-
-            // Get removal quantities (default to 0 if not present)
-            const removalQuantities = formData.removalQuantities || {};
-
-            const ductworkQuantities = formData.ductworkQuantities || {};
-
             // Build the payload according to API specification
 
             const summary = state.report.getSummary();
@@ -286,21 +283,7 @@ export const createReportSlice = (set, get) => ({
             const payload = {
                 Comune: comune,
                 Numero_Macchine: numeroMacchine,
-                Clima1: expandedConfigs[0]?.productName || '',
-                Clima2: expandedConfigs[1]?.productName || '',
-                Clima3: expandedConfigs[2]?.productName || '',
-                Numero_Predisposizioni_Mono: quantities.monosplit || 0,
-                Numero_Predisposizioni_Dual: quantities.dualsplit || 0,
-                Numero_Predisposizioni_Trial: quantities.trialsplit || 0,
-                Numero_Predisposizioni_Canalizzazione: Object.values(ductworkQuantities).reduce((acc, val) => acc + val, 0),
-                Numero_Smontaggi_Mono: removalQuantities.monosplit || 0,
-                Numero_Smontaggi_Dual: removalQuantities.dualsplit || 0,
-                Numero_Smontaggi_Trial: removalQuantities.trialsplit || 0,
-                Stanza1_mq: expandedConfigs[0]?.roomSize || 0,
-                Stanza2_mq: expandedConfigs[1]?.roomSize || 0,
-                Stanza3_mq: expandedConfigs[2]?.roomSize || 0,
-                // Nuove API
-                Warning: getWarningMessage(expandedConfigs),
+                Warning: getWarningMessages(expandedConfigs),
                 Products: summary.clima.map((item) => ({
                     ...state.products.getRawProducts(item.product.productName)[0],
                     Name: item.count > 1 ? `${item.count} x ${item.product.productName}` : item.product.productName,
