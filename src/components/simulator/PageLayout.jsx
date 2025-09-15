@@ -9,6 +9,7 @@ import { useEffect, useRef } from 'react';
 import cn from 'classnames';
 
 export default function PageLayout({
+  pageId,
   children,
   currentStep = 0,
   title = "",
@@ -36,7 +37,7 @@ export default function PageLayout({
         top: 0,
       });
     }
-  }, [autoScrollToTop, children, currentStep]); // Watch for content and step changes
+  }, [autoScrollToTop, pageId, currentStep]); // Watch for content and step changes
 
   return (
     <main>

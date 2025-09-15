@@ -21,6 +21,7 @@ function App() {
 
   return (
     <PageLayout
+      pageId={currentPageId}
       currentStep={currentStep}
       title={currentPage?.title}
       showStepper={currentPage?.showStepper}
