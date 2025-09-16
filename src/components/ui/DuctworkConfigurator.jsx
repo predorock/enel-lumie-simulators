@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { AirConditioningIcon } from '../icons/AirConditioningIcons';
+import { priceFormatter } from '../../utils/priceFormatter';
+import IconRenderer from '../icons/IconRenderer';
 import CustomSelect from './CustomSelect';
-
 const DuctworkConfigurator = ({
   items = [],
   values = {},
   onChange,
   ductworkOptions = [],
-  getUnitTotal = () => { },
+  getUnitTotal = () => { console.log('getUnitTotal not provided'); return 0; },
   className = "",
   ...props
 }) => {
@@ -24,13 +24,9 @@ const DuctworkConfigurator = ({
     }
   };
 
-  const getSelectedOption = (itemKey) => {
+  const getSelectedOption = (itemKey, itemType) => {
     const selectedValue = selections[itemKey];
-    return ductworkOptions[itemKey].find(option => option.value === selectedValue);
-  };
-
-  const formatCurrency = (amount) => {
-    return `${amount.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`;
+    return ductworkOptions[itemType].find(option => option.value === selectedValue);
   };
 
   return (
@@ -39,7 +35,7 @@ const DuctworkConfigurator = ({
         const selectedOption = getSelectedOption(item.key, item.type);
         const hasSelection = !!selectedOption;
 
-        const options = ductworkOptions[item.key] || [];
+        const options = ductworkOptions[item.type] || [];
 
         return (
           <div
@@ -51,7 +47,7 @@ const DuctworkConfigurator = ({
               {/* Air conditioning type */}
               <div className="flex flex-row gap-2 h-full items-center w-[130px]">
                 <div className="relative shrink-0 size-6">
-                  <AirConditioningIcon type={item.type} className="w-6 h-6" />
+                  <IconRenderer icon={item.type} className="w-6 h-6" fillClass="fill-black" />
                 </div>
                 <div
                   className="text-[18px] leading-[27px] text-black text-nowrap font-enel"
@@ -63,7 +59,7 @@ const DuctworkConfigurator = ({
               {/* Dropdown using CustomSelect */}
               <div className="w-[280px]">
                 <CustomSelect
-                  value={selections[item.key] || ''}
+                  value={selections[item.type] || ''}
                   onChange={(value) => handleSelectionChange(item.key, value)}
                   options={options.map(option => ({
                     value: option.value,
@@ -81,7 +77,7 @@ const DuctworkConfigurator = ({
               <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4 w-[200px]">
                 <span className="font-enel-bold">Prezzo finale {" "}</span>
                 <span className="font-enel-bold">
-                  {formatCurrency(getUnitTotal(item.key))}
+                  {priceFormatter(getUnitTotal(item.type, item.key))}
                 </span>
               </div>
             )}

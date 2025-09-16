@@ -100,6 +100,128 @@ export const createPricingSlice = (set, get) => ({
     }
   })),
 
+  // Get unit prices for all services and types
+  getUnitPrices: () => {
+    const state = get();
+    return state.pricingState.unitPrices;
+  },
+
+  // Get current total cost
+  getGrandTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.grandTotal;
+  },
+  // Get current products total
+  getProductsTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.productsTotal;
+  },
+  // Get current installation total
+  getInstallationTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.installationTotal;
+  },
+  // Get purchase total
+  getPurchaseTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.purchase.total;
+  },
+
+  // Get removal total
+  getRemovalTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.removal.total;
+  },
+
+  // Get cleaning total
+  getCleaningTotal: () => {
+    const state = get();
+    return state.pricingState.calculations.cleaning.total;
+  },
+
+  getUnitTotal: (type, unit) => {
+    const state = get();
+    if (!type || !unit) return 0;
+    if (type in state.pricingState.calculations) {
+      return state.pricingState.calculations[type][unit] || 0;
+    }
+    console.warn('Unknown type:', type);
+    return 0; // Fallback if type is not recognized
+  },
+
+  // Get products total for a specific configuration
+  getConfigurationProductsTotal: (configType, configIndex) => {
+    const state = get();
+    const stateProperty = `selectedProducts_${configType}_${configIndex}`;
+    const selectedProducts = state.formData[stateProperty] || [];
+    const availableProducts = state.products?.items || [];
+
+    return selectedProducts.reduce((total, productId) => {
+      const product = availableProducts.find(p => p.id === productId);
+      if (product && product.price) {
+        const price = typeof product.price === 'string'
+          ? parseFloat(product.price.replace(/[^\d.,]/g, '').replace(',', '.'))
+          : product.price;
+        return total + (isNaN(price) ? 0 : price);
+      }
+      return total;
+    }, 0);
+  },
+
+  // Get all configuration-specific selected products
+  getAllConfigurationProducts: () => {
+    const state = get();
+    const configProducts = {};
+
+    Object.keys(state.formData)
+      .filter(key => key.startsWith('selectedProducts_'))
+      .forEach(key => {
+        const products = state.formData[key] || [];
+        configProducts[key] = products;
+      });
+
+    return configProducts;
+  },
+
+  // Reset pricing calculations
+  resetPricing: () => {
+    get().setPricingState({
+      calculations: {
+        ...initialCalculations
+      }
+    });
+  },
+
+  resetRemoval: () => {
+    const state = get();
+    state.setFormValue('removalQuantities', {});
+    state.calculatePricing();
+    return state;
+  },
+
+  resetCleaning: () => {
+    const state = get();
+    state.setFormValue('cleaningQuantities', {});
+    state.calculatePricing();
+    return state;
+  },
+
+  checkRemoval: (property, value) => {
+    const state = get();
+    state.setFormValue(property, value);
+    if (!value) {
+      state.resetRemoval();
+    }
+  },
+
+  checkCleaning: (property, value) => {
+    const state = get();
+    state.setFormValue(property, value);
+    if (!value) {
+      state.resetCleaning();
+    }
+  },
+
   // Calculate total cost based on quantities
   calculatePricing: () => {
     const state = get();
@@ -209,126 +331,5 @@ export const createPricingSlice = (set, get) => ({
     });
 
     return installationTotal;
-  },
-  // Get current total cost
-  getGrandTotal: () => {
-    const state = get();
-    return state.pricingState.calculations.grandTotal;
-  },
-  // Get current products total
-  getProductsTotal: () => {
-    const state = get();
-    return state.pricingState.calculations.productsTotal;
-  },
-  // Get current installation total
-  getInstallationTotal: () => {
-    const state = get();
-    return state.pricingState.calculations.installationTotal;
-  },
-  // Get purchase total
-  getPurchaseTotal: () => {
-    const state = get();
-    return state.pricingState.calculations.purchase.total;
-  },
-
-  // Get removal total
-  getRemovalTotal: () => {
-    const state = get();
-    return state.pricingState.calculations.removal.total;
-  },
-
-  // Get cleaning total
-  getCleaningTotal: () => {
-    const state = get();
-    return state.pricingState.calculations.cleaning.total;
-  },
-
-  // Get unit prices for all services and types
-  getUnitPrices: () => {
-    const state = get();
-    return state.pricingState.unitPrices;
-  },
-
-  getUnitTotal: (type, unit) => {
-    const state = get();
-    if (!type || !unit) return 0;
-    if (type in state.pricingState.calculations) {
-      return state.pricingState.calculations[type][unit] || 0;
-    }
-    console.warn('Unknown type:', type);
-    return 0; // Fallback if type is not recognized
-  },
-
-  // Get products total for a specific configuration
-  getConfigurationProductsTotal: (configType, configIndex) => {
-    const state = get();
-    const stateProperty = `selectedProducts_${configType}_${configIndex}`;
-    const selectedProducts = state.formData[stateProperty] || [];
-    const availableProducts = state.products?.items || [];
-
-    return selectedProducts.reduce((total, productId) => {
-      const product = availableProducts.find(p => p.id === productId);
-      if (product && product.price) {
-        const price = typeof product.price === 'string'
-          ? parseFloat(product.price.replace(/[^\d.,]/g, '').replace(',', '.'))
-          : product.price;
-        return total + (isNaN(price) ? 0 : price);
-      }
-      return total;
-    }, 0);
-  },
-
-  // Get all configuration-specific selected products
-  getAllConfigurationProducts: () => {
-    const state = get();
-    const configProducts = {};
-
-    Object.keys(state.formData)
-      .filter(key => key.startsWith('selectedProducts_'))
-      .forEach(key => {
-        const products = state.formData[key] || [];
-        configProducts[key] = products;
-      });
-
-    return configProducts;
-  },
-
-  // Reset pricing calculations
-  resetPricing: () => {
-    get().setPricingState({
-      calculations: {
-        ...initialCalculations
-      }
-    });
-  },
-
-  resetRemoval: () => {
-    const state = get();
-    state.setFormValue('removalQuantities', {});
-    state.calculatePricing();
-    return state;
-  },
-
-  resetCleaning: () => {
-    const state = get();
-    state.setFormValue('cleaningQuantities', {});
-    state.calculatePricing();
-    return state;
-  },
-
-  checkRemoval: (property, value) => {
-    const state = get();
-    state.setFormValue(property, value);
-    if (!value) {
-      state.resetRemoval();
-    }
-  },
-
-  checkCleaning: (property, value) => {
-    const state = get();
-    state.setFormValue(property, value);
-    if (!value) {
-      state.resetCleaning();
-    }
-  },
+  }
 });

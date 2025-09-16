@@ -431,29 +431,13 @@
                         "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti.",
                         "popoverIcon": "info",
                         "popoverConfig": "ductworkInfo",
-                        "className": "w-[80%] mr-12"
+                        "className": "w-[80%] mr-12 mb-12"
                     }
                 },
                 {
                     "type": "DuctworkConfigurator",
                     "props": {
-                        "items": [
-                            {
-                                "key": "monosplit",
-                                "label": "Monosplit",
-                                "type": "mono"
-                            },
-                            {
-                                "key": "dualsplit",
-                                "label": "Dualsplit",
-                                "type": "dual"
-                            },
-                            {
-                                "key": "trialsplit",
-                                "label": "Trialsplit",
-                                "type": "trial"
-                            }
-                        ],
+                        "items": [],
                         "ductworkOptions": {
                             "monosplit": [
                                 {
