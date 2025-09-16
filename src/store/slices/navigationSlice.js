@@ -231,11 +231,12 @@ export const createNavigationSlice = (set, get) => ({
         return result;
     },
 
+    getDynamicPages: () => get().dynamicPages,
+
     // Dynamic page management
     generateSplitPages: () => {
         const state = get();
         // get configuration and qty from state
-        const quantities = state.formData?.airconditioningQuantities || {};
         const configs = state.formData?.airConditioningConfigs || {};
         // build informations to loop
         const configsLoop = Object.keys(configs).reduce((acc, k) => {
@@ -257,7 +258,11 @@ export const createNavigationSlice = (set, get) => ({
             config
         ))
 
+        console.log(`🆕 Generated ${dynamicPages.length} dynamic pages based on AC configurations`, dynamicPages);
+
         set({ dynamicPages });
+
+        console.log('📄 Total dynamic pages: ', get().getDynamicPages().length);
     },
 
     // Step-related helpers
