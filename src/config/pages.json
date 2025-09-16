@@ -105,7 +105,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-w-[280px] mt-8",
+                        "className": "z-10 relative w-auto h-auto p-12 mt-8",
                         "containerClassName": "flex justify-center items-center flex-1"
                     }
                 },
@@ -244,7 +244,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-w-[280px] mt-8",
+                        "className": "z-10 relative w-auto h-auto p-12 mt-8",
                         "containerClassName": "flex justify-center items-center flex-1"
                     }
                 },
