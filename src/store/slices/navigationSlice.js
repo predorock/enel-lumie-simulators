@@ -348,7 +348,7 @@ function dynamicPageTemplate(
             ]
         },
         navigationHooks: {
-            beforeNext: "",
+            beforeNext: "products.resetAllFilters",
             afterNext: splitIndex === splitTotal - 1 ? "report.submitSimulation" : "",
             beforePrevious: "",
             afterPrevious: ""
@@ -445,7 +445,7 @@ function dynamicPageTemplate(
                      */
                     "configKey": `${acConfig.configKey}`,
                     "stateProperty": "airConditioningConfigs",
-                    "alwaysOn": true,
+                    "filters": ["type", "brand", "category", "isAlwaysOn"],
                 }
             },
             {
@@ -472,7 +472,7 @@ function dynamicPageTemplate(
                     "showFeatures": false,
                     "configKey": `${acConfig.configKey}`,
                     "stateProperty": "airConditioningConfigs",
-                    "alwaysOn": false,
+                    "filters": ["type", "isNotAlwaysOn"],
                 }
             },
             {

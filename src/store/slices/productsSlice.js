@@ -118,7 +118,6 @@ export const createProductsSlice = (set, get) => ({
     loading: false,
     error: null,
     selectedCity: null,
-    filterBy: null,
 
     setProducts: (rawProducts) => {
       // Transform API response to match our product structure
@@ -135,6 +134,33 @@ export const createProductsSlice = (set, get) => ({
           error: null
         }
       }));
+    },
+
+    getProducts: () => {
+      return get().products.items || [];
+    },
+
+    isLoading: () => {
+      return get().products.loading;
+    },
+
+    getError: () => {
+      return get().products.error;
+    },
+
+    getSelectedCity: () => {
+      return get().products.selectedCity;
+    },
+
+    getRawProducts: () => {
+      return get().products.rawProducts || [];
+    },
+
+    getRawProductsByName: (names) => {
+      const { rawProducts } = get().products;
+      const nameFilter = [].concat(names || []);
+      if (!Array.isArray(rawProducts)) return [];
+      return rawProducts.filter(product => nameFilter.includes(product.Name));
     },
 
     // Load products by city from external API
@@ -190,36 +216,106 @@ export const createProductsSlice = (set, get) => ({
       });
     },
 
-    setFilter: (prop, value) => {
+    // FILTERS
+
+    filters: {
+      monosplit: (product, roomSize) => {
+        if (product.type.toLowerCase() === 'monosplit') {
+          const rSize = typeof roomSize === 'number' ? roomSize : parseInt(roomSize);
+
+          if (rSize <= 0) {
+            return true; // No filtering if room size is not set
+          }
+
+          const limit = (capacity) => {
+            if (rSize < 27) {
+              return capacity < 27;
+            } else if (rSize >= 27 && rSize <= 35) {
+              return capacity >= 27 && capacity <= 35;
+            } else {
+              return capacity > 35;
+            }
+          };
+          return limit(product.capacity);
+        }
+        return true;
+      },
+      brand: (product, brand) => {
+        if (!brand) return true;
+        return product.productBrand.toLowerCase() === brand.toLowerCase();
+      },
+      category: (product, category) => {
+        if (!category) return true;
+        return product.category.toLowerCase() === category.toLowerCase();
+      },
+      type: (product, type) => {
+        if (!type) return true;
+        return product.type.toLowerCase() === type.toLowerCase();
+      },
+      isAlwaysOn: (product) => {
+        return product.alwaysOn === true;
+      },
+      isNotAlwaysOn: (product) => {
+        return product.alwaysOn === false;
+      },
+      exclusive: ['brand', 'category']
+    },
+    filterValues: {},
+
+    setFilterValue: (filterName, value) => {
+      const state = get();
+      if (!filterName) return;
+      const exclusive = state.products.filters.exclusive || [];
+      const newFilterValues = {
+        ...state.products.filterValues,
+      }
+      if (exclusive?.includes(filterName)) {
+        // Exclusive filter - reset other exclusive filters
+        exclusive.forEach((fname) => {
+          if (fname !== filterName) {
+            delete newFilterValues[fname];
+          }
+        });
+      }
+
       set((state) => ({
         products: {
           ...state.products,
-          filterBy: { prop, value }
+          filterValues: {
+            ...newFilterValues,
+            [filterName]: value
+          }
         }
       }));
     },
 
-    resetFilter: () => {
+    getFilterValue: (filterName) => {
+      const { filterValues } = get().products;
+      return filterValues[filterName] || null;
+    },
+
+    deleteFilterValue: (filterName) => {
+      set((state) => {
+        const newFilterValues = { ...state.products.filterValues };
+        delete newFilterValues[filterName];
+        return {
+          products: {
+            ...state.products,
+            filterValues: newFilterValues
+          }
+        };
+      });
+    },
+
+    resetAllFilters: () => {
       set((state) => ({
         products: {
           ...state.products,
-          filterBy: null
+          filterBy: null,
+          filterValues: {}
         }
       }));
-    },
-
-    getFilter: () => {
-      const { filterBy } = get().products;
-      return filterBy;
-    },
-
-    getRawProducts: (names) => {
-      const { rawProducts } = get().products;
-      const nameFilter = [].concat(names || []);
-      if (!Array.isArray(rawProducts)) return [];
-      return rawProducts.filter(product => nameFilter.includes(product.Name));
     }
-
   }
 });
 

@@ -10,7 +10,7 @@ const StatefulAcProductDisplayContainer = ({
   configKey = null,
   autoFetch = true,
   maxSelections = 1,
-  alwaysOn = null,
+  filters = [],
   ...props
 }) => {
 
@@ -48,41 +48,44 @@ const StatefulAcProductDisplayContainer = ({
     }
   };
 
-  const monoSplitFilter = (p) => {
-    if (splitType?.toLowerCase() === 'monosplit') {
-      const roomSize = parseInt(currentConfig.roomSize) || 0;
-      if (roomSize <= 0) {
-        return true; // No filtering if room size is not set
-      }
+  let items = products.getProducts();
 
-      const limit = (capacity) => {
-        if (roomSize < 27) {
-          return capacity < 27;
-        } else if (roomSize >= 27 && roomSize <= 35) {
-          return capacity >= 27 && capacity <= 35;
-        } else {
-          return capacity > 35;
+  (filters || []).forEach((filter) => {
+    switch (filter) {
+      case 'type':
+        items = items.filter(p => products.filters.type(p, splitType));
+        break;
+      case 'brand':
+        const brand = products.getFilterValue('brand')
+        if (brand !== null && brand !== undefined && brand !== '') {
+          items = items.filter(p => products.filters.brand(p, brand));
         }
-      };
-      return limit(p.capacity);
+        break;
+      case 'category':
+        const category = products.getFilterValue('category')
+        if (category !== null && category !== undefined && category !== '') {
+          items = items.filter(p => products.filters.category(p, category));
+        }
+        break;
+      case 'monosplit':
+        if (!currentConfig.roomSize) {
+          break;
+        }
+        const roomSize = parseInt(currentConfig.roomSize);
+        console.log('Filtering monosplit with room size:', roomSize);
+        items = items.filter(p => products.filters.monosplit(p, roomSize));
+        break;
+      case 'isAlwaysOn':
+        items = items.filter(p => products.filters.isAlwaysOn(p));
+        break;
+      case 'isNotAlwaysOn':
+        items = items.filter(p => products.filters.isNotAlwaysOn(p));
+        break;
+      default:
+        // No action for unknown filters
+        break;
     }
-    return true;
-  }
-
-  let items = products.getFilteredProducts()
-    // filtro per la tipologia di split
-    .filter(p => p.type.toLowerCase() === splitType?.toLowerCase())
-    // filtro se monosplit per la capacità in base alla metratura
-    .filter(monoSplitFilter);
-
-  if (alwaysOn !== null) {
-    // Filter only alwaysOn products if specified
-    if (alwaysOn) {
-      items = items.filter(p => !!p.alwaysOn);
-    } else {
-      items = items.filter(p => !p.alwaysOn);
-    }
-  }
+  });
 
   // Enhanced product display props with state integration
   const enhancedProps = {

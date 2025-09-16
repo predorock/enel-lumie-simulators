@@ -27,16 +27,16 @@ const StatefulInvestmentSelector = ({
     ...props
 }) => {
     const { products } = useAppStore();
-    const { setFilter, resetFilter } = products;
+    const { setFilterValue, getFilterValue, deleteFilterValue } = products;
     const properties = {
         ...props,
         options: options,
-        selectedOption: products?.filterBy?.value,
+        selectedOption: getFilterValue('category'),
         onOptionChange: (newValue) => {
             if (newValue) {
-                setFilter('category', newValue);
+                setFilterValue('category', newValue);
             } else {
-                resetFilter();
+                deleteFilterValue('category');
             }
         }
     }
