@@ -11,9 +11,9 @@ const StatefulAirConditioningConfigurator = ({
 
   // Room size limits for each splitter type  
   const ROOM_SIZE_LIMITS = {
-    monosplit: 40,
+    monosplit: 53,
     dualsplit: 45,
-    trialsplit: 57
+    trialsplit: 56
   };
 
   // Get quantities from the SplitterQtyConfigurator

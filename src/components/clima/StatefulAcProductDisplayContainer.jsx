@@ -56,12 +56,12 @@ const StatefulAcProductDisplayContainer = ({
       }
 
       const limit = (capacity) => {
-        if (roomSize <= 32) {
-          return capacity <= 32;
-        } else if (roomSize >= 33 && roomSize <= 38) {
-          return capacity >= 33 && capacity <= 38;
+        if (roomSize < 27) {
+          return capacity < 27;
+        } else if (roomSize >= 27 && roomSize <= 35) {
+          return capacity >= 27 && capacity <= 35;
         } else {
-          return capacity > 38;
+          return capacity > 35;
         }
       };
       return limit(p.capacity);

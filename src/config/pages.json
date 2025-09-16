@@ -121,7 +121,7 @@
                     "type": "DescriptionBox",
                     "props": {
                         "title": "Quanti impianti vuole acquistare il cliente?",
-                        "description": "Il cliente può indicare un massimo di 5 impianti totali"
+                        "description": "Il cliente può indicare un massimo di 5 macchine totali"
                     }
                 },
                 {
