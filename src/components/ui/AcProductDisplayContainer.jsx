@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import ACFeaturesDisplay from './ACFeaturesDisplay';
 import InfoBanner from './InfoBanner';
+import AcProductFeaturesDialog from './product/AcProductFeaturesDialog';
 /**
  * AcProductDisplayContainer - Pure UI component that displays AC products
  * with filtering, loading states, and error handling
@@ -23,6 +25,14 @@ const AcProductDisplayContainer = ({
   const displayProducts = maxProducts
     ? items.slice(0, maxProducts)
     : items;
+
+  const [productModalData, setProductModalData] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleFeaturesClick = (data) => {
+    setProductModalData({ ...data });
+    setIsModalOpen(true);
+  };
 
   // Handle product selection
   const handleProductSelection = (productId, selected) => {
@@ -113,6 +123,7 @@ const AcProductDisplayContainer = ({
         {displayProducts.map((product) => (
           <ACFeaturesDisplay
             key={product.id}
+            onFeaturesClick={handleFeaturesClick}
             {...getProductDisplayProps(product)}
           />
         ))}
@@ -127,6 +138,9 @@ const AcProductDisplayContainer = ({
           />
         </div>
       )}
+
+      {/* Additional children */}
+      {!showFeatures && <AcProductFeaturesDialog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} {...productModalData} />}
     </div>
   );
 };

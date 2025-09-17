@@ -49,7 +49,9 @@ const ACFeaturesDisplay = ({
   // details
   detailsLink = "Visualizza la scheda dettagli del prodotto",
   // style
-  className = ""
+  className = "",
+  // events
+  onFeaturesClick = () => { }
 }) => {
   const handleDetailsClick = () => {
     if (productUrl) {
@@ -166,7 +168,7 @@ const ACFeaturesDisplay = ({
           <div className="bg-[#f4f8ff] flex flex-col gap-3 items-start justify-start p-[12px] relative rounded-lg shrink-0 w-full">
             <div className="font-enel-bold leading-[0] not-italic relative shrink-0 text-[#272c34] text-[12px] text-left w-full">
               {displayFeatures && <p className="block leading-[18px]">Funzionalità del prodotto</p>}
-              {!displayFeatures && <div className="flex flex-row justify-between items-center cursor-pointer" onClick={() => setDisplayFeatures(!displayFeatures)}>
+              {!displayFeatures && <div className="flex flex-row justify-between items-center cursor-pointer" onClick={() => onFeaturesClick({ productName, productUrl, features })}>
                 <p className="font-enel-bold text-md block leading-[18px]">Scopri le informazioni del prodotto</p>
                 <IconRenderer icon="plus" fillClass="slate-300" className="w-6 h-6" />
               </div>}
