@@ -36,7 +36,7 @@ const CostSummary = ({ containerClassName = '' }) => {
         {/* Title section */}
         <div className="mb-3">
           <h3
-            className="text-white xl:text-xl lg:text-lg lg:text-center font-bold leading-[30px] tracking-[0.4px] font-enel-bold"
+            className="text-white xl:text-xl lg:text-lg text-center xl:text-left font-bold leading-[30px] tracking-[0.4px] font-enel-bold"
           >
             PREVENTIVO DEL CLIMATIZZATORE
           </h3>

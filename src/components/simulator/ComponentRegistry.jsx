@@ -1,3 +1,4 @@
+import { ClimaImage } from '../clima/ClimaImageRegistry';
 import StatefulAcProductDisplayContainer from '../clima/StatefulAcProductDisplayContainer';
 import StatefulAirConditioningConfigurator from '../clima/StatefulAirConditioningConfigurator';
 import StatefulAsyncSelect from '../clima/StatefulAsyncSelect';
@@ -25,7 +26,6 @@ import DescriptionBoxTooltip from '../ui/DescriptionBoxTooltip';
 import Divider from '../ui/Divider';
 import HorizontalBanner from '../ui/HorizontalBanner';
 import HorizontalBannerContainer from '../ui/HorizontalBannerContainer';
-import Image from '../ui/Image';
 import InfoBanner from '../ui/InfoBanner';
 import PromotionalBanner from '../ui/PromotionalBanner';
 import ServicePriceDisplay from '../ui/ServicePriceDisplay';
@@ -76,7 +76,7 @@ const componentRegistry = {
   FinalMessage: (props) => <StatefulFinalMessage {...props} />,
   HorizontalBanner: (props) => <HorizontalBanner {...props} />,
   HorizontalBannerContainer: (props) => <HorizontalBannerContainer {...props} />,
-  Image: (props) => <Image {...props} />,
+  Image: (props) => <ClimaImage {...props} />,
   InfoBanner: (props) => <InfoBanner {...props} />,
   InvestmentSelector: (props) => <StatefulInvestmentSelector {...props} />,
   LoadingSpinner: (props) => <StatefulLoadingSpinner {...props} />,
