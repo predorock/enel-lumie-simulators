@@ -1,4 +1,25 @@
+import cn from "classnames";
 import useAppStore from '../../store/useAppStore';
+import { priceFormatter } from '../../utils/priceFormatter';
+
+const CostSection = ({ description, amount, position = "left" }) => {
+  const right = position === "right";
+  return (
+    <div className={cn("flex flex-col lg:items-center min-w-0", { "xl:items-start": !right, "xl:items-end": right, "text-right": right })}>
+      <span
+        className="text-primary-opaque text-xs leading-tight font-bold font-enel-bold"
+      >
+        {description}
+      </span>
+      <span
+        className={cn("text-white text-lg leading-tight tracking-[0.2px] font-bold font-enel-bold", { "text-right": right })}
+      >
+        {amount > 0 ? priceFormatter(amount) : '-'}
+      </span>
+    </div>
+  );
+};
+
 
 const CostSummary = ({ containerClassName = '' }) => {
 
@@ -8,70 +29,32 @@ const CostSummary = ({ containerClassName = '' }) => {
   const productsTotal = getProductsTotal();
   const grandTotal = getGrandTotal();
 
-  // Format currency in Italian style
-  const formatCurrency = (amount) => {
-    return `${amount.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`;
-  };
-
   return (
-    <div className={`${containerClassName}`}>
+    <div className={`${containerClassName} z-10`}>
       {/* Main container with blue transparent background to match Figma */}
       <div className="bg-[rgba(0,62,179,0.4)] rounded-xl p-4">
         {/* Title section */}
         <div className="mb-3">
           <h3
-            className="text-white text-[20px] font-bold leading-[30px] tracking-[0.4px] font-enel-bold"
+            className="text-white xl:text-xl lg:text-lg lg:text-center font-bold leading-[30px] tracking-[0.4px] font-enel-bold"
           >
             PREVENTIVO DEL CLIMATIZZATORE
           </h3>
         </div>
 
         {/* Cost breakdown - horizontal layout to match Figma */}
-        <div className="flex flex-row gap-4 items-center justify-start">
+        <div className="flex xl:flex-row lg:flex-col gap-4 items-center lg:justify-center lg:align-center xl:justify-start">
           {/* AC Unit Cost Section */}
-          <div className="flex flex-col items-start min-w-0 flex-shrink-0">
-            <span
-              className="text-[#ede9f2] text-xs leading-tight font-bold font-enel-bold"
-            >
-              Spese installazione
-            </span>
-            <span
-              className="text-white text-lg leading-tight tracking-[0.2px] font-bold font-enel-bold"
-            >
-              {installPrice > 0 ? formatCurrency(installPrice) : '–'}
-            </span>
-          </div>
+          <CostSection description="Spese installazione" amount={installPrice} />
 
           {/* Services Cost Section */}
-          <div className="flex flex-col items-start min-w-0 flex-shrink-0">
-            <span
-              className="text-[#ede9f2] text-xs leading-tight font-bold font-enel-bold"
-            >
-              Costo climatizzatore
-            </span>
-            <span
-              className="text-white text-lg leading-tight tracking-[0.2px] font-bold font-enel-bold"
-            >
-              {productsTotal > 0 ? formatCurrency(productsTotal) : '–'}
-            </span>
-          </div>
+          <CostSection description="Costo climatizzatore" amount={productsTotal} />
 
           {/* Divider */}
-          <div className="bg-[#957eb5] h-8 w-px flex-shrink-0"></div>
+          <div className="bg-[#B6CEFB] h-12 w-px xl:block lg:hidden"></div>
 
           {/* Total Cost Section - right aligned */}
-          <div className="flex flex-col items-end text-right flex-1 min-w-0">
-            <span
-              className="text-[#ede9f2] text-xs leading-tight font-bold w-full text-nowrap font-enel-bold"
-            >
-              Costo totale climatizzatore
-            </span>
-            <span
-              className="text-white text-xl leading-tight tracking-[0.2px] font-bold w-full font-enel-bold"
-            >
-              {grandTotal > 0 ? formatCurrency(grandTotal) : '–'}
-            </span>
-          </div>
+          <CostSection description="Costo totale climatizzatore" amount={grandTotal} position="right" />
         </div>
       </div>
     </div>
