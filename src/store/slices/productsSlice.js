@@ -220,25 +220,24 @@ export const createProductsSlice = (set, get) => ({
 
     filters: {
       monosplit: (product, roomSize) => {
-        if (product.type.toLowerCase() === 'monosplit') {
-          const rSize = typeof roomSize === 'number' ? roomSize : parseInt(roomSize);
-
-          if (rSize <= 0) {
-            return true; // No filtering if room size is not set
-          }
-
-          const limit = (capacity) => {
-            if (rSize < 27) {
-              return capacity < 27;
-            } else if (rSize >= 27 && rSize <= 35) {
-              return capacity >= 27 && capacity <= 35;
-            } else {
-              return capacity > 35;
-            }
-          };
-          return limit(product.capacity);
+        if (product.type.toLowerCase() !== 'monosplit') {
+          return true;
         }
-        return true;
+        const _roomSize = typeof roomSize === 'number' ? roomSize : parseInt(roomSize);
+        if (isNaN(_roomSize) || _roomSize <= 0) {
+          return true; // No filtering if room size is not set or invalid
+        }
+        const _capacity = typeof product.capacity === 'number' ? product.capacity : parseInt(product.capacity);
+        if (isNaN(_capacity) || _capacity <= 0) {
+          return false; // Exclude products with invalid capacity
+        }
+        if (_roomSize <= 27) {
+          return _capacity <= 27;
+        }
+        if (_roomSize > 27 && _roomSize <= 35) {
+          return _capacity > 27 && _capacity <= 35;
+        }
+        return _capacity > 35;
       },
       brand: (product, brand) => {
         if (!brand) return true;

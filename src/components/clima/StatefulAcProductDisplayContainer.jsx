@@ -72,7 +72,6 @@ const StatefulAcProductDisplayContainer = ({
           break;
         }
         const roomSize = parseInt(currentConfig.roomSize);
-        console.log('Filtering monosplit with room size:', roomSize);
         items = items.filter(p => products.filters.monosplit(p, roomSize));
         break;
       case 'isAlwaysOn':

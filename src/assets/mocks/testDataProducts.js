@@ -94,7 +94,7 @@ export default {
                         className: '',
                         configKey: 'monosplit_0',
                         stateProperty: 'airConditioningConfigs',
-                        filters: ["type", "isAlwaysOn", "brand", "category"],
+                        filters: ["type", "isAlwaysOn", "brand", "category", "monosplit"],
                     }
                 },
                 {
@@ -391,7 +391,7 @@ export default {
         airConditioningConfigs: {
             monosplit_0: {
                 installationType: 'nuova_con_predisposizione',
-                roomSize: '23',
+                roomSize: '28',
                 hasWarning: false,
                 selected: 'daikin-clima-siesta-super-plus-9000'
             },
