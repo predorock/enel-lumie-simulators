@@ -460,6 +460,10 @@ function dynamicPageTemplate(
                     "title": "Il prodotto consigliato non soddisfa il cliente?",
                     "titleSize": "lg",
                     "description": "Proponi queste soluzioni alternative del prodotto",
+
+                },
+                "renderConditions": {
+                    "isDefined": "products.hasAlternativeProducts"
                 }
             },
             {
@@ -473,6 +477,7 @@ function dynamicPageTemplate(
                     "configKey": `${acConfig.configKey}`,
                     "stateProperty": "airConditioningConfigs",
                     "filters": ["type", "isNotAlwaysOn"],
+                    "showNoProductsMessage": false
                 }
             },
             {

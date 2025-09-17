@@ -118,6 +118,7 @@ export const createProductsSlice = (set, get) => ({
     loading: false,
     error: null,
     selectedCity: null,
+    hasAlternativeProducts: true,
 
     setProducts: (rawProducts) => {
       // Transform API response to match our product structure
@@ -206,14 +207,17 @@ export const createProductsSlice = (set, get) => ({
       }
     },
 
-    getFilteredProducts: () => {
-      const { items, filterBy } = get().products;
-      if (!filterBy || !filterBy?.prop || !filterBy?.value) return items;
-      const prop = filterBy.prop;
-      const value = filterBy.value.toLowerCase();
-      return items.filter((item) => {
-        return item[prop]?.toLowerCase().includes(value);
-      });
+    setHasAlternativeProducts: (hasAlternatives) => {
+      set((state) => ({
+        products: {
+          ...state.products,
+          hasAlternativeProducts: hasAlternatives === true
+        }
+      }));
+    },
+
+    getHasAlternativeProducts: () => {
+      return get().products.hasAlternativeProducts === true;
     },
 
     // FILTERS

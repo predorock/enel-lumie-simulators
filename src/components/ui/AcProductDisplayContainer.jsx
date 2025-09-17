@@ -11,13 +11,14 @@ const AcProductDisplayContainer = ({
   loading = false,
   error = null,
   onRetry = null,
-  showLoadingStates = true,
   maxProducts = null,
   className = "",
   gridClassName = "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6",
   onProductSelectionChange = null,
   selectedProducts = [],
+  showLoadingStates = true,
   showFeatures = true,
+  showNoProductsMessage = true,
   ...props
 }) => {
 
@@ -90,7 +91,7 @@ const AcProductDisplayContainer = ({
     );
   }
 
-  if (displayProducts.length === 0) {
+  if (displayProducts.length === 0 && showNoProductsMessage) {
     return (
       <div className={`flex flex-col gap-4 ${className}`}>
         <InfoBanner
