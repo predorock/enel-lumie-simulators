@@ -228,7 +228,7 @@ export default function SidebarForm({
                                             </div>
                                             <div className="flex flex-col gap-0.5 flex-1">
                                                 <label className="font-enel text-grey-light text-xs leading-3">
-                                                    Numero di telefono*
+                                                    Numero di telefono
                                                 </label>
                                                 <input
                                                     value={formData.telefono}
