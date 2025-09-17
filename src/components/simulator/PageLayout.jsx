@@ -1,5 +1,5 @@
 import enelLogo from '../../assets/images/enel-logo-white.svg';
-import tondo from '../../assets/images/mezzo-tondo.svg';
+import { ClimaImage } from '../clima/ClimaImageRegistry';
 import NavigationBar from '../ui/NavigationBar';
 import Stepper from '../ui/stepper/Stepper';
 import LeftPanelRenderer from './LeftPanelRenderer';
@@ -71,7 +71,7 @@ export default function PageLayout({
 
           {/* Background Decoration */}
           {showBackgroundDecoration && (
-            <img src={tondo} alt="Tondo" className="absolute bottom-0 right-0 -z-0" />
+            <ClimaImage src="mezzo-tondo" alt="Tondo" className="absolute bottom-0 right-0 -z-0" />
           )}
         </div>
 

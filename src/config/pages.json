@@ -25,7 +25,7 @@
                     "props": {
                         "src": "italy",
                         "alt": "Italy",
-                        "className": "z-10 relative w-auto h-auto",
+                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
                         "containerClassName": "flex justify-center items-center mt-16 h-full"
                     }
                 }
@@ -105,8 +105,8 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto p-12 mt-8",
-                        "containerClassName": "flex justify-center items-center flex-1"
+                        "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },
                 {
@@ -244,8 +244,8 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto p-12 mt-8",
-                        "containerClassName": "flex justify-center items-center flex-1"
+                        "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },
                 {
@@ -412,8 +412,8 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-w-[280px] mt-8",
-                        "containerClassName": "flex justify-center items-center flex-1"
+                        "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },
                 {
@@ -431,7 +431,7 @@
                         "description": "Necessarie per le nuove installazioni e in caso di modifiche alle combinazioni di impianti preesistenti.",
                         "popoverIcon": "info",
                         "popoverConfig": "ductworkInfo",
-                        "className": "w-[80%] mr-12 mb-12"
+                        "className": "w-[80%] mr-12 mb-8"
                     }
                 },
                 {
@@ -547,8 +547,8 @@
                     "props": {
                         "src": "condizionatore-baccheta",
                         "alt": "Animazione Condizionatore",
-                        "className": "z-10 relative w-auto h-auto mt-16",
-                        "containerClassName": "flex justify-center items-center flex-1"
+                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 }
             ],
@@ -613,10 +613,10 @@
                 {
                     "type": "Image",
                     "props": {
-                        "src": "condizionatore-big",
-                        "alt": "Condizionatore Completato",
-                        "className": "z-10 relative w-auto h-auto mt-16",
-                        "containerClassName": "flex justify-center items-center flex-1"
+                        "src": "condizionatore-fuochi",
+                        "alt": "Condizionatore con fuochi d'artificio",
+                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
+                        "containerClassName": "flex justify-center items-center mt-16 h-full"
                     }
                 }
             ],
@@ -728,8 +728,8 @@
                     "props": {
                         "src": "condizionatore-baccheta",
                         "alt": "Animazione Condizionatore",
-                        "className": "z-10 relative w-auto h-auto mt-16",
-                        "containerClassName": "flex justify-center items-center flex-1"
+                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
+                        "containerClassName": "flex justify-center items-center mt-16 h-full"
                     }
                 }
             ],

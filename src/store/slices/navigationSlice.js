@@ -359,8 +359,8 @@ function dynamicPageTemplate(
                 props: {
                     src: "cubo-condizionatore",
                     alt: "Condizionatore Cubo",
-                    className: "z-10 relative w-auto h-auto max-w-[325px] mt-8",
-                    containerClassName: "flex justify-center items-center flex-1"
+                    "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                    "containerClassName": "flex justify-center items-center my-auto h-full"
                 }
             },
             {
