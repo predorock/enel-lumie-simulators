@@ -445,7 +445,7 @@ function dynamicPageTemplate(
                      */
                     "configKey": `${acConfig.configKey}`,
                     "stateProperty": "airConditioningConfigs",
-                    "filters": ["type", "brand", "category", "isAlwaysOn"],
+                    "filters": ["type", "brand", "category", "isAlwaysOn", "monosplit"],
                 }
             },
             {
