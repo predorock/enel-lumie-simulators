@@ -33,17 +33,16 @@ const StatefulBrandSelector = ({
   ...props
 }) => {
   const { products } = useAppStore();
-  const { setFilter, resetFilter } = products;
-
+  const { setFilterValue, getFilterValue, deleteFilterValue } = products;
   const properties = {
     ...props,
     options: options,
-    selectedBrand: products?.filterBy?.value,
+    selectedBrand: getFilterValue('brand'),
     onBrandChange: (newValue) => {
       if (newValue) {
-        setFilter('productBrand', newValue);
+        setFilterValue('brand', newValue);
       } else {
-        resetFilter();
+        deleteFilterValue('brand');
       }
     }
   }

@@ -126,8 +126,10 @@ const AirConditioningConfigurator = ({
   installationTypes = [],
   onInstallationChange,
   onRoomSizeChange,
+  onInstallationRemove,
   hasWarning
 }) => {
+
 
   return (
     <div className="box-border content-stretch flex flex-col gap-6 items-start justify-start p-0 relative shrink-0 w-full">

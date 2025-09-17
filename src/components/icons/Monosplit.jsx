@@ -1,0 +1,11 @@
+const Monosplit = ({ className = "", fillClass = "fill-black" }) =>
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0_14131_86179" style={{ maskType: 'alpha' }} maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+        </mask>
+        <g mask="url(#mask0_14131_86179)">
+            <path className={fillClass} fillRule="evenodd" clipRule="evenodd" d="M0.882667 18C0.396 18 0 17.5916 0 17.0866V7.91345C0 7.40981 0.396 7 0.882667 7H23.1173C23.6053 7 24 7.40981 24 7.91345V14.3504C24 14.854 23.6053 15.2638 23.1173 15.2638H13.9733V13.4355H22.2347V8.82689H1.76667V16.1731H23.8453V18H0.882667Z" />
+        </g>
+    </svg>
+
+export default Monosplit;

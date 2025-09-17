@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useAppStore from '../../store/useAppStore';
 import AirConditioningConfigurator from '../ui/AirConditioningConfigurator';
 
@@ -10,9 +11,9 @@ const StatefulAirConditioningConfigurator = ({
 
   // Room size limits for each splitter type  
   const ROOM_SIZE_LIMITS = {
-    monosplit: 40,
+    monosplit: 53,
     dualsplit: 45,
-    trialsplit: 57
+    trialsplit: 56
   };
 
   // Get quantities from the SplitterQtyConfigurator
@@ -50,6 +51,23 @@ const StatefulAirConditioningConfigurator = ({
       }
     }
   });
+
+  // Clean up configurations when quantities change
+  useEffect(() => {
+    const validKeys = new Set(configurationEntries.map(entry => entry.key));
+    const currentKeys = Object.keys(configurations);
+
+    // Check if any cleanup is needed
+    const keysToRemove = currentKeys.filter(key => !validKeys.has(key));
+
+    if (keysToRemove.length > 0) {
+      const cleanedConfigurations = { ...configurations };
+      keysToRemove.forEach(key => {
+        delete cleanedConfigurations[key];
+      });
+      setFormValue(stateProperty, cleanedConfigurations);
+    }
+  }, [configurationEntries.map(e => e.key).join(','), setFormValue, stateProperty]);
 
   const handleInstallationChange = (entryKey, value) => {
     const newConfigurations = {

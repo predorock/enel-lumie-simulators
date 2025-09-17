@@ -5,6 +5,7 @@ import GlobeIcon from '../icons/GlobeIcon';
 import IconRenderer from '../icons/IconRenderer';
 import StarIcon from '../icons/StarIcon';
 import Checkbox from './Checkbox';
+import AcProductFeatures from './product/AcProductFeatures';
 /**
  * ACFeaturesDisplay component displays air conditioning unit product information and features
  * following the ENEL design system specifications from Figma.
@@ -12,8 +13,8 @@ import Checkbox from './Checkbox';
 
 const ACFeaturesDisplay = ({
   id = null,
-  productName = "Lorem",
-  productDescription = "Ipsum",
+  productName = "",
+  productDescription = "",
   productImage = null,
   productImageAlt = "",
   productUrl = null,
@@ -173,39 +174,13 @@ const ACFeaturesDisplay = ({
             </div>
 
             {/* Divider */}
-            {displayFeatures && <div className="h-px bg-[#cbdaf6] relative shrink-0 w-full"></div>}
+            {
+              displayFeatures && <div className="h-px bg-[#cbdaf6] relative shrink-0 w-full"></div>
+            }
 
             {/* Features List */}
             {
-              displayFeatures && <div className="flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full">
-                {features.map((feature, index) => {
-                  const isEnabled = typeof feature === 'object' ? feature.enabled : true;
-                  const featureName = typeof feature === 'object' ? feature.name : feature;
-                  const featureKey = typeof feature === 'object' ? feature.key : `feature-${index}`;
-
-                  return (
-                    <div key={featureKey} className="flex flex-row gap-[5px] items-start justify-start p-0 relative shrink-0 w-full">
-                      <div className="relative shrink-0 size-4">
-                        {isEnabled ? (
-                          <div className='size-4 rounded-full bg-primary-light flex items-center justify-center'>
-                            <IconRenderer icon="checkMark" className="w-3 h-3" fillClass="fill-white" />
-                          </div>
-                        ) : (
-                          <div className='size-4 rounded-full bg-slate-300 flex items-center justify-center'>
-                            <IconRenderer icon="cross" className="w-3 h-3" fillClass="fill-white" />
-                          </div>
-                        )}
-                      </div>
-                      <div className={`basis-0 grow leading-[0] min-h-px min-w-px not-italic relative shrink-0 text-[#272c34] text-[12px] text-left ${isEnabled
-                        ? 'font-enel-bold'
-                        : 'font-enel line-through'
-                        }`}>
-                        <p className="block leading-[18px]">{featureName}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              displayFeatures && <AcProductFeatures features={features} />
             }
           </div>
 

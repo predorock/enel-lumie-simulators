@@ -2,6 +2,7 @@ import { Cross2Icon, EnvelopeClosedIcon, PlusIcon } from '@radix-ui/react-icons'
 import AirConditioningIcons from './AirConditioningIcons';
 import CheckMarkIcon from './CheckMarkIcon';
 import ChevronRightIcon from './ChevronRightIcon';
+import Dualsplit from './Dualsplit';
 import EcoIcon from './EcoIcon';
 import EuroIcon from './EuroIcon';
 import FireIcon from './FireIcon';
@@ -10,10 +11,12 @@ import HouseIcon from './HouseIcon';
 import InfoIcon from './InfoIcon';
 import LightningIcon from './LightningIcon';
 import MoneyIcon from './MoneyIcon';
+import Monosplit from './Monosplit';
 import ReaderIcon from './ReaderIcon';
 import RoomIcon from './RoomIcon';
 import SavingsIcon from './SavingsIcon';
 import StarIcon from './StarIcon';
+import Trialsplit from './Trialsplit';
 import WarningIcon from './WarningIcon';
 
 // Registry mapping icon names to components
@@ -37,10 +40,15 @@ const registry = {
     reader: ReaderIcon,
     envelope: EnvelopeClosedIcon,
     plus: PlusIcon,
-    warning: WarningIcon
+    warning: WarningIcon,
+    monosplit: Monosplit,
+    dualsplit: Dualsplit,
+    trialsplit: Trialsplit
 }
 
 export default function IconRenderer({ icon, ...props }) {
     const Icon = registry[icon];
-    return Icon ? <Icon {...props} /> : null;
+    return Icon ? <Icon {...props} /> : (
+        console.warn(`Icon "${icon}" not found.`), null
+    );
 }
