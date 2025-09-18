@@ -74,7 +74,7 @@ const DuctworkConfigurator = ({
 
             {/* Price Display */}
             {hasSelection && (
-              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4 w-[200px]">
+              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4">
                 {/* <span className="font-enel-bold">Prezzo finale {" "}</span> */}
                 <span className="font-enel-bold">
                   {priceFormatter(getUnitTotal(item.type, item.key))}

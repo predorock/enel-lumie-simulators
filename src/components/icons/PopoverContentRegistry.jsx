@@ -61,7 +61,7 @@ export const popoverContentRegistry = {
                     Informazioni sulle distanze dell’impianto
                 </h4>
                 <p className="text-sm mb-6">
-                    Dualpslit: ogni unità interna (split) deve essere installata a una distanza massima di 17 metri dall’unità esterna (motore)
+                    Dualsplit: ogni unità interna (split) deve essere installata a una distanza massima di 17 metri dall’unità esterna (motore)
                 </p>
                 <p className="text-sm mb-2">
                     Trialsplit: ogni unità interna (split) deve essere installata a una distanza massima di 22 metri dall’unità esterna (motore)

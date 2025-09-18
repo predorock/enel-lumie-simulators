@@ -21,8 +21,10 @@ const SkinnyCardRow = ({ label, value }) => {
 export default function SkinnyCard({ title = "", items = [], children }) {
     return (
         <div className='bg-white-light box-border rounded-xl size-full p-4'>
-            <h4 className='font-enel-bold'>{title}</h4>
-            <Divider className='my-4' />
+            <div className="flex flex-col p-0 m-0 relative ">
+                <h4 className='font-enel-bold whitespace-pre-wrap'>{title}</h4>
+                <Divider className='my-4' />
+            </div>
             {
                 children ? (
                     <div>

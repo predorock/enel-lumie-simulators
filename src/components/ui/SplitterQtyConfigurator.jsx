@@ -79,11 +79,11 @@ const SplitterQtyConfigurator = ({
         const currentTotal = getCurrentTotal(quantities);
 
         return (
-          <div key={itemKey} className="box-border content-stretch flex flex-row items-start justify-between p-0 relative shrink-0 w-[80%]">
-            <div className="box-border content-stretch flex flex-row gap-4 items-center justify-start p-0 relative shrink-0">
+          <div key={itemKey} className="box-border content-stretch flex flex-row items-start justify-between p-0 relative w-full">
+            <div className="box-border content-stretch flex flex-row gap-4 items-center justify-start p-0 relative">
 
               {/* Icon and Label */}
-              <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0 w-[130px]">
+              <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative w-[130px]">
                 <div className="relative shrink-0 size-6 text-black">
                   <AirConditioningIcon type={getIconType(itemKey)} fillClass='fill-black' />
                 </div>
@@ -105,7 +105,7 @@ const SplitterQtyConfigurator = ({
 
             {/* Price Display */}
             {showPriceDisplay && getDisplayPrice(itemKey) > 0 && currentValue > 0 && (
-              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4 w-[200px]">
+              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4">
                 {/* <span className="font-enel-bold">Prezzo finale {" "}</span> */}
                 <span className="font-enel-bold">
                   {formatCurrency(getDisplayPrice(itemKey))}
