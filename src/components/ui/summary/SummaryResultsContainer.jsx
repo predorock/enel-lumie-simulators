@@ -90,7 +90,6 @@ export default function SummaryResultsContainer({
                                     <div className='flex flex-row w-full justify-between my-2'>
                                         <p className="font-enel-bold text-sm">Rate Mensili</p>
                                         <PriceDisplay value={plan.monthlyRate} className="text-primary-light font-enel-bold text-md" />
-
                                     </div>
                                     <div className='flex flex-row w-full justify-between my-2'>
                                         <p className="font-enel-bold text-sm">TAN</p>
