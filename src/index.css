@@ -102,3 +102,9 @@
 .blue-shadow {
   box-shadow: 0 0 16px 4px rgba(0, 71, 204, 0.48);
 }
+
+.whitespace-nosense-fix {
+  @media (max-width: 1269px) {
+    font-size: 16px;
+  }
+}
