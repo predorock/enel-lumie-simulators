@@ -104,8 +104,8 @@ export const createLeadSlice = (set, get) => ({
         const city = state.formData.storeCity;
 
         return {
-            "UserID": state.getFormValue('userId') || '',
-            "AccountName": state.getFormValue('accountName') || '',
+            "UserID": state.getFormValue('userId') || state.getFormValue('userid') || '',
+            "AccountName": state.getFormValue('accountName') || state.getFormValue('accountname') || '',
             "negozi": true,
             "C14": city,
             "CAP": customerData.cap,
