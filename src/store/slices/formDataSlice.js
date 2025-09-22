@@ -1,5 +1,5 @@
 
-const allowedUrlParams = ['userId', 'accountName']
+const allowedUrlParams = ['userId', 'userid', 'accountName', 'accountname']
 
 const calculatePricingTriggerProperties = [
     'airconditioningQuantities',
