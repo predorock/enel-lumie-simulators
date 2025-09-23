@@ -105,7 +105,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-8",
                         "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },

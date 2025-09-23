@@ -40,7 +40,7 @@ export default function PageLayout({
   }, [autoScrollToTop, pageId, currentStep]); // Watch for content and step changes
 
   return (
-    <main>
+    <main className='debug-screens'>
       <div className="grid grid-cols-6 w-full h-screen relative z-10">
         {/* LEFT PANEL - Blue Header */}
         <div className={cn('bg-primary p-8 relative flex flex-col', { 'col-span-2': !fullPage, 'col-span-6': fullPage })} role="banner" aria-label="Enel Lumiè Clima Header">

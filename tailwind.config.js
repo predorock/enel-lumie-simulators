@@ -13,7 +13,7 @@ export default {
       },
       fontWeight: {
         'enel-regular': '400',
-        'enel-light': '300', 
+        'enel-light': '300',
         'enel-bold': '700',
       }
     },

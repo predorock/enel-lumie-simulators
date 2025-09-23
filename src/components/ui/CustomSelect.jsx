@@ -69,7 +69,7 @@ const CustomSelect = ({
       {/* Select Button */}
       <button
         type="button"
-        className={`box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-full px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent cursor-pointer font-enel ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
+        className={`min-w-[197px] box-border content-stretch flex flex-row gap-2 h-10 items-center justify-start w-full px-2 border border-grey-light rounded text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-primary-light focus:border-transparent cursor-pointer font-enel ${hasValue || isOpen ? 'pt-4 pb-1' : 'py-2'
           }`}
         onClick={() => setIsOpen(!isOpen)}
       >

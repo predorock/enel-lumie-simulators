@@ -85,32 +85,28 @@ const ConfigurationRow = ({
         </div>
 
         {/* Installation Type Dropdown */}
-        <div className="bg-transparent box-border content-stretch flex flex-row gap-3 items-start justify-start p-0 relative rounded shrink-0 w-80">
-          <div className="basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-center min-h-px min-w-px p-0 relative rounded shrink-0">
-            <CustomSelect
-              options={installationTypes}
-              value={installationType || ''}
-              onChange={onInstallationChange}
-              label="Tipologia di installazione"
-              maxHeight="140px"
-              className='w-full'
-            />
-          </div>
+        <div className="basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-center min-h-px min-w-px p-0 relative rounded shrink-0">
+          <CustomSelect
+            options={installationTypes}
+            value={installationType || ''}
+            onChange={onInstallationChange}
+            label="Tipologia di installazione"
+            maxHeight="140px"
+            className='w-full'
+          />
         </div>
 
         {/* Room Size Input */}
-        <div className="bg-transparent box-border content-stretch flex flex-row gap-3 items-start justify-start p-0 relative rounded shrink-0 w-72">
-          <div className="basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-center min-h-px min-w-px p-0 relative rounded shrink-0">
-            <TextInput
-              numericOnly={true}
-              value={roomSize || ''}
-              onChange={(e) => onRoomSizeChange(e.target.value)}
-              placeholder="M² stanza da climatizzare"
-              className={cn('w-full', {
-                'border-warning': warning
-              })}
-            />
-          </div>
+        <div className="min-w-[165px] basis-0 box-border content-stretch flex flex-col gap-2 grow items-start justify-center p-0 relative rounded shrink-0">
+          <TextInput
+            numericOnly={true}
+            value={roomSize || ''}
+            onChange={(e) => onRoomSizeChange(e.target.value)}
+            placeholder="M² stanza da climatizzare"
+            className={cn('w-full', {
+              'border-warning': warning
+            })}
+          />
         </div>
       </div>
 
