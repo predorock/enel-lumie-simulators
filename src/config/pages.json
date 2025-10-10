@@ -190,11 +190,11 @@
                         "installationTypes": [
                             {
                                 "value": "nuova_con_predisposizione",
-                                "label": "Con Predisposizione"
+                                "label": "Impianto già predisposto"
                             },
                             {
                                 "value": "nuova_senza_predisposizione",
-                                "label": "Senza Predisposizione"
+                                "label": "Impianto da predisporre"
                             }
                         ],
                         "infoIconKey": "airConditioningInfo"
@@ -354,14 +354,15 @@
                 {
                     "type": "DescriptionBox",
                     "props": {
-                        "title": "Consiglia al cliente di effettuare il lavaggio dell'impianto",
+                        "title": "Consiglia al cliente di effettuare il lavaggio dell’impianto di tubazione",
+                        "description": "Nel caso di una nuova predisposizione non è necessario il lavaggio dell’impianto di tubazione.",
                         "className": "mb-6"
                     }
                 },
                 {
                     "type": "Toggle",
                     "props": {
-                        "label": "Il cliente vuole effettuare il lavaggio degli impianti?",
+                        "label": "Il cliente vuole effettuare il lavaggio degli impianti di tubazione preesistenti?",
                         "stateProperty": "wantsCleaning",
                         "initialValue": false,
                         "storeAction": "checkCleaning",
@@ -462,90 +463,6 @@
                 {
                     "type": "DuctworkConfigurator",
                     "props": {
-                        "items": [],
-                        "ductworkOptions": {
-                            "monosplit": [
-                                {
-                                    "value": 1,
-                                    "range": "3m - 9m",
-                                    "description": "(1 modulo canalizzazione)"
-                                },
-                                {
-                                    "value": 2,
-                                    "range": "9m - 15m",
-                                    "description": "(2 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 3,
-                                    "range": "15m - 21m",
-                                    "description": "(3 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 4,
-                                    "range": "21m - 27m",
-                                    "description": "(4 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 5,
-                                    "range": "27m - 33m",
-                                    "description": "(5 moduli canalizzazione)"
-                                }
-                            ],
-                            "dualsplit": [
-                                {
-                                    "value": 1,
-                                    "range": "4m - 10m",
-                                    "description": "(1 modulo canalizzazione)"
-                                },
-                                {
-                                    "value": 2,
-                                    "range": "10m - 16m",
-                                    "description": "(2 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 3,
-                                    "range": "16m - 22m",
-                                    "description": "(3 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 4,
-                                    "range": "22m - 28m",
-                                    "description": "(4 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 5,
-                                    "range": "28m - 34m",
-                                    "description": "(5 moduli canalizzazione)"
-                                }
-                            ],
-                            "trialsplit": [
-                                {
-                                    "value": 1,
-                                    "range": "6m - 12m",
-                                    "description": "(1 modulo canalizzazione)"
-                                },
-                                {
-                                    "value": 2,
-                                    "range": "12m - 18m",
-                                    "description": "(2 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 3,
-                                    "range": "18m - 24m",
-                                    "description": "(3 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 4,
-                                    "range": "24m - 30m",
-                                    "description": "(4 moduli canalizzazione)"
-                                },
-                                {
-                                    "value": 5,
-                                    "range": "30m - 36m",
-                                    "description": "(5 moduli canalizzazione)"
-                                }
-                            ]
-                        },
                         "stateProperty": "ductworkQuantities"
                     }
                 }

@@ -30,6 +30,17 @@ export const UNIT_PRICES = {
   },
 };
 
+/**
+ * Every ductwork installation includes a fixed number of mt per unit type.
+ * Each extra is charged at the standard rate.
+ */
+export const ductworkMountsMeters = {
+  monosplit: 3,
+  dualsplit: 4,
+  trialsplit: 6,
+  extra: 3
+}
+
 export const getInstallationTypeDescription = (installationType, amount = 0) => {
   const desc = (iType) => {
     switch (iType) {
@@ -81,6 +92,7 @@ export const initialCalculations = {
 // Initial state for pricing slice
 export const initialPricingState = {
   unitPrices: UNIT_PRICES,
+  ductworkMountsMeters: ductworkMountsMeters,
   calculations: {
     // Purchase calculations
     ...initialCalculations
@@ -104,6 +116,11 @@ export const createPricingSlice = (set, get) => ({
   getUnitPrices: () => {
     const state = get();
     return state.pricingState.unitPrices;
+  },
+
+  getDuctworkMountsMeters: () => {
+    const state = get();
+    return state.pricingState.ductworkMountsMeters;
   },
 
   // Get current total cost
@@ -268,7 +285,6 @@ export const createPricingSlice = (set, get) => ({
     const cleaningDualsplitTotal = (cleaningQuantities.dualsplit || 0) * unitPrices.cleaning.dualsplit;
     const cleaningTrialsplitTotal = (cleaningQuantities.trialsplit || 0) * unitPrices.cleaning.trialsplit;
     const cleaningTotal = cleaningMonosplitTotal + cleaningDualsplitTotal + cleaningTrialsplitTotal;
-
 
     const ductworkMonoTotal = (ductworkQuantities.monosplit || 0) * unitPrices.ductwork.monosplit;
     const ductworkDualTotal = (ductworkQuantities.dualsplit || 0) * unitPrices.ductwork.dualsplit;

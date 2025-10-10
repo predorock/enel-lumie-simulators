@@ -32,7 +32,7 @@ const CostSummary = ({ containerClassName = '' }) => {
   return (
     <div className={`${containerClassName} z-10`}>
       {/* Main container with blue transparent background to match Figma */}
-      <div className="bg-[rgba(0,62,179,0.4)] rounded-xl p-4">
+      <div className="bg-[rgba(31,108,249,0.64)] rounded-xl p-4">
         {/* Title section */}
         <div className="mb-3">
           <h3

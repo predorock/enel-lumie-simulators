@@ -26,7 +26,6 @@ export const createFormDataSlice = (set, get) => ({
 
     // Form data actions
     setFormValue: (property, value) => {
-        const previousValue = get().formData[property];
 
         set((state) => ({
             formData: {

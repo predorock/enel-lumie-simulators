@@ -15,6 +15,7 @@ const PlusIcon = () => (
 
 const QtyStepControl = ({
     value = 0,
+    unit = null,
     min = 0,
     max = 10,
     onIncrement,
@@ -79,7 +80,7 @@ const QtyStepControl = ({
                         <div className="box-border content-stretch flex flex-row gap-1 items-center justify-center overflow-clip p-0 relative size-full">
                             <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-black text-[16px] text-center text-nowrap">
                                 <p className="block leading-[16px]">
-                                    {value}
+                                    {value} {unit && <span>{unit}</span>}
                                 </p>
                             </div>
                         </div>

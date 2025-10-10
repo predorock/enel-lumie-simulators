@@ -29,47 +29,83 @@ const itemTemplate = {
   */
 const StatefulDuctworkConfigurator = ({
   stateProperty,
-  initialValue = {},
   // ITEMS IS IGNORE SINCE WE CREATE IT DYNAMICALLY BASED ON AC CONFIGS
   items = [],
-  ductworkOptions = [],
   ...props
 }) => {
-  const [configurations, setConfigurations] = useState(initialValue || {});
 
-  const store = useAppStore();
+  /**
+   * Local state to manage ductwork configurations
+   * Keyed by type and index, e.g., "monosplit_0", "dualsplit_1", etc.
+   * Value is the quantity in meters for that specific configuration
+   */
+  const [configurations, setConfigurations] = useState({});
 
-  const unitPrices = store.getUnitPrices();
+  /**
+   * Getters and setters from the global store
+   * We use these to sync the total quantities back to the global store
+   * whenever local configurations change.
+   */
+  const { getFormValue, setFormValue, getUnitPrices, getDuctworkMountsMeters } = useAppStore();
 
-  const getQuantities = (configs) => {
+  const metersPerUnit = getDuctworkMountsMeters();
+
+  const convertMetersToTotal = (value, type) => {
+    const includedMeters = metersPerUnit[type] || 1;
+    return Math.ceil(Math.max(0, value - includedMeters) / metersPerUnit.extra);
+  };
+
+  /**
+   * Get total ductwork length by split type
+   * @param {*} configs - the local configurations state
+   * @returns the total quantities by split type
+   */
+  const getTotalBySplitType = (configs) => {
     return Object.keys(configs)
       .filter(k => !!configs[k] && configs[k] !== '')
       .reduce((acc, curr) => {
-        const quantity = configs[curr];
+        const quantity = configs[curr] || 0;
         const type = curr.split('_')[0]; // monosplit, dualsplit, trialsplit
-        acc[type] = (acc[type] || 0) + quantity;
+        acc[type] = (acc[type] || 0) + convertMetersToTotal(quantity, type);
         return acc;
       }, {});
   }
 
-  const handleChange = (newValue) => {
-    // Local state update
-    const updatedValue = { ...configurations, ...newValue };
+  /**
+   * Handle quantity change for a specific configuration entry
+   * and converts the local meters to total quantities by type
+   * Updates both local state and global store totals
+   */
+  const handleChange = (itemKey, newValue) => {
+    // Local state update in meters
+    const updatedValue = {
+      ...configurations,
+      [itemKey]: newValue
+    };
     setConfigurations(updatedValue);
-    // Update global store with quantities
-    const quantities = getQuantities(updatedValue);
-    store.setFormValue(stateProperty, quantities);
+
+    // Update global store with quantities from local meters
+    const quantities = getTotalBySplitType(updatedValue);
+    setFormValue(stateProperty, quantities);
   };
 
   const getUnitTotal = (type, key) => {
-    return unitPrices.ductwork[type] * (configurations[key] || 0);
+    const pricePerType = getUnitPrices().ductwork[type] || 0;
+    const quantity = convertMetersToTotal(configurations[key] || 0, type);
+    return {
+      units: quantity,
+      unitsTotal: pricePerType * quantity
+    }
   };
 
-  const newItems = Object.keys(store.formData.airConditioningConfigs || {})
+  const newItems = Object.keys(getFormValue('airConditioningConfigs') || {})
     .map(k => k.split('_')[0])
     .map(key => itemTemplate[key])
     // Ensure unique keys if multiple of same type
-    .map((item, index) => ({ ...item, key: `${item.key}_${index}` }));
+    .map((item, index) => {
+      const itemKey = `${item.key}_${index}`;
+      return { ...item, key: itemKey, value: configurations[itemKey] || 0 };
+    });
 
 
   return (
@@ -77,7 +113,7 @@ const StatefulDuctworkConfigurator = ({
       values={configurations}
       onChange={handleChange}
       items={newItems}
-      ductworkOptions={ductworkOptions}
+      showPrice={true}
       getUnitTotal={getUnitTotal}
       {...props}
     />

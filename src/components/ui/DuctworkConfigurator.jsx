@@ -1,41 +1,28 @@
-import { useState } from 'react';
 import { priceFormatter } from '../../utils/priceFormatter';
 import IconRenderer from '../icons/IconRenderer';
-import CustomSelect from './CustomSelect';
+import QtyStepControl from './QtyStepControl';
+
 const DuctworkConfigurator = ({
   items = [],
-  values = {},
   onChange,
-  ductworkOptions = [],
+  showPrice = false,
   getUnitTotal = () => { console.log('getUnitTotal not provided'); return 0; },
   className = "",
   ...props
 }) => {
-  const [selections, setSelections] = useState(values || {});
 
-  const handleSelectionChange = (itemKey, optionValue) => {
-    const newSelections = {
-      ...selections,
-      [itemKey]: optionValue
-    };
-    setSelections(newSelections);
+  const handleQtyChange = (itemKey, newValue) => {
     if (onChange) {
-      onChange(newSelections);
+      console.log("Qty change for", itemKey, "to", newValue);
+      onChange(itemKey, newValue);
     }
-  };
-
-  const getSelectedOption = (itemKey, itemType) => {
-    const selectedValue = selections[itemKey];
-    return ductworkOptions[itemType].find(option => option.value === selectedValue);
-  };
+  }
 
   return (
     <div className={`flex flex-col gap-6 w-full ${className}`} {...props}>
       {items.map((item) => {
-        const selectedOption = getSelectedOption(item.key, item.type);
-        const hasSelection = !!selectedOption;
 
-        const options = ductworkOptions[item.type] || [];
+        const { units, unitsTotal } = getUnitTotal(item.type, item.key);
 
         return (
           <div
@@ -56,28 +43,29 @@ const DuctworkConfigurator = ({
                 </div>
               </div>
 
-              {/* Dropdown using CustomSelect */}
-              <div className="w-[280px]">
-                <CustomSelect
-                  value={selections[item.type] || ''}
-                  onChange={(value) => handleSelectionChange(item.key, value)}
-                  options={options.map(option => ({
-                    value: option.value,
-                    label: `${option.range} ${option.description}`
-                  }))}
-                  placeholder="Canalizzazioni"
-                  label="Canalizzazioni"
-                  className="h-10"
-                />
-              </div>
+              <QtyStepControl
+                value={item.value || 0}
+                onIncrement={(value) => handleQtyChange(item.key, value)}
+                onDecrement={(value) => handleQtyChange(item.key, value)}
+                min={0}
+                max={50}
+                unit="mt"
+              />
+
             </div>
 
             {/* Price Display */}
-            {hasSelection && (
-              <div className="flex flex-row justify-between bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4">
-                {/* <span className="font-enel-bold">Prezzo finale {" "}</span> */}
-                <span className="font-enel-bold">
-                  {priceFormatter(getUnitTotal(item.type, item.key))}
+            {showPrice && units > 0 && (
+              <div className="flex flex-row justify-between items-center bg-gray-100 font-enel px-3 py-2 rounded-2xl ml-4">
+                {
+                  units == 1 && <span className="font-enel-light text-sm leading-5">1 modulo aggiuntivo</span>
+                }
+                {
+                  units > 1 && <span className="font-enel-light text-sm leading-5">{units} moduli aggiuntivi</span>
+                }
+                &nbsp;&nbsp;
+                <span className="font-enel-bold leading-5">
+                  {priceFormatter(unitsTotal)}
                 </span>
               </div>
             )}

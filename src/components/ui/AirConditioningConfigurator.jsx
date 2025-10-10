@@ -5,7 +5,6 @@ import IconRenderer from '../icons/IconRenderer';
 import { getPopoverConfig } from '../icons/PopoverContentRegistry';
 import CustomSelect from './CustomSelect';
 import DescriptionBox from './DescriptionBox';
-import Divider from './Divider';
 import TextInput from './TextInput';
 
 // Warning message component based on Figma design
@@ -15,19 +14,19 @@ const RoomSizeWarning = () => (
       <div className="basis-0 box-border content-stretch flex flex-row gap-4 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
         <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
           <div className="relative shrink-0 size-6">
-            <IconRenderer icon="warning" className="w-6 h-6" fillClass="fill-warning" />
+            <IconRenderer icon="warning" className="w-6 h-6" fillClass="fill-primary-lighter" />
           </div>
         </div>
         <div className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-center min-h-px min-w-px p-0 relative shrink-0">
           <div className="box-border content-stretch flex flex-col gap-0.5 items-start justify-center p-0 relative shrink-0 w-full">
             <div className="flex flex-col font-enel justify-center leading-[0] min-w-full not-italic relative shrink-0 text-black text-[14px] text-left">
               <p className="leading-[21px]">
-                <span className="font-enel-bold not-italic text-warning">
+                <span className="font-enel-bold not-italic text-primary-lighter">
                   La dimensione della stanza da climatizzare è troppo grande per la taglia di split selezionato
                 </span>
                 <br />
                 <span>
-                  Spiegagli che occorre acquistare uno split più grande per climatizzare una stanza così grande
+                  Spiegagli che occorre acquistare una macchina più grande per climatizzare una stanza così grande ma puoi comunque proseguire con la configurazione
                 </span>
               </p>
             </div>
@@ -65,17 +64,17 @@ const ConfigurationRow = ({
       {/* Configuration Row */}
       <div className={cn('box-border content-stretch flex flex-row gap-6 items-center justify-start p-4 relative rounded-2xl shrink-0 w-full', {
         'bg-white-light': !warning,
-        'bg-warning-light': warning
+        'bg-[#F4F8FF]': warning
       })}>
         {/* AC Type Label */}
         <div className="flex flex-row items-center self-stretch">
           <div className="box-border content-stretch flex flex-row gap-2 h-full items-center justify-start p-0 relative shrink-0 w-36">
             <div className="relative shrink-0 w-6 h-6 text-grey-light">
-              <AirConditioningIcon type={iconType} fillClass={warning ? 'fill-warning' : 'fill-black'} />
+              <AirConditioningIcon type={iconType} fillClass={warning ? 'fill-primary-lighter' : 'fill-black'} />
             </div>
             <div className={cn('font-enel font-normal leading-none not-italic relative shrink-0 text-lg text-left text-nowrap', {
               'text-black': !warning,
-              'text-warning': warning
+              'text-primary-lighter': warning
             })}>
               <p className="block leading-[27px] whitespace-pre">
                 {type}
@@ -102,9 +101,9 @@ const ConfigurationRow = ({
             numericOnly={true}
             value={roomSize || ''}
             onChange={(e) => onRoomSizeChange(e.target.value)}
-            placeholder="M² stanza da climatizzare"
+            placeholder="M² superficie da climatizzare"
             className={cn('w-full', {
-              'border-warning': warning
+              'border-primary-lighter': warning
             })}
           />
         </div>
@@ -130,16 +129,20 @@ const AirConditioningConfigurator = ({
   return (
     <div className="box-border content-stretch flex flex-col gap-6 items-start justify-start p-0 relative shrink-0 w-full">
 
-      <div className='flex flex-row justfy-center'>
+      <div className='flex flex-col justfy-center'>
         <DescriptionBox
           title="Chiedi al cliente quale tipologia di installazione dovrà essere fatta"
           description="Per ogni impianto, indicare la tipologia di installazione associata e la metratura della stanza da climatizzare"
         />
-        <Divider orientation="vertical" className='px-4' />
-
-        <IconPopover
+        {/* <IconPopover
           {...getPopoverConfig('airConditioningInfo')}
-        />
+        /> */}
+        <div className="flex flex-row text-secondary my-2">
+          <div className="underline mr-2">Come scegliere la potenza del climatizzatore?</div>
+          <IconPopover
+            {...getPopoverConfig('airConditioningInfo')}
+          />
+        </div>
       </div>
 
       {/* Configuration Rows */}
