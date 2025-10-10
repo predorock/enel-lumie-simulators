@@ -17,15 +17,14 @@ export default function InvestimentSelector({
             selectedOption={selectedOption}
             onOptionChange={onOptionChange}
             options={options}
-            disabled={disabled}
-            className={`flex flex-col gap-4 ${className}`}>
+            disabled={disabled}>
             {/* Title section */}
             {title && (
                 <div className="font-enel-bold font-bold text-black text-lg tracking-[0.4px] leading-[30px]">
                     {title}
                 </div>
             )}
-            <div className="flex flex-row justify-start">
+            <div className={`flex flex-col gap-4 ${className}`}>
                 <OptionSelector.Options>
                     <OptionSelector.Option>
                         {({ option, isSelected, optionProps }) => {

@@ -8,15 +8,12 @@ export default function BrandSelector({
   className = "",
   disabled = false
 }) {
-  // Convert BRANDS object to options array format
-
   return (
     <OptionSelector
       options={options}
       selectedOption={selectedBrand}
       onOptionChange={onBrandChange}
       disabled={disabled}
-      className={`flex flex-col gap-4 ${className}`}
     >
       {/* Title section */}
       {title && (
@@ -26,7 +23,7 @@ export default function BrandSelector({
       )}
 
       {/* Brand options grid */}
-      <div className="flex flex-row justify-start">
+      <div className={`flex flex-col gap-4 ${className}`}>
         <OptionSelector.Options>
           <OptionSelector.Option>
             {({ option, isSelected, optionProps }) => {

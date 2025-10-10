@@ -70,13 +70,14 @@ export default {
                 {
                     type: 'BrandSelector',
                     props: {
-                        title: 'Quale brand di climatizzatore preferisce?'
+                        title: 'Filtra prodotti per brand o per investimento:',
+                        className: 'grid grid-cols-3 gap-4'
                     }
                 },
                 {
                     type: 'InvestmentSelector',
                     props: {
-                        title: 'Qual è l\'investimento più adatto al cliente?'
+                        className: 'grid grid-cols-3 gap-4'
                     }
                 },
                 {

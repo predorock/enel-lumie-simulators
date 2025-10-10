@@ -377,7 +377,6 @@ function dynamicPageTemplate(
                     "title": `Scelta del ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)}`,
                     "description": getInstallationTypeDescription(acConfig?.installationType),
                     "icon": acConfig?.type || "",
-                    "step": `${splitIndex + 1}/${splitTotal}`,
                     "stepColor": "purple",
                     "layout": "horizontal"
                 }
@@ -393,13 +392,14 @@ function dynamicPageTemplate(
             {
                 type: 'BrandSelector',
                 props: {
-                    title: 'Quale brand di climatizzatore preferisce?',
+                    title: 'Filtra prodotti per brand o per investimento:',
+                    className: 'grid grid-cols-3 gap-4'
                 }
             },
             {
                 type: 'InvestmentSelector',
                 props: {
-                    title: 'Qual è l\'investimento più adatto al cliente?',
+                    className: 'grid grid-cols-3 gap-4'
                 }
             },
             {
