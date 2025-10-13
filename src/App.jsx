@@ -13,12 +13,6 @@ function App() {
     initializeStore();
   }, []); // Empty dependency array - only run once
 
-  // Demo mode - only available in development
-
-  if (import.meta.env.DEV && window.location.search.includes('demo=')) {
-    return import('./components/demo/DemoWrapper');
-  }
-
   return (
     <PageLayout
       pageId={currentPageId}
