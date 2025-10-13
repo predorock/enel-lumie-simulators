@@ -11,6 +11,7 @@ import ReportDemo from './ReportDemo';
 import ReportSummaryDemo from './ReportSummaryDemo';
 import SidebarFormDemo from './SidebarFormDemo';
 import StatefulSidebarFormDemo from './StatefulSidebarFormDemo';
+import StepIndicatorDemo from './StepIndicatorDemo';
 import SummaryPriceDisplayDemo from './SummaryPriceDisplayDemo';
 
 const DemoWrapper = () => {
@@ -34,6 +35,7 @@ const DemoWrapper = () => {
         ac: AcProductDisplayContainerDemo,
         report: ReportDemo,
         reportSummary: ReportSummaryDemo,
+        stepIndicator: StepIndicatorDemo,
         summaryPrice: SummaryPriceDisplayDemo,
     };
 

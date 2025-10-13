@@ -49,6 +49,12 @@ export default {
             ],
             components: [
                 {
+                    "type": "StepIndicator",
+                    "props": {
+                        "acConfigurationKey": "monosplit_0"
+                    }
+                },
+                {
                     type: 'DescriptionBox',
                     props: {
                         title: 'Scelta del Monosplit',

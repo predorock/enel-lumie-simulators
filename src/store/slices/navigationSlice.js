@@ -372,6 +372,12 @@ function dynamicPageTemplate(
         ],
         components: [
             {
+                "type": "StepIndicator",
+                "props": {
+                    "acConfigurationKey": `${acConfig.configKey}`
+                }
+            },
+            {
                 "type": "DescriptionBox",
                 "props": {
                     "title": `Scelta del ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)}`,
@@ -403,18 +409,11 @@ function dynamicPageTemplate(
                 }
             },
             {
-                "type": "Divider",
-                "props": {
-                    "className": "py-6"
+                type: 'Divider',
+                props: {
+                    className: 'py-6'
                 }
             },
-            // {
-            //     "type": "DescriptionBox",
-            //     "props": {
-            //         "title": `Per climatizzare la sua casa, proponiamo al cliente:`,
-            //         titleSize: "lg",
-            //     }
-            // },
             {
                 "type": "AcProductDisplayContainer",
                 "props": {
