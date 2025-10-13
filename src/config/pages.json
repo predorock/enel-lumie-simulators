@@ -95,6 +95,67 @@
             ]
         },
         {
+            "id": "room-informations",
+            "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
+            "step": 1,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
+            "validationRules": {},
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "italy",
+                        "alt": "Italy",
+                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
+                        "containerClassName": "flex justify-center items-center mt-16 h-full"
+                    }
+                }
+            ],
+            "components": [
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Quanti locali vuole climatizzare il cliente?",
+                        "description": "Scegli il numero di locali che vuole climatizzare. Può selezionare un massimo di 15 locali"
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "className": "py-4"
+                    }
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Quanti metri quadri vuole climatizzare?",
+                        "description": "Chiedi al cliente di quanti metri quadri è la somma delle stanze da climatizzare"
+                    }
+                },
+                {
+                    "type": "RangeSlider",
+                    "props": {
+                        "stateProperty": "roomArea",
+                        "min": 5,
+                        "max": 300,
+                        "step": 5,
+                        "label": "m²",
+                        "showValue": true
+                    }
+                }
+            ]
+        },
+        {
             "id": "checklist-configuratore",
             "title": "Configurate insieme il climatizzatore!",
             "step": 2,
