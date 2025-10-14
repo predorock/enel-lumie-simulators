@@ -3,6 +3,7 @@ import BenefitsCard from '../BenefitsCard';
 import BigHeaderCard from '../card/BigHeaderCard';
 import SkinnyCard from '../card/SkinnyCard';
 import Divider from '../Divider';
+import InfoBanner from '../InfoBanner';
 import PriceDisplay from '../PriceDisplay';
 import ProductSummary from './ProductSummary';
 
@@ -73,8 +74,14 @@ export default function SummaryResultsContainer({
 
                     {/* Title */}
                     {financing?.title && (
-                        <h3 className="text-lg font-enel-bold text-primary-light mb-4">
+                        <h3 className="text-lg font-enel-bold text-primary-light">
                             {financing?.title}
+                        </h3>
+                    )}
+
+                    {financing?.subtitle && (
+                        <h3 className="text-sm font-enel text-slate-500 mb-4">
+                            {financing?.subtitle}
                         </h3>
                     )}
 
@@ -114,9 +121,10 @@ export default function SummaryResultsContainer({
 
                     {/* Disclaimer */}
                     {financing?.disclaimer && (
-                        <p className="text-xs font-enel text-gray-500 mt-4 mb-1">
-                            {financing?.disclaimer}
-                        </p>
+                        // <p className="text-xs font-enel text-gray-500 mt-4 mb-1">
+                        //     {financing?.disclaimer}
+                        // </p>
+                        <InfoBanner title={financing?.disclaimer} className='mt-2' />
                     )}
                 </BigHeaderCard>
 

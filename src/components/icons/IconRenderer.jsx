@@ -1,10 +1,12 @@
 import { Cross2Icon, EnvelopeClosedIcon, PlusIcon } from '@radix-ui/react-icons';
 import AirConditioningIcons from './AirConditioningIcons';
 import CheckMarkIcon from './CheckMarkIcon';
+import ChevronDownIcon from './ChevronDownIcon';
 import ChevronRightIcon from './ChevronRightIcon';
 import Dualsplit from './Dualsplit';
 import EcoIcon from './EcoIcon';
 import EuroIcon from './EuroIcon';
+import FatturaIcon from './FatturaIcon';
 import FireIcon from './FireIcon';
 import GlobeIcon from './GlobeIcon';
 import HouseIcon from './HouseIcon';
@@ -35,6 +37,7 @@ const registry = {
     info: InfoIcon,
     globe: GlobeIcon,
     chevronRight: ChevronRightIcon,
+    chevronDown: ChevronDownIcon,
     fire: FireIcon,
     cross: Cross2Icon,
     reader: ReaderIcon,
@@ -43,7 +46,8 @@ const registry = {
     warning: WarningIcon,
     monosplit: Monosplit,
     dualsplit: Dualsplit,
-    trialsplit: Trialsplit
+    trialsplit: Trialsplit,
+    fattura: FatturaIcon
 }
 
 export default function IconRenderer({ icon, ...props }) {

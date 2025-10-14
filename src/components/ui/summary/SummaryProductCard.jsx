@@ -12,17 +12,17 @@ const SummaryProductCard = ({
     }
 
     return (
-        <div className={`bg-white relative rounded-2xl shrink-0 w-full shadow-[0px_2px_8px_0px_rgba(102,119,144,0.2)] ${className}`}>
-            <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start overflow-clip px-4 py-0 relative w-full">
+        <div className={`bg-white relative rounded-2xl shrink-0 w-full ${className}`}>
+            <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start overflow-clip py-0 relative w-full">
                 <div className="bg-white box-border content-stretch grid grid-cols-32 items-center justify-start px-0 py-4 relative w-full">
 
                     {/* Product Image */}
-                    <div className="lg:col-span-5 xl:col-span-4 bg-white-light relative lg:size-25 xl:size-auto flex items-center justify-center">
+                    <div className="lg:col-span-5 xl:col-span-4 bg-white-light relative lg:size-25 xl:size-auto flex items-center justify-center rounded-md">
                         {product?.productImage ? (
                             <img
                                 src={product?.productImage}
                                 alt={product?.productImageAlt}
-                                className="h-auto w-auto object-contain mix-blend-multiply"
+                                className="h-auto w-auto object-contain mix-blend-multiply rounded-md"
                             />
                         ) : (
                             <div className="h-auto w-auto bg-gray-300 rounded flex items-center justify-center">

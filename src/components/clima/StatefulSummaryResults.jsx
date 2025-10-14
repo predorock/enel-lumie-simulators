@@ -47,7 +47,8 @@ export default function StatefulSummaryResults({ className = "", ...props }) {
 
     // Financing data
     const financing = {
-        title: "Il cliente vuole pagare in comode rate?",
+        title: "Il cliente vuole pagare in comode rate? Ecco degli esempi!",
+        subtitle: "Spiega al cliente che ha la possibilità di scegliere la finanziaria adatta per il suo investimento.",
         plans: financingPlans,
         disclaimer: '* I dati sono indicativi e potrebbero variare in base alla scelta della finanziaria'
     };
