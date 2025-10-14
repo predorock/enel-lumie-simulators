@@ -16,6 +16,7 @@ import StatefulLoadingSpinner from '../clima/StatefulLoadingSpinner';
 import StatefulQtyStepControl from '../clima/StatefulQtyStepControl';
 import StatefulReportSummary from '../clima/StatefulReportSummary';
 import StatefulSidebarForm from '../clima/StatefulSidebarForm';
+import StatefulSlider from '../clima/StatefulSlider';
 import StatefulSplitterQtyConfigurator from '../clima/StatefulSplitterQtyConfigurator';
 import StatefulStepIndicator from '../clima/StatefulStepIndicator';
 import StatefulSummaryResults from '../clima/StatefulSummaryResults';
@@ -88,6 +89,7 @@ const componentRegistry = {
   SearchInput: (props) => <StatefulInput inputType="SearchInput" {...props} />,
   ServicePriceDisplay: (props) => <ServicePriceDisplay {...props} />,
   SidebarForm: (props) => <StatefulSidebarForm {...props} />,
+  Slider: (props) => <StatefulSlider {...props} />,
   SplitterQtyConfigurator: (props) => <StatefulSplitterQtyConfigurator {...props} />,
   StepIndicator: (props) => <StatefulStepIndicator {...props} />,
   SummaryResults: (props) => <StatefulSummaryResults {...props} />,

@@ -108,3 +108,64 @@
     font-size: 16px;
   }
 }
+
+/* rc-slider custom styling to match Figma design */
+/* .rc-slider-custom {
+  height: 24px;
+  padding: 0;
+}
+*/
+.rc-slider-custom .rc-slider-rail {
+  display: none;
+}
+
+.rc-slider-custom .rc-slider-track {
+  background-color: var(--color-secondary);
+  height: 18px;
+  top: -2px;
+  border-radius: 50px;
+}
+
+.rc-slider-custom .rc-slider-handle {
+  width: 22px;
+  height: 22px;
+  margin-top: -9px;
+  border: 2px solid var(--color-white-light);
+  background-color: var(--color-secondary);
+  opacity: 1;
+  box-shadow: none;
+}
+
+.rc-slider-custom .rc-slider-handle:hover {
+  border: 2px solid var(--color-white-light);
+  background-color: var(--color-secondary);
+}
+
+.rc-slider-custom .rc-slider-handle:active {
+  border: 2px solid var(--color-white-light);
+  background-color: var(--color-secondary);
+}
+
+.rc-slider-custom .rc-slider-handle-dragging {
+  border: 2px solid var(--color-white-light) !important;
+  box-shadow: none !important;
+  background-color: var(--color-secondary);
+}
+
+.rc-slider-custom .rc-slider-handle:focus {
+  outline: none;
+  border: 2px solid var(--color-white-light);
+  background-color: var(--color-secondary);
+}
+
+.rc-slider-mark {
+  top: 30px !important;
+}
+
+.rc-slider-dot {
+  display: none !important;
+}
+
+.rc-slider-custom .rc-slider-handle::after {
+  display: none;
+}

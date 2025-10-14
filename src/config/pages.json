@@ -64,7 +64,7 @@
                         "label": "Si tratta di un cliente Enel Luce e Gas?",
                         "className": "font-enel-bold",
                         "stateProperty": "isEnelCustomer",
-                        "initialValue": false
+                        "initialValue": true
                     }
                 },
                 {
@@ -73,7 +73,7 @@
                         "label": "Il cliente sa quanti split vuole acquistare?",
                         "className": "font-enel-bold",
                         "stateProperty": "needSuggestion",
-                        "initialValue": false
+                        "initialValue": true
                     }
                 },
                 {
@@ -104,7 +104,7 @@
             "showBackgroundDecoration": true,
             "validationRules": {},
             "navigationHooks": {
-                "beforeNext": "",
+                "beforeNext": "generateSuggestions",
                 "afterNext": "",
                 "beforePrevious": "",
                 "afterPrevious": ""
@@ -159,12 +159,14 @@
                 {
                     "type": "Slider",
                     "props": {
-                        "stateProperty": "roomArea",
+                        "stateProperty": "coverageArea",
                         "min": 5,
                         "max": 300,
-                        "step": 5,
-                        "unit": "m²",
-                        "showValue": true
+                        "step": 1,
+                        "marks": {
+                            "5": "5",
+                            "300": "300"
+                        }
                     }
                 }
             ]
