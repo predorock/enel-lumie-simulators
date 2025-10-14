@@ -22,11 +22,11 @@ const RoomSizeWarning = () => (
             <div className="flex flex-col font-enel justify-center leading-[0] min-w-full not-italic relative shrink-0 text-black text-[14px] text-left">
               <p className="leading-[21px]">
                 <span className="font-enel-bold not-italic text-primary-lighter">
-                  La dimensione della stanza da climatizzare è troppo grande per la taglia di split selezionato
+                  La dimensione della superficie da climatizzare è troppo grande per la taglia di split selezionato
                 </span>
                 <br />
                 <span>
-                  Spiegagli che occorre acquistare una macchina più grande per climatizzare una stanza così grande ma puoi comunque proseguire con la configurazione
+                  Spiegagli che occorre acquistare una macchina più grande per climatizzare una superficie così ampia ma puoi comunque proseguire con la configurazione
                 </span>
               </p>
             </div>
@@ -129,10 +129,10 @@ const AirConditioningConfigurator = ({
   return (
     <div className="box-border content-stretch flex flex-col gap-6 items-start justify-start p-0 relative shrink-0 w-full">
 
-      <div className='flex flex-col justfy-center'>
+      <div className='flex flex-col justify-center'>
         <DescriptionBox
           title="Chiedi al cliente quale tipologia di installazione dovrà essere fatta"
-          description="Per ogni impianto, indicare la tipologia di installazione associata e la metratura della stanza da climatizzare"
+          description="Per ogni impianto, indicare la tipologia di installazione associata e la superficie da climatizzare"
         />
         {/* <IconPopover
           {...getPopoverConfig('airConditioningInfo')}

@@ -27,13 +27,13 @@ export default function SummaryExpensesAccordion({
           aria-expanded={isOpen}
           aria-controls="accordion-content"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex flex-row p-2 items-center justify-center bg-slate-100 rounded-md cursor-pointer"
+          className="flex flex-row p-2 gap-1 items-center justify-center bg-slate-100 rounded-md cursor-pointer"
         >
           <span>{isOpen ? 'Chiudi dettagli' : 'Apri dettagli'}</span>
           <IconRenderer
-            icon="chevronRight"
+            icon="chevronUp"
             className={cn('w-4 h-4 transition-transform', {
-              'rotate-90': isOpen,
+              'rotate-180': isOpen,
             })}
           />
         </Button>

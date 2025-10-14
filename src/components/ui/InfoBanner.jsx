@@ -53,17 +53,19 @@ const InfoBanner = ({
           <div className="basis-0 box-border content-stretch flex flex-row gap-4 grow items-center justify-start min-h-px min-w-px p-0 relative shrink-0">
 
             {/* Icon */}
-            <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
-              <div className={`relative shrink-0 w-6 h-6 ${currentVariant.iconColor}`}>
-                {
-                  popoverConfig ? (
-                    <IconPopover icon={icon} {...popoverConfig} />
-                  ) : (
-                    <IconRenderer icon={icon} fillClass={currentVariant.iconColor} />
-                  )
-                }
+            {icon && (
+              <div className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0">
+                <div className={`relative shrink-0 w-6 h-6 ${currentVariant.iconColor}`}>
+                  {
+                    popoverConfig ? (
+                      <IconPopover icon={icon} {...popoverConfig} />
+                    ) : (
+                      <IconRenderer icon={icon} fillClass={currentVariant.iconColor} />
+                    )
+                  }
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Text Content */}
             <div className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-center min-h-px min-w-px p-0 relative shrink-0">

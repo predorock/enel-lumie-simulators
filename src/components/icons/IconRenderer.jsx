@@ -3,6 +3,7 @@ import AirConditioningIcons from './AirConditioningIcons';
 import CheckMarkIcon from './CheckMarkIcon';
 import ChevronDownIcon from './ChevronDownIcon';
 import ChevronRightIcon from './ChevronRightIcon';
+import ChevronUpIcon from './ChevronUpIcon';
 import Dualsplit from './Dualsplit';
 import EcoIcon from './EcoIcon';
 import EuroIcon from './EuroIcon';
@@ -38,6 +39,7 @@ const registry = {
     globe: GlobeIcon,
     chevronRight: ChevronRightIcon,
     chevronDown: ChevronDownIcon,
+    chevronUp: ChevronUpIcon,
     fire: FireIcon,
     cross: Cross2Icon,
     reader: ReaderIcon,

@@ -124,7 +124,7 @@ export default function SummaryResultsContainer({
                         // <p className="text-xs font-enel text-gray-500 mt-4 mb-1">
                         //     {financing?.disclaimer}
                         // </p>
-                        <InfoBanner title={financing?.disclaimer} className='mt-2' />
+                        <InfoBanner icon={false} description={financing?.disclaimer} className='mt-2' />
                     )}
                 </BigHeaderCard>
 
