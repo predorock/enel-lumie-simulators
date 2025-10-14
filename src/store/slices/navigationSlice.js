@@ -209,26 +209,34 @@ export const createNavigationSlice = (set, get) => ({
     getAllPages: () => {
         const state = get();
 
-        if (state.dynamicPages.length === 0) {
-            return pagesConfig.pages; // Return original pages if no dynamic pages
+        let allPages = pagesConfig.pages;
+
+        if (state.dynamicPages.length > 0) {
+            // Insert dynamic pages after 'canalizzazioni-configuratore' (step 2)
+            const insertAfterIndex = pagesConfig.pages.findIndex(page => page.id === 'canalizzazioni-configuratore');
+
+            if (insertAfterIndex === -1) {
+                // Fallback: add at the end
+                allPages = [...pagesConfig.pages, ...state.dynamicPages];
+            } else {
+                // Insert dynamic pages after the specified page
+                allPages = [
+                    ...pagesConfig.pages.slice(0, insertAfterIndex + 1),
+                    ...state.dynamicPages,
+                    ...pagesConfig.pages.slice(insertAfterIndex + 1)
+                ];
+            }
         }
 
-        // Insert dynamic pages after 'canalizzazioni-configuratore' (step 2)
-        const insertAfterIndex = pagesConfig.pages.findIndex(page => page.id === 'canalizzazioni-configuratore');
+        // Filter pages based on renderConditions
+        return allPages.filter(page => {
+            if (!page.renderConditions) {
+                return true; // No render conditions, always include
+            }
 
-        if (insertAfterIndex === -1) {
-            // Fallback: add at the end
-            return [...pagesConfig.pages, ...state.dynamicPages];
-        }
-
-        // Insert dynamic pages after the specified page
-        const result = [
-            ...pagesConfig.pages.slice(0, insertAfterIndex + 1),
-            ...state.dynamicPages,
-            ...pagesConfig.pages.slice(insertAfterIndex + 1)
-        ];
-
-        return result;
+            // Use shouldRenderComponent to evaluate page-level conditions
+            return state.shouldRenderComponent(page.renderConditions);
+        });
     },
 
     getDynamicPages: () => get().dynamicPages,

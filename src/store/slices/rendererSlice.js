@@ -43,6 +43,12 @@ export const createRendererSlice = (set, get) => ({
             return value !== undefined && value !== null && value !== '' && value !== 0;
         }
 
+        if (conditions.isNotDefined) {
+            // Check if all specified state properties are not defined
+            const value = getNestedValue(state, conditions.isNotDefined);
+            return value === undefined || value === null || value === '' || value === 0;
+        }
+
         if (conditions.hasQuantities) {
             // Check if any quantities are greater than 0
             const quantities = getNestedValue(state, conditions.hasQuantities) || {};

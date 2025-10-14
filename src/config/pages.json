@@ -109,6 +109,9 @@
                 "beforePrevious": "",
                 "afterPrevious": ""
             },
+            "renderConditions": {
+                "isNotDefined": "formData.needSuggestion"
+            },
             "leftPanelComponents": [
                 {
                     "type": "Image",
