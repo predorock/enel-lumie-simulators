@@ -398,7 +398,7 @@ function dynamicPageTemplate(
             {
                 "type": "InfoBanner",
                 "props": {
-                    "title": `Questo ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)} deve climatizzare una superfice di ${acConfig?.roomSize} m²`,
+                    "title": `Questo ${acConfig?.type?.charAt(0).toUpperCase() + acConfig?.type?.slice(1)} deve climatizzare una superficie di ${acConfig?.roomSize} m²`,
                     "icon": "room",
                     "variant": "info"
                 }

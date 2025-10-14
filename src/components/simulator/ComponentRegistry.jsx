@@ -1,3 +1,4 @@
+import AcAdviceBanner from '../clima/AcAdviceBanner';
 import { ClimaImage } from '../clima/ClimaImageRegistry';
 import StatefulAcProductDisplayContainer from '../clima/StatefulAcProductDisplayContainer';
 import StatefulAirConditioningConfigurator from '../clima/StatefulAirConditioningConfigurator';
@@ -99,7 +100,8 @@ const componentRegistry = {
   Title: TitleComponent,
   Toggle: (props) => <StatefulToggle {...props} />,
   ValidationErrors: (props) => <ValidationErrors {...props} />,
-  HouseIllustration: (props) => <HouseIllustration {...props} />
+  HouseIllustration: (props) => <HouseIllustration {...props} />,
+  AcAdviceBanner: (props) => <AcAdviceBanner {...props} />
 };
 
 export default componentRegistry;

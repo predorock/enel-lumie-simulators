@@ -226,6 +226,10 @@
                     }
                 },
                 {
+                    "type": "AcAdviceBanner",
+                    "props": {}
+                },
+                {
                     "type": "SplitterQtyConfigurator",
                     "props": {
                         "items": [

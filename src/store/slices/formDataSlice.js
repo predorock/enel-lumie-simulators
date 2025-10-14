@@ -168,6 +168,7 @@ export const createFormDataSlice = (set, get) => ({
         set((state) => ({
             formData: {
                 ...state.formData,
+                suggestion: suggestion,
                 airconditioningQuantities: suggestion
             }
         }));
