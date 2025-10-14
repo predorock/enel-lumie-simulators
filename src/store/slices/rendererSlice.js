@@ -49,6 +49,18 @@ export const createRendererSlice = (set, get) => ({
             return value === undefined || value === null || value === '' || value === 0;
         }
 
+        if (conditions.isTrue) {
+            // Check if all specified state properties are true
+            const value = getNestedValue(state, conditions.isTrue);
+            return value === true;
+        }
+
+        if (conditions.isFalse) {
+            // Check if all specified state properties are false
+            const value = getNestedValue(state, conditions.isFalse);
+            return value === false || !value;
+        }
+
         if (conditions.hasQuantities) {
             // Check if any quantities are greater than 0
             const quantities = getNestedValue(state, conditions.hasQuantities) || {};

@@ -21,6 +21,7 @@ import StatefulSplitterQtyConfigurator from '../clima/StatefulSplitterQtyConfigu
 import StatefulStepIndicator from '../clima/StatefulStepIndicator';
 import StatefulSummaryResults from '../clima/StatefulSummaryResults';
 import StatefulToggle from '../clima/StatefulToggle';
+import HouseIllustration from '../illustrations/HouseIllustration';
 import ACFeaturesDisplay from '../ui/ACFeaturesDisplay';
 import BenefitsCardsContainer from '../ui/BenefitsCardsContainer';
 import CostSummary from '../ui/CostSummary';
@@ -97,7 +98,8 @@ const componentRegistry = {
   TextInput: (props) => <StatefulInput inputType="TextInput" {...props} />,
   Title: TitleComponent,
   Toggle: (props) => <StatefulToggle {...props} />,
-  ValidationErrors: (props) => <ValidationErrors {...props} />
+  ValidationErrors: (props) => <ValidationErrors {...props} />,
+  HouseIllustration: (props) => <HouseIllustration {...props} />
 };
 
 export default componentRegistry;

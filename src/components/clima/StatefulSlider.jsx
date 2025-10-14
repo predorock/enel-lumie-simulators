@@ -1,5 +1,5 @@
-import SliderComponent from '../ui/Slider';
 import useAppStore from '../../store/useAppStore';
+import SliderComponent from '../ui/Slider';
 
 const StatefulSlider = ({
   stateProperty = null,
@@ -7,6 +7,7 @@ const StatefulSlider = ({
   max = 100,
   step = 1,
   marks = {},
+  initialValue = null,
   ...props
 }) => {
   const { formData, setFormValue } = useAppStore();
@@ -19,7 +20,7 @@ const StatefulSlider = ({
 
   const currentValue = stateProperty && formData && formData[stateProperty] !== undefined
     ? formData[stateProperty]
-    : min;
+    : initialValue;
 
   return (
     <SliderComponent
