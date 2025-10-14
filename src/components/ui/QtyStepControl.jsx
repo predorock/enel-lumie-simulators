@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import IconRenderer from '../icons/IconRenderer';
 
 // Simple icons using SVG instead of localhost images
 const MinusIcon = () => (
@@ -21,6 +22,8 @@ const QtyStepControl = ({
     onIncrement,
     onDecrement,
     disabled = false,
+    label = "",
+    icon = null,
     className = "",
     buttonClassName = "",
     displayClassName = "",
@@ -44,68 +47,90 @@ const QtyStepControl = ({
     return (
         <div
             className={cn(
-                "box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0",
+                "box-border content-stretch flex flex-row gap-2 p-0 relative shrink-0",
                 className
             )}
             {...props}
         >
-            {/* Decrement Button */}
-            <button
-                type="button"
-                disabled={!canDecrement}
-                onClick={handleDecrement}
-                className={cn(
-                    "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
-                    "rounded transition-all duration-200 ease-in-out",
-                    "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
-                    {
-                        "bg-[#c2cddd] cursor-not-allowed": !canDecrement,
-                        "bg-secondary hover:bg-secondary focus:ring-secondary": canDecrement
-                    },
-                    buttonClassName
-                )}
-            >
-                <MinusIcon />
-            </button>
+            {/* Label and Icon Row */}
+            {(label || icon) && (
+                <div className="flex flex-row items-center gap-2 mr-8">
+                    {icon && (
+                        <span className="w-6 h-6 flex items-center justify-center">
+                            <IconRenderer icon={icon} className="w-6 h-6 text-secondary" fillClass="fill-black" />
+                        </span>
+                    )}
+                    {label && (
+                        <label className={cn(
+                            "font-enel text-black text-base",
+                            { "opacity-50": disabled }
+                        )}>
+                            {label}
+                        </label>
+                    )}
+                </div>
+            )}
 
-            {/* Quantity Display */}
-            <div
-                className={cn(
-                    "box-border content-stretch flex flex-row gap-3 h-10 items-center justify-center min-w-10 p-0 relative rounded shrink-0 w-32",
-                    displayClassName
-                )}
-            >
-                <div className="basis-0 box-border content-stretch flex flex-col gap-0.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
-                    <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded shrink-0 w-full border border-grey-light">
-                        <div className="box-border content-stretch flex flex-row gap-1 items-center justify-center overflow-clip p-0 relative size-full">
-                            <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-black text-[16px] text-center text-nowrap">
-                                <p className="block leading-[16px]">
-                                    {value} {unit && <span>{unit}</span>}
-                                </p>
+            {/* Controls Row */}
+            <div className="box-border content-stretch flex flex-row gap-2 items-center justify-start">
+                {/* Decrement Button */}
+                <button
+                    type="button"
+                    disabled={!canDecrement}
+                    onClick={handleDecrement}
+                    className={cn(
+                        "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
+                        "rounded transition-all duration-200 ease-in-out",
+                        "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
+                        {
+                            "bg-[#c2cddd] cursor-not-allowed": !canDecrement,
+                            "bg-secondary hover:bg-secondary focus:ring-secondary": canDecrement
+                        },
+                        buttonClassName
+                    )}
+                >
+                    <MinusIcon />
+                </button>
+
+                {/* Quantity Display */}
+                <div
+                    className={cn(
+                        "box-border content-stretch flex flex-row gap-3 h-10 items-center justify-center min-w-10 p-0 relative rounded shrink-0 w-32",
+                        displayClassName
+                    )}
+                >
+                    <div className="basis-0 box-border content-stretch flex flex-col gap-0.5 grow h-full items-start justify-start min-h-px min-w-px p-0 relative shrink-0">
+                        <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded shrink-0 w-full border border-grey-light">
+                            <div className="box-border content-stretch flex flex-row gap-1 items-center justify-center overflow-clip p-0 relative size-full">
+                                <div className="basis-0 font-enel grow leading-[0] min-h-px min-w-px not-italic overflow-ellipsis overflow-hidden relative shrink-0 text-black text-[16px] text-center text-nowrap">
+                                    <p className="block leading-[16px]">
+                                        {value} {unit && <span>{unit}</span>}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Increment Button */}
-            <button
-                type="button"
-                disabled={!canIncrement}
-                onClick={handleIncrement}
-                className={cn(
-                    "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
-                    "rounded transition-all duration-200 ease-in-out",
-                    "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
-                    {
-                        "bg-[#c2cddd] cursor-not-allowed": !canIncrement,
-                        "bg-secondary hover:bg-secondary focus:ring-secondary": canIncrement
-                    },
-                    buttonClassName
-                )}
-            >
-                <PlusIcon />
-            </button>
+                {/* Increment Button */}
+                <button
+                    type="button"
+                    disabled={!canIncrement}
+                    onClick={handleIncrement}
+                    className={cn(
+                        "text-white box-border content-stretch flex flex-row items-center justify-center p-3 relative shrink-0 size-10",
+                        "rounded transition-all duration-200 ease-in-out",
+                        "hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2",
+                        {
+                            "bg-[#c2cddd] cursor-not-allowed": !canIncrement,
+                            "bg-secondary hover:bg-secondary focus:ring-secondary": canIncrement
+                        },
+                        buttonClassName
+                    )}
+                >
+                    <PlusIcon />
+                </button>
+            </div>
         </div>
     );
 };
