@@ -1,6 +1,6 @@
-import IconPopover from '../icons/IconPopover';
 import IconRenderer from '../icons/IconRenderer';
-import { getPopoverConfig } from '../icons/PopoverContentRegistry';
+import IconPopover from '../popover/IconPopover';
+import { getPopoverConfig } from '../popover/PopoverContentRegistry';
 
 const InfoBanner = ({
   title,

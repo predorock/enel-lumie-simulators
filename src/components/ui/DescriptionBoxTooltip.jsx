@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import IconPopover from '../icons/IconPopover';
+import IconPopover from '../popover/IconPopover';
 import DescriptionBox from './DescriptionBox';
 import Divider from './Divider';
 
-import { getPopoverConfig } from '../icons/PopoverContentRegistry';
+import { getPopoverConfig } from '../popover/PopoverContentRegistry';
 
 export default function DescriptionBoxTooltip({
   popoverIcon = null,

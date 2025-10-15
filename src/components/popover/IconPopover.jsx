@@ -1,19 +1,28 @@
 import { arrow, autoUpdate, flip, offset, shift, useClick, useDismiss, useFloating, useInteractions } from '@floating-ui/react';
-import { useRef, useState } from 'react';
-import IconRenderer from './IconRenderer';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import IconRenderer from '../icons/IconRenderer';
 
 
-export default function IconPopover({
+const IconPopover = forwardRef(function IconPopover({
     icon = "info",
     iconClassName = "fill-current",
     popoverContent = null,
     popoverPosition = "top",
     popoverClassName = "",
     disabled = false,
-    onClick = null
-}) {
+    onClick = null,
+    className = "",
+}, ref) {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const arrowRef = useRef(null);
+
+    // Expose methods to parent components
+    useImperativeHandle(ref, () => ({
+        open: () => setIsPopoverOpen(true),
+        close: () => setIsPopoverOpen(false),
+        toggle: () => setIsPopoverOpen(prev => !prev),
+        isOpen: isPopoverOpen
+    }));
 
     // Convert popoverPosition to Floating UI placement
     const getPlacement = (position) => {
@@ -46,6 +55,8 @@ export default function IconPopover({
         ],
         whileElementsMounted: autoUpdate
     });
+
+    console.log('popoverContent', popoverContent);
 
     // Handle clicks and dismiss behavior
     const click = useClick(context);
@@ -101,11 +112,11 @@ export default function IconPopover({
     };
 
     return (
-        <div className="relative inline-block my-auto">
+        <div className={`relative inline-block ${className}`}>
             <div
                 onClick={handleIconClick}
                 ref={refs.setReference}
-                className={`cursor-pointer ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`flex flex-row items-center justify-start cursor-pointer gap-1 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
                 {...getReferenceProps()}
             >
                 <IconRenderer icon={icon} fillClass={iconClassName} onClick={() => console.log('Icon clicked')} />
@@ -146,4 +157,6 @@ export default function IconPopover({
             )}
         </div>
     );
-}
+});
+
+export default IconPopover;

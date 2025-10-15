@@ -31,7 +31,7 @@ export default function SummaryExpensesAccordion({
         >
           <span>{isOpen ? 'Chiudi dettagli' : 'Apri dettagli'}</span>
           <IconRenderer
-            icon="chevronUp"
+            icon="chevronDown"
             className={cn('w-4 h-4 transition-transform', {
               'rotate-180': isOpen,
             })}
