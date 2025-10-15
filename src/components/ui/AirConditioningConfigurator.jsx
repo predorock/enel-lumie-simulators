@@ -1,8 +1,8 @@
 import cn from 'classnames';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
-import IconPopover from '../icons/IconPopover';
 import IconRenderer from '../icons/IconRenderer';
-import { getPopoverConfig } from '../icons/PopoverContentRegistry';
+import IconPopover from '../popover/IconPopover';
+import { getPopoverConfig } from '../popover/PopoverContentRegistry';
 import CustomSelect from './CustomSelect';
 import DescriptionBox from './DescriptionBox';
 import TextInput from './TextInput';

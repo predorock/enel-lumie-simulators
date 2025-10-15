@@ -3,6 +3,7 @@
  * InfoIcon Popover Content Registry
  * Centralized registry for all InfoIcon popover contents across the application
  */
+import IconPopover from "./IconPopover";
 
 export const popoverContentRegistry = {
     // Air Conditioning Configurator
@@ -142,4 +143,16 @@ export const popoverContentRegistry = {
  */
 export const getPopoverConfig = (key) => {
     return popoverContentRegistry[key] || null;
+};
+
+export const IconPopoverConfigurator = ({ popoverConfig, ...props }) => {
+    const config = getPopoverConfig(popoverConfig);
+    if (!config) return null;
+
+    return (
+        <IconPopover
+            {...props}
+            {...config}
+        />
+    );
 };
