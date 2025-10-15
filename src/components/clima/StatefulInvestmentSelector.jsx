@@ -10,7 +10,7 @@ const defaultOptions = [
     },
     {
         id: "medium",
-        name: "Miglior rapporto qualità/prezzo",
+        name: "Miglior qualità/prezzo",
         value: "medium",
         icon: "half"
     },
