@@ -30,13 +30,19 @@ const CostSummary = ({ containerClassName = '' }) => {
   const grandTotal = getGrandTotal();
 
   return (
-    <div className={`${containerClassName} z-10`}>
+    <div className={`${containerClassName}`}>
       {/* Main container with blue gradient background to match Figma */}
       <div className="bg-gradient-to-r from-[#0047cc] to-[#3b80ff] rounded-xl p-4">
         {/* Title section */}
         <div className="mb-3">
           <h3
-            className="text-white xl:text-xl lg:text-lg text-center xl:text-left font-bold leading-[30px] tracking-[0.4px] font-enel-bold"
+            className="text-white text-center xl:text-left leading-tight tracking-1 font-enel-bold xl:whitespace-nowrap md:text-md lg:text-lg xl:text-xl origin-center xl:origin-left"
+            style={{
+              width: 'fit-content',
+              maxWidth: '100%',
+              transform: 'scale(min(1, 100% / max-content))',
+              margin: '0 auto',
+            }}
           >
             PREVENTIVO DEL CLIMATIZZATORE
           </h3>

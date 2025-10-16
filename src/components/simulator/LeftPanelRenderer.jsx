@@ -7,15 +7,23 @@ const LeftPanelRenderer = ({ components = [] }) => {
 
   return (
     <div className="left-panel-components flex flex-col h-full justify-between">
-      {components.map((componentConfig, index) => (
-        <DynamicComponent
-          type={componentConfig.type}
-          props={componentConfig.props}
-          renderConditions={componentConfig.renderConditions}
-          showError={true}
-          key={`left-panel-${index}`}
-        />
-      ))}
+      {components.map((componentConfig, index) => {
+        const isLastComponent = index === components.length - 1;
+
+        return (
+          <DynamicComponent
+            type={componentConfig.type}
+            props={{
+              ...componentConfig.props,
+              className: `${componentConfig.props?.className || ''} ${isLastComponent ? 'mt-auto cazzo' : ''
+                }`.trim()
+            }}
+            renderConditions={componentConfig.renderConditions}
+            showError={true}
+            key={`left-panel-${index}`}
+          />
+        );
+      })}
     </div>
   );
 };
