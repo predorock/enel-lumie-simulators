@@ -213,7 +213,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end w-full"
+                        "containerClassName": "w-full z-10"
                     }
                 }
             ],
@@ -356,7 +356,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end w-full"
+                        "containerClassName": "w-full"
                     }
                 }
             ],
@@ -525,7 +525,7 @@
                 {
                     "type": "CostSummary",
                     "props": {
-                        "containerClassName": "mt-auto mb-4 self-end w-full"
+                        "containerClassName": "w-full"
                     }
                 }
             ],
