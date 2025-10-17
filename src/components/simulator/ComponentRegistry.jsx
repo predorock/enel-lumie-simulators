@@ -23,6 +23,8 @@ import StatefulStepIndicator from '../clima/StatefulStepIndicator';
 import StatefulSummaryResults from '../clima/StatefulSummaryResults';
 import StatefulToggle from '../clima/StatefulToggle';
 import HouseIllustration from '../illustrations/HouseIllustration';
+import { IconPopoverConfigurator } from '../popover/PopoverContentRegistry';
+import TextPopover from '../popover/TextPopover';
 import ACFeaturesDisplay from '../ui/ACFeaturesDisplay';
 import BenefitsCardsContainer from '../ui/BenefitsCardsContainer';
 import CostSummary from '../ui/CostSummary';
@@ -101,7 +103,9 @@ const componentRegistry = {
   Toggle: (props) => <StatefulToggle {...props} />,
   ValidationErrors: (props) => <ValidationErrors {...props} />,
   HouseIllustration: (props) => <HouseIllustration {...props} />,
-  AcAdviceBanner: (props) => <AcAdviceBanner {...props} />
+  AcAdviceBanner: (props) => <AcAdviceBanner {...props} />,
+  IconPopover: (props) => <IconPopoverConfigurator {...props} />,
+  TextPopover: (props) => <TextPopover {...props} />
 };
 
 export default componentRegistry;

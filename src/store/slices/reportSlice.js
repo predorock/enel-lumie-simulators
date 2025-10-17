@@ -283,6 +283,7 @@ export const createReportSlice = (set, get) => ({
             const payload = {
                 Comune: comune,
                 Numero_Macchine: numeroMacchine,
+                M2: formData.coverageArea || 0,
                 Warning: getWarningMessages(expandedConfigs),
                 Products: summary.clima.map((item) => ({
                     ...state.products.getRawProducts(item.product.productName)[0],
