@@ -9,9 +9,14 @@ const calculatePricingTriggerProperties = [
     'ductworkQuantities'
 ];
 
+const initialFormData = {
+    isEnelCustomer: true,
+    customerKnowsSplits: false
+}
+
 export const createFormDataSlice = (set, get) => ({
     // Form data state
-    formData: {},
+    formData: { ...initialFormData },
 
     loadUrlParams: () => {
         const urlParams = new URLSearchParams(window.location.search);

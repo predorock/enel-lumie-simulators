@@ -63,8 +63,7 @@
                     "props": {
                         "label": "Si tratta di un cliente Enel Luce e Gas?",
                         "className": "font-enel-bold",
-                        "stateProperty": "isEnelCustomer",
-                        "initialValue": true
+                        "stateProperty": "isEnelCustomer"
                     }
                 },
                 {
@@ -72,8 +71,7 @@
                     "props": {
                         "label": "Il cliente sa quanti split vuole acquistare?",
                         "className": "font-enel-bold",
-                        "stateProperty": "customerKnowsSplits",
-                        "initialValue": false
+                        "stateProperty": "customerKnowsSplits"
                     }
                 },
                 {
