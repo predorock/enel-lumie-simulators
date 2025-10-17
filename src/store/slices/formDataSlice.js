@@ -19,8 +19,9 @@ export const createFormDataSlice = (set, get) => ({
     formData: { ...initialFormData },
 
     loadUrlParams: () => {
+        const store = get();
         const urlParams = new URLSearchParams(window.location.search);
-        const formData = {};
+        const formData = { ...store.formData };
         for (const [key, value] of urlParams.entries()) {
             if (allowedUrlParams.includes(key)) {
                 formData[key] = value;
