@@ -1,7 +1,7 @@
 /**
  * Report slice for handling simulation API requests and responses
  */
-import { isValidSimulationData, submitSimulationToApi } from '../../utils/api';
+import { isValidSimulationData, printTrackingAPI, submitSimulationToApi } from '../../utils/api';
 import { getInstallationTypeDescription } from './pricingSlice';
 
 export const getOperationDescription = (operationType, splitType, amount) => {
@@ -387,6 +387,18 @@ export const createReportSlice = (set, get) => ({
 
             return plans;
 
+        },
+
+        trackPrint: () => {
+            const state = get();
+            const userId = state.getFormValue('userId') || null;
+            const accountName = state.getFormValue('accountName') || null;
+
+            if (!userId || !accountName) {
+                console.warn('⚠️ Missing userId or accountName for print tracking');
+                return;
+            }
+            printTrackingAPI(userId, accountName);
         }
     }
 });

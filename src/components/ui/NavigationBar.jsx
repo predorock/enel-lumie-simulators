@@ -1,9 +1,9 @@
 
 import cn from 'classnames';
+import { executeAction } from '../../store/executeAction';
 import useAppStore from '../../store/useAppStore';
 import IconRenderer from '../icons/IconRenderer';
 import Button from './Button';
-
 /**
  * NavigationBar Component with Override Support
  * 
@@ -116,21 +116,6 @@ export default function NavigationBar({
     }, store);
   };
 
-  // Function to execute actions
-  const executeAction = (action) => {
-    if (typeof action === 'function') {
-      action();
-    } else if (typeof action === 'string') {
-      const actionFunction = getActionFromStore(action);
-      if (actionFunction && typeof actionFunction === 'function') {
-        actionFunction();
-      } else {
-        console.warn('Unknown or invalid action path:', action);
-      }
-    }
-  };
-
-
   // Button configuration resolver
   const resolveButtonConfig = (overrideConfig, defaultConfig) => {
     if (!overrideConfig) return defaultConfig;
@@ -183,11 +168,11 @@ export default function NavigationBar({
   );
 
   const handleBack = () => {
-    executeAction(backConfig.action);
+    executeAction(store, backConfig.action);
   };
 
   const handleNext = () => {
-    executeAction(nextConfig.action);
+    executeAction(store, nextConfig.action);
   };
 
   // Helper function to render icon
