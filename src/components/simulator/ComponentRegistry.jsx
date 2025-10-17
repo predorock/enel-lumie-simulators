@@ -11,6 +11,7 @@ import StatefulDisclaimerContainer from '../clima/StatefulDisclaimerContainer';
 import StatefulDuctworkConfigurator from '../clima/StatefulDuctworkConfigurator';
 import StatefulErrorMessage from '../clima/StatefulErrorMessage';
 import StatefulFinalMessage from '../clima/StatefulFinalMessage';
+import StatefulGlossaryLink from '../clima/StatefulGlossaryLink';
 import StatefulGlossaryModal from '../clima/StatefulGlossaryModal';
 import StatefulInput from '../clima/StatefulInput';
 import StatefulInvestmentSelector from '../clima/StatefulInvestmentSelector';
@@ -82,6 +83,7 @@ const componentRegistry = {
   DuctworkConfigurator: (props) => <StatefulDuctworkConfigurator {...props} />,
   ErrorMessage: (props) => <StatefulErrorMessage {...props} />,
   FinalMessage: (props) => <StatefulFinalMessage {...props} />,
+  GlossaryLink: (props) => <StatefulGlossaryLink {...props} />,
   GlossaryModal: (props) => <StatefulGlossaryModal {...props} />,
   HorizontalBanner: (props) => <HorizontalBanner {...props} />,
   HorizontalBannerContainer: (props) => <HorizontalBannerContainer {...props} />,

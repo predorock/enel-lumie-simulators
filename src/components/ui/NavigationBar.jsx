@@ -4,6 +4,7 @@ import { executeAction } from '../../store/executeAction';
 import useAppStore from '../../store/useAppStore';
 import IconRenderer from '../icons/IconRenderer';
 import Button from './Button';
+import GlossaryLink from './GlossaryLink';
 /**
  * NavigationBar Component with Override Support
  * 
@@ -198,34 +199,40 @@ export default function NavigationBar({
       )}
       {...props}
     >
-      <div className="flex items-center justify-end gap-4 max-w-[9999px] w-full">
-        {backConfig.show && (
-          <Button
-            variant={backConfig.variant}
-            size="md"
-            disabled={backConfig.disabled}
-            onClick={handleBack}
-            icon={renderIcon(backConfig.icon)}
-            iconPosition={backConfig.iconPosition}
-            className={backConfig.className}
-          >
-            {backConfig.label}
-          </Button>
-        )}
+      <div className="flex items-center justify-between gap-4 max-w-[9999px] w-full">
+        {/* Left side - Glossary link */}
+        <GlossaryLink text="Vai al glossario" icon="info" />
 
-        {nextConfig.show && (
-          <Button
-            variant={nextConfig.variant}
-            size="md"
-            disabled={nextConfig.disabled}
-            onClick={handleNext}
-            icon={renderIcon(nextConfig.icon)}
-            iconPosition={nextConfig.iconPosition}
-            className={nextConfig.className}
-          >
-            {nextConfig.label}
-          </Button>
-        )}
+        {/* Right side - Navigation buttons */}
+        <div className="flex items-center gap-4">
+          {backConfig.show && (
+            <Button
+              variant={backConfig.variant}
+              size="md"
+              disabled={backConfig.disabled}
+              onClick={handleBack}
+              icon={renderIcon(backConfig.icon)}
+              iconPosition={backConfig.iconPosition}
+              className={backConfig.className}
+            >
+              {backConfig.label}
+            </Button>
+          )}
+
+          {nextConfig.show && (
+            <Button
+              variant={nextConfig.variant}
+              size="md"
+              disabled={nextConfig.disabled}
+              onClick={handleNext}
+              icon={renderIcon(nextConfig.icon)}
+              iconPosition={nextConfig.iconPosition}
+              className={nextConfig.className}
+            >
+              {nextConfig.label}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

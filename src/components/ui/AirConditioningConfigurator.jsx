@@ -1,10 +1,7 @@
 import cn from 'classnames';
 import { AirConditioningIcon } from '../icons/AirConditioningIcons';
 import IconRenderer from '../icons/IconRenderer';
-import IconPopover from '../popover/IconPopover';
-import { getPopoverConfig } from '../popover/PopoverContentRegistry';
 import CustomSelect from './CustomSelect';
-import DescriptionBox from './DescriptionBox';
 import TextInput from './TextInput';
 
 // Warning message component based on Figma design
@@ -129,21 +126,21 @@ const AirConditioningConfigurator = ({
   return (
     <div className="box-border content-stretch flex flex-col gap-6 items-start justify-start p-0 relative shrink-0 w-full">
 
-      <div className='flex flex-col justify-center'>
+      {/* <div className='flex flex-col justify-center'>
         <DescriptionBox
           title="Chiedi al cliente quale tipologia di installazione dovrà essere fatta"
           description="Per ogni impianto, indicare la tipologia di installazione associata e la superficie da climatizzare"
-        />
-        {/* <IconPopover
+        /> */}
+      {/* <IconPopover
           {...getPopoverConfig('airConditioningInfo')}
         /> */}
-        <div className="flex flex-row text-secondary my-2">
+      {/* <div className="flex flex-row text-secondary my-2">
           <div className="underline mr-2">Come scegliere la potenza del climatizzatore?</div>
           <IconPopover
             {...getPopoverConfig('airConditioningInfo')}
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Configuration Rows */}
       <div className="box-border content-stretch flex flex-col gap-4 items-start justify-start p-0 relative shrink-0 w-full">

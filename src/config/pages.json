@@ -262,6 +262,26 @@
                     }
                 },
                 {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Chiedi al cliente quale tipologia di installazione dovrà essere fatta",
+                        "description": "Per ogni impianto, indicare la tipologia di installazione associata e la superficie da climatizzare"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "formData.airconditioningQuantities"
+                    }
+                },
+                {
+                    "type": "GlossaryLink",
+                    "props": {
+                        "text": "Come scegliere la potenza del climatizzatore?",
+                        "sectionId": "btu"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "formData.airconditioningQuantities"
+                    }
+                },
+                {
                     "type": "AirConditioningConfigurator",
                     "props": {
                         "stateProperty": "airConditioningConfigs",
@@ -438,6 +458,16 @@
                     }
                 },
                 {
+                    "type": "GlossaryLink",
+                    "props": {
+                        "text": "Cos’è il lavaggio degli impianti?",
+                        "sectionId": "lavaggio-impianto"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "formData.airconditioningQuantities"
+                    }
+                },
+                {
                     "type": "Toggle",
                     "props": {
                         "label": "Il cliente vuole effettuare il lavaggio degli impianti di tubazione preesistenti?",
@@ -536,12 +566,13 @@
                     }
                 },
                 {
-                    "type": "TextPopover",
+                    "type": "GlossaryLink",
                     "props": {
                         "text": "Cosa sono le canalizzazioni?",
-                        "popoverIcon": "info",
-                        "popoverConfig": "ductworkInfo",
-                        "iconClassName": "fill-secondary"
+                        "sectionId": "canalizzazioni"
+                    },
+                    "renderConditions": {
+                        "hasQuantities": "formData.airconditioningQuantities"
                     }
                 },
                 {
