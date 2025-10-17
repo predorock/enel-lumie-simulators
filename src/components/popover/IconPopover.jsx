@@ -56,8 +56,6 @@ const IconPopover = forwardRef(function IconPopover({
         whileElementsMounted: autoUpdate
     });
 
-    console.log('popoverContent', popoverContent);
-
     // Handle clicks and dismiss behavior
     const click = useClick(context);
     const dismiss = useDismiss(context);

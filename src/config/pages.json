@@ -624,7 +624,10 @@
                     "iconPosition": "right",
                     "variant": "secondary",
                     "disabled": false,
-                    "action": "report.openReport"
+                    "action": [
+                        "report.openReport",
+                        "report.trackPrint"
+                    ]
                 },
                 "nextButton": {
                     "label": "Invia report finale al cliente",
@@ -792,7 +795,10 @@
                     "props": {
                         "title": "Evviva! Il preventivo è stato creato con successo",
                         "onSendAction": "submitLead",
-                        "onPrintAction": "report.openReport"
+                        "onPrintAction": [
+                            "report.openReport",
+                            "report.trackPrint"
+                        ]
                     }
                 }
             ],

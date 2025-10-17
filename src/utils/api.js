@@ -16,9 +16,10 @@ const buildApiUrl = (path) => {
 };
 
 const API_URLS = {
-  products: (cityName) => buildApiUrl(`clima?comune=${encodeURIComponent(cityName)}`),
-  simulation: () => buildApiUrl('clima'),
-  lead: () => buildApiUrl('EnelClimaLead')
+  products: (cityName) => buildApiUrl(`lumie/clima?comune=${encodeURIComponent(cityName)}`),
+  simulation: () => buildApiUrl('lumie/clima'),
+  lead: () => buildApiUrl('lumie/EnelClimaLead'),
+  printTracking: (userId, accountName) => buildApiUrl(`EnelClima/TrackDownload?id=${userId}&accountName=${accountName}`),
 }
 
 /**
@@ -208,3 +209,25 @@ export const isValidSimulationData = (data) => {
   // Adjust validation rules based on actual API response format
   return true; // For now, accept any object response
 };
+
+
+export const printTrackingAPI = async (userId, accountName) => {
+
+  const apiUrl = API_URLS.printTracking(userId, accountName);
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {},
+      // Add timeout to prevent hanging requests
+      signal: AbortSignal.timeout(API_TIMEOUT),
+    });
+
+    console.log('✅ Print Tracking API ok', response);
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new Error('Request timed out. Please try again.');
+    }
+    throw error;
+  }
+}
