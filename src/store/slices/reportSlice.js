@@ -286,7 +286,7 @@ export const createReportSlice = (set, get) => ({
                 M2: formData.coverageArea || 0,
                 Warning: getWarningMessages(expandedConfigs),
                 Products: summary.clima.map((item) => ({
-                    ...state.products.getRawProducts(item.product.productName)[0],
+                    ...state.products.getRawProductsByName(item.product.productName)[0],
                     Name: item.count > 1 ? `${item.count} x ${item.product.productName}` : item.product.productName,
                     Price: item.totalPrice,
                 })),
