@@ -22,7 +22,7 @@ const API_URLS = {
 }
 
 /**
- * 
+ * drd
  * Fetch products from the external API for a specific city
  * @param {string} cityName - The name of the city to get products for
  * @returns {Promise<Array>} - Array of product objects
