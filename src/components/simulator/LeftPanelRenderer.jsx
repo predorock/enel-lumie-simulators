@@ -15,7 +15,7 @@ const LeftPanelRenderer = ({ components = [] }) => {
             type={componentConfig.type}
             props={{
               ...componentConfig.props,
-              className: `${componentConfig.props?.className || ''} ${isLastComponent ? 'mt-auto cazzo' : ''
+              className: `${componentConfig.props?.className || ''} ${isLastComponent ? 'mt-auto' : ''
                 }`.trim()
             }}
             renderConditions={componentConfig.renderConditions}

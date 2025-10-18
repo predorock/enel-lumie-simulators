@@ -37,14 +37,16 @@ export default function SidebarForm({
     const [errors, setErrors] = useState({});
 
     // Default form data if not provided
+    // Ensure all values are strings and not objects
     const formData = {
-        cap: customerData.cap || '',
-        city: customerData.city || '',
-        nome: customerData.nome || '',
-        cognome: customerData.cognome || '',
-        telefono: customerData.telefono || '',
-        email: customerData.email || '',
-        ...customerData
+        ...customerData,
+        cap: typeof customerData.cap === 'string' ? customerData.cap : (customerData.cap || ''),
+        city: typeof customerData.city === 'string' ? customerData.city : (customerData.city || ''),
+        nome: typeof customerData.nome === 'string' ? customerData.nome : (customerData.nome || ''),
+        cognome: typeof customerData.cognome === 'string' ? customerData.cognome : (customerData.cognome || ''),
+        telefono: typeof customerData.telefono === 'string' ? customerData.telefono : (customerData.telefono || ''),
+        email: typeof customerData.email === 'string' ? customerData.email : (customerData.email || ''),
+        token: typeof customerData.token === 'string' ? customerData.token : (customerData.token || '')
     };
 
     const handleInputChange = (field) => (e) => {
