@@ -1,5 +1,7 @@
 import AcAdviceBanner from '../clima/AcAdviceBanner';
 import { ClimaImage } from '../clima/ClimaImageRegistry';
+import StatefulCheckedDisclaimerContainer from '../clima/disclaimer/StatefulCheckedDisclaimerContainer';
+import StatefulDisclaimerContainer from '../clima/disclaimer/StatefulDisclaimerContainer';
 import StatefulAcProductDisplayContainer from '../clima/StatefulAcProductDisplayContainer';
 import StatefulAirConditioningConfigurator from '../clima/StatefulAirConditioningConfigurator';
 import StatefulAsyncSelect from '../clima/StatefulAsyncSelect';
@@ -7,7 +9,6 @@ import StatefulAutocompleteInput from '../clima/StatefulAutocompleteInput';
 import StatefulBrandSelector from '../clima/StatefulBrandSelector';
 import StatefulCheckbox from '../clima/StatefulCheckbox';
 import StatefulCustomSelect from '../clima/StatefulCustomSelect';
-import StatefulDisclaimerContainer from '../clima/StatefulDisclaimerContainer';
 import StatefulDuctworkConfigurator from '../clima/StatefulDuctworkConfigurator';
 import StatefulErrorMessage from '../clima/StatefulErrorMessage';
 import StatefulFinalMessage from '../clima/StatefulFinalMessage';
@@ -39,7 +40,6 @@ import InfoBanner from '../ui/InfoBanner';
 import PromotionalBanner from '../ui/PromotionalBanner';
 import ServicePriceDisplay from '../ui/ServicePriceDisplay';
 import ValidationErrors from '../ui/ValidationErrors';
-
 // Text component for simple text content
 const TextComponent = ({ content, className = "" }) => (
   <div className={`text-gray-700 ${className}`}>
@@ -109,7 +109,8 @@ const componentRegistry = {
   HouseIllustration: (props) => <HouseIllustration {...props} />,
   AcAdviceBanner: (props) => <AcAdviceBanner {...props} />,
   IconPopover: (props) => <IconPopoverConfigurator {...props} />,
-  TextPopover: (props) => <TextPopover {...props} />
+  TextPopover: (props) => <TextPopover {...props} />,
+  CheckedDisclaimerContainer: (props) => <StatefulCheckedDisclaimerContainer {...props} />
 };
 
 export default componentRegistry;

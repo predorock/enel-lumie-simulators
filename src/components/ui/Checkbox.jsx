@@ -1,4 +1,4 @@
-import CheckMarkIcon from "../icons/CheckMarkIcon";
+import IconRenderer from "../icons/IconRenderer";
 /**
  * Checkbox component following ENEL design system specifications
  */
@@ -36,7 +36,7 @@ const Checkbox = ({
         />
         {checked && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <CheckMarkIcon fillClass="fill-white" className="size-4" />
+            <IconRenderer icon="checkMark" fillClass="fill-white" className="size-4" />
           </div>
         )}
       </div>
