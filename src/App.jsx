@@ -17,6 +17,7 @@ function App() {
     const environment = import.meta.env.VITE_ENVIRONMENT;
 
     // Check URL parameters only in production environments
+    //DRD
     // Skip check if environment is 'dev' or 'test'
     if (environment !== 'dev' && environment !== 'test') {
       const urlParams = new URLSearchParams(window.location.search);
