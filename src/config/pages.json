@@ -157,7 +157,8 @@
                         "max": 15,
                         "unit": "",
                         "icon": "room",
-                        "label": "Locali"
+                        "label": "Locali",
+                        "initialValue": 1
                     }
                 },
                 {
