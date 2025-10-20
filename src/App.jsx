@@ -5,7 +5,7 @@ import BlockingWarningModal from './components/ui/BlockingWarningModal';
 import useAppStore from './store/useAppStore';
 
 function App() {
-  // Get current page data from Zustand store
+  // Get current page data from Zustand store drd
   const { currentStep, currentPageId, getCurrentPage, initializeStore } = useAppStore();
   const currentPage = getCurrentPage();
 
