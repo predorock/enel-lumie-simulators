@@ -50,7 +50,10 @@ export default function StatefulSummaryResults({ className = "", ...props }) {
         title: "Il cliente vuole pagare in comode rate? Ecco degli esempi!",
         subtitle: "Spiega al cliente che ha la possibilità di scegliere la finanziaria adatta per il suo investimento.",
         plans: financingPlans,
-        disclaimer: '* I dati sono indicativi e potrebbero variare in base alla scelta della finanziaria'
+        disclaimer: {
+            title: "Il cliente è interessato a valutare altre finanziarie? fai il calcolo sul sito della finanziaria",
+            description: "'* I dati sono indicativi e potrebbero variare in base alla scelta della finanziaria'"
+        }
     };
 
     return (

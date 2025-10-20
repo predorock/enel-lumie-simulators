@@ -70,7 +70,7 @@ const InfoBanner = ({
             {/* Text Content */}
             <div className="basis-0 box-border content-stretch flex flex-col gap-4 grow items-start justify-center min-h-px min-w-px p-0 relative shrink-0">
               <div className="box-border content-stretch flex flex-col gap-0.5 items-start justify-center p-0 relative shrink-0 w-full">
-                <div className="flex flex-col font-enel justify-center leading-none not-italic relative shrink-0 text-black text-sm text-left w-full">
+                <div className="flex flex-col font-enel justify-center leading-none not-italic relative shrink-0 text-current text-sm text-left w-full">
                   <p className="leading-[21px]">
                     {title && (
                       <span className="font-enel-bold font-bold not-italic">
@@ -79,7 +79,7 @@ const InfoBanner = ({
                       </span>
                     )}
                     {description && (
-                      <span className="font-enel font-normal">
+                      <span className="font-enel font-normal text-black">
                         {description}
                       </span>
                     )}
