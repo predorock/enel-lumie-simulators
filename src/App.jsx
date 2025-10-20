@@ -14,18 +14,23 @@ function App() {
 
   // Initialize store and validation on app start
   useEffect(() => {
-    // Check URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('userId');
-    const accountName = urlParams.get('accountName');
+    const environment = import.meta.env.VITE_ENVIRONMENT;
 
-    // Block app if required parameters are missing
-    if (!userId || !accountName) {
-      setHasRequiredParams(false);
-      return; // Don't initialize store if params are missing
+    // Check URL parameters only in production environments
+    // Skip check if environment is 'dev' or 'test'
+    if (environment !== 'dev' && environment !== 'test') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get('userId');
+      const accountName = urlParams.get('accountName');
+
+      // Block app if required parameters are missing
+      if (!userId || !accountName) {
+        setHasRequiredParams(false);
+        return; // Don't initialize store if params are missing
+      }
     }
 
-    // Initialize store only if params are present
+    // Initialize store if params are present or if in dev/test mode
     initializeStore();
   }, []); // Empty dependency array - only run once
 
