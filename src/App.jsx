@@ -21,10 +21,9 @@ function App() {
     if (environment !== 'dev' && environment !== 'test') {
       const urlParams = new URLSearchParams(window.location.search);
       const userId = urlParams.get('userId');
-      const accountName = urlParams.get('accountName');
 
       // Block app if required parameters are missing
-      if (!userId || !accountName) {
+      if (!userId) {
         setHasRequiredParams(false);
         return; // Don't initialize store if params are missing
       }
