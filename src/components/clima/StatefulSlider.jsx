@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useAppStore from '../../store/useAppStore';
 import SliderComponent from '../ui/Slider';
 
@@ -21,6 +22,12 @@ const StatefulSlider = ({
   const currentValue = stateProperty && formData && formData[stateProperty] !== undefined
     ? formData[stateProperty]
     : initialValue;
+
+  if (initialValue != null) {
+    useEffect(() => {
+      setFormValue(stateProperty, initialValue);
+    }, [stateProperty, initialValue]);
+  }
 
   return (
     <SliderComponent

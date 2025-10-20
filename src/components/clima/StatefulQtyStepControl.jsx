@@ -1,6 +1,6 @@
-import QtyStepControl from '../ui/QtyStepControl';
+import { useEffect } from 'react';
 import useAppStore from '../../store/useAppStore';
-
+import QtyStepControl from '../ui/QtyStepControl';
 /**
  * Stateful wrapper for QtyStepControl component that connects to the Zustand store
  *
@@ -20,6 +20,7 @@ const StatefulQtyStepControl = ({
   stateProperty,
   min = 0,
   max = 10,
+  initialValue = null,
   unit = null,
   label = "",
   icon = null,
@@ -70,6 +71,12 @@ const StatefulQtyStepControl = ({
       setFormValue(stateProperty, newValue);
     }
   };
+
+  if (initialValue != null) {
+    useEffect(() => {
+      setFormValue(stateProperty, initialValue);
+    }, [stateProperty, initialValue]);
+  }
 
   return (
     <QtyStepControl
