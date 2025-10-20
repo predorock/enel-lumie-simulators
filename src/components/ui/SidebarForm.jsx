@@ -50,7 +50,7 @@ export default function SidebarForm({
     };
 
     const handleInputChange = (field) => (e) => {
-        const value = e?.target?.value || e;
+        const value = e?.target?.value || '';
         onInputChange?.(field, value);
 
         // Clear error when user starts typing
