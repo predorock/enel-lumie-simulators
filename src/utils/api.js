@@ -16,14 +16,14 @@ const buildApiUrl = (path) => {
 };
 
 const API_URLS = {
-  products: (cityName) => buildApiUrl(`lumie/clima?comune=${encodeURIComponent(cityName)}`),
-  simulation: () => buildApiUrl('lumie/clima'),
-  lead: () => buildApiUrl('lumie/EnelClimaLead'),
-  printTracking: (userId, accountName) => buildApiUrl(`EnelClima/TrackDownload?id=${userId}&accountName=${accountName}`),
+  products: (cityName) => "https://greenovationdashboard.azurewebsites.net/api/lumie/clima?comune=" + encodeURIComponent(cityName),
+  simulation: () => "https://greenovationdashboard.azurewebsites.net/api/lumie/clima",
+  lead: () => "https://greenovationdashboard.azurewebsites.net/api/Lumie/EnelClimaLead",
+  printTracking: (userId, accountName) => "https://greenovationdashboard.azurewebsites.net/api/EnelClima/TrackDownload?id=" + userId + "&accountName=" + accountName,
 }
 
 /**
- * 
+ * drd
  * Fetch products from the external API for a specific city
  * @param {string} cityName - The name of the city to get products for
  * @returns {Promise<Array>} - Array of product objects
