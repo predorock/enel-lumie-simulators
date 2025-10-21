@@ -1,6 +1,3 @@
-
-const allowedUrlParams = ['userId', 'userid', 'accountName', 'accountname']
-
 const calculatePricingTriggerProperties = [
     'airconditioningQuantities',
     'airConditioningConfigs',
@@ -11,23 +8,49 @@ const calculatePricingTriggerProperties = [
 
 const initialFormData = {
     isEnelCustomer: true,
-    customerKnowsSplits: false
+    customerKnowsSplits: false,
+    allowedUrlParams: [
+        {
+            stateKey: 'userId',
+            urlParameters: ['userId', 'userid', 'USERID', 'UserID', 'userID']
+        },
+        {
+            stateKey: 'accountName',
+            urlParameters: ['accountName', 'accountname', 'ACCOUNTNAME', 'AccountName', 'accountName']
+        }
+    ]
 }
 
 export const createFormDataSlice = (set, get) => ({
     // Form data state
     formData: { ...initialFormData },
 
+    getAllowedUrlParams: () => {
+        const store = get();
+        return store.formData.allowedUrlParams;
+    },
     loadUrlParams: () => {
         const store = get();
+        const allowedUrlParams = store.formData.allowedUrlParams;
         const urlParams = new URLSearchParams(window.location.search);
-        const formData = { ...store.formData };
-        for (const [key, value] of urlParams.entries()) {
-            if (allowedUrlParams.includes(key)) {
-                formData[key] = value;
+        const params = {}
+
+        for (const allowedParam of allowedUrlParams) {
+            for (const urlParam of allowedParam.urlParameters) {
+                const value = urlParams.get(urlParam);
+                if (value !== null) {
+                    params[allowedParam.stateKey] = value;
+                    break; // Stop at first match
+                }
             }
         }
-        set({ formData });
+
+        set((state) => ({
+            formData: {
+                ...state.formData,
+                ...params
+            }
+        }));
     },
 
     // Form data actions
