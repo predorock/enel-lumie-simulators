@@ -302,7 +302,6 @@ export const createReportSlice = (set, get) => ({
         },
 
         //APIS -------------
-
         // Submit simulation request to API
         submitSimulation: async () => {
             const state = get();
