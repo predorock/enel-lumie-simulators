@@ -282,9 +282,7 @@ export const createReportSlice = (set, get) => ({
 
             const payload = {
                 Comune: comune,
-                //Numero_Macchine: numeroMacchine,
-                // NUMERO MACCHINE PER ORA E' IL NUMERO DI STANZE DA CLIMATIZZARE
-                Numero_Macchine: formData.rooms || 1,
+                Numero_Macchine: formData.customerKnowsSplits ? numeroMacchine : (formData.rooms || 1),
                 M2: formData.coverageArea || 0,
                 Warning: getWarningMessages(expandedConfigs),
                 Products: summary.clima.map((item) => ({
