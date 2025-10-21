@@ -276,6 +276,7 @@ export const createReportSlice = (set, get) => ({
                 (quantities.dualsplit || 0) +
                 (quantities.trialsplit || 0);
 
+
             // Build the payload according to API specification
 
             const summary = state.report.getSummary();
