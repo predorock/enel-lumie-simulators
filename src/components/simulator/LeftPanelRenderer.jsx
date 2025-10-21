@@ -13,11 +13,7 @@ const LeftPanelRenderer = ({ components = [] }) => {
         return (
           <DynamicComponent
             type={componentConfig.type}
-            props={{
-              ...componentConfig.props,
-              className: `${componentConfig.props?.className || ''} ${isLastComponent ? 'mt-auto' : ''
-                }`.trim()
-            }}
+            props={componentConfig.props}
             renderConditions={componentConfig.renderConditions}
             showError={true}
             key={`left-panel-${index}`}
