@@ -15,12 +15,18 @@ function App() {
   // Initialize store and validation on app start
   useEffect(() => {
     const environment = import.meta.env.VITE_ENVIRONMENT;
-    //DRD
+    //drd
     // Check URL parameters only in production environments
     // Skip check if environment is 'dev' or 'test'
     if (environment !== 'dev' && environment !== 'test') {
       const urlParams = new URLSearchParams(window.location.search);
-      const userId = urlParams.get('userId');
+      // userId is one of ['userId', 'userid', 'USERID', 'UserID', 'userID']
+      const userId = urlParams.get('userId') ||
+        urlParams.get('userid') ||
+        urlParams.get('USERID') ||
+        urlParams.get('UserID') ||
+        urlParams.get('userID');
+
 
       // Block app if required parameters are missing
       if (!userId) {
