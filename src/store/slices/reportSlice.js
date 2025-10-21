@@ -276,7 +276,7 @@ export const createReportSlice = (set, get) => ({
                 (quantities.dualsplit || 0) +
                 (quantities.trialsplit || 0);
 
-            const configsTotalMq = expandedConfigs.reduce((acc, config) => acc + (config.roomSize || 0), 0);
+            const configsTotalMq = expandedConfigs.reduce((acc, config) => acc + parseInt(config.roomSize), 0);
 
             // Build the payload according to API specification
 

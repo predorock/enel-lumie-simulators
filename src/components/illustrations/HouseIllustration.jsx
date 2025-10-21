@@ -5,7 +5,7 @@ import Image from '../ui/Image';
 
 const roomImage = (n) => import(`../../assets/images/rooms/room-${n}.svg`);
 
-export default function HouseIllustration({ ...props }) {
+export default function HouseIllustration({ className, ...props }) {
     const rooms = useAppStore((state) => state.formData.rooms || 1);
     const [imageSrc, setImageSrc] = useState('');
 
@@ -20,7 +20,7 @@ export default function HouseIllustration({ ...props }) {
     }
 
     return (
-        <div>
+        <div className={className}>
             <Image src={imageSrc} alt={`Room ${rooms}`} {...props} />
         </div>
     );

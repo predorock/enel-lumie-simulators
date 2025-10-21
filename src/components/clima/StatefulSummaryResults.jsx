@@ -52,7 +52,7 @@ export default function StatefulSummaryResults({ className = "", ...props }) {
         plans: financingPlans,
         disclaimer: {
             title: "Il cliente è interessato a valutare altre finanziarie? fai il calcolo sul sito della finanziaria",
-            description: "'* I dati sono indicativi e potrebbero variare in base alla scelta della finanziaria'"
+            description: "* I dati sono indicativi e potrebbero variare in base alla scelta della finanziaria"
         }
     };
 

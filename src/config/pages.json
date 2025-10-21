@@ -29,8 +29,8 @@
                     "props": {
                         "src": "italy",
                         "alt": "Italy",
-                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
-                        "containerClassName": "flex justify-center items-center mt-16 h-full"
+                        "className": "z-10 relative w-auto h-auto max-h-[500px] my-auto",
+                        "containerClassName": "flex flex-row justify-center items-center my-auto h-full"
                     }
                 }
             ],
@@ -136,8 +136,8 @@
                 {
                     "type": "HouseIllustration",
                     "props": {
-                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
-                        "containerClassName": "flex justify-center items-center h-full"
+                        "className": "z-10 relative w-fit h-fit max-h-[500px] mx-auto mt-1",
+                        "containerClassName": "flex flex-row items-center justify-center items-center h-auto"
                     }
                 }
             ],
@@ -227,7 +227,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-8",
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto",
                         "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },
@@ -390,7 +390,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto",
                         "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },
@@ -569,7 +569,7 @@
                     "props": {
                         "src": "condizionatore-big",
                         "alt": "Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-h-[320px]",
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto",
                         "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 },
@@ -627,7 +627,7 @@
                     "props": {
                         "src": "condizionatore-baccheta",
                         "alt": "Animazione Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto animate-pulse",
                         "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 }
@@ -698,8 +698,8 @@
                     "props": {
                         "src": "condizionatore-fuochi",
                         "alt": "Condizionatore con fuochi d'artificio",
-                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
-                        "containerClassName": "flex justify-center items-center mt-16 h-full"
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 }
             ],
@@ -808,8 +808,8 @@
                     "props": {
                         "src": "condizionatore-baccheta",
                         "alt": "Animazione Condizionatore",
-                        "className": "z-10 relative w-auto h-auto max-h-[500px]",
-                        "containerClassName": "flex justify-center items-center mt-16 h-full"
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto animate-pulse",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
                     }
                 }
             ],
