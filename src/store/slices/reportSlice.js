@@ -276,6 +276,7 @@ export const createReportSlice = (set, get) => ({
                 (quantities.dualsplit || 0) +
                 (quantities.trialsplit || 0);
 
+            const configsTotalMq = expandedConfigs.reduce((acc, config) => acc + (config.roomSize || 0), 0);
 
             // Build the payload according to API specification
 
@@ -284,7 +285,7 @@ export const createReportSlice = (set, get) => ({
             const payload = {
                 Comune: comune,
                 Numero_Macchine: formData.customerKnowsSplits ? numeroMacchine : (formData.rooms || 1),
-                M2: formData.coverageArea || 0,
+                M2: formData.customerKnowsSplits ? configsTotalMq : (formData.coverageArea || 1),
                 Warning: getWarningMessages(expandedConfigs),
                 Products: summary.clima.map((item) => ({
                     ...state.products.getRawProductsByName(item.product.productName)[0],
