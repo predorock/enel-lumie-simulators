@@ -483,7 +483,8 @@ function dynamicPageTemplate(
                     "showFeatures": false,
                     "configKey": `${acConfig.configKey}`,
                     "stateProperty": "airConditioningConfigs",
-                    "filters": ["type", "isNotAlwaysOn"],
+                    "filters": ["type", "brand", "category", "isAlwaysOn", "monosplit"],
+                    "excluded": true,
                     "showNoProductsMessage": false
                 }
             },

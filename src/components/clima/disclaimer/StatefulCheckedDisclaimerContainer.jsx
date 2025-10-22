@@ -6,7 +6,6 @@ const StatefulCheckedDisclaimerContainer = ({ ...props }) => {
     const { setFormValue, getFormValue } = useAppStore();
 
     const onSectionChange = (event, section) => {
-        console.log(event, section);
         if (section.stateProperty) {
             setFormValue(section.stateProperty, event);
         }

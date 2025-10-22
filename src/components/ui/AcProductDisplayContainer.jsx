@@ -51,7 +51,8 @@ const AcProductDisplayContainer = ({
     showCheckbox: true,
     onCheckboxChange: (selected) => handleProductSelection(product.id, selected),
     isSelected: selectedProducts.includes(product.id),
-    showFeatures
+    showFeatures,
+    showRecommendationBadge: showFeatures ? product.showRecommendationBadge : false,
   });
 
   if (showLoadingStates && loading) {
