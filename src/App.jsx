@@ -15,7 +15,7 @@ function App() {
   // Initialize store and validation on app start
   useEffect(() => {
     const environment = import.meta.env.VITE_ENVIRONMENT;
-    //drd
+
     // Check URL parameters only in production environments
     // Skip check if environment is 'dev' or 'test'
     if (environment !== 'dev' && environment !== 'test') {
