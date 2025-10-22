@@ -672,6 +672,16 @@
                 "afterPrevious": ""
             },
             "navigationOverride": {
+                "leftButton": {
+                    "label": "Indietro",
+                    "icon": "back",
+                    "iconPosition": "left",
+                    "variant": "secondary",
+                    "disabled": false,
+                    "action": [
+                        "goToLastProductPage"
+                    ]
+                },
                 "backButton": {
                     "label": "Stampa report finale",
                     "icon": "reader",
