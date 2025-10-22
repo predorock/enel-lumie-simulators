@@ -273,8 +273,8 @@ export const createReportSlice = (set, get) => ({
 
             // Calculate total machines (sum of all split types)
             const numeroMacchine = (quantities.monosplit || 0) +
-                (quantities.dualsplit || 0) +
-                (quantities.trialsplit || 0);
+                ((quantities.dualsplit || 0) * 2) +
+                ((quantities.trialsplit || 0) * 3);
 
             const configsTotalMq = expandedConfigs.reduce((acc, config) => acc + parseInt(config.roomSize), 0);
 
@@ -365,7 +365,7 @@ export const createReportSlice = (set, get) => ({
                     taeg: isEnelCustomer ? 0 : 6.96,
                 },
                 {
-                    duration: isEnelCustomer ? 24 : 120,
+                    duration: isEnelCustomer ? 12 : 120,
                     tan: isEnelCustomer ? 0 : 6.75,
                     taeg: isEnelCustomer ? 0 : 6.96,
                 }
