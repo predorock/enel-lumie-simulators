@@ -28,12 +28,14 @@ import GlossaryLink from './GlossaryLink';
  *     iconPosition?: 'left' | 'right', // Icon position
  *     variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'primary-light',
  *     action?: function | string,   // Custom action function or string identifier
+ *     goToPage?: string | number, // Page identifier to navigate to
  *     show?: boolean,              // Override visibility
  *     disabled?: boolean,          // Override disabled state
  *     className?: string,          // Additional CSS classes
  *     disableValidation?: boolean  // Skip validation for icon/variant
  *   },
  *   nextButton: { ...same structure }
+ *   leftButton: { ...same structure }
  * }
  * 
  * Usage examples:
@@ -108,22 +110,14 @@ export default function NavigationBar({
   const nextStep = useAppStore(state => state.nextStep);
   const store = useAppStore();
 
-  // Function to get nested action from store using dot notation
-  const getActionFromStore = (actionPath) => {
-    if (!actionPath || typeof actionPath !== 'string') return null;
-
-    return actionPath.split('.').reduce((obj, key) => {
-      return obj && obj[key] !== undefined ? obj[key] : null;
-    }, store);
-  };
-
   // Button configuration resolver
   const resolveButtonConfig = (overrideConfig, defaultConfig) => {
     if (!overrideConfig) return defaultConfig;
 
     const shouldValidate = !overrideConfig.disableValidation;
 
-    if (overrideConfig.disableValidation) {
+    if (shouldValidate) {
+      // TODO: some validation in the future implementations
       console.warn('⚠️ Navigation validation disabled for button:', overrideConfig);
     }
 
@@ -148,6 +142,7 @@ export default function NavigationBar({
       iconPosition: 'left',
       variant: 'secondary',
       action: onBack || prevStep,
+      goToPage: null,
       show: showBack && canGoPrev,
       disabled: !canGoPrev,
       className: ''
@@ -162,19 +157,35 @@ export default function NavigationBar({
       iconPosition: 'right',
       variant: 'primary',
       action: onNext || nextStep,
+      goToPage: null,
       show: showNext,
       disabled: !canGoNext,
       className: 'px-24'
     }
   );
 
-  const handleBack = () => {
-    executeAction(store, backConfig.action);
-  };
+  const leftConfig = resolveButtonConfig(
+    navigationOverride?.leftButton,
+    {
+      label: backLabel,
+      icon: 'back',
+      iconPosition: 'left',
+      variant: 'secondary',
+      action: onBack || prevStep,
+      goToPage: null,
+      show: showBack && canGoPrev,
+      disabled: !canGoPrev,
+      className: ''
+    }
+  );
 
-  const handleNext = () => {
-    executeAction(store, nextConfig.action);
-  };
+  const handleButtonClick = (buttonConfig) => {
+    if (buttonConfig.goToPage !== null && buttonConfig.goToPage !== undefined) {
+      store.setCurrentPageId(buttonConfig.goToPage);
+      return;
+    }
+    executeAction(store, buttonConfig.action);
+  }
 
   // Helper function to render icon
   const renderIcon = (iconConfig) => {
@@ -201,7 +212,23 @@ export default function NavigationBar({
     >
       <div className="flex items-center justify-between gap-4 max-w-[9999px] w-full">
         {/* Left side - Glossary link */}
-        <GlossaryLink text="Vai al glossario" icon="info" />
+        {
+          navigationOverride?.leftButton ?
+            leftConfig.show && (
+              <Button
+                variant={leftConfig.variant}
+                size="md"
+                disabled={leftConfig.disabled}
+                onClick={() => handleButtonClick(leftConfig)}
+                icon={renderIcon(leftConfig.icon)}
+                iconPosition={leftConfig.iconPosition}
+                className={leftConfig.className}
+              >
+                {leftConfig.label}
+              </Button>
+            )
+            : <GlossaryLink text="Vai al glossario" icon="info" />
+        }
 
         {/* Right side - Navigation buttons */}
         <div className="flex items-center gap-4">
@@ -210,7 +237,7 @@ export default function NavigationBar({
               variant={backConfig.variant}
               size="md"
               disabled={backConfig.disabled}
-              onClick={handleBack}
+              onClick={() => handleButtonClick(backConfig)}
               icon={renderIcon(backConfig.icon)}
               iconPosition={backConfig.iconPosition}
               className={backConfig.className}
@@ -224,7 +251,7 @@ export default function NavigationBar({
               variant={nextConfig.variant}
               size="md"
               disabled={nextConfig.disabled}
-              onClick={handleNext}
+              onClick={() => handleButtonClick(nextConfig)}
               icon={renderIcon(nextConfig.icon)}
               iconPosition={nextConfig.iconPosition}
               className={nextConfig.className}

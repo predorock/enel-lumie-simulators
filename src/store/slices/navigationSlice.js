@@ -241,6 +241,36 @@ export const createNavigationSlice = (set, get) => ({
 
     getDynamicPages: () => get().dynamicPages,
 
+    goToLastProductPage: () => {
+        const state = get();
+        const allPages = state.getAllPages();
+        const dynamicPages = state.getDynamicPages();
+
+        if (dynamicPages.length === 0) {
+            console.log('ℹ️ No dynamic pages available to navigate to.');
+            return;
+        }
+        // Find the last page with step equal to 3 (product selection step)
+        const lastProductPage = dynamicPages[dynamicPages.length - 1];
+        if (lastProductPage) {
+            set({
+                currentStep: lastProductPage.step,
+                currentPageId: lastProductPage.id
+            });
+
+            // Reset validation state for the new page
+            state.validation.clearValidationErrors();
+
+            // Validate the new page after a short delay
+            setTimeout(() => {
+                const newState = get();
+                newState.validation.validateCurrentPage();
+            }, 0);
+
+            console.log(`✅ Navigated to last product page: ${lastProductPage.id}`);
+        }
+    },
+
     // Dynamic page management
     generateSplitPages: () => {
         const state = get();
