@@ -393,9 +393,9 @@ export const createReportSlice = (set, get) => ({
         trackPrint: () => {
             const state = get();
             const userId = state.getFormValue('userId') || null;
-            const accountName = state.getFormValue('accountName') || null;
+            const accountName = state.getFormValue('accountName') || "";
 
-            if (!userId || !accountName) {
+            if (!userId) {
                 console.warn('⚠️ Missing userId or accountName for print tracking');
                 return;
             }
