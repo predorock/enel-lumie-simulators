@@ -11,7 +11,7 @@ function App() {
 
   // Check for required URL parameters
   const [hasRequiredParams, setHasRequiredParams] = useState(true);
-
+  //drd
   // Initialize store and validation on app start
   useEffect(() => {
     const environment = import.meta.env.VITE_ENVIRONMENT;
