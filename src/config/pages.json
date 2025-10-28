@@ -11,6 +11,7 @@
             "validationRules": {
                 "required": [
                     "formData.storeCity",
+                    "formData.hasConvention",
                     "formData.disclaimer1",
                     "formData.disclaimer2",
                     "formData.disclaimer3",
@@ -18,7 +19,7 @@
                 ]
             },
             "navigationHooks": {
-                "beforeNext": "",
+                "beforeNext": "products.autoLoadProducts",
                 "afterNext": "",
                 "beforePrevious": "",
                 "afterPrevious": ""
@@ -65,16 +66,45 @@
                 {
                     "type": "Toggle",
                     "props": {
-                        "label": "Si tratta di un cliente Enel Luce e Gas?",
+                        "label": "Il cliente ha un contratto Enel Luce e Gas?",
                         "className": "font-enel-bold",
                         "stateProperty": "isEnelCustomer"
+                    }
+                },
+                {
+                    "type": "RadioGroup",
+                    "props": {
+                        "stateProperty": "hasConvention",
+                        "label": "Il cliente ha una convenzione?",
+                        "className": "mt-8",
+                        "options": [
+                            {
+                                "value": "dipendente",
+                                "label": "Dipendente"
+                            },
+                            {
+                                "value": "partner",
+                                "label": "Partner/Convenzionato"
+                            },
+                            {
+                                "value": "no_convention",
+                                "label": "Non ha una convenzione"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "className": "py-4"
                     }
                 },
                 {
                     "type": "Toggle",
                     "props": {
                         "label": "Il cliente sa quanti split vuole acquistare?",
-                        "className": "font-enel-bold",
+                        "className": "font-enel-bold my-6",
                         "stateProperty": "customerKnowsSplits"
                     }
                 },

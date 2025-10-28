@@ -5,7 +5,7 @@ import { createFormDataSlice } from './slices/formDataSlice.js';
 import { createLeadSlice } from './slices/leadSlice.js';
 import { createNavigationSlice } from './slices/navigationSlice';
 import { createPricingSlice } from './slices/pricingSlice';
-import { createProductsSlice, createProductSubscriptions } from './slices/productsSlice';
+import { createProductsSlice } from './slices/productsSlice';
 import { createRendererSlice } from './slices/rendererSlice.js';
 import { createReportSlice } from './slices/reportSlice';
 import { createTestingSlice } from './slices/testingSlice.js';
@@ -74,5 +74,5 @@ const useAppStore = create(
 );
 
 createValidationSubscriptions(useAppStore);
-createProductSubscriptions(useAppStore);
+// createProductSubscriptions(useAppStore);
 export default useAppStore;

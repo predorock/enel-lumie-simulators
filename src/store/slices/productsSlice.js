@@ -207,6 +207,21 @@ export const createProductsSlice = (set, get) => ({
       }
     },
 
+    autoLoadProducts: async () => {
+      const store = get();
+      const city = store.formData.storeCity || null;
+      const partnership = store.formData.hasConvention || false;
+      if (!partnership) {
+        console.log('User does not have partnership - skipping automatic product loading');
+        return;
+      }
+      if (!city) {
+        console.warn('autoLoadProducts: No city selected, cannot load products automatically');
+        return;
+      }
+      await store.products.loadProductsByCity(city);
+    },
+
     setHasAlternativeProducts: (hasAlternatives) => {
       set((state) => ({
         products: {
@@ -322,18 +337,18 @@ export const createProductsSlice = (set, get) => ({
   }
 });
 
-export const createProductSubscriptions = (store) => {
+// export const createProductSubscriptions = (store) => {
 
-  store.subscribe(
-    (state) => state.formData.storeCity,
-    (newVal, prev) => {
-      if (typeof newVal === 'string' && typeof prev === 'string') {
-        if (newVal.toLocaleLowerCase() !== prev.toLocaleLowerCase()) {
-          // City changed, trigger product loading
-          const products = store.getState().products;
-          products.loadProductsByCity(newVal);
-        }
-      }
-    }
-  );
-};
+//   store.subscribe(
+//     (state) => state.formData.storeCity,
+//     (newVal, prev) => {
+//       if (typeof newVal === 'string' && typeof prev === 'string') {
+//         if (newVal.toLocaleLowerCase() !== prev.toLocaleLowerCase()) {
+//           // City changed, trigger product loading
+//           const products = store.getState().products;
+//           products.loadProductsByCity(newVal);
+//         }
+//       }
+//     }
+//   );
+// };
