@@ -16,7 +16,7 @@ const buildApiUrl = (path) => {
 };
 
 const API_URLS = {
-  products: (cityName) => "https://greenovationdashboard.azurewebsites.net/api/lumie/clima?comune=" + encodeURIComponent(cityName),
+  products: (cityName, partnership) => `https://greenovationdashboard.azurewebsites.net/api/lumie/clima?comune=${encodeURIComponent(cityName)}&partnership=${partnership}`,
   simulation: () => "https://greenovationdashboard.azurewebsites.net/api/lumie/clima",
   lead: () => "https://greenovationdashboard.azurewebsites.net/api/Lumie/EnelClimaLead",
   printTracking: (userId, accountName) => "https://greenovationdashboard.azurewebsites.net/api/EnelClima/TrackDownload?id=" + userId + "&accountName=" + accountName,
@@ -28,20 +28,20 @@ const API_URLS = {
  * @param {string} cityName - The name of the city to get products for
  * @returns {Promise<Array>} - Array of product objects
  */
-export const fetchProductsByCity = async (cityName) => {
+export const fetchProducts = async (cityName, partnership) => {
   if (!cityName) {
     throw new Error('City name is required');
   }
 
   if (MOCKS_ACTIVE) {
-    console.log(`🔧 Using mock data for city: ${cityName}`);
+    console.log(`🔧 Using mock data for products`);
     // Return mock data for development
     const { default: mockData } = await import('../assets/mocks/products.response.json');
     await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network delay
     return mockData.products || [];
   }
 
-  const apiUrl = API_URLS.products(cityName);
+  const apiUrl = API_URLS.products(cityName, partnership);
   console.log(`🌐 Fetching products from API: ${apiUrl}`);
 
   try {

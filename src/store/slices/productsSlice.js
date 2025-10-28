@@ -1,4 +1,4 @@
-import { fetchProductsByCity, isValidProductData } from '../../utils/api';
+import { fetchProducts, isValidProductData } from '../../utils/api';
 
 // Feature mapping from API keys to display names
 const FEATURE_MAPPING = {
@@ -165,10 +165,14 @@ export const createProductsSlice = (set, get) => ({
     },
 
     // Load products by city from external API
-    loadProductsByCity: async (cityName) => {
+    loadProducts: async (cityName, partnership) => {
       if (!cityName) {
         console.warn('City name is required to load products');
         return;
+      }
+
+      if (!partnership) {
+        console.warn('Partnership is required to load products');
       }
 
       set((state) => ({
@@ -181,9 +185,9 @@ export const createProductsSlice = (set, get) => ({
       }));
 
       try {
-        console.log(`🛍️ Loading products for city: ${cityName}`);
+        console.log(`🛍️ Loading products for city: ${cityName} and partnership: ${partnership}`);
 
-        const apiProducts = await fetchProductsByCity(cityName);
+        const apiProducts = await fetchProducts(cityName, partnership);
 
         if (!isValidProductData(apiProducts)) {
           throw new Error('Invalid product data received from API');
@@ -192,10 +196,10 @@ export const createProductsSlice = (set, get) => ({
         // Transform API response to match our product structure
         get().products.setProducts(apiProducts);
 
-        console.log(`✅ Successfully loaded ${apiProducts.length} products for city: ${cityName}`);
+        console.log(`✅ Successfully loaded ${apiProducts.length} products`);
 
       } catch (error) {
-        console.error('❌ Error loading products by city:', error);
+        console.error('❌ Error loading products:', error);
         set((state) => ({
           products: {
             ...state.products,
@@ -210,7 +214,7 @@ export const createProductsSlice = (set, get) => ({
     autoLoadProducts: async () => {
       const store = get();
       const city = store.formData.storeCity || null;
-      const partnership = store.formData.hasConvention || false;
+      const partnership = store.formData.partnership || false;
       if (!partnership) {
         console.log('User does not have partnership - skipping automatic product loading');
         return;
@@ -219,7 +223,7 @@ export const createProductsSlice = (set, get) => ({
         console.warn('autoLoadProducts: No city selected, cannot load products automatically');
         return;
       }
-      await store.products.loadProductsByCity(city);
+      await store.products.loadProducts(city, partnership);
     },
 
     setHasAlternativeProducts: (hasAlternatives) => {
@@ -336,19 +340,3 @@ export const createProductsSlice = (set, get) => ({
     }
   }
 });
-
-// export const createProductSubscriptions = (store) => {
-
-//   store.subscribe(
-//     (state) => state.formData.storeCity,
-//     (newVal, prev) => {
-//       if (typeof newVal === 'string' && typeof prev === 'string') {
-//         if (newVal.toLocaleLowerCase() !== prev.toLocaleLowerCase()) {
-//           // City changed, trigger product loading
-//           const products = store.getState().products;
-//           products.loadProductsByCity(newVal);
-//         }
-//       }
-//     }
-//   );
-// };

@@ -43,7 +43,7 @@ export const createTestingSlice = (set, get) => ({
                     _state.generateSplitPages();
                 }
 
-                await _state.products.loadProductsByCity(_state.formData.storeCity || _state.formData.selectedCity || '');
+                await _state.products.loadProductsBy(_state.formData.storeCity, _state.formData.partnership);
 
                 if (_state.calculatePricing) _state.calculatePricing();
 

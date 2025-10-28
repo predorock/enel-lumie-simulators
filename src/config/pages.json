@@ -11,7 +11,7 @@
             "validationRules": {
                 "required": [
                     "formData.storeCity",
-                    "formData.hasConvention",
+                    "formData.partnership",
                     "formData.disclaimer1",
                     "formData.disclaimer2",
                     "formData.disclaimer3",
@@ -74,7 +74,7 @@
                 {
                     "type": "RadioGroup",
                     "props": {
-                        "stateProperty": "hasConvention",
+                        "stateProperty": "partnership",
                         "label": "Il cliente ha una convenzione?",
                         "className": "mt-8",
                         "options": [
