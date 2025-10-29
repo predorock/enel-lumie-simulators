@@ -11,6 +11,7 @@
             "validationRules": {
                 "required": [
                     "formData.storeCity",
+                    "formData.partnership",
                     "formData.disclaimer1",
                     "formData.disclaimer2",
                     "formData.disclaimer3",
@@ -68,6 +69,28 @@
                         "label": "Il cliente ha un contratto Enel Luce e Gas?",
                         "className": "font-enel-bold",
                         "stateProperty": "isEnelCustomer"
+                    }
+                },
+                {
+                    "type": "RadioGroup",
+                    "props": {
+                        "stateProperty": "partnership",
+                        "label": "Il cliente ha una convenzione?",
+                        "className": "mt-8",
+                        "options": [
+                            {
+                                "value": "dipendente",
+                                "label": "Dipendente"
+                            },
+                            {
+                                "value": "partner",
+                                "label": "Partner/Convenzionato"
+                            },
+                            {
+                                "value": "no_convention",
+                                "label": "Non ha una convenzione"
+                            }
+                        ]
                     }
                 },
                 {
