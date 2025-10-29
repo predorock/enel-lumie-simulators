@@ -15,6 +15,7 @@ const FEATURE_MAPPING = {
   Autodiagnosi: "Autodiagnosi (Funzione Smart Diagnosis)"
 };
 
+// DRD
 // Transform product features from API format to display format - showing ALL features
 const transformProductFeatures = (apiFeatures) => {
   return Object.entries(FEATURE_MAPPING).map(([apiKey, displayName]) => ({
