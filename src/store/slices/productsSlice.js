@@ -214,7 +214,7 @@ export const createProductsSlice = (set, get) => ({
     autoLoadProducts: async () => {
       const store = get();
       const city = store.formData.storeCity || null;
-      const partnership = store.formData.partnership || false;
+      const partnership = store.formData.partnership || 'no_convention';
       if (!partnership) {
         console.log('User does not have partnership - skipping automatic product loading');
         return;
