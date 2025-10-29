@@ -49,8 +49,7 @@ export default function SidebarForm({
         token: typeof customerData.token === 'string' ? customerData.token : (customerData.token || '')
     };
 
-    const handleInputChange = (field) => (e) => {
-        const value = e?.target?.value || '';
+    const handleInputChange = (field) => (value) => {
         onInputChange?.(field, value);
 
         // Clear error when user starts typing
@@ -153,7 +152,7 @@ export default function SidebarForm({
                                                     <div className="flex items-center gap-1">
                                                         <input
                                                             value={formData.cap}
-                                                            onChange={handleInputChange('cap')}
+                                                            onChange={ev => handleInputChange('cap')(ev.target.value)}
                                                             className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none flex-1"
                                                         />
                                                         <span className="font-enel-bold text-black text-sm leading-[14px]">
@@ -182,7 +181,7 @@ export default function SidebarForm({
                                                 </label>
                                                 <input
                                                     value={formData.nome}
-                                                    onChange={handleInputChange('nome')}
+                                                    onChange={ev => handleInputChange('nome')(ev.target.value)}
                                                     className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                 />
                                             </div>
@@ -202,7 +201,7 @@ export default function SidebarForm({
                                                 </label>
                                                 <input
                                                     value={formData.cognome}
-                                                    onChange={handleInputChange('cognome')}
+                                                    onChange={ev => handleInputChange('cognome')(ev.target.value)}
                                                     className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                 />
                                             </div>
@@ -234,7 +233,7 @@ export default function SidebarForm({
                                                 </label>
                                                 <input
                                                     value={formData.telefono}
-                                                    onChange={handleInputChange('telefono')}
+                                                    onChange={ev => handleInputChange('telefono')(ev.target.value)}
                                                     className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                 />
                                             </div>
@@ -263,7 +262,7 @@ export default function SidebarForm({
                                                     <input
                                                         type="email"
                                                         value={formData.email}
-                                                        onChange={handleInputChange('email')}
+                                                        onChange={ev => handleInputChange('email')(ev.target.value)}
                                                         className="font-enel text-black text-sm leading-[14px] bg-transparent border-none outline-none"
                                                     />
                                                 </div>
