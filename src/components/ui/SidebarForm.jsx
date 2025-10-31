@@ -23,6 +23,7 @@ const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
  * @param {string} className - Additional CSS classes
  */
 export default function SidebarForm({
+    title,
     isOpen = false,
     customerData = {},
     onInputChange,
@@ -31,7 +32,8 @@ export default function SidebarForm({
     isSubmitting = false,
     submitError,
     showBackdrop = true,
-    className = ""
+    className = "",
+    noValidationFields = []
 }) {
     // Local state for form validation
     const [errors, setErrors] = useState({});
@@ -67,9 +69,14 @@ export default function SidebarForm({
         if (!formData.nome.trim()) newErrors.nome = 'Nome richiesto';
         if (!formData.cognome.trim()) newErrors.cognome = 'Cognome richiesto';
         // if (!formData.telefono.trim()) newErrors.telefono = 'Telefono richiesto';
-        if (!formData.email.trim()) newErrors.email = 'Email richiesta';
-        if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email non valida';
+
+        if (noValidationFields.includes('email') === false) {
+            if (!formData.email.trim()) {
+                newErrors.email = 'Email richiesta';
+            }
+            if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+                newErrors.email = 'Email non valida';
+            }
         }
         if (!formData?.token) newErrors.token = 'ReCAPTCHA richiesto';
 
@@ -110,7 +117,7 @@ export default function SidebarForm({
                         {/* Header */}
                         <div className="bg-white flex items-center justify-between px-4 py-4 shadow-[0px_0px_16px_0px_rgba(102,119,144,0.4)] shrink-0">
                             <h1 className="font-enel-bold text-black text-2xl leading-[34px] tracking-[0.4px] flex-1">
-                                Concludi e invia il preventivo al cliente
+                                {title}
                             </h1>
                             <button
                                 onClick={handleClose}
@@ -257,7 +264,7 @@ export default function SidebarForm({
                                                 }`}>
                                                 <div className="flex flex-col gap-0.5 flex-1">
                                                     <label className="font-enel text-grey-light text-xs leading-3">
-                                                        Email*
+                                                        Email{noValidationFields.includes('email') ? '' : '*'}
                                                     </label>
                                                     <input
                                                         type="email"

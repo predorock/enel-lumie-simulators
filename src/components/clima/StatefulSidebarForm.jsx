@@ -37,8 +37,13 @@ export default function StatefulSidebarForm({
         closeSidebar();
     };
 
+    const title = sidebar?.noValidationFields?.includes('email') ?
+        'Stampa il preventivo al cliente e genera lead in X-Costumer' :
+        'Invia il preventivo al cliente e genera lead in X-Costumer';
+
     return (
         <SidebarForm
+            title={title}
             isOpen={sidebar.isOpen}
             customerData={sidebar.customerData}
             onInputChange={handleInputChange}
@@ -47,6 +52,7 @@ export default function StatefulSidebarForm({
             isSubmitting={state.lead.isLoading}
             submitError={state.lead.error}
             className={className}
+            noValidationFields={sidebar.noValidationFields || []}
             {...props}
         />
     );

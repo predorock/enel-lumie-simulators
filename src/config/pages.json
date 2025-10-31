@@ -719,7 +719,7 @@
                     "variant": "secondary",
                     "disabled": false,
                     "action": [
-                        "report.openReport",
+                        "openPrintSidebar",
                         "report.trackPrint"
                     ]
                 },
@@ -729,7 +729,9 @@
                     "iconPosition": "right",
                     "variant": "primary",
                     "disabled": false,
-                    "action": "openSidebar"
+                    "action": [
+                        "openSidebar"
+                    ]
                 }
             },
             "leftPanelComponents": [
