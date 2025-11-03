@@ -60,6 +60,8 @@ function App() {
       showStepper={currentPage?.showStepper}
       showBackgroundDecoration={currentPage?.showBackgroundDecoration}
       showNavigation={currentPage?.showNavigation}
+      showTitle={currentPage?.showTitle}
+      showLogo={currentPage?.showLogo}
       leftPanelComponents={currentPage?.leftPanelComponents || []}
       navigationOverride={currentPage?.navigationOverride}
       fullPage={currentPage?.fullPage || false}

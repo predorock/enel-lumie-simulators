@@ -7,6 +7,7 @@ import StatefulAirConditioningConfigurator from '../clima/StatefulAirConditionin
 import StatefulAsyncSelect from '../clima/StatefulAsyncSelect';
 import StatefulAutocompleteInput from '../clima/StatefulAutocompleteInput';
 import StatefulBrandSelector from '../clima/StatefulBrandSelector';
+import StatefulChannelSelection from '../clima/StatefulChannelSelection';
 import StatefulCheckbox from '../clima/StatefulCheckbox';
 import StatefulCustomSelect from '../clima/StatefulCustomSelect';
 import StatefulDuctworkConfigurator from '../clima/StatefulDuctworkConfigurator';
@@ -74,6 +75,7 @@ const componentRegistry = {
   AutocompleteInput: (props) => <StatefulAutocompleteInput {...props} />,
   BenefitsCardsContainer: (props) => <BenefitsCardsContainer {...props} />,
   BrandSelector: (props) => <StatefulBrandSelector {...props} />,
+  ChannelSelection: (props) => <StatefulChannelSelection {...props} />,
   Checkbox: (props) => <StatefulCheckbox {...props} />,
   CostSummary: (props) => <CostSummary {...props} />,
   CustomSelect: (props) => <StatefulCustomSelect {...props} />,

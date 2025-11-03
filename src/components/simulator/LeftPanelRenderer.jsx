@@ -8,7 +8,6 @@ const LeftPanelRenderer = ({ components = [] }) => {
   return (
     <div className="left-panel-components flex flex-col h-full justify-between">
       {components.map((componentConfig, index) => {
-        const isLastComponent = index === components.length - 1;
 
         return (
           <DynamicComponent

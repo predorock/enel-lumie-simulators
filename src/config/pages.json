@@ -1,6 +1,44 @@
 {
     "pages": [
         {
+            "id": "scelta-canale",
+            "title": "",
+            "step": 0,
+            "fullPage": true,
+            "showStepper": false,
+            "showNavigation": false,
+            "showBackgroundDecoration": false,
+            "showTitle": false,
+            "showLogo": false,
+            "validationRules": {},
+            "navigationOverride": {},
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "tondo-completo",
+                        "alt": "Tondo completo blu",
+                        "className": "absolute w-full h-full -top-32 left-0 right-0",
+                        "containerClassName": ""
+                    }
+                },
+                {
+                    "type": "ChannelSelection",
+                    "props": {
+                        "stateProperty": "selectedChannel",
+                        "className": "z-10"
+                    }
+                }
+            ],
+            "components": []
+        },
+        {
             "id": "client-selection",
             "title": "Chiedi al cliente di raccontarti qualcosa sulla sua casa",
             "step": 1,
@@ -824,6 +862,25 @@
                     "type": "SidebarForm",
                     "props": {
                         "onSubmitAction": "confirmLead"
+                    },
+                    "renderConditions": {
+                        "equals": {
+                            "property": "formData.selectedChannel",
+                            "value": "fisico"
+                        }
+                    }
+                },
+                {
+                    "type": "SidebarForm",
+                    "props": {
+                        "title": "Invia il preventivo al cliente",
+                        "onSubmitAction": "trackPrint"
+                    },
+                    "renderConditions": {
+                        "equals": {
+                            "property": "formData.selectedChannel",
+                            "value": "web"
+                        }
                     }
                 }
             ]

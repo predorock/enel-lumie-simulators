@@ -16,6 +16,8 @@ export default function PageLayout({
   showStepper = true,
   showNavigation = true,
   showBackgroundDecoration = true,
+  showTitle = true,
+  showLogo = true,
   leftPanelComponents = [],
   navigationOverride,
   onBack,
@@ -44,17 +46,22 @@ export default function PageLayout({
       <div className="grid grid-cols-6 w-full h-screen relative z-10">
         {/* LEFT PANEL - Blue Header */}
         <div className={cn('bg-primary p-8 relative flex flex-col', { 'col-span-2': !fullPage, 'col-span-6': fullPage })} role="banner" aria-label="Enel Lumiè Clima Header">
+
           {/* Logo Section */}
-          <div className="flex items-stretch h-6 z-1">
-            <img src={enelLogo} alt="Enel Lumiè Clima Logo" className="w-auto" />
-            <div className="text-white ml-4 border-l"></div>
-            <div className="text-white ml-4 text-2xl">Lumiè Clima</div>
-          </div>
+          {showLogo && (
+            <div className="flex items-stretch h-6 z-1">
+              <img src={enelLogo} alt="Enel Lumiè Clima Logo" className="w-auto" />
+              <div className="text-white ml-4 border-l"></div>
+              <div className="text-white ml-4 text-2xl">Lumiè Clima</div>
+            </div>
+          )}
 
           {/* Title Section */}
-          <div className="mt-8 text-white z-1">
-            <h1 className="text-white text-2xl mt-4">{title}</h1>
-          </div>
+          {showTitle && title && (
+            <div className="mt-8 text-white z-1">
+              <h1 className="text-white text-2xl mt-4">{title}</h1>
+            </div>
+          )}
 
           {/* Stepper Section */}
           {showStepper && (

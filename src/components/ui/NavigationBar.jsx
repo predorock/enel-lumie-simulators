@@ -118,7 +118,7 @@ export default function NavigationBar({
 
     if (shouldValidate) {
       // TODO: some validation in the future implementations
-      console.warn('⚠️ Navigation validation disabled for button:', overrideConfig);
+      //console.warn('⚠️ Navigation validation disabled for button:', overrideConfig);
     }
 
     return {

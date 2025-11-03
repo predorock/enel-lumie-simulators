@@ -157,5 +157,18 @@ export const createLeadSlice = (set, get) => ({
             state.setLeadError(error);
         }
         state.setLeadLoading(false);
+    },
+
+    trackPrint: () => {
+        const state = get();
+        const userId = state.getFormValue('userId') || null;
+        const accountName = state.getFormValue('accountName') || "Mancante";
+        const channel = state.getFormValue('selectedChannel') || "Mancante";
+
+        if (!userId) {
+            console.error('⚠️ Missing userId or accountName for print tracking');
+            return;
+        }
+        API.printTrackingAPI(userId, accountName, channel);
     }
 })
