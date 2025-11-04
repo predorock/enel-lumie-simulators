@@ -22,7 +22,7 @@ const initialFormData = {
 }
 
 export const createFormDataSlice = (set, get) => ({
-    // Form data state drd
+    // Form data state
     formData: { ...initialFormData },
 
     getAllowedUrlParams: () => {
