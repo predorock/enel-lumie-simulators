@@ -1,13 +1,12 @@
-import tondo from '../../assets/images/tondo-completo.svg';
+import cn from "classnames";
 import IconRenderer from "../icons/IconRenderer";
 import Button from "./Button";
 
 import acFuochi from '../../assets/images/condizionatore-fuochi.svg';
 
-export default function FinalMessage({ title = "", onSend = () => { }, onPrint = () => { } }) {
+export default function FinalMessage({ title = "", className, onSend = () => { }, onPrint = () => { } }) {
     return (
-        <div className="grid grid-cols-2 mx-64">
-            <img src={tondo} alt="Tondo" className="absolute bottom-0 left-50 -z-0" />
+        <div className={cn("grid grid-cols-2 mx-64 my-auto", className)}>
             <div className="flex flex-col align-center justify-center text-left text-white">
                 <h1 className="text-4xl">{title}</h1>
                 <div className="mt-8 flex justify-center gap-4">

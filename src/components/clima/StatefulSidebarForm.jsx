@@ -1,5 +1,5 @@
+import { executeAction } from '../../store/executeAction';
 import useAppStore from '../../store/useAppStore';
-import getNestedValue from '../../utils/getNestedValue';
 import SidebarForm from '../ui/SidebarForm';
 
 /**
@@ -25,15 +25,13 @@ export default function StatefulSidebarForm({
         setCustomerData
     } = state;
 
-    const submitAction = getNestedValue(state, onSubmitAction);
-
     const handleInputChange = (field, value) => {
         updateCustomerData(field, value);
     };
 
     const handleSubmit = async (formData) => {
         setCustomerData(formData);
-        submitAction();
+        executeAction(state, onSubmitAction);
         closeSidebar();
     };
 

@@ -211,9 +211,9 @@ export const isValidSimulationData = (data) => {
 };
 
 
-export const printTrackingAPI = async (userId, accountName) => {
+export const printTrackingAPI = async (userId, accountName, channel) => {
 
-  const apiUrl = API_URLS.printTracking(userId, accountName);
+  const apiUrl = API_URLS.printTracking(userId, accountName, channel);
 
   try {
     const response = await fetch(apiUrl, {

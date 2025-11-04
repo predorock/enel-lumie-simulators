@@ -725,7 +725,7 @@
             ]
         },
         {
-            "id": "preventivo-risultato",
+            "id": "preventivo-risultato-fisico",
             "title": "Preventivo generato con successo",
             "step": 3,
             "fullPage": false,
@@ -733,6 +733,12 @@
             "showNavigation": true,
             "showBackgroundDecoration": true,
             "validationRules": {},
+            "renderConditions": {
+                "equals": {
+                    "property": "formData.selectedChannel",
+                    "value": "fisico"
+                }
+            },
             "navigationHooks": {
                 "beforeNext": "",
                 "afterNext": "",
@@ -757,8 +763,7 @@
                     "variant": "secondary",
                     "disabled": false,
                     "action": [
-                        "openPrintSidebar",
-                        "report.trackPrint"
+                        "openPrintSidebar"
                     ]
                 },
                 "nextButton": {
@@ -874,13 +879,160 @@
                     "type": "SidebarForm",
                     "props": {
                         "title": "Invia il preventivo al cliente",
-                        "onSubmitAction": "trackPrint"
+                        "onSubmitAction": [
+                            "trackPrint",
+                            "report.openReport"
+                        ]
                     },
                     "renderConditions": {
                         "equals": {
                             "property": "formData.selectedChannel",
                             "value": "web"
                         }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "preventivo-risultato-web",
+            "title": "Preventivo generato con successo",
+            "step": 3,
+            "fullPage": false,
+            "showStepper": true,
+            "showNavigation": true,
+            "showBackgroundDecoration": true,
+            "validationRules": {},
+            "renderConditions": {
+                "equals": {
+                    "property": "formData.selectedChannel",
+                    "value": "web"
+                }
+            },
+            "navigationHooks": {
+                "beforeNext": "",
+                "afterNext": "",
+                "beforePrevious": "",
+                "afterPrevious": ""
+            },
+            "navigationOverride": {
+                "leftButton": {
+                    "label": "Indietro",
+                    "icon": "back",
+                    "iconPosition": "left",
+                    "variant": "secondary",
+                    "disabled": false,
+                    "action": [
+                        "goToLastProductPage"
+                    ]
+                },
+                "backButton": {
+                    "show": false
+                },
+                "nextButton": {
+                    "label": "Invia report finale al cliente",
+                    "icon": "envelope",
+                    "iconPosition": "right",
+                    "variant": "primary",
+                    "disabled": false,
+                    "action": [
+                        "openSidebar"
+                    ]
+                }
+            },
+            "leftPanelComponents": [
+                {
+                    "type": "Image",
+                    "props": {
+                        "src": "condizionatore-fuochi",
+                        "alt": "Condizionatore con fuochi d'artificio",
+                        "className": "z-10 relative w-auto h-auto lg:max-h-[260px] xl:max-h-[300px] my-auto",
+                        "containerClassName": "flex justify-center items-center my-auto h-full"
+                    }
+                }
+            ],
+            "components": [
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "La soluzione per la sua casa",
+                        "description": "Ecco tutti i prodotti che abbiamo scelto per il cliente: un investimento che migliora la sua casa e valorizza ogni stagione dell’anno."
+                    }
+                },
+                {
+                    "type": "ReportSummary",
+                    "props": {}
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Il suo investimento il suo futuro",
+                        "description": "Ogni scelta fatta oggi si traduce in un risparmio concreto e in un futuro più sostenibile. Fai scoprire al cliente come i prodotti che ha scelto migliorano la sua vita quotidiana e offrono un ritorno economico che cresce nel tempo.",
+                        "className": "mb-6 mt-12"
+                    }
+                },
+                {
+                    "type": "SummaryResults",
+                    "props": {}
+                },
+                {
+                    "type": "DescriptionBox",
+                    "props": {
+                        "title": "Racconta al cliente quali sono i potenziali benefici",
+                        "titleSize": "xl",
+                        "description": "Se il cliente decide di confermare questa soluzione potrebbe ottenere i seguenti benefici:"
+                    }
+                },
+                {
+                    "type": "HorizontalBannerContainer",
+                    "props": {
+                        "banners": [
+                            {
+                                "title": "Benefici economici",
+                                "icon": "savings",
+                                "content": "Acquistare un climatizzatore di ultima generazione è una scelta economicamente vantaggiosa. Grazie alla tecnologia ad alta efficienza energetica, <b>questi dispositivi consumano fino al 40% in meno</b> rispetto ai modelli tradizionali, <b>con un<b><b class='text-secondary'> risparmio annuo che può superare i 400 euro</b><b> sulla bolletta elettrica.</b>"
+                            },
+                            {
+                                "title": "Benefici ambientali",
+                                "icon": "eco",
+                                "content": "Questi modelli riducono notevolmente i consumi energetici, <b class='text-secondary'>emettendo fino a 400 kg in meno di CO₂ all’anno</b> <b>rispetto</b> ai vecchi impianti. <b>È l’equivalente della quantità di CO₂ assorbita in un anno da circa 25 alberi.</b> Utilizzando meno energia e refrigeranti a basso impatto ambientale, contribuiscono concretamente alla lotta contro il cambiamento climatico, <b>migliorando la qualità dell’aria e proteggendo l’ambiente.</b>"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "PromotionalBanner",
+                    "props": {
+                        "title": "Il cliente vuole ricevere dei dati più precisi sulle performance della sua abitazione?",
+                        "description": "Le proiezioni relative ai benefici economici e ambientali visualizzate rappresentano delle stime indicative. Per un'analisi comparativa più precisa delle performance della sua abitazione consiglia di effettuare una simulazione con Lumiè Discovery..",
+                        "buttonText": "Effettua il check-up energetico con Lumiè",
+                        "buttonUrl": "https://simulatore-risparmio-energia.enel.it"
+                    }
+                },
+                {
+                    "type": "Divider",
+                    "props": {
+                        "color": "#c2cddd",
+                        "spacing": "32px"
+                    }
+                },
+                {
+                    "type": "DisclaimerContainer",
+                    "props": {
+                        "className": "mt-6 mb-4",
+                        "sections": [
+                            "<b>* Il prezzo visualizzato è calcolato in base alla regione in cui si trova la casa del cliente.</b>",
+                            "<b>**Sono disponibili diverse modalità di finanziamento.</b> Informa il cliente sui requisiti di accesso alle agevolazioni, sul periodo di validità e sulle spese ammissibili, facendo riferimento alla normativa vigente. Spiegagli eventuali TAN e TAEG applicati al finanziamento per aiutarlo a comprendere il costo finale del prodotto che desidera. Ricordagli inoltre di richiedere il documento 'Informazioni europee di base sul credito ai consumatori' (SECCI) e una copia del contratto, così avrà tutto il necessario per prendere una decisione informata sui costi e sulle condizioni."
+                        ]
+                    }
+                },
+                {
+                    "type": "SidebarForm",
+                    "props": {
+                        "title": "Invia il preventivo al cliente",
+                        "onSubmitAction": [
+                            "trackPrint",
+                            "report.openReport"
+                        ]
                     }
                 }
             ]
@@ -934,6 +1086,8 @@
             "showStepper": false,
             "showNavigation": false,
             "showBackgroundDecoration": false,
+            "showTitle": true,
+            "showLogo": true,
             "validationRules": {},
             "navigationOverride": {},
             "navigationHooks": {
@@ -944,13 +1098,23 @@
             },
             "leftPanelComponents": [
                 {
+                    "type": "Image",
+                    "props": {
+                        "src": "tondo-completo",
+                        "alt": "Tondo completo blu",
+                        "className": "absolute w-full h-full -top-32 left-0 right-0",
+                        "containerClassName": ""
+                    }
+                },
+                {
                     "type": "FinalMessage",
                     "props": {
                         "title": "Evviva! Il preventivo è stato creato con successo",
+                        "className": "relative z-10",
                         "onSendAction": "submitLead",
                         "onPrintAction": [
                             "report.openReport",
-                            "report.trackPrint"
+                            "trackPrint"
                         ]
                     }
                 }

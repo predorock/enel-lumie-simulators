@@ -1,7 +1,7 @@
 export default {
-    _initialized: true,
+    _initialized: false,
     currentStep: 3,
-    currentPageId: 'preventivo-risultato',
+    currentPageId: 'preventivo-risultato-web',
     steps: [
         {
             copy: 'Informazioni'
@@ -19,257 +19,14 @@ export default {
             title: 'Scegliete insieme il climatizzatore adatto!',
             step: 3,
             isDynamic: true,
+            autoScrollToTop: true,
             validationRules: {
                 required: [
                     'formData.airConditioningConfigs.monosplit_0.selected'
                 ]
             },
             navigationHooks: {
-                beforeNext: '',
-                afterNext: '',
-                beforePrevious: '',
-                afterPrevious: ''
-            },
-            leftPanelComponents: [
-                {
-                    type: 'Image',
-                    props: {
-                        src: 'cubo-condizionatore',
-                        alt: 'Condizionatore Cubo',
-                        className: 'z-10 relative w-auto h-auto max-w-[325px] mt-8',
-                        containerClassName: 'flex justify-center items-center flex-1'
-                    }
-                },
-                {
-                    type: 'CostSummary',
-                    props: {
-                        containerClassName: 'mt-auto mb-4 self-end w-full'
-                    }
-                }
-            ],
-            components: [
-                {
-                    type: 'DescriptionBox',
-                    props: {
-                        title: 'Scelta del Monosplit',
-                        description: 'Nuova installazione con predisposizione',
-                        icon: 'monosplit',
-                        step: '1/3',
-                        stepColor: 'purple',
-                        layout: 'horizontal'
-                    }
-                },
-                {
-                    type: 'InfoBanner',
-                    props: {
-                        title: 'Questo Monosplit deve climatizzare una stanza di 23 m²',
-                        icon: 'room',
-                        variant: 'info'
-                    }
-                },
-                {
-                    type: 'BrandSelector',
-                    props: {
-                        title: 'Quale brand di climatizzatore preferisce?'
-                    }
-                },
-                {
-                    type: 'InvestmentSelector',
-                    props: {
-                        title: 'Qual è l\'investimento più adatto al cliente?'
-                    }
-                },
-                {
-                    type: 'Divider',
-                    props: {
-                        className: 'py-6'
-                    }
-                },
-                {
-                    type: 'AcProductDisplayContainer',
-                    props: {
-                        showLoadingStates: true,
-                        maxProducts: 100,
-                        gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
-                        className: '',
-                        configKey: 'monosplit_0',
-                        stateProperty: 'airConditioningConfigs',
-                        alwaysOn: true
-                    }
-                },
-                {
-                    type: 'Divider',
-                    props: {
-                        className: 'my-12'
-                    }
-                },
-                {
-                    type: 'DescriptionBox',
-                    props: {
-                        title: 'Il prodotto consigliato non soddisfa il cliente?',
-                        titleSize: 'lg',
-                        description: 'Proponi queste soluzioni alternative del prodotto'
-                    }
-                },
-                {
-                    type: 'AcProductDisplayContainer',
-                    props: {
-                        showLoadingStates: true,
-                        maxProducts: 100,
-                        gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
-                        className: 'mb-8',
-                        showFeatures: false,
-                        configKey: 'monosplit_0',
-                        stateProperty: 'airConditioningConfigs',
-                        alwaysOn: false
-                    }
-                },
-                {
-                    type: 'DisclaimerContainer',
-                    props: {
-                        className: 'mt-6 mb-4',
-                        sections: [
-                            '<b>* Il prezzo visualizzato può variare in base alla regione in cui si trova la tua casa.</b> Non preoccuparti, il sopralluogo tecnico-commerciale (per la verifica di fattibilità dell’installazione) e l\'installazione sono inclusi nel prezzo.',
-                            '<b>**Sono disponibili diverse modalità di finanziamento.</b> Assicurati di informare il cliente sui requisiti di accesso alle agevolazioni, il periodo di validità e le spese ammissibili. Consulta la normativa di riferimento o offrigli un supporto diretto, fornendogli tutte le informazioni necessarie, INCLUSI EVENTUALI TAN E TAEG APPLICATI AL FINANZIAMENTO. Ricorda di suggerire al cliente di richiedere il documento \'Informazioni europee di base sul credito ai consumatori\' (SECCI) e una copia del contratto, così potrà avere tutto il necessario per prendere una decisione informata sui costi e sulle condizioni.'
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            id: 'scelta-climatizzatore-dualsplit-1',
-            title: 'Scegliete insieme il climatizzatore adatto!',
-            step: 3,
-            isDynamic: true,
-            validationRules: {
-                required: [
-                    'formData.airConditioningConfigs.dualsplit_0.selected'
-                ]
-            },
-            navigationHooks: {
-                beforeNext: '',
-                afterNext: '',
-                beforePrevious: '',
-                afterPrevious: ''
-            },
-            leftPanelComponents: [
-                {
-                    type: 'Image',
-                    props: {
-                        src: 'cubo-condizionatore',
-                        alt: 'Condizionatore Cubo',
-                        className: 'z-10 relative w-auto h-auto max-w-[325px] mt-8',
-                        containerClassName: 'flex justify-center items-center flex-1'
-                    }
-                },
-                {
-                    type: 'CostSummary',
-                    props: {
-                        containerClassName: 'mt-auto mb-4 self-end w-full'
-                    }
-                }
-            ],
-            components: [
-                {
-                    type: 'DescriptionBox',
-                    props: {
-                        title: 'Scelta del Dualsplit',
-                        description: 'Nuova installazione senza predisposizione',
-                        icon: 'dualsplit',
-                        step: '2/3',
-                        stepColor: 'purple',
-                        layout: 'horizontal'
-                    }
-                },
-                {
-                    type: 'InfoBanner',
-                    props: {
-                        title: 'Questo Dualsplit deve climatizzare una stanza di 45 m²',
-                        icon: 'room',
-                        variant: 'info'
-                    }
-                },
-                {
-                    type: 'BrandSelector',
-                    props: {
-                        title: 'Quale brand di climatizzatore preferisce?'
-                    }
-                },
-                {
-                    type: 'InvestmentSelector',
-                    props: {
-                        title: 'Qual è l\'investimento più adatto al cliente?'
-                    }
-                },
-                {
-                    type: 'Divider',
-                    props: {
-                        className: 'py-6'
-                    }
-                },
-                {
-                    type: 'AcProductDisplayContainer',
-                    props: {
-                        showLoadingStates: true,
-                        maxProducts: 100,
-                        gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
-                        className: '',
-                        configKey: 'dualsplit_0',
-                        stateProperty: 'airConditioningConfigs',
-                        alwaysOn: true
-                    }
-                },
-                {
-                    type: 'Divider',
-                    props: {
-                        className: 'my-12'
-                    }
-                },
-                {
-                    type: 'DescriptionBox',
-                    props: {
-                        title: 'Il prodotto consigliato non soddisfa il cliente?',
-                        titleSize: 'lg',
-                        description: 'Proponi queste soluzioni alternative del prodotto'
-                    }
-                },
-                {
-                    type: 'AcProductDisplayContainer',
-                    props: {
-                        showLoadingStates: true,
-                        maxProducts: 100,
-                        gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
-                        className: 'mb-8',
-                        showFeatures: false,
-                        configKey: 'dualsplit_0',
-                        stateProperty: 'airConditioningConfigs',
-                        alwaysOn: false
-                    }
-                },
-                {
-                    type: 'DisclaimerContainer',
-                    props: {
-                        className: 'mt-6 mb-4',
-                        sections: [
-                            '<b>* Il prezzo visualizzato può variare in base alla regione in cui si trova la tua casa.</b> Non preoccuparti, il sopralluogo tecnico-commerciale (per la verifica di fattibilità dell’installazione) e l\'installazione sono inclusi nel prezzo.',
-                            '<b>**Sono disponibili diverse modalità di finanziamento.</b> Assicurati di informare il cliente sui requisiti di accesso alle agevolazioni, il periodo di validità e le spese ammissibili. Consulta la normativa di riferimento o offrigli un supporto diretto, fornendogli tutte le informazioni necessarie, INCLUSI EVENTUALI TAN E TAEG APPLICATI AL FINANZIAMENTO. Ricorda di suggerire al cliente di richiedere il documento \'Informazioni europee di base sul credito ai consumatori\' (SECCI) e una copia del contratto, così potrà avere tutto il necessario per prendere una decisione informata sui costi e sulle condizioni.'
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            id: 'scelta-climatizzatore-trialsplit-2',
-            title: 'Scegliete insieme il climatizzatore adatto!',
-            step: 3,
-            isDynamic: true,
-            validationRules: {
-                required: [
-                    'formData.airConditioningConfigs.trialsplit_0.selected'
-                ]
-            },
-            navigationHooks: {
-                beforeNext: '',
+                beforeNext: 'products.resetAllFilters',
                 afterNext: 'report.submitSimulation',
                 beforePrevious: '',
                 afterPrevious: ''
@@ -280,8 +37,8 @@ export default {
                     props: {
                         src: 'cubo-condizionatore',
                         alt: 'Condizionatore Cubo',
-                        className: 'z-10 relative w-auto h-auto max-w-[325px] mt-8',
-                        containerClassName: 'flex justify-center items-center flex-1'
+                        className: 'z-10 relative w-auto h-auto max-h-[320px]',
+                        containerClassName: 'flex justify-center items-center my-auto h-full'
                     }
                 },
                 {
@@ -293,12 +50,17 @@ export default {
             ],
             components: [
                 {
+                    type: 'StepIndicator',
+                    props: {
+                        acConfigurationKey: 'monosplit_0'
+                    }
+                },
+                {
                     type: 'DescriptionBox',
                     props: {
-                        title: 'Scelta del Trialsplit',
-                        description: 'Nuova installazione senza predisposizione',
-                        icon: 'trialsplit',
-                        step: '3/3',
+                        title: 'Scelta del Monosplit',
+                        description: 'Nuova installazione con predisposizione',
+                        icon: 'monosplit',
                         stepColor: 'purple',
                         layout: 'horizontal'
                     }
@@ -306,7 +68,7 @@ export default {
                 {
                     type: 'InfoBanner',
                     props: {
-                        title: 'Questo Trialsplit deve climatizzare una stanza di 56 m²',
+                        title: 'Questo Monosplit deve climatizzare una superficie di 34 m²',
                         icon: 'room',
                         variant: 'info'
                     }
@@ -314,13 +76,14 @@ export default {
                 {
                     type: 'BrandSelector',
                     props: {
-                        title: 'Quale brand di climatizzatore preferisce?'
+                        title: 'Filtra prodotti per brand o per investimento:',
+                        className: 'grid grid-cols-3 gap-4'
                     }
                 },
                 {
                     type: 'InvestmentSelector',
                     props: {
-                        title: 'Qual è l\'investimento più adatto al cliente?'
+                        className: 'grid grid-cols-3 gap-4'
                     }
                 },
                 {
@@ -336,9 +99,15 @@ export default {
                         maxProducts: 100,
                         gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
                         className: '',
-                        configKey: 'trialsplit_0',
+                        configKey: 'monosplit_0',
                         stateProperty: 'airConditioningConfigs',
-                        alwaysOn: true
+                        filters: [
+                            'type',
+                            'brand',
+                            'category',
+                            'isAlwaysOn',
+                            'monosplit'
+                        ]
                     }
                 },
                 {
@@ -353,6 +122,9 @@ export default {
                         title: 'Il prodotto consigliato non soddisfa il cliente?',
                         titleSize: 'lg',
                         description: 'Proponi queste soluzioni alternative del prodotto'
+                    },
+                    renderConditions: {
+                        isDefined: 'products.hasAlternativeProducts'
                     }
                 },
                 {
@@ -363,9 +135,17 @@ export default {
                         gridClassName: 'grid grid-cols-1 md:grid-cols-2 gap-6',
                         className: 'mb-8',
                         showFeatures: false,
-                        configKey: 'trialsplit_0',
+                        configKey: 'monosplit_0',
                         stateProperty: 'airConditioningConfigs',
-                        alwaysOn: false
+                        filters: [
+                            'type',
+                            'brand',
+                            'category',
+                            'isAlwaysOn',
+                            'monosplit'
+                        ],
+                        excluded: true,
+                        showNoProductsMessage: false
                     }
                 },
                 {
@@ -382,35 +162,47 @@ export default {
         }
     ],
     formData: {
+        isEnelCustomer: true,
+        customerKnowsSplits: true,
+        allowedUrlParams: [
+            {
+                stateKey: 'userId',
+                urlParameters: [
+                    'userId',
+                    'userid',
+                    'USERID',
+                    'UserID',
+                    'userID'
+                ]
+            },
+            {
+                stateKey: 'accountName',
+                urlParameters: [
+                    'accountName',
+                    'accountname',
+                    'ACCOUNTNAME',
+                    'AccountName',
+                    'accountName'
+                ]
+            }
+        ],
+        selectedChannel: 'web',
+        partnership: 'dipendente',
         storeCity: 'Milano',
+        disclaimer1: true,
+        disclaimer2: true,
+        disclaimer3: true,
+        disclaimer4: true,
         airconditioningQuantities: {
-            monosplit: 1,
-            dualsplit: 1,
-            trialsplit: 1
+            monosplit: 1
         },
         airConditioningConfigs: {
             monosplit_0: {
                 installationType: 'nuova_con_predisposizione',
-                roomSize: '23',
+                roomSize: '34',
                 hasWarning: false,
-                selected: 'daikin-clima-siesta-super-plus-9000'
-            },
-            dualsplit_0: {
-                installationType: 'nuova_senza_predisposizione',
-                roomSize: '45',
-                hasWarning: false,
-                selected: 'lg-libero-smart-9+12-btu/h'
-            },
-            trialsplit_0: {
-                installationType: 'nuova_senza_predisposizione',
-                roomSize: '56',
-                hasWarning: false,
-                selected: 'daikin-clima-siesta-trial-classic---9000+9000+12000'
+                selected: 'daikin-clima-siesta-super-plus-12000'
             }
-        },
-        needsRemoval: true,
-        removalQuantities: {
-            monosplit: 1
         }
     },
     cityState: {
@@ -31998,7 +31790,7 @@ export default {
         ],
         loading: false,
         error: null,
-        lastLoadTime: 1757688328169
+        lastLoadTime: 1762253673155
     },
     pricingState: {
         unitPrices: {
@@ -32023,18 +31815,24 @@ export default {
                 trialsplit: 129
             }
         },
+        ductworkMountsMeters: {
+            monosplit: 3,
+            dualsplit: 4,
+            trialsplit: 6,
+            extra: 3
+        },
         calculations: {
             purchase: {
                 monosplit: 0,
-                dualsplit: 190,
-                trialsplit: 290,
-                total: 480
-            },
-            removal: {
-                monosplit: 60,
                 dualsplit: 0,
                 trialsplit: 0,
-                total: 60
+                total: 0
+            },
+            removal: {
+                monosplit: 0,
+                dualsplit: 0,
+                trialsplit: 0,
+                total: 0
             },
             cleaning: {
                 monosplit: 0,
@@ -32048,9 +31846,9 @@ export default {
                 trialsplit: 0,
                 total: 0
             },
-            installationTotal: 540,
-            productsTotal: 7055.280000000001,
-            grandTotal: 7595.280000000001
+            installationTotal: 0,
+            productsTotal: 1365.88,
+            grandTotal: 1365.88
         }
     },
     products: {
@@ -32060,13 +31858,13 @@ export default {
                 hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS1zdXBlci1wbHVzLTEyMDAw',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 38,
+                capacity: 35,
                 productName: 'Daikin Clima Siesta Super Plus 12000',
                 productBrand: 'Daikin',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-12000-btu.webp',
                 productImageAlt: 'Daikin Clima Siesta Super Plus 12000',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 38m²',
+                productDescription: 'Per climatizzare stanze fino a 35m²',
                 features: [
                     {
                         key: 'Led',
@@ -32124,7 +31922,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1607.76',
+                price: '1365.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32140,13 +31938,13 @@ export default {
                 hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS1zdXBlci1wbHVzLTkwMDA=',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 32,
+                capacity: 27,
                 productName: 'Daikin Clima Siesta Super Plus 9000',
                 productBrand: 'Daikin',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-9000-btu.webp',
                 productImageAlt: 'Daikin Clima Siesta Super Plus 9000',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-9000-btu',
-                productDescription: 'Per climatizzare stanze fino a 32m²',
+                productDescription: 'Per climatizzare stanze fino a 27m²',
                 features: [
                     {
                         key: 'Led',
@@ -32204,7 +32002,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1511.76',
+                price: '1245.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32284,7 +32082,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '2519.76',
+                price: '2311.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32300,13 +32098,13 @@ export default {
                 hash: 'ZGFpa2luLWNsaW1hLXNpZXN0YS10cmlhbC1jbGFzc2ljLS0tOTAwMCs5MDAwKzEyMDAw',
                 numSplit: 3,
                 type: 'trialsplit',
-                capacity: 57,
+                capacity: 56,
                 productName: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
                 productBrand: 'Daikin',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-trial-9000-9000-12000-btu.webp',
                 productImageAlt: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-trial-9000-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 57m²',
+                productDescription: 'Per climatizzare stanze fino a 56m²',
                 features: [
                     {
                         key: 'Led',
@@ -32364,7 +32162,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '3671.76',
+                price: '3377.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32376,17 +32174,17 @@ export default {
                 showRecommendationBadge: true
             },
             {
-                id: 'lg-libero-smart-12000-btu/h',
-                hash: 'bGctbGliZXJvLXNtYXJ0LTEyMDAwLWJ0dS9o',
+                id: 'comfee-clima-maestrale-abw09a-9000-btu/h-by-midea',
+                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS1hYncwOWEtOTAwMC1idHUvaC1ieS1taWRlYQ==',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 38,
-                productName: 'LG Libero SMART 12000 btu/h',
-                productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-12000-btu.webp',
-                productImageAlt: 'LG Libero SMART 12000 btu/h',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 38m²',
+                capacity: 27,
+                productName: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
+                productBrand: 'Comfee',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-9000-btu.webp',
+                productImageAlt: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw09a-9000-btu',
+                productDescription: 'Per climatizzare stanze fino a 27m²',
                 features: [
                     {
                         key: 'Led',
@@ -32401,7 +32199,7 @@ export default {
                     {
                         key: 'Voice',
                         name: 'Voice control',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'RispEn',
@@ -32416,7 +32214,7 @@ export default {
                     {
                         key: 'ProgSett',
                         name: 'Programmazione timer settimanale',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'Sleep',
@@ -32444,7 +32242,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1007.76',
+                price: '849.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32456,17 +32254,17 @@ export default {
                 showRecommendationBadge: true
             },
             {
-                id: 'lg-libero-smart-9000-btu/h',
-                hash: 'bGctbGliZXJvLXNtYXJ0LTkwMDAtYnR1L2g=',
+                id: 'comfee-clima-maestrale-abw12a-12000-btu/h-by-midea',
+                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS1hYncxMmEtMTIwMDAtYnR1L2gtYnktbWlkZWE=',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 32,
-                productName: 'LG Libero SMART 9000 btu/h',
-                productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-9000-btu.webp',
-                productImageAlt: 'LG Libero SMART 9000 btu/h',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-9000-btu',
-                productDescription: 'Per climatizzare stanze fino a 32m²',
+                capacity: 35,
+                productName: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
+                productBrand: 'Comfee',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-12000-btu.webp',
+                productImageAlt: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw12a-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 35m²',
                 features: [
                     {
                         key: 'Led',
@@ -32481,7 +32279,7 @@ export default {
                     {
                         key: 'Voice',
                         name: 'Voice control',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'RispEn',
@@ -32496,7 +32294,7 @@ export default {
                     {
                         key: 'ProgSett',
                         name: 'Programmazione timer settimanale',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'Sleep',
@@ -32524,7 +32322,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '959.76',
+                price: '873.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32536,16 +32334,16 @@ export default {
                 showRecommendationBadge: true
             },
             {
-                id: 'lg-libero-smart-9+12-btu/h',
-                hash: 'bGctbGliZXJvLXNtYXJ0LTkrMTItYnR1L2g=',
+                id: 'comfee-clima-maestrale-9-+-12-btu/h-2fb-18k-+-abw09a-+-12a-by-midea',
+                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS05LSstMTItYnR1L2gtMmZiLTE4ay0rLWFidzA5YS0rLTEyYS1ieS1taWRlYQ==',
                 numSplit: 2,
                 type: 'dualsplit',
                 capacity: 45,
-                productName: 'LG Libero SMART  9+12 btu/h',
-                productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-dual-9000-12000-btu.webp',
-                productImageAlt: 'LG Libero SMART  9+12 btu/h',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu',
+                productName: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
+                productBrand: 'Comfee',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-dual-9000-12000-btu.webp',
+                productImageAlt: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-dual-9000-12000-btu',
                 productDescription: 'Per climatizzare stanze fino a 45m²',
                 features: [
                     {
@@ -32561,7 +32359,7 @@ export default {
                     {
                         key: 'Voice',
                         name: 'Voice control',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'RispEn',
@@ -32576,7 +32374,7 @@ export default {
                     {
                         key: 'ProgSett',
                         name: 'Programmazione timer settimanale',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'Sleep',
@@ -32604,7 +32402,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1871.76',
+                price: '1339.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32616,17 +32414,17 @@ export default {
                 showRecommendationBadge: true
             },
             {
-                id: 'lg-libero-smart-9+9+12-btu/h',
-                hash: 'bGctbGliZXJvLXNtYXJ0LTkrOSsxMi1idHUvaA==',
+                id: 'comfee-clima-maestrale-9-+-9-+-12-btu/h-3fb-27k-+-abw09a-x2+-12a-by-midea',
+                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS05LSstOS0rLTEyLWJ0dS9oLTNmYi0yN2stKy1hYncwOWEteDIrLTEyYS1ieS1taWRlYQ==',
                 numSplit: 3,
                 type: 'trialsplit',
-                capacity: 57,
-                productName: 'LG Libero SMART 9+9+12 btu/h',
-                productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-trial-9000-9000-12000-btu.webp',
-                productImageAlt: 'LG Libero SMART 9+9+12 btu/h',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-trial-9000-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 57m²',
+                capacity: 56,
+                productName: 'Comfee Clima Maestrale 9 + 9 + 12 btu/h 3FB-27K + ABW09A x2+ 12A by Midea',
+                productBrand: 'Comfee',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-trial-9000-9000-12000-btu.webp',
+                productImageAlt: 'Comfee Clima Maestrale 9 + 9 + 12 btu/h 3FB-27K + ABW09A x2+ 12A by Midea',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-trial-9000-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 56m²',
                 features: [
                     {
                         key: 'Led',
@@ -32641,7 +32439,7 @@ export default {
                     {
                         key: 'Voice',
                         name: 'Voice control',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'RispEn',
@@ -32656,7 +32454,7 @@ export default {
                     {
                         key: 'ProgSett',
                         name: 'Programmazione timer settimanale',
-                        enabled: true
+                        enabled: false
                     },
                     {
                         key: 'Sleep',
@@ -32684,87 +32482,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '2543.71',
-                currency: '€',
-                priceNote: 'IVA inclusa',
-                checkboxLabel: 'Scegli questa soluzione',
-                detailsLink: 'Visualizza la scheda dettagli del prodotto',
-                category: 'Medium',
-                alwaysOn: true,
-                recommendationLevel: 'half',
-                recommendationText: 'Miglio rapporto qualità/prezzo',
-                showRecommendationBadge: true
-            },
-            {
-                id: 'lg-libero-smart-18000-btu/h',
-                hash: 'bGctbGliZXJvLXNtYXJ0LTE4MDAwLWJ0dS9o',
-                numSplit: 1,
-                type: 'monosplit',
-                capacity: 40,
-                productName: 'LG Libero SMART 18000 btu/h',
-                productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net',
-                productImageAlt: 'LG Libero SMART 18000 btu/h',
-                productUrl: 'non c\'è sul sito!',
-                productDescription: 'Per climatizzare stanze fino a 40m²',
-                features: [
-                    {
-                        key: 'Led',
-                        name: 'Schermo LED',
-                        enabled: true
-                    },
-                    {
-                        key: 'Wifi',
-                        name: 'Connettività Wi-Fi',
-                        enabled: true
-                    },
-                    {
-                        key: 'Voice',
-                        name: 'Voice control',
-                        enabled: true
-                    },
-                    {
-                        key: 'RispEn',
-                        name: 'Funzione risparmio energetico',
-                        enabled: true
-                    },
-                    {
-                        key: 'ProgGiorn',
-                        name: 'Programmazione timer giornaliera',
-                        enabled: true
-                    },
-                    {
-                        key: 'ProgSett',
-                        name: 'Programmazione timer settimanale',
-                        enabled: true
-                    },
-                    {
-                        key: 'Sleep',
-                        name: 'Funzionalità Sleep',
-                        enabled: true
-                    },
-                    {
-                        key: 'Turbo',
-                        name: 'Funzionalità Turbo',
-                        enabled: true
-                    },
-                    {
-                        key: 'Muffa',
-                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
-                        enabled: true
-                    },
-                    {
-                        key: 'Ionizzazione',
-                        name: 'Ionizzatore',
-                        enabled: false
-                    },
-                    {
-                        key: 'Autodiagnosi',
-                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
-                        enabled: true
-                    }
-                ],
-                price: '1223.76',
+                price: '1757.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32780,13 +32498,13 @@ export default {
                 hash: 'Y29tZmVlLWNsaW1hLWNmdzA5YS05MDAwLWJ0dS9oLWJ5LW1pZGVh',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 32,
+                capacity: 27,
                 productName: 'Comfee Clima CFW09A 9000 btu/h by Midea',
                 productBrand: 'Comfee',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw09a-9000-btu.webp',
                 productImageAlt: 'Comfee Clima CFW09A 9000 btu/h by Midea',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw09a-9000-btu',
-                productDescription: 'Per climatizzare stanze fino a 32m²',
+                productDescription: 'Per climatizzare stanze fino a 27m²',
                 features: [
                     {
                         key: 'Led',
@@ -32844,7 +32562,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '935.76',
+                price: '707.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32860,13 +32578,13 @@ export default {
                 hash: 'Y29tZmVlLWNsaW1hLWNmdzE4Yi0xODAwMC1idHUvaC1ieS1taWRlYQ==',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 40,
+                capacity: 53,
                 productName: 'Comfee Clima CFW18B 18000 btu/h by Midea',
                 productBrand: 'Comfee',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw18a-18000-btu.webp',
                 productImageAlt: 'Comfee Clima CFW18B 18000 btu/h by Midea',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw18a-18000-btu',
-                productDescription: 'Per climatizzare stanze fino a 40m²',
+                productDescription: 'Per climatizzare stanze fino a 53m²',
                 features: [
                     {
                         key: 'Led',
@@ -32924,7 +32642,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1223.76',
+                price: '1067.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -32940,13 +32658,13 @@ export default {
                 hash: 'Y29tZmVlLWNsaW1hLWNmdzEyYS0xMjAwMC1idHUvaC1ieS1taWRlYQ==',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 38,
+                capacity: 35,
                 productName: 'Comfee Clima CFW12A 12000 btu/h by Midea',
                 productBrand: 'Comfee',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw12a-12000-btu.webp',
                 productImageAlt: 'Comfee Clima CFW12A 12000 btu/h by Midea',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw12a-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 38m²',
+                productDescription: 'Per climatizzare stanze fino a 35m²',
                 features: [
                     {
                         key: 'Led',
@@ -33004,7 +32722,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '983.76',
+                price: '827.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -33084,7 +32802,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1511.76',
+                price: '1367.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -33100,13 +32818,13 @@ export default {
                 hash: 'Y29tZmVlLWNsaW1hLTktKy05LSstMTItYnR1L2gtM2ZiLTI3ay0rLWNmdzA5YS14Mi0rLTEyYS1ieS1taWRlYQ==',
                 numSplit: 3,
                 type: 'trialsplit',
-                capacity: 57,
+                capacity: 56,
                 productName: 'Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea',
                 productBrand: 'Comfee',
                 productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-trial-9000-9000-12000-btu.webp',
                 productImageAlt: 'Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea',
                 productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-cfw-trial-9000-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 57m²',
+                productDescription: 'Per climatizzare stanze fino a 56m²',
                 features: [
                     {
                         key: 'Led',
@@ -33164,7 +32882,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1919.76',
+                price: '1775.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -33176,17 +32894,17 @@ export default {
                 showRecommendationBadge: true
             },
             {
-                id: 'lg-libero-s-12000-btu/h',
-                hash: 'bGctbGliZXJvLXMtMTIwMDAtYnR1L2g=',
+                id: 'lg-libero-smart-12000-btu/h',
+                hash: 'bGctbGliZXJvLXNtYXJ0LTEyMDAwLWJ0dS9o',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 38,
-                productName: 'LG Libero S 12000 btu/h',
+                capacity: 35,
+                productName: 'LG Libero SMART 12000 btu/h',
                 productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-12000-btu.webp',
-                productImageAlt: 'LG Libero S 12000 btu/h',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 38m²',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-12000-btu.webp',
+                productImageAlt: 'LG Libero SMART 12000 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 35m²',
                 features: [
                     {
                         key: 'Led',
@@ -33196,12 +32914,12 @@ export default {
                     {
                         key: 'Wifi',
                         name: 'Connettività Wi-Fi',
-                        enabled: false
+                        enabled: true
                     },
                     {
                         key: 'Voice',
                         name: 'Voice control',
-                        enabled: false
+                        enabled: true
                     },
                     {
                         key: 'RispEn',
@@ -33216,7 +32934,7 @@ export default {
                     {
                         key: 'ProgSett',
                         name: 'Programmazione timer settimanale',
-                        enabled: false
+                        enabled: true
                     },
                     {
                         key: 'Sleep',
@@ -33244,7 +32962,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '983.76',
+                price: '875.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -33254,17 +32972,17 @@ export default {
                 showRecommendationBadge: false
             },
             {
-                id: 'lg-libero-s-9000-btu/h',
-                hash: 'bGctbGliZXJvLXMtOTAwMC1idHUvaA==',
+                id: 'lg-libero-smart-9000-btu/h',
+                hash: 'bGctbGliZXJvLXNtYXJ0LTkwMDAtYnR1L2g=',
                 numSplit: 1,
                 type: 'monosplit',
-                capacity: 32,
-                productName: 'LG Libero S 9000 btu/h',
+                capacity: 27,
+                productName: 'LG Libero SMART 9000 btu/h',
                 productBrand: 'LG',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-9000-btu.webp',
-                productImageAlt: 'LG Libero S 9000 btu/h',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-9000-btu',
-                productDescription: 'Per climatizzare stanze fino a 32m²',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-9000-btu.webp',
+                productImageAlt: 'LG Libero SMART 9000 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-9000-btu',
+                productDescription: 'Per climatizzare stanze fino a 27m²',
                 features: [
                     {
                         key: 'Led',
@@ -33274,12 +32992,12 @@ export default {
                     {
                         key: 'Wifi',
                         name: 'Connettività Wi-Fi',
-                        enabled: false
+                        enabled: true
                     },
                     {
                         key: 'Voice',
                         name: 'Voice control',
-                        enabled: false
+                        enabled: true
                     },
                     {
                         key: 'RispEn',
@@ -33294,7 +33012,7 @@ export default {
                     {
                         key: 'ProgSett',
                         name: 'Programmazione timer settimanale',
-                        enabled: false
+                        enabled: true
                     },
                     {
                         key: 'Sleep',
@@ -33322,7 +33040,7 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '935.76',
+                price: '803.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -33332,172 +33050,16 @@ export default {
                 showRecommendationBadge: false
             },
             {
-                id: 'comfee-clima-maestrale-abw09a-9000-btu/h-by-midea',
-                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS1hYncwOWEtOTAwMC1idHUvaC1ieS1taWRlYQ==',
-                numSplit: 1,
-                type: 'monosplit',
-                capacity: 32,
-                productName: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
-                productBrand: 'Comfee',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-9000-btu.webp',
-                productImageAlt: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw09a-9000-btu',
-                productDescription: 'Per climatizzare stanze fino a 32m²',
-                features: [
-                    {
-                        key: 'Led',
-                        name: 'Schermo LED',
-                        enabled: true
-                    },
-                    {
-                        key: 'Wifi',
-                        name: 'Connettività Wi-Fi',
-                        enabled: true
-                    },
-                    {
-                        key: 'Voice',
-                        name: 'Voice control',
-                        enabled: false
-                    },
-                    {
-                        key: 'RispEn',
-                        name: 'Funzione risparmio energetico',
-                        enabled: true
-                    },
-                    {
-                        key: 'ProgGiorn',
-                        name: 'Programmazione timer giornaliera',
-                        enabled: true
-                    },
-                    {
-                        key: 'ProgSett',
-                        name: 'Programmazione timer settimanale',
-                        enabled: false
-                    },
-                    {
-                        key: 'Sleep',
-                        name: 'Funzionalità Sleep',
-                        enabled: true
-                    },
-                    {
-                        key: 'Turbo',
-                        name: 'Funzionalità Turbo',
-                        enabled: true
-                    },
-                    {
-                        key: 'Muffa',
-                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
-                        enabled: true
-                    },
-                    {
-                        key: 'Ionizzazione',
-                        name: 'Ionizzatore',
-                        enabled: false
-                    },
-                    {
-                        key: 'Autodiagnosi',
-                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
-                        enabled: true
-                    }
-                ],
-                price: '1079.76',
-                currency: '€',
-                priceNote: 'IVA inclusa',
-                checkboxLabel: 'Scegli questa soluzione',
-                detailsLink: 'Visualizza la scheda dettagli del prodotto',
-                category: '',
-                alwaysOn: false,
-                showRecommendationBadge: false
-            },
-            {
-                id: 'comfee-clima-maestrale-abw12a-12000-btu/h-by-midea',
-                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS1hYncxMmEtMTIwMDAtYnR1L2gtYnktbWlkZWE=',
-                numSplit: 1,
-                type: 'monosplit',
-                capacity: 38,
-                productName: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
-                productBrand: 'Comfee',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-12000-btu.webp',
-                productImageAlt: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw12a-12000-btu',
-                productDescription: 'Per climatizzare stanze fino a 38m²',
-                features: [
-                    {
-                        key: 'Led',
-                        name: 'Schermo LED',
-                        enabled: true
-                    },
-                    {
-                        key: 'Wifi',
-                        name: 'Connettività Wi-Fi',
-                        enabled: true
-                    },
-                    {
-                        key: 'Voice',
-                        name: 'Voice control',
-                        enabled: false
-                    },
-                    {
-                        key: 'RispEn',
-                        name: 'Funzione risparmio energetico',
-                        enabled: true
-                    },
-                    {
-                        key: 'ProgGiorn',
-                        name: 'Programmazione timer giornaliera',
-                        enabled: true
-                    },
-                    {
-                        key: 'ProgSett',
-                        name: 'Programmazione timer settimanale',
-                        enabled: false
-                    },
-                    {
-                        key: 'Sleep',
-                        name: 'Funzionalità Sleep',
-                        enabled: true
-                    },
-                    {
-                        key: 'Turbo',
-                        name: 'Funzionalità Turbo',
-                        enabled: true
-                    },
-                    {
-                        key: 'Muffa',
-                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
-                        enabled: true
-                    },
-                    {
-                        key: 'Ionizzazione',
-                        name: 'Ionizzatore',
-                        enabled: false
-                    },
-                    {
-                        key: 'Autodiagnosi',
-                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
-                        enabled: true
-                    }
-                ],
-                price: '1103.76',
-                currency: '€',
-                priceNote: 'IVA inclusa',
-                checkboxLabel: 'Scegli questa soluzione',
-                detailsLink: 'Visualizza la scheda dettagli del prodotto',
-                category: '',
-                alwaysOn: false,
-                showRecommendationBadge: false
-            },
-            {
-                id: 'comfee-clima-maestrale-9-+-12-btu/h-2fb-18k-+-abw09a-+-12a-by-midea',
-                hash: 'Y29tZmVlLWNsaW1hLW1hZXN0cmFsZS05LSstMTItYnR1L2gtMmZiLTE4ay0rLWFidzA5YS0rLTEyYS1ieS1taWRlYQ==',
+                id: 'lg-libero-smart-9+12-btu/h',
+                hash: 'bGctbGliZXJvLXNtYXJ0LTkrMTItYnR1L2g=',
                 numSplit: 2,
                 type: 'dualsplit',
                 capacity: 45,
-                productName: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
-                productBrand: 'Comfee',
-                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-dual-9000-12000-btu.webp',
-                productImageAlt: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
-                productUrl: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-dual-9000-12000-btu',
+                productName: 'LG Libero SMART  9+12 btu/h',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-dual-9000-12000-btu.webp',
+                productImageAlt: 'LG Libero SMART  9+12 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu',
                 productDescription: 'Per climatizzare stanze fino a 45m²',
                 features: [
                     {
@@ -33513,6 +33075,240 @@ export default {
                     {
                         key: 'Voice',
                         name: 'Voice control',
+                        enabled: true
+                    },
+                    {
+                        key: 'RispEn',
+                        name: 'Funzione risparmio energetico',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgGiorn',
+                        name: 'Programmazione timer giornaliera',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgSett',
+                        name: 'Programmazione timer settimanale',
+                        enabled: true
+                    },
+                    {
+                        key: 'Sleep',
+                        name: 'Funzionalità Sleep',
+                        enabled: true
+                    },
+                    {
+                        key: 'Turbo',
+                        name: 'Funzionalità Turbo',
+                        enabled: true
+                    },
+                    {
+                        key: 'Muffa',
+                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+                        enabled: true
+                    },
+                    {
+                        key: 'Ionizzazione',
+                        name: 'Ionizzatore',
+                        enabled: false
+                    },
+                    {
+                        key: 'Autodiagnosi',
+                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+                        enabled: true
+                    }
+                ],
+                price: '1651.88',
+                currency: '€',
+                priceNote: 'IVA inclusa',
+                checkboxLabel: 'Scegli questa soluzione',
+                detailsLink: 'Visualizza la scheda dettagli del prodotto',
+                category: '',
+                alwaysOn: false,
+                showRecommendationBadge: false
+            },
+            {
+                id: 'lg-libero-smart-9+9+12-btu/h',
+                hash: 'bGctbGliZXJvLXNtYXJ0LTkrOSsxMi1idHUvaA==',
+                numSplit: 3,
+                type: 'trialsplit',
+                capacity: 56,
+                productName: 'LG Libero SMART 9+9+12 btu/h',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-trial-9000-9000-12000-btu.webp',
+                productImageAlt: 'LG Libero SMART 9+9+12 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-trial-9000-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 56m²',
+                features: [
+                    {
+                        key: 'Led',
+                        name: 'Schermo LED',
+                        enabled: true
+                    },
+                    {
+                        key: 'Wifi',
+                        name: 'Connettività Wi-Fi',
+                        enabled: true
+                    },
+                    {
+                        key: 'Voice',
+                        name: 'Voice control',
+                        enabled: true
+                    },
+                    {
+                        key: 'RispEn',
+                        name: 'Funzione risparmio energetico',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgGiorn',
+                        name: 'Programmazione timer giornaliera',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgSett',
+                        name: 'Programmazione timer settimanale',
+                        enabled: true
+                    },
+                    {
+                        key: 'Sleep',
+                        name: 'Funzionalità Sleep',
+                        enabled: true
+                    },
+                    {
+                        key: 'Turbo',
+                        name: 'Funzionalità Turbo',
+                        enabled: true
+                    },
+                    {
+                        key: 'Muffa',
+                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+                        enabled: true
+                    },
+                    {
+                        key: 'Ionizzazione',
+                        name: 'Ionizzatore',
+                        enabled: false
+                    },
+                    {
+                        key: 'Autodiagnosi',
+                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+                        enabled: true
+                    }
+                ],
+                price: '2285.88',
+                currency: '€',
+                priceNote: 'IVA inclusa',
+                checkboxLabel: 'Scegli questa soluzione',
+                detailsLink: 'Visualizza la scheda dettagli del prodotto',
+                category: '',
+                alwaysOn: false,
+                showRecommendationBadge: false
+            },
+            {
+                id: 'lg-libero-smart-18000-btu/h',
+                hash: 'bGctbGliZXJvLXNtYXJ0LTE4MDAwLWJ0dS9o',
+                numSplit: 1,
+                type: 'monosplit',
+                capacity: 53,
+                productName: 'LG Libero SMART 18000 btu/h',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/lg-libero-smart-18000-btu.webp',
+                productImageAlt: 'LG Libero SMART 18000 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-18000-btu',
+                productDescription: 'Per climatizzare stanze fino a 53m²',
+                features: [
+                    {
+                        key: 'Led',
+                        name: 'Schermo LED',
+                        enabled: true
+                    },
+                    {
+                        key: 'Wifi',
+                        name: 'Connettività Wi-Fi',
+                        enabled: true
+                    },
+                    {
+                        key: 'Voice',
+                        name: 'Voice control',
+                        enabled: true
+                    },
+                    {
+                        key: 'RispEn',
+                        name: 'Funzione risparmio energetico',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgGiorn',
+                        name: 'Programmazione timer giornaliera',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgSett',
+                        name: 'Programmazione timer settimanale',
+                        enabled: true
+                    },
+                    {
+                        key: 'Sleep',
+                        name: 'Funzionalità Sleep',
+                        enabled: true
+                    },
+                    {
+                        key: 'Turbo',
+                        name: 'Funzionalità Turbo',
+                        enabled: true
+                    },
+                    {
+                        key: 'Muffa',
+                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+                        enabled: true
+                    },
+                    {
+                        key: 'Ionizzazione',
+                        name: 'Ionizzatore',
+                        enabled: false
+                    },
+                    {
+                        key: 'Autodiagnosi',
+                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+                        enabled: true
+                    }
+                ],
+                price: '1067.88',
+                currency: '€',
+                priceNote: 'IVA inclusa',
+                checkboxLabel: 'Scegli questa soluzione',
+                detailsLink: 'Visualizza la scheda dettagli del prodotto',
+                category: '',
+                alwaysOn: false,
+                showRecommendationBadge: false
+            },
+            {
+                id: 'lg-libero-s-12000-btu/h',
+                hash: 'bGctbGliZXJvLXMtMTIwMDAtYnR1L2g=',
+                numSplit: 1,
+                type: 'monosplit',
+                capacity: 35,
+                productName: 'LG Libero S 12000 btu/h',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-12000-btu.webp',
+                productImageAlt: 'LG Libero S 12000 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 35m²',
+                features: [
+                    {
+                        key: 'Led',
+                        name: 'Schermo LED',
+                        enabled: true
+                    },
+                    {
+                        key: 'Wifi',
+                        name: 'Connettività Wi-Fi',
+                        enabled: false
+                    },
+                    {
+                        key: 'Voice',
+                        name: 'Voice control',
                         enabled: false
                     },
                     {
@@ -33556,7 +33352,241 @@ export default {
                         enabled: true
                     }
                 ],
-                price: '1559.76',
+                price: '875.88',
+                currency: '€',
+                priceNote: 'IVA inclusa',
+                checkboxLabel: 'Scegli questa soluzione',
+                detailsLink: 'Visualizza la scheda dettagli del prodotto',
+                category: '',
+                alwaysOn: false,
+                showRecommendationBadge: false
+            },
+            {
+                id: 'lg-libero-s-9000-btu/h',
+                hash: 'bGctbGliZXJvLXMtOTAwMC1idHUvaA==',
+                numSplit: 1,
+                type: 'monosplit',
+                capacity: 27,
+                productName: 'LG Libero S 9000 btu/h',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-9000-btu.webp',
+                productImageAlt: 'LG Libero S 9000 btu/h',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-9000-btu',
+                productDescription: 'Per climatizzare stanze fino a 27m²',
+                features: [
+                    {
+                        key: 'Led',
+                        name: 'Schermo LED',
+                        enabled: true
+                    },
+                    {
+                        key: 'Wifi',
+                        name: 'Connettività Wi-Fi',
+                        enabled: false
+                    },
+                    {
+                        key: 'Voice',
+                        name: 'Voice control',
+                        enabled: false
+                    },
+                    {
+                        key: 'RispEn',
+                        name: 'Funzione risparmio energetico',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgGiorn',
+                        name: 'Programmazione timer giornaliera',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgSett',
+                        name: 'Programmazione timer settimanale',
+                        enabled: false
+                    },
+                    {
+                        key: 'Sleep',
+                        name: 'Funzionalità Sleep',
+                        enabled: true
+                    },
+                    {
+                        key: 'Turbo',
+                        name: 'Funzionalità Turbo',
+                        enabled: true
+                    },
+                    {
+                        key: 'Muffa',
+                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+                        enabled: true
+                    },
+                    {
+                        key: 'Ionizzazione',
+                        name: 'Ionizzatore',
+                        enabled: false
+                    },
+                    {
+                        key: 'Autodiagnosi',
+                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+                        enabled: true
+                    }
+                ],
+                price: '803.88',
+                currency: '€',
+                priceNote: 'IVA inclusa',
+                checkboxLabel: 'Scegli questa soluzione',
+                detailsLink: 'Visualizza la scheda dettagli del prodotto',
+                category: '',
+                alwaysOn: false,
+                showRecommendationBadge: false
+            },
+            {
+                id: 'lg-artcool-mirror-uv-nano-dualsplit',
+                hash: 'bGctYXJ0Y29vbC1taXJyb3ItdXYtbmFuby1kdWFsc3BsaXQ=',
+                numSplit: 2,
+                type: 'dualsplit',
+                capacity: 45,
+                productName: 'LG Artcool Mirror UV Nano Dualsplit',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-artcool-mirror-uvnano-dual-9000-12000-btu.webp',
+                productImageAlt: 'LG Artcool Mirror UV Nano Dualsplit',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-artcool-mirror-uvnano-dual-9000-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 45m²',
+                features: [
+                    {
+                        key: 'Led',
+                        name: 'Schermo LED',
+                        enabled: true
+                    },
+                    {
+                        key: 'Wifi',
+                        name: 'Connettività Wi-Fi',
+                        enabled: true
+                    },
+                    {
+                        key: 'Voice',
+                        name: 'Voice control',
+                        enabled: true
+                    },
+                    {
+                        key: 'RispEn',
+                        name: 'Funzione risparmio energetico',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgGiorn',
+                        name: 'Programmazione timer giornaliera',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgSett',
+                        name: 'Programmazione timer settimanale',
+                        enabled: true
+                    },
+                    {
+                        key: 'Sleep',
+                        name: 'Funzionalità Sleep',
+                        enabled: true
+                    },
+                    {
+                        key: 'Turbo',
+                        name: 'Funzionalità Turbo',
+                        enabled: true
+                    },
+                    {
+                        key: 'Muffa',
+                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+                        enabled: true
+                    },
+                    {
+                        key: 'Ionizzazione',
+                        name: 'Ionizzatore',
+                        enabled: true
+                    },
+                    {
+                        key: 'Autodiagnosi',
+                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+                        enabled: true
+                    }
+                ],
+                price: '1367.88',
+                currency: '€',
+                priceNote: 'IVA inclusa',
+                checkboxLabel: 'Scegli questa soluzione',
+                detailsLink: 'Visualizza la scheda dettagli del prodotto',
+                category: '',
+                alwaysOn: false,
+                showRecommendationBadge: false
+            },
+            {
+                id: 'lg-artcool-mirror-uv-nano-trialsplit',
+                hash: 'bGctYXJ0Y29vbC1taXJyb3ItdXYtbmFuby10cmlhbHNwbGl0',
+                numSplit: 3,
+                type: 'trialsplit',
+                capacity: 56,
+                productName: 'LG Artcool Mirror UV Nano Trialsplit',
+                productBrand: 'LG',
+                productImage: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-artcool-mirror-uvnano-trial-9000-12000-btu.webp',
+                productImageAlt: 'LG Artcool Mirror UV Nano Trialsplit',
+                productUrl: 'https://www.enel.it/it-it/condizionatori/lg-artcool-mirror-uvnano-trial-9000-12000-btu',
+                productDescription: 'Per climatizzare stanze fino a 56m²',
+                features: [
+                    {
+                        key: 'Led',
+                        name: 'Schermo LED',
+                        enabled: true
+                    },
+                    {
+                        key: 'Wifi',
+                        name: 'Connettività Wi-Fi',
+                        enabled: true
+                    },
+                    {
+                        key: 'Voice',
+                        name: 'Voice control',
+                        enabled: true
+                    },
+                    {
+                        key: 'RispEn',
+                        name: 'Funzione risparmio energetico',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgGiorn',
+                        name: 'Programmazione timer giornaliera',
+                        enabled: true
+                    },
+                    {
+                        key: 'ProgSett',
+                        name: 'Programmazione timer settimanale',
+                        enabled: true
+                    },
+                    {
+                        key: 'Sleep',
+                        name: 'Funzionalità Sleep',
+                        enabled: true
+                    },
+                    {
+                        key: 'Turbo',
+                        name: 'Funzionalità Turbo',
+                        enabled: true
+                    },
+                    {
+                        key: 'Muffa',
+                        name: 'Anti muffa, anti batteri, anti polvere, anti allergeni',
+                        enabled: true
+                    },
+                    {
+                        key: 'Ionizzazione',
+                        name: 'Ionizzatore',
+                        enabled: true
+                    },
+                    {
+                        key: 'Autodiagnosi',
+                        name: 'Autodiagnosi (Funzione Smart Diagnosis)',
+                        enabled: true
+                    }
+                ],
+                price: '1775.88',
                 currency: '€',
                 priceNote: 'IVA inclusa',
                 checkboxLabel: 'Scegli questa soluzione',
@@ -33569,18 +33599,25 @@ export default {
         loading: false,
         error: null,
         selectedCity: 'Milano',
-        filterBy: null,
+        hasAlternativeProducts: true,
+        filters: {
+            exclusive: [
+                'brand',
+                'category'
+            ]
+        },
+        filterValues: {},
         rawProducts: [
             {
                 Name: 'Daikin Clima Siesta Super Plus 12000',
                 Brand: 'Daikin',
-                Price: 1607.76,
+                Price: 1365.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-12000-btu',
                 NumSplit: 1,
                 Category: 'Premium',
                 Qty: 0,
-                m2: 38,
+                m2: 35,
                 Features: {
                     Led: true,
                     Wifi: false,
@@ -33599,13 +33636,13 @@ export default {
             {
                 Name: 'Daikin Clima Siesta Super Plus 9000',
                 Brand: 'Daikin',
-                Price: 1511.763,
+                Price: 1245.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-9000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-9000-btu',
                 NumSplit: 1,
                 Category: 'Premium',
                 Qty: 0,
-                m2: 32,
+                m2: 27,
                 Features: {
                     Led: true,
                     Wifi: false,
@@ -33624,7 +33661,7 @@ export default {
             {
                 Name: 'Daikin Clima Siesta Dual Classic - 9000+12000',
                 Brand: 'Daikin',
-                Price: 2519.75537,
+                Price: 2311.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-dual-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-dual-9000-12000-btu',
                 NumSplit: 2,
@@ -33649,13 +33686,13 @@ export default {
             {
                 Name: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
                 Brand: 'Daikin',
-                Price: 3671.76221,
+                Price: 3377.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-trial-9000-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-trial-9000-12000-btu',
                 NumSplit: 3,
                 Category: 'Premium',
                 Qty: 0,
-                m2: 57,
+                m2: 56,
                 Features: {
                     Led: true,
                     Wifi: false,
@@ -33674,13 +33711,13 @@ export default {
             {
                 Name: 'LG Libero SMART 12000 btu/h',
                 Brand: 'LG',
-                Price: 1007.76,
+                Price: 875.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-12000-btu',
                 NumSplit: 1,
-                Category: 'Medium',
+                Category: '',
                 Qty: 0,
-                m2: 38,
+                m2: 35,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33693,19 +33730,19 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: true
+                    AlwaysOn: false
                 }
             },
             {
                 Name: 'LG Libero SMART 9000 btu/h',
                 Brand: 'LG',
-                Price: 959.76,
+                Price: 803.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-9000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-9000-btu',
                 NumSplit: 1,
-                Category: 'Medium',
+                Category: '',
                 Qty: 0,
-                m2: 32,
+                m2: 27,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33718,17 +33755,17 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: true
+                    AlwaysOn: false
                 }
             },
             {
                 Name: 'LG Libero SMART  9+12 btu/h',
                 Brand: 'LG',
-                Price: 1871.76,
+                Price: 1651.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-dual-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu',
                 NumSplit: 2,
-                Category: 'Medium',
+                Category: '',
                 Qty: 0,
                 m2: 45,
                 Features: {
@@ -33743,19 +33780,19 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: true
+                    AlwaysOn: false
                 }
             },
             {
                 Name: 'LG Libero SMART 9+9+12 btu/h',
                 Brand: 'LG',
-                Price: 2543.70679,
+                Price: 2285.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-trial-9000-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-trial-9000-12000-btu',
                 NumSplit: 3,
-                Category: 'Medium',
+                Category: '',
                 Qty: 0,
-                m2: 57,
+                m2: 56,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33768,19 +33805,19 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: true
+                    AlwaysOn: false
                 }
             },
             {
                 Name: 'LG Libero SMART 18000 btu/h',
                 Brand: 'LG',
-                Price: 1223.76038,
-                Image: 'https://greenovationdashboard.azurewebsites.net',
-                Url: 'non c\'è sul sito!',
+                Price: 1067.88,
+                Image: 'https://greenovationdashboard.azurewebsites.net/Content/lg-libero-smart-18000-btu.webp',
+                Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-18000-btu',
                 NumSplit: 1,
-                Category: 'Medium',
+                Category: '',
                 Qty: 0,
-                m2: 40,
+                m2: 53,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33793,19 +33830,19 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: true
+                    AlwaysOn: false
                 }
             },
             {
                 Name: 'LG Libero S 12000 btu/h',
                 Brand: 'LG',
-                Price: 983.76,
+                Price: 875.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-12000-btu',
                 NumSplit: 1,
                 Category: '',
                 Qty: 0,
-                m2: 38,
+                m2: 35,
                 Features: {
                     Led: true,
                     Wifi: false,
@@ -33824,13 +33861,13 @@ export default {
             {
                 Name: 'LG Libero S 9000 btu/h',
                 Brand: 'LG',
-                Price: 935.76,
+                Price: 803.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-s-9000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-s-9000-btu',
                 NumSplit: 1,
                 Category: '',
                 Qty: 0,
-                m2: 32,
+                m2: 27,
                 Features: {
                     Led: true,
                     Wifi: false,
@@ -33849,13 +33886,13 @@ export default {
             {
                 Name: 'Comfee Clima CFW09A 9000 btu/h by Midea',
                 Brand: 'Comfee',
-                Price: 935.76,
+                Price: 707.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw09a-9000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-cfw09a-9000-btu',
                 NumSplit: 1,
                 Category: 'Entry',
                 Qty: 0,
-                m2: 32,
+                m2: 27,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33874,13 +33911,13 @@ export default {
             {
                 Name: 'Comfee Clima CFW18B 18000 btu/h by Midea',
                 Brand: 'Comfee',
-                Price: 1223.76,
+                Price: 1067.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw18a-18000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-cfw18a-18000-btu',
                 NumSplit: 1,
                 Category: 'Entry',
                 Qty: 0,
-                m2: 40,
+                m2: 53,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33899,13 +33936,13 @@ export default {
             {
                 Name: 'Comfee Clima CFW12A 12000 btu/h by Midea',
                 Brand: 'Comfee',
-                Price: 983.76,
+                Price: 827.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw12a-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-cfw12a-12000-btu',
                 NumSplit: 1,
                 Category: 'Entry',
                 Qty: 0,
-                m2: 38,
+                m2: 35,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33924,13 +33961,13 @@ export default {
             {
                 Name: 'Comfee Clima Maestrale ABW09A  9000 btu/h by Midea',
                 Brand: 'Comfee',
-                Price: 1079.76,
+                Price: 849.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-9000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw09a-9000-btu',
                 NumSplit: 1,
-                Category: '',
+                Category: 'Medium',
                 Qty: 0,
-                m2: 32,
+                m2: 27,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33943,19 +33980,19 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: false
+                    AlwaysOn: true
                 }
             },
             {
                 Name: 'Comfee Clima Maestrale ABW12A 12000 btu/h by Midea',
                 Brand: 'Comfee',
-                Price: 1103.76,
+                Price: 873.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw12a-12000-btu',
                 NumSplit: 1,
-                Category: '',
+                Category: 'Medium',
                 Qty: 0,
-                m2: 38,
+                m2: 35,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -33968,13 +34005,13 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: false
+                    AlwaysOn: true
                 }
             },
             {
                 Name: 'Comfee Clima 9+12 btu/h 2FB-18K + CFW09A + 12A by Midea',
                 Brand: 'Comfee',
-                Price: 1511.76,
+                Price: 1367.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-dual-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-cfw-dual-9000-12000-btu',
                 NumSplit: 2,
@@ -33999,11 +34036,11 @@ export default {
             {
                 Name: 'Comfee Clima Maestrale 9 + 12 btu/h 2FB-18K + ABW09A + 12A by Midea',
                 Brand: 'Comfee',
-                Price: 1559.76,
+                Price: 1339.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-dual-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-dual-9000-12000-btu',
                 NumSplit: 2,
-                Category: '',
+                Category: 'Medium',
                 Qty: 0,
                 m2: 45,
                 Features: {
@@ -34018,19 +34055,19 @@ export default {
                     Muffa: true,
                     Ionizzazione: false,
                     Autodiagnosi: true,
-                    AlwaysOn: false
+                    AlwaysOn: true
                 }
             },
             {
                 Name: 'Comfee Clima 9 + 9 + 12 btu/h 3FB-27K + CFW09A x2 + 12A by Midea',
                 Brand: 'Comfee',
-                Price: 1919.76,
+                Price: 1775.88,
                 Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-cfw-trial-9000-9000-12000-btu.webp',
                 Url: 'https://www.enel.it/it-it/condizionatori/comfee-cfw-trial-9000-12000-btu',
                 NumSplit: 3,
                 Category: 'Entry',
                 Qty: 0,
-                m2: 57,
+                m2: 56,
                 Features: {
                     Led: true,
                     Wifi: true,
@@ -34045,8 +34082,84 @@ export default {
                     Autodiagnosi: true,
                     AlwaysOn: true
                 }
+            },
+            {
+                Name: 'Comfee Clima Maestrale 9 + 9 + 12 btu/h 3FB-27K + ABW09A x2+ 12A by Midea',
+                Brand: 'Comfee',
+                Price: 1757.88,
+                Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-comfee-maestrale-trial-9000-9000-12000-btu.webp',
+                Url: 'https://www.enel.it/it-it/condizionatori/comfee-maestrale-abw-trial-9000-12000-btu',
+                NumSplit: 3,
+                Category: 'Medium',
+                Qty: 0,
+                m2: 56,
+                Features: {
+                    Led: true,
+                    Wifi: true,
+                    Voice: false,
+                    RispEn: true,
+                    ProgGiorn: true,
+                    ProgSett: false,
+                    Sleep: true,
+                    Turbo: true,
+                    Muffa: true,
+                    Ionizzazione: false,
+                    Autodiagnosi: true,
+                    AlwaysOn: true
+                }
+            },
+            {
+                Name: 'LG Artcool Mirror UV Nano Dualsplit',
+                Brand: 'LG',
+                Price: 1367.88,
+                Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-artcool-mirror-uvnano-dual-9000-12000-btu.webp',
+                Url: 'https://www.enel.it/it-it/condizionatori/lg-artcool-mirror-uvnano-dual-9000-12000-btu',
+                NumSplit: 2,
+                Category: '',
+                Qty: 0,
+                m2: 45,
+                Features: {
+                    Led: true,
+                    Wifi: true,
+                    Voice: true,
+                    RispEn: true,
+                    ProgGiorn: true,
+                    ProgSett: true,
+                    Sleep: true,
+                    Turbo: true,
+                    Muffa: true,
+                    Ionizzazione: true,
+                    Autodiagnosi: true,
+                    AlwaysOn: false
+                }
+            },
+            {
+                Name: 'LG Artcool Mirror UV Nano Trialsplit',
+                Brand: 'LG',
+                Price: 1775.88,
+                Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-artcool-mirror-uvnano-trial-9000-12000-btu.webp',
+                Url: 'https://www.enel.it/it-it/condizionatori/lg-artcool-mirror-uvnano-trial-9000-12000-btu',
+                NumSplit: 3,
+                Category: '',
+                Qty: 0,
+                m2: 56,
+                Features: {
+                    Led: true,
+                    Wifi: true,
+                    Voice: true,
+                    RispEn: true,
+                    ProgGiorn: true,
+                    ProgSett: true,
+                    Sleep: true,
+                    Turbo: true,
+                    Muffa: true,
+                    Ionizzazione: true,
+                    Autodiagnosi: true,
+                    AlwaysOn: false
+                }
             }
-        ]
+        ],
+        filterBy: null
     },
     report: {
         data: {
@@ -34055,90 +34168,39 @@ export default {
             result: {
                 success: true,
                 message: 'Completed',
-                timestamp: '2025-09-12T14:46:28.4494537Z',
+                timestamp: '2025-11-04T10:54:51.8306173Z',
                 body: {
                     Comune: 'Milano',
-                    Numero_Macchine: 3,
-                    Clima1: 'Daikin Clima Siesta Super Plus 9000',
-                    Clima2: 'LG Libero SMART  9+12 btu/h',
-                    Clima3: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
-                    Stanza1_mq: 23,
-                    Stanza2_mq: 45,
-                    Stanza3_mq: 56,
-                    Numero_Predisposizioni_Mono: 1,
-                    Numero_Predisposizioni_Dual: 1,
-                    Numero_Predisposizioni_Trial: 1,
+                    Numero_Macchine: 1,
+                    Clima1: null,
+                    Clima2: null,
+                    Clima3: null,
+                    Stanza1_mq: 0,
+                    Stanza2_mq: 0,
+                    Stanza3_mq: 0,
+                    Numero_Predisposizioni_Mono: 0,
+                    Numero_Predisposizioni_Dual: 0,
+                    Numero_Predisposizioni_Trial: 0,
                     Numero_Predisposizioni_Canalizzazione: 0,
-                    Numero_Smontaggi_Mono: 1,
+                    Numero_Smontaggi_Mono: 0,
                     Numero_Smontaggi_Dual: 0,
                     Numero_Smontaggi_Trial: 0,
                     Numero_Lavaggi_Mono: 0,
                     Numero_Lavaggi_Dual: 0,
                     Numero_Lavaggi_Trial: 0,
-                    ProjectUrl: 'https://greenovation.blob.core.windows.net/enelclima/d6413dee-7cfe-4410-b075-f3949d2280d2.pdf',
-                    Id: 'd6413dee-7cfe-4410-b075-f3949d2280d2',
-                    Warning: '',
+                    ProjectUrl: 'https://greenovation.blob.core.windows.net/enelclima/40691ba4-7f77-402b-b36c-092778211e36.pdf',
+                    Id: '40691ba4-7f77-402b-b36c-092778211e36',
                     Products: [
                         {
-                            Name: 'Daikin Clima Siesta Super Plus 9000',
+                            Name: 'Daikin Clima Siesta Super Plus 12000',
                             Brand: 'Daikin',
-                            Price: 1511.76,
-                            Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-9000-btu.webp',
-                            Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-9000-btu',
+                            Price: 1365.88,
+                            Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-super-plus-12000-btu.webp',
+                            Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-super-plus-12000-btu',
                             NumSplit: 1,
                             Category: 'Premium',
                             Qty: 0,
-                            m2: 32,
-                            Features: {
-                                Led: true,
-                                Wifi: false,
-                                Voice: false,
-                                RispEn: true,
-                                ProgGiorn: true,
-                                ProgSett: false,
-                                Sleep: true,
-                                Turbo: true,
-                                Muffa: false,
-                                Ionizzazione: false,
-                                Autodiagnosi: true,
-                                AlwaysOn: true
-                            }
-                        },
-                        {
-                            Name: 'LG Libero SMART  9+12 btu/h',
-                            Brand: 'LG',
-                            Price: 1871.76,
-                            Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-lg-libero-smart-dual-9000-12000-btu.webp',
-                            Url: 'https://www.enel.it/it-it/condizionatori/lg-libero-smart-dual-9000-12000-btu',
-                            NumSplit: 2,
-                            Category: 'Medium',
-                            Qty: 0,
-                            m2: 45,
-                            Features: {
-                                Led: true,
-                                Wifi: true,
-                                Voice: true,
-                                RispEn: true,
-                                ProgGiorn: true,
-                                ProgSett: true,
-                                Sleep: true,
-                                Turbo: true,
-                                Muffa: true,
-                                Ionizzazione: false,
-                                Autodiagnosi: true,
-                                AlwaysOn: true
-                            }
-                        },
-                        {
-                            Name: 'Daikin Clima Siesta Trial Classic - 9000+9000+12000',
-                            Brand: 'Daikin',
-                            Price: 3671.76,
-                            Image: 'https://greenovationdashboard.azurewebsites.net/Content/climatizzatore-daikin-siesta-classic-trial-9000-9000-12000-btu.webp',
-                            Url: 'https://www.enel.it/it-it/condizionatori/daikin-siesta-classic-trial-9000-12000-btu',
-                            NumSplit: 3,
-                            Category: 'Premium',
-                            Qty: 0,
-                            m2: 57,
+                            m2: 35,
                             Features: {
                                 Led: true,
                                 Wifi: false,
@@ -34155,72 +34217,52 @@ export default {
                             }
                         }
                     ],
-                    Configurations: [
+                    Configurations: [],
+                    Financing: [
                         {
-                            Name: 'Nuova installazione senza predisposizione x2',
-                            Brand: null,
-                            Price: 480,
-                            Image: null,
-                            Url: null,
-                            NumSplit: 0,
-                            Category: null,
-                            Qty: 0,
-                            m2: 0,
-                            Features: {}
+                            id: '6months',
+                            name: 'Finanziamento a 6 mesi*',
+                            duration: 6,
+                            monthlyRate: 227.64666666666668,
+                            currency: '€',
+                            frequency: '/mese',
+                            tan: 0,
+                            taeg: 0,
+                            totalToRepay: 1365.88
                         },
                         {
-                            Name: 'Smontaggio clima mono x1',
-                            Brand: null,
-                            Price: 60,
-                            Image: null,
-                            Url: null,
-                            NumSplit: 0,
-                            Category: null,
-                            Qty: 0,
-                            m2: 0,
-                            Features: {}
+                            id: '12months',
+                            name: 'Finanziamento a 12 mesi*',
+                            duration: 12,
+                            monthlyRate: 113.82333333333334,
+                            currency: '€',
+                            frequency: '/mese',
+                            tan: 0,
+                            taeg: 0,
+                            totalToRepay: 1365.88
                         }
-                    ]
+                    ],
+                    Warnings: null,
+                    M2: '34'
                 }
             },
-            lastRequestTimestamp: 1757688388418
-        },
-        financing: {
-            plans: [
-                {
-                    id: '6months',
-                    name: 'Finanziamento a 6 mesi*',
-                    duration: 6,
-                    monthlyRate: 1291.7012065670908,
-                    currency: '€',
-                    frequency: '/mese',
-                    tan: 6.75,
-                    taeg: 6.96,
-                    totalToRepay: 7750.207239402545
-                },
-                {
-                    id: '120months',
-                    name: 'Finanziamento a 120 mesi*',
-                    duration: 120,
-                    monthlyRate: 88.03114025356662,
-                    currency: '€',
-                    frequency: '/mese',
-                    tan: 6.75,
-                    taeg: 6.96,
-                    totalToRepay: 10563.736830427993
-                }
-            ]
+            lastRequestTimestamp: 1762253691866
         }
     },
     sidebar: {
-        isOpen: false,
+        isOpen: true,
         customerData: {
-            cap: '',
-            nome: '',
-            cognome: '',
-            telefono: '',
-            email: ''
-        }
+            cap: '123456',
+            nome: 'Mario',
+            cognome: 'Marco',
+            telefono: '12345',
+            email: 'marco@cmail.ti',
+            token: '0cAFcWeA6RdRLdCVc_R4xsdfSpGsGoxZO7l5g8wQKmqH33B1IcCfbLIbJh27g4ZIosQr5V1A8-g72cNkLidq6RJ1bNi_4qu1gSDWPttbr-OhBDurtrqV4vaQbhifmNZof6X9N9UgeGWqzr05K9TK-0JX30IBQGXJxFHtubdVqepk0T4qT_s9Ge0ppOPIDJpHF5TH2aXparLcme1M7OetacNlvcUYOS9wDRAjHznQHFl9PvXh5TNkaKpeq1WkZanBVlNEafzIkz9L1-p5CtCPmWz05TOsN0x23tIN5_cAETJ1I3ypkA5_bofapP32lm1BH1oNmq3jb8-O_P_giNoA68Cwia2T_BSgNCwUiVVjGszSiAwiKRSyf0jK84kefiLuNFSKzZ-plPjVdsO7mbNSTGxZ1F9cDWTP-KTRJKS1WQNRQriwcue5Kfyn9isbt7p1NqR2f4nKhBf8wm7Ay9MeKLx_ApOqd_e0B7EEbBy-G67wjYZmzRt8-R08nmYpm0wxezCm0ktu9SRo-DvGRXFJEUAFfg1AVP2_yaTon8lLehPx8W9XH_jXC27gGKGipjPNhskaX2Zu6oSvqwWBsFdb_N9T_gKZmkqe1dR82T7jyGHZGmI8nS9Hjsb-vJPv9WdsPfIkdhswtt0zI6f3ZwXEEuY6Oa4Eo8se5SXgcWz5En_2XQP0l5_MpQ-sElsuyXcOUf8VR1iMz6h5lHw89wIGLbFbKIVYtIrp6w60aMszHcG3N1CHBqE7XBIFRfLunUxleD72n5DBjMzwLStynIGJuTpNHvnrBg6CkdoSSKKAz96JLNdUIDCHJxVsUIa5cvHNZA7vLMObGXq7AQXSpVm18QVY2h90bAOUTn72--QjYSXUu-9jn_l7YaFRLBm2TUPfowKQcZ5r6s3VsnU_U7JP5cC8ZonZdnJHDQhhSdrxlj6IfU79KwBgkqM_Ax9_ep3atZhO63L2_sl0wgZuSAFRoRPAkJfwjTpLG553Kb_4bziO26a_wyhbsq7_Pm_x1OD5G5XzKMR_F08_1kZas80Dke9rE5u5H5BSXz2cgZuxLaw3H9cOdg6iuDHVOl9ES3oBJ-inKA7SZ78zpreMJvj4kvBZ-tnGnchaQINyu6zbRmhP813Ym7-9dIVR7LpXXDt9I8mNh8p5TtJNCNGtotoydhKclshfqtOWcLK0p8luzpm12x9jNGL0i7ryPzMZMv5dEYHFNRIxExsc2ZLl5-pQbgg4wNMaH_jzloYAj0sCzO7r0v5pRx3cgyCKYSOwmPjxq-bDIdjMMBPk5nzyfMx3q4JhgNdoASx8_H8vFGIHStM3cHap_CuJDXETcCcxtRcY_PnPImXIlW8jtjW6x7k8bNnae_rjmKK-yk6xOm9QGKk8oj9cz8K-8hk0bdhjuUjRG0vfKk0GpIcllVFjFSCW7I3LYA3-cOFIpssh00LpLV0Qzqym92ZnDnMSw-Zpwyic83W8nXa-8LX_lIsVauR44MugbqMoVeARrSog7P6dUWaNqMGtSNBu-3PM8Ta8OC5zbq1PZkLAV0LC8fD2eL1B02p2y-ZpcNE91GIBnp3XLm-LABq6ERnEnJlSCtBfBaamTGyB5THr6FT-YZ',
+            city: ''
+        },
+        noValidationFields: [
+            'email'
+        ]
     },
     lead: {
         isLoading: false,

@@ -5,10 +5,14 @@ async function getTestData(scenarioName) {
             return (await import('../../assets/mocks/testDataCanalizzazioni.js')).default;
         case 'loader':
             return (await import('../../assets/mocks/testDataLoader.js')).default;
-        case 'report':
-            return (await import('../../assets/mocks/testDataReport.js')).default;
+        case 'reportFisico':
+            return (await import('../../assets/mocks/testDataReportFisico.js')).default;
+        case 'reportWeb':
+            return (await import('../../assets/mocks/testDataReportWeb.js')).default;
         case 'products':
             return (await import('../../assets/mocks/testDataProducts.js')).default;
+        case 'finale':
+            return (await import('../../assets/mocks/testDataFinale.js')).default;
         default:
             return (await import('../../assets/mocks/testData.js')).default
     }
