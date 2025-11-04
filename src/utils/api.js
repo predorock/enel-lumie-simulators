@@ -16,10 +16,10 @@ const buildApiUrl = (path) => {
 };
 
 const API_URLS = {
-  products: (cityName, partnership) => `https://greenovationdashboard.azurewebsites.net/api/lumie/clima?comune=${encodeURIComponent(cityName)}&partnership=${partnership}`,
+  products: (cityName, partnership) => `https://greenovationdashboard.azurewebsites.net/api/lumie/clima?comune=${encodeURIComponent(cityName)}&partnership=${encodeURIComponent(partnership)}`,
   simulation: () => "https://greenovationdashboard.azurewebsites.net/api/lumie/clima",
   lead: () => "https://greenovationdashboard.azurewebsites.net/api/Lumie/EnelClimaLead",
-  printTracking: (userId, accountName, channel) => `https://greenovationdashboard.azurewebsites.net/api/EnelClima/TrackDownload?id=${userId}&accountName=${accountName}&channel=${channel}`,
+  printTracking: (userId, accountName, channel) => `https://greenovationdashboard.azurewebsites.net/api/EnelClima/TrackDownload?id=${encodeURIComponent(userId)}&accountName=${encodeURIComponent(accountName)}&channel=${encodeURIComponent(channel)}`,
 }
 
 /**
