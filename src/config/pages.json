@@ -910,7 +910,7 @@
             },
             "navigationHooks": {
                 "beforeNext": "",
-                "afterNext": "",
+                "afterNext": "submitLead",
                 "beforePrevious": "",
                 "afterPrevious": ""
             },
@@ -1031,7 +1031,8 @@
                         "title": "Invia il preventivo al cliente",
                         "onSubmitAction": [
                             "trackPrint",
-                            "report.openReport"
+                            "report.openReport",
+                            "nextStep"
                         ]
                     }
                 }

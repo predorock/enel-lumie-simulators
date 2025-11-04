@@ -18,7 +18,7 @@ export const createLeadSlice = (set, get) => ({
     lead: {
         isLoading: false,
         error: null,
-        data: null
+        data: null,
     },
 
 
@@ -84,6 +84,11 @@ export const createLeadSlice = (set, get) => ({
 
     getLeadData: () => get((state) => state.lead.data),
 
+    isLeadSended: () => {
+        const state = get();
+        return !!state.lead.data
+    },
+
     setLeadLoading: (isLoading) => set((state) => ({
         ...state,
         lead: {
@@ -117,6 +122,7 @@ export const createLeadSlice = (set, get) => ({
         return {
             "UserID": state.getFormValue('userId') || state.getFormValue('userid') || '',
             "AccountName": state.getFormValue('accountName') || state.getFormValue('accountname') || '',
+            "channel": state.getFormValue('selectedChannel') || '',
             "negozi": true,
             "C14": city,
             "CAP": customerData.cap,

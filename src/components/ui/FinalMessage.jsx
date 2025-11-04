@@ -1,3 +1,5 @@
+import useAppStore from "../../store/useAppStore";
+
 import cn from "classnames";
 import IconRenderer from "../icons/IconRenderer";
 import Button from "./Button";
@@ -5,6 +7,15 @@ import Button from "./Button";
 import acFuochi from '../../assets/images/condizionatore-fuochi.svg';
 
 export default function FinalMessage({ title = "", className, onSend = () => { }, onPrint = () => { } }) {
+
+    const { isLeadSended } = useAppStore();
+
+    const _onSend = () => {
+        if (!isLeadSended()) {
+            onSend();
+        }
+    }
+
     return (
         <div className={cn("grid grid-cols-2 mx-64 my-auto", className)}>
             <div className="flex flex-col align-center justify-center text-left text-white">
@@ -17,7 +28,8 @@ export default function FinalMessage({ title = "", className, onSend = () => { }
                         variant="secondary"
                         icon={<IconRenderer icon="envelope" className="w-4 h-4" />}
                         iconPosition="right"
-                        onClick={onSend}
+                        onClick={_onSend}
+                        disabled={isLeadSended()}
                     >
                         Invia Preventivo finale al cliente
                     </Button>
