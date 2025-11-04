@@ -32,7 +32,7 @@ export default function ChannelSelection({
     return (
         <div
             className={cn(
-                "flex flex-col items-center justify-between bg-white rounded-2xl overflow-hidden w-[45%] h-auto m-auto",
+                "flex flex-col items-center justify-between bg-white rounded-2xl overflow-hidden w-auto h-auto m-auto",
                 className
             )}
             {...props}
@@ -77,7 +77,7 @@ export default function ChannelSelection({
                 {/* Main Title */}
                 <div className="flex flex-col gap-1 items-center justify-center w-full">
                     <h1 className="font-enel-bold text-4xl text-center text-black tracking-normal w-full">
-                        Su quale canale stai svolgendo la simulazione?
+                        Su quale canale stai svolgendo la<br />simulazione?
                     </h1>
                 </div>
             </div>
