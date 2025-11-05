@@ -25,6 +25,42 @@ export const createFormDataSlice = (set, get) => ({
     // Form data state
     formData: { ...initialFormData },
 
+    initFormData: () => {
+        set((state) => ({
+            formData: { ...initialFormData }
+        }));
+    },
+
+    // Form data actions
+    setFormValue: (property, value) => {
+
+        set((state) => ({
+            formData: {
+                ...state.formData,
+                [property]: value
+            }
+        }));
+
+        // Trigger validation after form value change
+        const state = get();
+        state.validation.validateCurrentPage();
+
+        // Trigger pricing calculation when quantities change
+        if (calculatePricingTriggerProperties.includes(property)) {
+            setTimeout(() => get().calculatePricing(), 0);
+        }
+    },
+
+    getFormValue: (property) => {
+        if (!property) return null;
+        const store = get();
+        if (!(property in store.formData)) {
+            console.warn(`getFormValue: property "${property}" does not exist in formData`);
+            return null;
+        }
+        return store.formData[property] || null;
+    },
+
     getAllowedUrlParams: () => {
         const store = get();
         return store.formData.allowedUrlParams;
@@ -52,32 +88,6 @@ export const createFormDataSlice = (set, get) => ({
             }
         }));
     },
-
-    // Form data actions
-    setFormValue: (property, value) => {
-
-        set((state) => ({
-            formData: {
-                ...state.formData,
-                [property]: value
-            }
-        }));
-
-        // Trigger validation after form value change
-        const state = get();
-        state.validation.validateCurrentPage();
-
-        // Trigger pricing calculation when quantities change
-        if (calculatePricingTriggerProperties.includes(property)) {
-            setTimeout(() => get().calculatePricing(), 0);
-        }
-    },
-
-    getFormValue: (property) => get().formData[property] || '',
-
-    clearFormData: () => set({ formData: {} }),
-
-    resetFormData: () => set({ formData: {} }),
 
     generateSuggestions: () => {
         const state = get();

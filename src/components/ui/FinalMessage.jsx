@@ -4,9 +4,16 @@ import cn from "classnames";
 import IconRenderer from "../icons/IconRenderer";
 import Button from "./Button";
 
-import acFuochi from '../../assets/images/condizionatore-fuochi.svg';
 
-export default function FinalMessage({ title = "", className, onSend = () => { }, onPrint = () => { } }) {
+import { ClimaImage } from "../clima/ClimaImageRegistry";
+
+export default function FinalMessage({
+    title = "",
+    email = "",
+    className,
+    onSend = () => { },
+    onPrint = () => { }
+}) {
 
     const { isLeadSended } = useAppStore();
 
@@ -18,12 +25,15 @@ export default function FinalMessage({ title = "", className, onSend = () => { }
 
     return (
         <div className={cn("grid grid-cols-2 mx-64 my-auto", className)}>
-            <div className="flex flex-col align-center justify-center text-left text-white">
+            <div className="flex flex-col align-center justify-center text-left text-white gap-8">
                 <h1 className="text-4xl">{title}</h1>
-                <div className="mt-8 flex justify-center gap-4">
-                    Se si decide di inviare al cliente il preventivo finale, questi verranno recapitati direttamente nella sua casella di posta elettronica. Il risultato del preventivo sarà inviato all'indirizzo email: mario.rossi@email.com.
+                <div className="">
+                    Il preventivo finale è stato inviato direttamente nella sua casella di posta elettronica all'indirizzo email: <span className="text-base font-enel-bold">{email}</span>
                 </div>
-                <div className="flex items-center justify-start my-4">
+                <div className="flex flex-col items-start justify-start gap-2">
+                    <div className="">
+                        Il cliente necessita di <span className="font-enel-bold">effettuare una nuova simulazione?</span>
+                    </div>
                     <Button
                         variant="secondary"
                         icon={<IconRenderer icon="envelope" className="w-4 h-4" />}
@@ -31,13 +41,13 @@ export default function FinalMessage({ title = "", className, onSend = () => { }
                         onClick={_onSend}
                         disabled={isLeadSended()}
                     >
-                        Invia Preventivo finale al cliente
+                        Effettua una nuova simulazione
                     </Button>
                 </div>
-                <div className="mt-8">
-                    Il cliente desidera anche una copia cartacea del preventivo finale?
-                </div>
-                <div className="flex items-center justify-start my-4">
+                <div className="flex flex-col items-start justify-start gap-2">
+                    <div className="whitespace-normal md:whitespace-nowrap">
+                        Il cliente desidera anche una <span className="font-enel-bold">copia cartacea del preventivo finale?</span>
+                    </div>
                     <Button
                         variant="outline-white"
                         icon={<IconRenderer icon="reader" className="w-4 h-4" />}
@@ -48,9 +58,7 @@ export default function FinalMessage({ title = "", className, onSend = () => { }
                     </Button>
                 </div>
             </div>
-            <div>
-                <img src={acFuochi} alt="Condizionatore Fuochi" className="w-full h-auto" />
-            </div>
+            <ClimaImage src="condizionatore-fuochi" alt="Condizionatore con fuochi" className="w-full h-auto place-self-center" />
 
 
         </div>

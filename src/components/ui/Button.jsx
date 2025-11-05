@@ -40,7 +40,7 @@ export default function Button({
     },
     "outline-white": {
       base: "bg-transparent text-white border-2 border-white",
-      hover: "hover:bg-[#fdf2f8] hover:border-white hover:text-white",
+      hover: "hover:bg-[#fdf2f8] hover:border-white hover:text-black",
       focus: "focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2",
       disabled: "disabled:border-gray-300 disabled:text-gray-400"
     },

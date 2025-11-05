@@ -26,12 +26,20 @@ const store = (set, get) => ({
         }
       }
 
-
-      // Load allowed URL parameters into formData
-      state.loadUrlParams();
-
       set({ _initialized: true });
     }
+  },
+
+  resetStore: () => {
+    const state = get();
+    set({ _initialized: false });
+    state.loadUrlParams();
+    state.initFormData()
+    state.initNavigationState();
+    state.initCityState();
+    state.initPricingState();
+    state.products.initProductsState();
+    set({ _initialized: true });
   },
 
   // Renderer slice integration

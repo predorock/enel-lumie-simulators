@@ -5,12 +5,15 @@ export default function StatefulFinalMessage({ title = "", onSendAction = "", on
 
     const state = useAppStore();
 
+    const email = state.getCustomerData().email
+
     const onSend = () => executeAction(state, onSendAction);
     const onPrint = () => executeAction(state, onPrintAction);
 
     return (
         <FinalMessage
             title={title}
+            email={email}
             onSend={onSend}
             onPrint={onPrint}
             {...props}

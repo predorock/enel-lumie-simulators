@@ -13,6 +13,8 @@ import SidebarForm from '../ui/SidebarForm';
  */
 export default function StatefulSidebarForm({
     onSubmitAction,
+    closeButtonConfig = {},
+    submitButtonConfig = {},
     className = "",
     ...props
 }) {
@@ -35,9 +37,20 @@ export default function StatefulSidebarForm({
         closeSidebar();
     };
 
-    const title = sidebar?.noValidationFields?.includes('email') ?
+    const title = sidebar?.printMode ?
         'Stampa il preventivo al cliente e genera lead in X-Costumer' :
         'Invia il preventivo al cliente e genera lead in X-Costumer';
+
+    const _closeButtonConfig = {
+        ...closeButtonConfig,
+        onClick: () => closeSidebar()
+    };
+
+    const _submitButtonConfig = {
+        ...submitButtonConfig,
+        onClick: handleSubmit,
+        label: sidebar?.printMode ? 'Stampa preventivo' : 'Conferma invio report'
+    };
 
     return (
         <SidebarForm
@@ -45,12 +58,15 @@ export default function StatefulSidebarForm({
             isOpen={sidebar.isOpen}
             customerData={sidebar.customerData}
             onInputChange={handleInputChange}
-            onClose={() => closeSidebar()}
-            onSubmit={handleSubmit}
+            //onClose={() => closeSidebar()}
+            //onSubmit={handleSubmit}
+            closeButtonConfig={_closeButtonConfig}
+            submitButtonConfig={_submitButtonConfig}
             isSubmitting={state.lead.isLoading}
             submitError={state.lead.error}
             className={className}
-            noValidationFields={sidebar.noValidationFields || []}
+            noValidationFields={[].concat(props.noValidationFields, sidebar.noValidationFields)}
+            hideFields={[].concat(props.hideFields, sidebar.hideFields)}
             {...props}
         />
     );

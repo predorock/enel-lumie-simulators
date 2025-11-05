@@ -13,7 +13,9 @@ export const createLeadSlice = (set, get) => ({
             telefono: '',
             email: ''
         },
-        noValidationFields: []
+        printMode: false,
+        noValidationFields: [],
+        hideFields: []
     },
     lead: {
         isLoading: false,
@@ -39,6 +41,8 @@ export const createLeadSlice = (set, get) => ({
             sidebar: {
                 ...state.sidebar,
                 noValidationFields: ['email'],
+                hideFields: ['email'],
+                printMode: true,
                 isOpen: true
             }
         }));
@@ -48,6 +52,7 @@ export const createLeadSlice = (set, get) => ({
         sidebar: {
             ...state.sidebar,
             noValidationFields: [],
+            printMode: false,
             isOpen: false
         }
     })),
@@ -73,6 +78,11 @@ export const createLeadSlice = (set, get) => ({
             }
         }
     })),
+
+    getCustomerData: () => {
+        const state = get();
+        return state.sidebar.customerData;
+    },
 
     setLeadData: (data) => set((state) => ({
         ...state,

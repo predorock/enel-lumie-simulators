@@ -16,6 +16,12 @@ export const createCitySlice = (set, get) => ({
   // City state
   cityState: initialCityState,
 
+  initCityState: () => {
+    set((state) => ({
+      cityState: initialCityState
+    }));
+  },
+
   // City actions
   setCityState: (updates) => set((state) => ({
     cityState: {

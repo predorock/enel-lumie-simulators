@@ -757,7 +757,7 @@
                     ]
                 },
                 "backButton": {
-                    "label": "Stampa report finale",
+                    "label": "Stampa report e genera lead",
                     "icon": "reader",
                     "iconPosition": "right",
                     "variant": "secondary",
@@ -767,7 +767,7 @@
                     ]
                 },
                 "nextButton": {
-                    "label": "Invia report finale al cliente",
+                    "label": "Invia report genera lead",
                     "icon": "envelope",
                     "iconPosition": "right",
                     "variant": "primary",
@@ -867,28 +867,6 @@
                     "type": "SidebarForm",
                     "props": {
                         "onSubmitAction": "confirmLead"
-                    },
-                    "renderConditions": {
-                        "equals": {
-                            "property": "formData.selectedChannel",
-                            "value": "fisico"
-                        }
-                    }
-                },
-                {
-                    "type": "SidebarForm",
-                    "props": {
-                        "title": "Invia il preventivo al cliente",
-                        "onSubmitAction": [
-                            "trackPrint",
-                            "report.openReport"
-                        ]
-                    },
-                    "renderConditions": {
-                        "equals": {
-                            "property": "formData.selectedChannel",
-                            "value": "web"
-                        }
                     }
                 }
             ]
@@ -1033,6 +1011,12 @@
                             "trackPrint",
                             "report.openReport",
                             "nextStep"
+                        ],
+                        "hideFields": [
+                            "telefono"
+                        ],
+                        "noValidationFields": [
+                            "cap"
                         ]
                     }
                 }
@@ -1112,7 +1096,9 @@
                     "props": {
                         "title": "Evviva! Il preventivo è stato creato con successo",
                         "className": "relative z-10",
-                        "onSendAction": "submitLead",
+                        "onSendAction": [
+                            "resetStore"
+                        ],
                         "onPrintAction": [
                             "report.openReport",
                             "trackPrint"
