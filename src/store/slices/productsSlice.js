@@ -112,14 +112,18 @@ const sortProductsByCategory = (a, b) => {
   return CATEGORY_ORDER[bCat] - CATEGORY_ORDER[aCat];
 };
 
+const PRODUCTS_INITIAL_STATE = {
+  items: [],
+  loading: false,
+  error: null,
+  selectedCity: null,
+  hasAlternativeProducts: true,
+};
+
 export const createProductsSlice = (set, get) => ({
   products: {
     // State
-    items: [],
-    loading: false,
-    error: null,
-    selectedCity: null,
-    hasAlternativeProducts: true,
+    ...PRODUCTS_INITIAL_STATE,
 
     setProducts: (rawProducts) => {
       // Transform API response to match our product structure
@@ -134,6 +138,19 @@ export const createProductsSlice = (set, get) => ({
           items,
           loading: false,
           error: null
+        }
+      }));
+    },
+
+    initProductsState: () => {
+      set((state) => ({
+        products: {
+          ...state.products,
+          items: [],
+          loading: false,
+          error: null,
+          selectedCity: null,
+          hasAlternativeProducts: true,
         }
       }));
     },

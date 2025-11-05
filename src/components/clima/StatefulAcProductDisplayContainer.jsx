@@ -15,8 +15,6 @@ const StatefulAcProductDisplayContainer = ({
 }) => {
 
   const { formData, setFormValue, calculatePricing } = useAppStore();
-
-  const products = useAppStore(state => state.products);
   const loading = useAppStore(state => state.products.loading);
   const error = useAppStore(state => state.products.error);
 

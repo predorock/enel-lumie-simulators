@@ -104,6 +104,12 @@ export const createPricingSlice = (set, get) => ({
   // Pricing state
   pricingState: initialPricingState,
 
+  initPricingState: () => {
+    set((state) => ({
+      pricingState: initialPricingState
+    }));
+  },
+
   // Pricing actions
   setPricingState: (updates) => set((state) => ({
     pricingState: {

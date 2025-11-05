@@ -10,6 +10,16 @@ export const createNavigationSlice = (set, get) => ({
     steps: stepsConfig.steps,
     dynamicPages: [], // Store dynamically generated pages
 
+    //Init Navigation State
+    initNavigationState: () => {
+        set((state) => ({
+            currentStep: 1,
+            currentPageId: pagesConfig.pages[0]?.id || null,
+            steps: stepsConfig.steps,
+            dynamicPages: []
+        }));
+    },
+
     // Navigation actions
     setCurrentStep: (step) => set({ currentStep: step }),
 
