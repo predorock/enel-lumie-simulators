@@ -48,7 +48,10 @@ export default function StatefulSidebarForm({
 
     const _submitButtonConfig = {
         ...submitButtonConfig,
-        onClick: handleSubmit,
+        onClick: (formData) => {
+            console.log('Submitting form data:', formData);
+            handleSubmit(formData)
+        },
         label: sidebar?.printMode ? 'Stampa preventivo' : 'Conferma invio report'
     };
 

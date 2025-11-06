@@ -50,7 +50,7 @@ export const glossaryData = [
         content: [
             {
                 question: "Che cos'è il lavaggio dell'impianto?",
-                answer: "Il lavaggio dell'impianto viene effettuato per eliminare tutti residui del vecchio gas refrigerante all'interno delle tubazioni in rame già presenti. Il lavaggio è composto da due fai: la prima dove viene utilizzato un liquido detergente, mentre la successiva prevede l'impiego di azoto per rimuovere le impurità."
+                answer: "Il lavaggio dell'impianto viene effettuato per eliminare tutti residui del vecchio gas refrigerante all'interno delle tubazioni in rame già presenti. Il lavaggio è composto da due fasi: la prima dove viene utilizzato un liquido detergente, mentre la successiva prevede l'impiego di azoto per rimuovere le impurità."
             },
             {
                 question: "Perché è importante effettuare il lavaggio?",
