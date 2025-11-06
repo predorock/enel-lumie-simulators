@@ -1,4 +1,3 @@
-import useAppStore from "../../store/useAppStore";
 
 import cn from "classnames";
 import IconRenderer from "../icons/IconRenderer";
@@ -15,13 +14,6 @@ export default function FinalMessage({
     onPrint = () => { }
 }) {
 
-    const { isLeadSended } = useAppStore();
-
-    const _onSend = () => {
-        if (!isLeadSended()) {
-            onSend();
-        }
-    }
 
     return (
         <div className={cn("grid grid-cols-2 mx-64 my-auto", className)}>
@@ -38,8 +30,7 @@ export default function FinalMessage({
                         variant="secondary"
                         icon={<IconRenderer icon="envelope" className="w-4 h-4" />}
                         iconPosition="right"
-                        onClick={_onSend}
-                        disabled={isLeadSended()}
+                        onClick={onSend}
                     >
                         Effettua una nuova simulazione
                     </Button>

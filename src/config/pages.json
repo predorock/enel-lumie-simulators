@@ -767,7 +767,7 @@
                     ]
                 },
                 "nextButton": {
-                    "label": "Invia report genera lead",
+                    "label": "Invia report e genera lead",
                     "icon": "envelope",
                     "iconPosition": "right",
                     "variant": "primary",

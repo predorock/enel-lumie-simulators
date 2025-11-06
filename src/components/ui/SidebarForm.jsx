@@ -138,6 +138,7 @@ export default function SidebarForm({
         onClick: () => { console.warn('SidebarForm: submitButton onClick not provided'); }
     });
     const handleSubmit = (e) => {
+        console.log('handleSubmit called');
         e.preventDefault();
 
         if (!validateForm()) {
@@ -192,7 +193,7 @@ export default function SidebarForm({
                                 </div>
                             </div>
 
-                            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-6" id="sidebar-form">
                                 {/* CAP Section */}
                                 {showField('cap') && (
                                     <div className="flex flex-col gap-4">
@@ -376,6 +377,7 @@ export default function SidebarForm({
                                 <Button
                                     variant={submitButton.variant}
                                     type="submit"
+                                    form="sidebar-form"
                                     disabled={submitButton.disabled}
                                     className={submitButton.className}
                                 >

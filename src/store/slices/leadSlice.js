@@ -52,6 +52,7 @@ export const createLeadSlice = (set, get) => ({
         sidebar: {
             ...state.sidebar,
             noValidationFields: [],
+            hideFields: [],
             printMode: false,
             isOpen: false
         }
