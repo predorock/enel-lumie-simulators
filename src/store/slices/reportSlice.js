@@ -82,6 +82,21 @@ export const createReportSlice = (set, get) => ({
             lastRequestTimestamp: null,
         },
 
+        initReportSlice: () => {
+            set((state) => ({
+                ...state,
+                report: {
+                    ...state.report,
+                    data: {
+                        loading: false,
+                        error: null,
+                        result: null,
+                        lastRequestTimestamp: null,
+                    }
+                }
+            }));
+        },
+
         // SETTERS --
         setReportLoading: (loading) => set((state) => ({
             report: {

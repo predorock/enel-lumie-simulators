@@ -23,6 +23,28 @@ export const createLeadSlice = (set, get) => ({
         data: null,
     },
 
+    initLeadState: () => set((state) => ({
+        ...state,
+        sidebar: {
+            isOpen: false,
+            customerData: {
+                cap: '',
+                nome: '',
+                cognome: '',
+                telefono: '',
+                email: ''
+            },
+            printMode: false,
+            noValidationFields: [],
+            hideFields: []
+        },
+        lead: {
+            isLoading: false,
+            error: null,
+            data: null,
+        }
+    })),
+
 
     // SIDEBAR ACTIONS ---
     openSidebar: () => {

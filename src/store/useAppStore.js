@@ -39,6 +39,8 @@ const store = (set, get) => ({
     state.initCityState();
     state.initPricingState();
     state.products.initProductsState();
+    state.initLeadState();
+    state.report.initReportState();
     set({ _initialized: true });
   },
 
