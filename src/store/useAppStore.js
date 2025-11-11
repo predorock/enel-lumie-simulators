@@ -26,6 +26,8 @@ const store = (set, get) => ({
         }
       }
 
+      state.loadUrlParams();
+
       set({ _initialized: true });
     }
   },
