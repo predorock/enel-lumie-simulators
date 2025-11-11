@@ -93,13 +93,17 @@ const AcProductDisplayContainer = ({
   }
 
   if (displayProducts.length === 0 && showNoProductsMessage) {
+    const msg = typeof showNoProductsMessage === 'string' ? showNoProductsMessage : "Controlla la sezione sotto";
     return (
       <div className={`flex flex-col gap-4 ${className}`}>
-        <InfoBanner
+        <h3 className="text-lg font-enel-bold text-gray-900">
+          Prodotti disponibili ({displayProducts?.length || 0})
+        </h3>
+        {/* <InfoBanner
           title="Nessun prodotto trovato"
-          description="Nessun prodotto disponibile al momento."
-          variant="warning"
-        />
+          description={msg}
+          variant="info"
+        /> */}
       </div>
     );
   }
@@ -109,7 +113,7 @@ const AcProductDisplayContainer = ({
       {/* Products Count */}
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-enel-bold text-gray-900">
-          Prodotti disponibili ({displayProducts.length})
+          Prodotti disponibili ({displayProducts?.length || 0})
         </h3>
 
         {/* Selected products indicator */}
