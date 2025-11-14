@@ -19,7 +19,7 @@ const API_URLS = {
   products: (cityName, partnership) => `https://greenovationdashboard.azurewebsites.net/api/lumie/clima?comune=${encodeURIComponent(cityName)}&partnership=${encodeURIComponent(partnership)}`,
   simulation: () => "https://greenovationdashboard.azurewebsites.net/api/lumie/clima",
   lead: () => "https://greenovationdashboard.azurewebsites.net/api/Lumie/EnelClimaLead",
-  printTracking: (userId, accountName, channel) => `https://greenovationdashboard.azurewebsites.net/api/EnelClima/TrackDownload?id=${encodeURIComponent(userId)}&accountName=${encodeURIComponent(accountName)}&channel=${encodeURIComponent(channel)}`,
+  printTracking: (userId, accountName, channel) => `https://greenovationdashboard.azurewebsites.net/api/EnelClima/TrackDownload?id=${encodeURIComponent(userId)}&accountName=${encodeURIComponent((accountName || "").replaceAll("&", "e"))}&channel=${encodeURIComponent(channel)}`,
 }
 
 /**
@@ -38,7 +38,7 @@ export const fetchProducts = async (cityName, partnership) => {
     // Return mock data for development
     const { default: mockData } = await import('../assets/mocks/products.response.json');
     await new Promise(resolve => setTimeout(resolve, 800)); // Simulate network delay
-    return mockData.products || [];
+    return m∫[];
   }
 
   const apiUrl = API_URLS.products(cityName, partnership);
